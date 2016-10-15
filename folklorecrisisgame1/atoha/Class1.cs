@@ -7,5 +7,6 @@ namespace folklorecrisisgame1.atoha
     class Class1
     {
         int aaaaa;
+        int bbbbb;
     }
 }
