@@ -9,5 +9,6 @@
     <Import_RootNamespace>folklorecrisisgame1</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)atoha\Class1.cs" />
   </ItemGroup>
 </Project>
