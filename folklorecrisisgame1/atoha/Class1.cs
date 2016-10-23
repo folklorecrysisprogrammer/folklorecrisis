@@ -8,5 +8,6 @@ namespace folklorecrisisgame1.atoha
     {
         int aaaaa;
         int bbbbb;
+        int ccccc;
     }
 }
