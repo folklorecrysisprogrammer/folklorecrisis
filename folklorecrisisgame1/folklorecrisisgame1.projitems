@@ -12,6 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)atoha\Class1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)rai\" />
+    <Content Include="$(MSBuildThisFileDirectory)rai\TextFile1.txt" />
   </ItemGroup>
 </Project>
