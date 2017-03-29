@@ -59,10 +59,11 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="dxlibex, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Source\Repos\dxlibex\dxlibex\dxlibex\bin\Debug\dxlibex.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+    <Reference Include="dxlibex" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+      <HintPath>lib\Release\dxlibex.dll</HintPath>
+    </Reference>
+    <Reference Include="dxlibex" Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+      <HintPath>lib\Debug\dxlibex.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -154,7 +155,13 @@
   <ItemGroup>
     <Folder Include="Resources\" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>copy "$(ProjectDir)lib\Release\DxLib.dll" "$(ProjectDir)$(OutDir)"</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
