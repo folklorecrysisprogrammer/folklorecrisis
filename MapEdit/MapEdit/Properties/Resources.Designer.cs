@@ -83,16 +83,6 @@ namespace MapEdit.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap SyncArrow_16x {
-            get {
-                object obj = ResourceManager.GetObject("SyncArrow_16x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
         internal static System.Drawing.Bitmap SyncArrow_16xMD {
             get {
                 object obj = ResourceManager.GetObject("SyncArrow_16xMD", resourceCulture);
