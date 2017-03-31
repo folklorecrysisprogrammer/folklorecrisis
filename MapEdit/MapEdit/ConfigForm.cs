@@ -21,7 +21,7 @@ namespace MapEdit
             InitializeComponent();
             this.mapWriteScene = mapWriteScene;
             var myAssembly=System.Reflection.Assembly.GetExecutingAssembly();
-            chara.Image =new Bitmap(myAssembly.GetManifestResourceStream("MapEdit.プルヌ.png"));
+            chara.Image =new Bitmap(myAssembly.GetManifestResourceStream("MapEdit.Resources.プルヌ.png"));
             var rnd=new System.Random();
             if (rnd.Next(10) != 0) chara.Visible = false;
             chara.MouseEnter += (o, e) =>

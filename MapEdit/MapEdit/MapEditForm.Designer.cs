@@ -36,6 +36,12 @@
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.drawModeComboBox = new System.Windows.Forms.ComboBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +53,7 @@
             this.mapWritePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.mapWritePanel.Location = new System.Drawing.Point(5, 25);
             this.mapWritePanel.Name = "mapWritePanel";
-            this.mapWritePanel.Size = new System.Drawing.Size(400, 400);
+            this.mapWritePanel.Size = new System.Drawing.Size(479, 400);
             this.mapWritePanel.TabIndex = 0;
             // 
             // layerComboBox
@@ -59,9 +65,9 @@
             "layer1",
             "layer2",
             "layer3"});
-            this.layerComboBox.Location = new System.Drawing.Point(313, 0);
+            this.layerComboBox.Location = new System.Drawing.Point(436, -1);
             this.layerComboBox.Name = "layerComboBox";
-            this.layerComboBox.Size = new System.Drawing.Size(108, 20);
+            this.layerComboBox.Size = new System.Drawing.Size(61, 20);
             this.layerComboBox.TabIndex = 1;
             this.layerComboBox.SelectedIndexChanged += new System.EventHandler(this.layerComboBox_SelectedIndexChanged);
             // 
@@ -73,7 +79,7 @@
             this.画像出力ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(429, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(508, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -100,7 +106,7 @@
             this.hScrollBar1.LargeChange = 40;
             this.hScrollBar1.Location = new System.Drawing.Point(5, 423);
             this.hScrollBar1.Name = "hScrollBar1";
-            this.hScrollBar1.Size = new System.Drawing.Size(400, 17);
+            this.hScrollBar1.Size = new System.Drawing.Size(479, 17);
             this.hScrollBar1.SmallChange = 40;
             this.hScrollBar1.TabIndex = 3;
             // 
@@ -108,7 +114,7 @@
             // 
             this.vScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.vScrollBar1.Location = new System.Drawing.Point(404, 25);
+            this.vScrollBar1.Location = new System.Drawing.Point(483, 25);
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(17, 398);
             this.vScrollBar1.TabIndex = 4;
@@ -120,17 +126,77 @@
             this.drawModeComboBox.Items.AddRange(new object[] {
             "Nearest",
             "Bilinear"});
-            this.drawModeComboBox.Location = new System.Drawing.Point(151, 0);
+            this.drawModeComboBox.Location = new System.Drawing.Point(360, 0);
             this.drawModeComboBox.Name = "drawModeComboBox";
-            this.drawModeComboBox.Size = new System.Drawing.Size(84, 20);
+            this.drawModeComboBox.Size = new System.Drawing.Size(70, 20);
             this.drawModeComboBox.TabIndex = 5;
             this.drawModeComboBox.SelectedIndexChanged += new System.EventHandler(this.drawModeComboBox_SelectedIndexChanged);
+            // 
+            // button6
+            // 
+            this.button6.Image = global::MapEdit.Properties.Resources.UnsyncedCommits_16x;
+            this.button6.Location = new System.Drawing.Point(272, 1);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(24, 23);
+            this.button6.TabIndex = 11;
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Image = global::MapEdit.Properties.Resources.SyncArrow_16xMD;
+            this.button5.Location = new System.Drawing.Point(302, 1);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(24, 23);
+            this.button5.TabIndex = 10;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Image = global::MapEdit.Properties.Resources.RotateRight_16x;
+            this.button4.Location = new System.Drawing.Point(242, 1);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(24, 23);
+            this.button4.TabIndex = 9;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Image = global::MapEdit.Properties.Resources.RotateLeft_16x;
+            this.button3.Location = new System.Drawing.Point(212, 1);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(24, 23);
+            this.button3.TabIndex = 8;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Image = global::MapEdit.Properties.Resources.ZoomOut_16x;
+            this.button2.Location = new System.Drawing.Point(182, 1);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(24, 23);
+            this.button2.TabIndex = 7;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Image = global::MapEdit.Properties.Resources.ZoomIn_16x;
+            this.button1.Location = new System.Drawing.Point(152, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 23);
+            this.button1.TabIndex = 6;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // MapEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 449);
+            this.ClientSize = new System.Drawing.Size(508, 449);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.drawModeComboBox);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.hScrollBar1);
@@ -159,6 +225,12 @@
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.ComboBox drawModeComboBox;
         private System.Windows.Forms.ToolStripMenuItem 画像出力ToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }
 
