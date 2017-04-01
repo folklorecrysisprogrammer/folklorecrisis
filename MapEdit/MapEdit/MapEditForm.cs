@@ -130,11 +130,13 @@ namespace MapEdit
             mapWriteScene.GetBitmap().Save("w.png",ImageFormat.Png);
         }
 
+        //右回転ボタンを押したときの処理
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
             mapWriteScene.RotateRight();
         }
 
+        //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
             mapWriteScene.RotateLeft();

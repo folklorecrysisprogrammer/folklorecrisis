@@ -58,6 +58,7 @@ namespace MapEdit
                 g.InterpolationMode = InterpolationMode.NearestNeighbor;
                 g.DrawImage(bitmap[i], 0, 0, pixelSize, pixelSize);
             }
+            resultBitmap.RotateFlip((RotateFlipType)((int)Angle / 90));
             return resultBitmap;
         }
 
