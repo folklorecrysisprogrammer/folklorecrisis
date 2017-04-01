@@ -7,18 +7,18 @@ using System.Windows.Forms;
 
 namespace MapEdit
 {
-    //MapWriteSceneをスクロールする機能
+    //MapWriteSceneをスクロールするためのクラス
    public class MapWriteScroll
     {
         private HScrollBar hScroll;
         private VScrollBar vScroll;
         private MapWriteScene mws;
+
         public MapWriteScroll(HScrollBar hScroll,VScrollBar vScroll,MapWriteScene mws)
         {
             this.hScroll = hScroll;
             this.vScroll = vScroll;
             this.mws = mws;
-
 
             //スクロールバーがスクロールされたら、
             //フォーカスを当てるようにしてmouseホイールしやすくする
@@ -45,12 +45,13 @@ namespace MapEdit
         }
 
         //スクロールバーの変化量を設定
+        //一回スクロールで一マス移動するようにする
         public void SetScrollDelta()
         {
-            vScroll.SmallChange = mws.PixelSize;
-            vScroll.LargeChange = mws.PixelSize;
-            hScroll.SmallChange = mws.PixelSize;
-            hScroll.LargeChange = mws.PixelSize;
+            vScroll.SmallChange = mws.MapChipSize;
+            vScroll.LargeChange = mws.MapChipSize;
+            hScroll.SmallChange = mws.MapChipSize;
+            hScroll.LargeChange = mws.MapChipSize;
         }
 
         //スクロールバーの最大値を設定
@@ -59,10 +60,10 @@ namespace MapEdit
             hScroll.Value = 0;
             vScroll.Value = 0;
             mws.localPos.SetVect(0, 0);
-            int temp = mws.MapSize.Width * mws.PixelSize - mws.GetControl.Size.Width;
+            int temp = mws.MapSize.Width * mws.MapChipSize - mws.GetControl.Size.Width;
             if (temp < 0) hScroll.Maximum = 0;
             else hScroll.Maximum = temp;
-            temp = mws.MapSize.Height * mws.PixelSize - mws.GetControl.Size.Height;
+            temp = mws.MapSize.Height * mws.MapChipSize - mws.GetControl.Size.Height;
             if (temp < 0) vScroll.Maximum = 0;
             else vScroll.Maximum = temp;
         }

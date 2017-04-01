@@ -16,11 +16,11 @@ namespace MapEdit
 
         private SelectImageForm selectImageForm;
         //マップチップの一辺の長さ
-        private int pixelSize = 40;
-        public int PixelSize
+        private int mapChipSize = 40;
+        public int MapChipSize
         {
-            get { return pixelSize; }
-            set { pixelSize = value; ChangePixelSize(); }
+            get { return mapChipSize; }
+            set { mapChipSize = value; ChangeMapChipSize(); }
         }
 
         //マップのサイズ（マス単位で）
@@ -63,8 +63,8 @@ namespace MapEdit
             {
                 for (int y = 0; y < mapImage.GetLength(1); y++)
                 {
-                    mapImage[x, y] = new MapImage(pixelSize);
-                    mapImage[x, y].localPos.SetVect(x * PixelSize, y * PixelSize);
+                    mapImage[x, y] = new MapImage(mapChipSize);
+                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
                     this.AddChild(mapImage[x, y]);
                 }
             }
@@ -102,29 +102,29 @@ namespace MapEdit
         private Point MouseLocationToMapVect(MouseEventArgs e)
         {
             Point point = new Point();
-            point.X = (int)((e.Location.X - localPos.x) / pixelSize);
-            point.Y = (int)((e.Location.Y - localPos.y) / pixelSize);
+            point.X = (int)((e.Location.X - localPos.x) / mapChipSize);
+            point.Y = (int)((e.Location.Y - localPos.y) / mapChipSize);
             return point;
         }
 
         //マップ全体をBitmapに変換する
         public Bitmap GetBitmap()
         {
-            Bitmap unitedImg = new Bitmap(pixelSize * mapSize.Width, pixelSize * mapSize.Height);
+            Bitmap unitedImg = new Bitmap(mapChipSize * mapSize.Width, mapChipSize * mapSize.Height);
             Graphics g = Graphics.FromImage(unitedImg);
             for (int countY = 0; countY < mapSize.Height; ++countY)
             {
                 for (int countX = 0; countX < mapSize.Width; ++countX)
                 {
                     Bitmap bitmap = mapImage[countX, countY].GetBitmap();
-                    g.DrawImage(bitmap, pixelSize * countX, pixelSize * countY);
+                    g.DrawImage(bitmap, mapChipSize * countX, mapChipSize * countY);
                 }
             }
             return unitedImg;
         }
 
         //PixelSize変更処理
-        private void ChangePixelSize()
+        private void ChangeMapChipSize()
         {
             //スクロールバーの調整
             mapWriteScroll.SetScrollDelta();
@@ -135,8 +135,8 @@ namespace MapEdit
             {
                 for (int y = 0; y < mapImage.GetLength(1); y++)
                 {
-                    mapImage[x, y].PixelSize = pixelSize;
-                    mapImage[x, y].localPos.SetVect(x * PixelSize, y * PixelSize);
+                    mapImage[x, y].MapChipSize = mapChipSize;
+                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
                 }
             }
         }
@@ -184,8 +184,8 @@ namespace MapEdit
             {
                 for (int y = 0; y < mapImage.GetLength(1); y++)
                 {
-                    mapImage[x, y] = new MapImage(pixelSize);
-                    mapImage[x, y].localPos.SetVect(x * PixelSize, y * PixelSize);
+                    mapImage[x, y] = new MapImage(mapChipSize);
+                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
                     AddChild(mapImage[x, y]);
                 }
             }
@@ -193,8 +193,8 @@ namespace MapEdit
             {
                 for (int y = tMapImage.GetLength(1); y < mapImage.GetLength(1); y++)
                 {
-                    mapImage[x, y] = new MapImage(pixelSize);
-                    mapImage[x, y].localPos.SetVect(x * PixelSize, y * PixelSize);
+                    mapImage[x, y] = new MapImage(mapChipSize);
+                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
                     AddChild(mapImage[x, y]);
                 }
             }
@@ -210,7 +210,7 @@ namespace MapEdit
                 for (int y = 0; y < mapImage.GetLength(1); y++)
                 {
                     mapImage[x, y] = tMapImage[y, tMapImage.GetLength(1) - x - 1];
-                    mapImage[x, y].localPos.SetVect(x * PixelSize, y * PixelSize);
+                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
                     mapImage[x, y].RotateRight();
                 }
             }
@@ -229,7 +229,7 @@ namespace MapEdit
                 for (int y = 0; y < mapImage.GetLength(1); y++)
                 {
                     mapImage[x, y] = tMapImage[tMapImage.GetLength(0)-y-1,x];
-                    mapImage[x, y].localPos.SetVect(x * PixelSize, y * PixelSize);
+                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
                     mapImage[x, y].RotateLeft();
                 }
             }

@@ -17,24 +17,27 @@ namespace MapEdit
     {
         //layerの数
         public const int maxLayer = 3;
-        public SelectImageForm selectImageForm;
+        //マップチップパレットフォーム
+        public SelectImageForm selectImageForm=new SelectImageForm();
         //実際にマップを描画するシーン
         private MapWriteScene mapWriteScene;
         //初期化
         public MapEditForm()
         {
-
-            InitializeComponent();
-            selectImageForm = new SelectImageForm();
-            
-           //各種イベントハンドラ
+            InitializeComponent();    
+                    
+           //メインウインドウのロードが終わったら、
+           //パレッドウインドウを表示する。
             Load += (o, e) => {
                 selectImageForm.Show();
             };
             
+            //キーが押された時の処理
             KeyDown += (o, e) =>
             {
                 mapWritePanel.Focus();
+
+                //WASDキーが押されていたら、スクロールバーをスクロール
                 if (e.KeyData == Keys.D )
                 {
                     ScrollBarAddValue(hScrollBar1, hScrollBar1.LargeChange);
@@ -60,18 +63,28 @@ namespace MapEdit
             //DXEX初期化
             DXEX.Director.init(this);
             DX.SetAlwaysRunFlag(DX.TRUE);
+
             //描画領域をセット
+            //（見切れないように、画面いっぱいに設定する）
             DxLibDLL.DX.SetGraphMode(
                 Screen.PrimaryScreen.Bounds.Width,
                 Screen.PrimaryScreen.Bounds.Height,
                 32
                 );
 
+            //DXライブラリの描画先の背景色を設定する
+            DxLibDLL.DX.SetBackgroundColor(90, 230, 120);
+
+            //mapWriteScene初期化
+            //mapWritePanelをDXライブラリの描画先に設定
             mapWriteScene = 
                 new MapWriteScene(selectImageForm,mapWritePanel,hScrollBar1,vScrollBar1);
+
+            //comboボックスのデフォルト値設定
             layerComboBox.SelectedIndex = 0;
             drawModeComboBox.SelectedIndex = 0;
-            DxLibDLL.DX.SetBackgroundColor(90, 230, 120);
+            
+            //メインウインドウ表示
             Show();
             //DXライブラリループ開始
             DXEX.Director.StartLoop(this,mapWriteScene);
