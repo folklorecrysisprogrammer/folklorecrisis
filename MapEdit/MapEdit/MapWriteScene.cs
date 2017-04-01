@@ -73,9 +73,6 @@ namespace MapEdit
         //マウスでマップを書く処理
         private void MouseAction(object o, MouseEventArgs e)
         {
-
-            //マップチップを未選択なら終了
-            if (selectImageForm.SelectImagePath == "") return;
             Point point = MouseLocationToMapVect(e);
             //マップサイズ範囲外なら終了
             if (point.X >= mapImage.GetLength(0) || point.Y >= mapImage.GetLength(1) ||
@@ -87,7 +84,7 @@ namespace MapEdit
             {
                 //左クリックされている時の処理
                 //マップを書く
-                mapImage[point.X, point.Y].PutImage(selectImageForm.SelectImagePath, CurrentLayer);
+                mapImage[point.X, point.Y].PutImage(selectImageForm.GetSelectImage(), CurrentLayer);
             }
             if ((Control.MouseButtons & MouseButtons.Right)
                 == MouseButtons.Right)

@@ -13,30 +13,40 @@ namespace MapEdit
     public partial class SelectImageForm : Form
     {
         private int imageCountX = 0, imageCountY = 0;
-        //現在選択中の画像のパス
-        public string SelectImagePath { get; private set; }
+
+        private SelectImage selectImage;
+
+        public SelectImage GetSelectImage() { return selectImage; }
 
         //右回転ボタンを押したときの処理
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
-            var image = selectPicture.Image;
-            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            selectPicture.Image=image;
+            selectImage.RotateRight();
         }
 
         //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
-            var image = selectPicture.Image;
-            image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            selectPicture.Image = image;
+            selectImage.RotateLeft();
+        }
+
+        //上下反転ボタンを押したときの処理
+        private void turnVerticalButton_Click(object sender, EventArgs e)
+        {
+            selectImage.turnVertical();
+        }
+
+        //左右反転ボタンを押したときの処理
+        private void turnHorizontalButton_Click(object sender, EventArgs e)
+        {
+            selectImage.TurnHorizontal();
         }
 
         public SelectImageForm()
         {
             
             InitializeComponent();
-            SelectImagePath = "";
+            selectImage = new SelectImage(selectPicture);
             //ドラッグされた時のイベント
             DragEnter += (object sender, DragEventArgs e) =>
             {
@@ -72,7 +82,8 @@ namespace MapEdit
                     pictureBox.MouseClick += (object _o, MouseEventArgs _e) =>
                     {
                         selectPicture.Image = pictureBox.Image;
-                        SelectImagePath =pictureBox.FilePath;
+                        selectImage.FilePath =pictureBox.FilePath;
+                        selectImage.Reset();
                         pictureBox.Focus();
                     };
                     pictureBox.Size = new Size(40, 40);

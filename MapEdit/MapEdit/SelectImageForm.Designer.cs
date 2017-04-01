@@ -86,6 +86,7 @@
             this.turnVerticalButton.Size = new System.Drawing.Size(24, 23);
             this.turnVerticalButton.TabIndex = 12;
             this.turnVerticalButton.UseVisualStyleBackColor = true;
+            this.turnVerticalButton.Click += new System.EventHandler(this.turnVerticalButton_Click);
             // 
             // turnHorizontalButton
             // 
@@ -95,6 +96,7 @@
             this.turnHorizontalButton.Size = new System.Drawing.Size(24, 23);
             this.turnHorizontalButton.TabIndex = 13;
             this.turnHorizontalButton.UseVisualStyleBackColor = true;
+            this.turnHorizontalButton.Click += new System.EventHandler(this.turnHorizontalButton_Click);
             // 
             // SelectImageForm
             // 

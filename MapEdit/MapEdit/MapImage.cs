@@ -81,17 +81,18 @@ namespace MapEdit
         }
 
         //画像をセット
-        public void PutImage(string filePath, int layer)
+        public void PutImage(SelectImage selectImage, int layer)
         {
-            picturePath[layer] = filePath;
-            picture[layer].SetTexture(filePath);
+            if (selectImage.FilePath == "") return;
+            picturePath[layer] = selectImage.FilePath;
+            picture[layer].SetTexture(selectImage.FilePath);
             picture[layer].scale.SetVect(
                 mapChipSize / picture[layer].Rect.Width,
                 mapChipSize / picture[layer].Rect.Height
             );
-            picture[layer].Angle = 0;
-            picture[layer].turnFlag = DX.FALSE;
-            picture[layer].offsetPos.SetVect(0, 0);
+            picture[layer].Angle = selectImage.Angle;
+            picture[layer].turnFlag = selectImage.turnFlag;
+            RotateFix();
         }
 
         //画像をクリア
@@ -158,28 +159,47 @@ namespace MapEdit
             RotateFix();
         }
 
+        private void SwitchTurnFlag(int i)
+        {
+            if (picture[i].turnFlag == DX.TRUE)
+            {
+                picture[i].turnFlag = DX.FALSE;
+            }
+            else
+            {
+                picture[i].turnFlag = DX.TRUE;
+            }
+        }
+
         //マップチップを左右反転
         public void TurnHorizontal()
         {
             for (int i = 0; i < MapEditForm.maxLayer; i++)
             {
-                if (picture[i].turnFlag == DX.TRUE)
+                if (picture[i].Angle == 90 || picture[i].Angle == 270)
                 {
-                    picture[i].turnFlag = DX.FALSE;
+                    picture[i].Angle += 180;
                 }
-                else
-                {
-                    picture[i].turnFlag = DX.TRUE;
-                }
+                SwitchTurnFlag(i);
+                
             }
+            RotateFix();
         }
+
 
         //マップチップを上下反転
         public void TurnVertical()
         {
-            Rotate(180);
+            for (int i = 0; i < MapEditForm.maxLayer; i++)
+            {
+                if (picture[i].Angle == 0 || picture[i].Angle == 180)
+                {
+                    picture[i].Angle += 180;
+                }
+                SwitchTurnFlag(i);
+
+            }
             RotateFix();
-            TurnHorizontal();
         }
 
         //マップチップを左回転
