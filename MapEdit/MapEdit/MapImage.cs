@@ -51,14 +51,13 @@ namespace MapEdit
             Graphics g = Graphics.FromImage(resultBitmap);
             g.PixelOffsetMode = PixelOffsetMode.Half;
 
-            //リサイズして画像を重ねる
+            //リサイズ&回転して画像を重ねる
             for (int i = 0; i < MapEditForm.maxLayer; i++)
             {
-
+                bitmap[i].RotateFlip((RotateFlipType)((int)picture[i].Angle / 90));
                 g.InterpolationMode = InterpolationMode.NearestNeighbor;
                 g.DrawImage(bitmap[i], 0, 0, pixelSize, pixelSize);
             }
-            resultBitmap.RotateFlip((RotateFlipType)((int)Angle / 90));
             return resultBitmap;
         }
 
@@ -71,6 +70,8 @@ namespace MapEdit
                 pixelSize / picture[layer].Rect.Width,
                 pixelSize / picture[layer].Rect.Height
             );
+            picture[layer].Angle = 0;
+            picture[layer].offsetPos.SetVect(0, 0);
         }
 
         //画像をクリア
@@ -96,39 +97,52 @@ namespace MapEdit
             }
         }
 
+
+        //マップチッップの角度を変更する
+        private void Rotate(int addAngle)
+        {
+            for (int i = 0; i < MapEditForm.maxLayer; i++)
+            {
+                picture[i].Angle += addAngle;
+            }
+        }
+
+        //回転してずれた座標を修正
+        private void RotateFix()
+        {
+            for (int i = 0; i < MapEditForm.maxLayer; i++)
+            {
+                picture[i].Angle = (int)picture[i].Angle % 360;
+                switch ((int)picture[i].Angle / 90)
+                {
+                    case 0:
+                        picture[i].offsetPos.SetVect(0, 0);
+                        break;
+                    case 1:
+                        picture[i].offsetPos.SetVect(pixelSize, 0);
+                        break;
+                    case 2:
+                        picture[i].offsetPos.SetVect(pixelSize, pixelSize);
+                        break;
+                    case 3:
+                        picture[i].offsetPos.SetVect(0, pixelSize);
+                        break;
+                }
+            }
+        }
+
         //マップチップを右回転
         public void RotateRight()
         {
-            Angle += 90;
+            Rotate(90);
             RotateFix();
         }
 
         //マップチップを左回転
         public void RotateLeft()
         {
-            Angle += 270;
+            Rotate(270);
             RotateFix();
-        }
-
-        //回転してずれた座標を修正
-        public void RotateFix()
-        {
-            Angle = (int)Angle % 360;
-            switch ((int)Angle / 90)
-            {
-                case 0:
-                    offsetPos.SetVect(0, 0);
-                    break;
-                case 1:
-                    offsetPos.SetVect(pixelSize, 0);
-                    break;
-                case 2:
-                    offsetPos.SetVect(pixelSize, pixelSize);
-                    break;
-                case 3:
-                    offsetPos.SetVect(0, pixelSize);
-                    break;
-            }
         }
     }
 }
