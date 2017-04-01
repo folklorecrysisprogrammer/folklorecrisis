@@ -228,7 +228,7 @@ namespace MapEdit
             {
                 for (int y = 0; y < mapImage.GetLength(1); y++)
                 {
-                    mapImage[x, y] = tMapImage[tMapImage.GetLength(0)-y-1,x];
+                    mapImage[x, y] = tMapImage[tMapImage.GetLength(0) - y - 1, x];
                     mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
                     mapImage[x, y].RotateLeft();
                 }
@@ -236,6 +236,22 @@ namespace MapEdit
             mapSize.Width = mapImage.GetLength(0);
             mapSize.Height = mapImage.GetLength(1);
             mapWriteScroll.SetScrollMaximum();
+        }
+
+        //マップを左右反転
+        public void turnHorizontal()
+        {
+            var tMapImage = mapImage;
+            mapImage = new MapImage[mapSize.Width, mapSize.Height];
+            for (int x = 0; x < mapImage.GetLength(0); x++)
+            {
+                for (int y = 0; y < mapImage.GetLength(1); y++)
+                {
+                    mapImage[x, y] = tMapImage[tMapImage.GetLength(0) - x - 1, y];
+                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
+                    mapImage[x, y].TurnHorizontal();
+                }
+            }
         }
     }
 }

@@ -154,5 +154,16 @@ namespace MapEdit
         {
             mapWriteScene.RotateLeft();
         }
+
+        //上下反転ボタンを押したときの処理
+        private void turnVerticalButton_Click(object sender, EventArgs e)
+        {
+
+        }
+        //左右反転ボタンを押したときの処理
+        private void turnHorizontalButton_Click(object sender, EventArgs e)
+        {
+            mapWriteScene.turnHorizontal();
+        }
     }
 }

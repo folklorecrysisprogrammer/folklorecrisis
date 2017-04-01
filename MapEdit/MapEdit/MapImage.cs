@@ -67,10 +67,14 @@ namespace MapEdit
             g.PixelOffsetMode = PixelOffsetMode.Half;
             g.InterpolationMode = InterpolationMode.NearestNeighbor;
 
-            //リサイズ&回転して画像をresultBitmapに重ねる
+            //リサイズ&回転&反転して画像をresultBitmapに重ねる
             for (int i = 0; i < MapEditForm.maxLayer; i++)
             {
                 bitmap[i].RotateFlip((RotateFlipType)((int)picture[i].Angle / 90));
+                if (picture[i].turnFlag == DX.TRUE)
+                {
+                    bitmap[i].RotateFlip(RotateFlipType.RotateNoneFlipX);
+                }
                 g.DrawImage(bitmap[i], 0, 0, mapChipSize, mapChipSize);
             }
             return resultBitmap;
@@ -86,6 +90,7 @@ namespace MapEdit
                 mapChipSize / picture[layer].Rect.Height
             );
             picture[layer].Angle = 0;
+            picture[layer].turnFlag = DX.FALSE;
             picture[layer].offsetPos.SetVect(0, 0);
         }
 
@@ -151,6 +156,22 @@ namespace MapEdit
         {
             Rotate(90);
             RotateFix();
+        }
+
+        //マップチップを左右反転
+        public void TurnHorizontal()
+        {
+            for (int i = 0; i < MapEditForm.maxLayer; i++)
+            {
+                if (picture[i].turnFlag == DX.TRUE)
+                {
+                    picture[i].turnFlag = DX.FALSE;
+                }
+                else
+                {
+                    picture[i].turnFlag = DX.TRUE;
+                }
+            }
         }
 
         //マップチップを左回転
