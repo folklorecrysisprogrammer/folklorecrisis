@@ -73,7 +73,7 @@ namespace MapEdit
                 );
 
             //DXライブラリの描画先の背景色を設定する
-            DxLibDLL.DX.SetBackgroundColor(90, 230, 120);
+            DxLibDLL.DX.SetBackgroundColor(100, 240, 130);
 
             //mapWriteScene初期化
             //mapWritePanelをDXライブラリの描画先に設定

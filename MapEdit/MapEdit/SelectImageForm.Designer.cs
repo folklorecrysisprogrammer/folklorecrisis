@@ -30,6 +30,10 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.selectPicture = new System.Windows.Forms.PictureBox();
+            this.rotateLeftButton = new System.Windows.Forms.Button();
+            this.rotateRightButton = new System.Windows.Forms.Button();
+            this.turnVerticalButton = new System.Windows.Forms.Button();
+            this.turnHorizontalButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.selectPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,13 +58,53 @@
             this.selectPicture.TabIndex = 3;
             this.selectPicture.TabStop = false;
             // 
+            // rotateLeftButton
+            // 
+            this.rotateLeftButton.Image = global::MapEdit.Properties.Resources.RotateLeft_16x;
+            this.rotateLeftButton.Location = new System.Drawing.Point(264, 89);
+            this.rotateLeftButton.Name = "rotateLeftButton";
+            this.rotateLeftButton.Size = new System.Drawing.Size(24, 23);
+            this.rotateLeftButton.TabIndex = 9;
+            this.rotateLeftButton.UseVisualStyleBackColor = true;
+            // 
+            // rotateRightButton
+            // 
+            this.rotateRightButton.Image = global::MapEdit.Properties.Resources.RotateRight_16x;
+            this.rotateRightButton.Location = new System.Drawing.Point(294, 89);
+            this.rotateRightButton.Name = "rotateRightButton";
+            this.rotateRightButton.Size = new System.Drawing.Size(24, 23);
+            this.rotateRightButton.TabIndex = 10;
+            this.rotateRightButton.UseVisualStyleBackColor = true;
+            // 
+            // turnVerticalButton
+            // 
+            this.turnVerticalButton.Image = global::MapEdit.Properties.Resources.UnsyncedCommits_16x;
+            this.turnVerticalButton.Location = new System.Drawing.Point(264, 118);
+            this.turnVerticalButton.Name = "turnVerticalButton";
+            this.turnVerticalButton.Size = new System.Drawing.Size(24, 23);
+            this.turnVerticalButton.TabIndex = 12;
+            this.turnVerticalButton.UseVisualStyleBackColor = true;
+            // 
+            // turnHorizontalButton
+            // 
+            this.turnHorizontalButton.Image = global::MapEdit.Properties.Resources.SyncArrow_16xMD;
+            this.turnHorizontalButton.Location = new System.Drawing.Point(294, 118);
+            this.turnHorizontalButton.Name = "turnHorizontalButton";
+            this.turnHorizontalButton.Size = new System.Drawing.Size(24, 23);
+            this.turnHorizontalButton.TabIndex = 13;
+            this.turnHorizontalButton.UseVisualStyleBackColor = true;
+            // 
             // SelectImageForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GreenYellow;
-            this.ClientSize = new System.Drawing.Size(316, 409);
+            this.ClientSize = new System.Drawing.Size(322, 409);
+            this.Controls.Add(this.turnHorizontalButton);
+            this.Controls.Add(this.turnVerticalButton);
+            this.Controls.Add(this.rotateRightButton);
+            this.Controls.Add(this.rotateLeftButton);
             this.Controls.Add(this.selectPicture);
             this.Controls.Add(this.panel1);
             this.Name = "SelectImageForm";
@@ -75,5 +119,9 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox selectPicture;
+        private System.Windows.Forms.Button rotateLeftButton;
+        private System.Windows.Forms.Button rotateRightButton;
+        private System.Windows.Forms.Button turnVerticalButton;
+        private System.Windows.Forms.Button turnHorizontalButton;
     }
 }
