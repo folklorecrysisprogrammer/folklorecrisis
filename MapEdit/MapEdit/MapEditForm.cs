@@ -158,8 +158,9 @@ namespace MapEdit
         //上下反転ボタンを押したときの処理
         private void turnVerticalButton_Click(object sender, EventArgs e)
         {
-
+            mapWriteScene.turnVertical();
         }
+
         //左右反転ボタンを押したときの処理
         private void turnHorizontalButton_Click(object sender, EventArgs e)
         {

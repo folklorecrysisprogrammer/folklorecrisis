@@ -174,6 +174,14 @@ namespace MapEdit
             }
         }
 
+        //マップチップを上下反転
+        public void TurnVertical()
+        {
+            Rotate(180);
+            RotateFix();
+            TurnHorizontal();
+        }
+
         //マップチップを左回転
         public void RotateLeft()
         {

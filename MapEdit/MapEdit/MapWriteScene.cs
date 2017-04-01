@@ -253,5 +253,21 @@ namespace MapEdit
                 }
             }
         }
+
+        //マップを上下反転
+        public void turnVertical()
+        {
+            var tMapImage = mapImage;
+            mapImage = new MapImage[mapSize.Width, mapSize.Height];
+            for (int x = 0; x < mapImage.GetLength(0); x++)
+            {
+                for (int y = 0; y < mapImage.GetLength(1); y++)
+                {
+                    mapImage[x, y] = tMapImage[x,tMapImage.GetLength(1) - y - 1];
+                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
+                    mapImage[x, y].TurnVertical();
+                }
+            }
+        }
     }
 }
