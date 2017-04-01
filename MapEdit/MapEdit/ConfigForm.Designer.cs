@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pixelSizeTextBox = new System.Windows.Forms.TextBox();
+            this.mapChipSizeTextBox = new System.Windows.Forms.TextBox();
             this.mapSizeYtextBox = new System.Windows.Forms.TextBox();
             this.mapSizeXtextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,12 +58,12 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "マップサイズ";
             // 
-            // pixelSizeTextBox
+            // mapChipSizeTextBox
             // 
-            this.pixelSizeTextBox.Location = new System.Drawing.Point(28, 24);
-            this.pixelSizeTextBox.Name = "pixelSizeTextBox";
-            this.pixelSizeTextBox.Size = new System.Drawing.Size(77, 19);
-            this.pixelSizeTextBox.TabIndex = 2;
+            this.mapChipSizeTextBox.Location = new System.Drawing.Point(28, 24);
+            this.mapChipSizeTextBox.Name = "mapChipSizeTextBox";
+            this.mapChipSizeTextBox.Size = new System.Drawing.Size(77, 19);
+            this.mapChipSizeTextBox.TabIndex = 2;
             // 
             // mapSizeYtextBox
             // 
@@ -127,7 +127,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.mapSizeXtextBox);
             this.Controls.Add(this.mapSizeYtextBox);
-            this.Controls.Add(this.pixelSizeTextBox);
+            this.Controls.Add(this.mapChipSizeTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ConfigForm";
@@ -143,7 +143,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox pixelSizeTextBox;
+        private System.Windows.Forms.TextBox mapChipSizeTextBox;
         private System.Windows.Forms.TextBox mapSizeYtextBox;
         private System.Windows.Forms.TextBox mapSizeXtextBox;
         private System.Windows.Forms.Label label3;

@@ -16,12 +16,14 @@ namespace MapEdit
         private MapWriteScene mapWriteScene;
         private Timer timer=new Timer();
         private bool runFlag=false;
+
+        //初期化
         public ConfigForm(MapWriteScene mapWriteScene)
         {
             InitializeComponent();
             this.mapWriteScene = mapWriteScene;
             var myAssembly=System.Reflection.Assembly.GetExecutingAssembly();
-            chara.Image =new Bitmap(myAssembly.GetManifestResourceStream("MapEdit.プルヌ.png"));
+            chara.Image =new Bitmap(myAssembly.GetManifestResourceStream("MapEdit.Resources.プルヌ.png"));
             var rnd=new System.Random();
             if (rnd.Next(10) != 0) chara.Visible = false;
             chara.MouseEnter += (o, e) =>
@@ -37,25 +39,30 @@ namespace MapEdit
                     chara.Location=new Point(chara.Location.X+3,chara.Location.Y);
                 }
             };
-            pixelSizeTextBox.Text = this.mapWriteScene.PixelSize.ToString();
+            //マップチップ、マップサイズの値をテキストボックスにセットする
+            mapChipSizeTextBox.Text = this.mapWriteScene.MapChipSize.ToString();
             mapSizeXtextBox.Text = this.mapWriteScene.MapSize.Width.ToString();
             mapSizeYtextBox.Text = this.mapWriteScene.MapSize.Height.ToString();
         }
 
-        //更新ボタンが押された時
+        //更新ボタンが押された時,マップチップ、マップサイズの値が変更されてたら、
+        //変更を反映する。
         private void updateButton_Click(object sender, EventArgs e)
         {
-            if (mapWriteScene.PixelSize != int.Parse(pixelSizeTextBox.Text))
+            if (mapWriteScene.MapChipSize != int.Parse(mapChipSizeTextBox.Text))
             {
-                mapWriteScene.PixelSize = int.Parse(pixelSizeTextBox.Text);
+                mapWriteScene.MapChipSize = int.Parse(mapChipSizeTextBox.Text);
             }
-            if (mapWriteScene.MapSize.Width != int.Parse(mapSizeXtextBox.Text)
-                || mapWriteScene.MapSize.Height != int.Parse(mapSizeYtextBox.Text))
+            if (mapWriteScene.MapSize.Width != int.Parse(mapSizeXtextBox.Text)||
+                mapWriteScene.MapSize.Height != int.Parse(mapSizeYtextBox.Text))
             {
                 mapWriteScene.MapSize = new Size(
                     int.Parse(mapSizeXtextBox.Text),
-                    int.Parse(mapSizeYtextBox.Text));
+                    int.Parse(mapSizeYtextBox.Text)
+                );
             }
+
+            //設定ウインドウを閉じる。
             Dispose();
         }
     }
