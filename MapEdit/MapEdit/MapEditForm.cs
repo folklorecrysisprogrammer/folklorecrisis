@@ -129,5 +129,15 @@ namespace MapEdit
         {
             mapWriteScene.GetBitmap().Save("w.png",ImageFormat.Png);
         }
+
+        private void rotateRightButton_Click(object sender, EventArgs e)
+        {
+            mapWriteScene.RotateRight();
+        }
+
+        private void rotateLeftButton_Click(object sender, EventArgs e)
+        {
+            mapWriteScene.RotateLeft();
+        }
     }
 }

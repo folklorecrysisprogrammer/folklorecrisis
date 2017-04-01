@@ -11,7 +11,7 @@ namespace MapEdit
 {
 
     //マップを表示、編集を行うシーン
-   public class MapWriteScene:DXEX.Scene
+    public class MapWriteScene : DXEX.Scene
     {
 
         private SelectImageForm selectImageForm;
@@ -40,11 +40,11 @@ namespace MapEdit
         //マップの各マスの画像情報
         private MapImage[,] mapImage;
 
-        public MapWriteScene(SelectImageForm selectImageForm,Panel panel,HScrollBar hScroll,VScrollBar vScroll) : base(panel)
+        public MapWriteScene(SelectImageForm selectImageForm, Panel panel, HScrollBar hScroll, VScrollBar vScroll) : base(panel)
         {
             this.selectImageForm = selectImageForm;
             this.panel = panel;
-            this.mapWriteScroll = new MapWriteScroll(hScroll,vScroll,this);
+            this.mapWriteScroll = new MapWriteScroll(hScroll, vScroll, this);
             mapWriteScroll.SetScrollMaximum();
             mapWriteScroll.SetScrollDelta();
             panel.SizeChanged += (o, e) =>
@@ -53,8 +53,8 @@ namespace MapEdit
             };
             panel.MouseDown += MouseAction;
             panel.MouseMove += MouseAction;
-            
-            
+
+
             localPos.SetVect(0, 0);
 
             //Mapをスプライトで埋める
@@ -69,11 +69,11 @@ namespace MapEdit
                 }
             }
         }
-        
+
         //マウスでマップを書く処理
         private void MouseAction(object o, MouseEventArgs e)
         {
-            
+
             //マップチップを未選択なら終了
             if (selectImageForm.SelectImagePath == "") return;
             Point point = MouseLocationToMapVect(e);
@@ -101,7 +101,7 @@ namespace MapEdit
         //マウスの座標からマップチップのマス座標へ変換
         private Point MouseLocationToMapVect(MouseEventArgs e)
         {
-            Point point=new Point();
+            Point point = new Point();
             point.X = (int)((e.Location.X - localPos.x) / pixelSize);
             point.Y = (int)((e.Location.Y - localPos.y) / pixelSize);
             return point;
@@ -131,14 +131,14 @@ namespace MapEdit
             mapWriteScroll.SetScrollMaximum();
 
             //マップチップの位置とサイズ調整
-             for (int x = 0; x < mapImage.GetLength(0); x++)
-             {
-                 for (int y = 0; y < mapImage.GetLength(1); y++)
-                 {
-                     mapImage[x, y].PixelSize =pixelSize;
-                     mapImage[x, y].localPos.SetVect(x * PixelSize, y * PixelSize);
-                 }
-             }
+            for (int x = 0; x < mapImage.GetLength(0); x++)
+            {
+                for (int y = 0; y < mapImage.GetLength(1); y++)
+                {
+                    mapImage[x, y].PixelSize = pixelSize;
+                    mapImage[x, y].localPos.SetVect(x * PixelSize, y * PixelSize);
+                }
+            }
         }
 
         //MapSize変更処理
@@ -198,6 +198,44 @@ namespace MapEdit
                     AddChild(mapImage[x, y]);
                 }
             }
+        }
+
+        //マップを右回転
+        public void RotateRight()
+        {
+            var tMapImage = mapImage;
+            mapImage = new MapImage[mapSize.Height, mapSize.Width];
+            for (int x = 0; x < mapImage.GetLength(0); x++)
+            {
+                for (int y = 0; y < mapImage.GetLength(1); y++)
+                {
+                    mapImage[x, y] = tMapImage[y, tMapImage.GetLength(1) - x - 1];
+                    mapImage[x, y].localPos.SetVect(x * PixelSize, y * PixelSize);
+                    mapImage[x, y].RotateRight();
+                }
+            }
+            mapSize.Width = mapImage.GetLength(0);
+            mapSize.Height = mapImage.GetLength(1);
+            mapWriteScroll.SetScrollMaximum();
+        }
+
+        //マップを左回転
+        public void RotateLeft()
+        {
+            var tMapImage = mapImage;
+            mapImage = new MapImage[mapSize.Height, mapSize.Width];
+            for (int x = 0; x < mapImage.GetLength(0); x++)
+            {
+                for (int y = 0; y < mapImage.GetLength(1); y++)
+                {
+                    mapImage[x, y] = tMapImage[tMapImage.GetLength(0)-y-1,x];
+                    mapImage[x, y].localPos.SetVect(x * PixelSize, y * PixelSize);
+                    mapImage[x, y].RotateLeft();
+                }
+            }
+            mapSize.Width = mapImage.GetLength(0);
+            mapSize.Height = mapImage.GetLength(1);
+            mapWriteScroll.SetScrollMaximum();
         }
     }
 }

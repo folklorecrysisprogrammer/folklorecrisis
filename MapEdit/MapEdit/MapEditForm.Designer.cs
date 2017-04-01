@@ -38,8 +38,8 @@
             this.drawModeComboBox = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.rotateRightButton = new System.Windows.Forms.Button();
+            this.rotateLeftButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
@@ -150,23 +150,25 @@
             this.button5.TabIndex = 10;
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // rotateRightButton
             // 
-            this.button4.Image = global::MapEdit.Properties.Resources.RotateRight_16x;
-            this.button4.Location = new System.Drawing.Point(242, 1);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(24, 23);
-            this.button4.TabIndex = 9;
-            this.button4.UseVisualStyleBackColor = true;
+            this.rotateRightButton.Image = global::MapEdit.Properties.Resources.RotateRight_16x;
+            this.rotateRightButton.Location = new System.Drawing.Point(242, 1);
+            this.rotateRightButton.Name = "rotateRightButton";
+            this.rotateRightButton.Size = new System.Drawing.Size(24, 23);
+            this.rotateRightButton.TabIndex = 9;
+            this.rotateRightButton.UseVisualStyleBackColor = true;
+            this.rotateRightButton.Click += new System.EventHandler(this.rotateRightButton_Click);
             // 
-            // button3
+            // rotateLeftButton
             // 
-            this.button3.Image = global::MapEdit.Properties.Resources.RotateLeft_16x;
-            this.button3.Location = new System.Drawing.Point(212, 1);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(24, 23);
-            this.button3.TabIndex = 8;
-            this.button3.UseVisualStyleBackColor = true;
+            this.rotateLeftButton.Image = global::MapEdit.Properties.Resources.RotateLeft_16x;
+            this.rotateLeftButton.Location = new System.Drawing.Point(212, 1);
+            this.rotateLeftButton.Name = "rotateLeftButton";
+            this.rotateLeftButton.Size = new System.Drawing.Size(24, 23);
+            this.rotateLeftButton.TabIndex = 8;
+            this.rotateLeftButton.UseVisualStyleBackColor = true;
+            this.rotateLeftButton.Click += new System.EventHandler(this.rotateLeftButton_Click);
             // 
             // button2
             // 
@@ -193,8 +195,8 @@
             this.ClientSize = new System.Drawing.Size(508, 449);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.rotateRightButton);
+            this.Controls.Add(this.rotateLeftButton);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.drawModeComboBox);
@@ -227,8 +229,8 @@
         private System.Windows.Forms.ToolStripMenuItem 画像出力ToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button rotateLeftButton;
+        private System.Windows.Forms.Button rotateRightButton;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
     }

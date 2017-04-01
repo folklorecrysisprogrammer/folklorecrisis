@@ -14,7 +14,6 @@ namespace MapEdit
         private DXEX.Sprite[] picture=new DXEX.Sprite[MapEditForm.maxLayer];
         //画像のパス。Bitmapにするときに必要
         private string[] picturePath=new string[MapEditForm.maxLayer];
-
         private int pixelSize;
         public int PixelSize {
             get { return pixelSize; }
@@ -93,6 +92,41 @@ namespace MapEdit
                     pixelSize / picture[i].Rect.Width,
                     pixelSize / picture[i].Rect.Height
                 );
+            }
+        }
+
+        //マップチップを右回転
+        public void RotateRight()
+        {
+            Angle += 90;
+            RotateFix();
+        }
+
+        //マップチップを左回転
+        public void RotateLeft()
+        {
+            Angle += 270;
+            RotateFix();
+        }
+
+        //回転してずれた座標を修正
+        public void RotateFix()
+        {
+            Angle = (int)Angle % 360;
+            switch ((int)Angle / 90)
+            {
+                case 0:
+                    offsetPos.SetVect(0, 0);
+                    break;
+                case 1:
+                    offsetPos.SetVect(pixelSize, 0);
+                    break;
+                case 2:
+                    offsetPos.SetVect(pixelSize, pixelSize);
+                    break;
+                case 3:
+                    offsetPos.SetVect(0, pixelSize);
+                    break;
             }
         }
     }
