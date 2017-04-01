@@ -66,6 +66,7 @@
             this.rotateLeftButton.Size = new System.Drawing.Size(24, 23);
             this.rotateLeftButton.TabIndex = 9;
             this.rotateLeftButton.UseVisualStyleBackColor = true;
+            this.rotateLeftButton.Click += new System.EventHandler(this.rotateLeftButton_Click);
             // 
             // rotateRightButton
             // 
@@ -75,6 +76,7 @@
             this.rotateRightButton.Size = new System.Drawing.Size(24, 23);
             this.rotateRightButton.TabIndex = 10;
             this.rotateRightButton.UseVisualStyleBackColor = true;
+            this.rotateRightButton.Click += new System.EventHandler(this.rotateRightButton_Click);
             // 
             // turnVerticalButton
             // 

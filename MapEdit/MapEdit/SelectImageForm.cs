@@ -15,6 +15,23 @@ namespace MapEdit
         private int imageCountX = 0, imageCountY = 0;
         //現在選択中の画像のパス
         public string SelectImagePath { get; private set; }
+
+        //右回転ボタンを押したときの処理
+        private void rotateRightButton_Click(object sender, EventArgs e)
+        {
+            var image = selectPicture.Image;
+            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            selectPicture.Image=image;
+        }
+
+        //左回転ボタンを押したときの処理
+        private void rotateLeftButton_Click(object sender, EventArgs e)
+        {
+            var image = selectPicture.Image;
+            image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            selectPicture.Image = image;
+        }
+
         public SelectImageForm()
         {
             
