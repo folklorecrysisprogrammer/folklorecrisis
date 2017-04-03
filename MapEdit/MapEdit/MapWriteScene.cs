@@ -24,26 +24,30 @@ namespace MapEdit
         }
 
         //マップのサイズ（マス単位で）
-        private Size mapSize = new Size(20, 20);
         public Size MapSize
         {
-            get { return mapSize; }
-            set { mapSize = value; ChangeMapSize(); }
+            get { return new Size(mapData.NumberX,mapData.NumberY); }
+            set { ChangeMapSize(value); }
         }
 
         //表示先のパネル
         private Panel panel;
+
+        //マップのスクロール制御用
         private MapWriteScroll mapWriteScroll;
+
         //現在のレイヤー
         public int CurrentLayer { get; set; }
 
         //マップの各マスの画像情報
-        private MapImage[,] mapImage;
+        private readonly MapImageDataMap mapData;
 
+        //初期化
         public MapWriteScene(SelectImageForm selectImageForm, Panel panel, HScrollBar hScroll, VScrollBar vScroll) : base(panel)
         {
             this.selectImageForm = selectImageForm;
             this.panel = panel;
+            mapData = new MapImageDataMap(20,20, mapChipSize);
             this.mapWriteScroll = new MapWriteScroll(hScroll, vScroll, this);
             mapWriteScroll.SetScrollMaximum();
             mapWriteScroll.SetScrollDelta();
@@ -53,19 +57,15 @@ namespace MapEdit
             };
             panel.MouseDown += MouseAction;
             panel.MouseMove += MouseAction;
-
-
             localPos.SetVect(0, 0);
+            
 
-            //Mapをスプライトで埋める
-            mapImage = new MapImage[MapSize.Width, MapSize.Height];
-            for (int x = 0; x < mapImage.GetLength(0); x++)
+            //mapスプライトを登録
+            for (int x = 0; x < mapData.NumberX; x++)
             {
-                for (int y = 0; y < mapImage.GetLength(1); y++)
+                for (int y = 0; y < mapData.NumberY; y++)
                 {
-                    mapImage[x, y] = new MapImage(mapChipSize);
-                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
-                    this.AddChild(mapImage[x, y]);
+                    this.AddChild(mapData[x, y]);
                 }
             }
         }
@@ -75,7 +75,7 @@ namespace MapEdit
         {
             Point point = MouseLocationToMapVect(e);
             //マップサイズ範囲外なら終了
-            if (point.X >= mapImage.GetLength(0) || point.Y >= mapImage.GetLength(1) ||
+            if (point.X >= mapData.NumberX || point.Y >=mapData.NumberY ||
                 point.X < 0 || point.Y < 0) return;
 
             //マップ処理
@@ -84,14 +84,14 @@ namespace MapEdit
             {
                 //左クリックされている時の処理
                 //マップを書く
-                mapImage[point.X, point.Y].PutImage(selectImageForm.GetSelectImage(), CurrentLayer);
+                mapData[point.X, point.Y].PutImage(selectImageForm.GetSelectImage(), CurrentLayer);
             }
             if ((Control.MouseButtons & MouseButtons.Right)
                 == MouseButtons.Right)
             {
                 //右クリックされている時の処理
                 //マップをクリアします
-                mapImage[point.X, point.Y].ClearImage(CurrentLayer);
+                mapData[point.X, point.Y].ClearImage(CurrentLayer);
             }
         }
 
@@ -107,92 +107,32 @@ namespace MapEdit
         //マップ全体をBitmapに変換する
         public Bitmap GetBitmap()
         {
-            Bitmap unitedImg = new Bitmap(mapChipSize * mapSize.Width, mapChipSize * mapSize.Height);
-            Graphics g = Graphics.FromImage(unitedImg);
-            for (int countY = 0; countY < mapSize.Height; ++countY)
-            {
-                for (int countX = 0; countX < mapSize.Width; ++countX)
-                {
-                    Bitmap bitmap = mapImage[countX, countY].GetBitmap();
-                    g.DrawImage(bitmap, mapChipSize * countX, mapChipSize * countY);
-                }
-            }
-            return unitedImg;
+            return mapData.GetBitmap();
         }
 
-        //PixelSize変更処理
+        //MapChipSize変更処理
         private void ChangeMapChipSize()
         {
             //スクロールバーの調整
             mapWriteScroll.SetScrollDelta();
             mapWriteScroll.SetScrollMaximum();
-
-            //マップチップの位置とサイズ調整
-            for (int x = 0; x < mapImage.GetLength(0); x++)
-            {
-                for (int y = 0; y < mapImage.GetLength(1); y++)
-                {
-                    mapImage[x, y].MapChipSize = mapChipSize;
-                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
-                }
-            }
+            mapData.ChangeMapChipSize(mapChipSize);
         }
 
         //MapSize変更処理
-        private void ChangeMapSize()
+        private void ChangeMapSize(Size mapSize)
         {
             //スクロールバーの調整
             mapWriteScroll.SetScrollMaximum();
-
-            var tMapImage = mapImage;
-            mapImage = new MapImage[mapSize.Width, mapSize.Height];
-
-            //前のMapImageから、はみ出した部分があれば削除する
-            for (int x = mapImage.GetLength(0); x < tMapImage.GetLength(0); x++)
+            mapData.ChangeMapSize(mapSize.Width, mapSize.Height);
+            for (int x = 0; x < mapData.NumberX; x++)
             {
-                for (int y = 0; y < tMapImage.GetLength(1); y++)
+                for (int y = 0; y < mapData.NumberY; y++)
                 {
-                    tMapImage[x, y].Dispose();
-                }
-            }
-            for (int x = 0; x < mapImage.GetLength(0); x++)
-            {
-                for (int y = mapImage.GetLength(1); y < tMapImage.GetLength(1); y++)
-                {
-                    tMapImage[x, y].Dispose();
-                }
-            }
-
-            //新しいMapImageに前のMapImageをサイズの範囲内でコピーする
-            for (int x = 0;
-                x < tMapImage.GetLength(0) && x < mapImage.GetLength(0);
-                x++)
-            {
-                for (int y = 0;
-                    y < tMapImage.GetLength(1) && y < mapImage.GetLength(1);
-                    y++)
-                {
-                    mapImage[x, y] = tMapImage[x, y];
-                }
-            }
-
-            //新しいMapImageの新しく生成された領域を初期化する
-            for (int x = tMapImage.GetLength(0); x < mapImage.GetLength(0); x++)
-            {
-                for (int y = 0; y < mapImage.GetLength(1); y++)
-                {
-                    mapImage[x, y] = new MapImage(mapChipSize);
-                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
-                    AddChild(mapImage[x, y]);
-                }
-            }
-            for (int x = 0; x < tMapImage.GetLength(0); x++)
-            {
-                for (int y = tMapImage.GetLength(1); y < mapImage.GetLength(1); y++)
-                {
-                    mapImage[x, y] = new MapImage(mapChipSize);
-                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
-                    AddChild(mapImage[x, y]);
+                    if (mapData[x, y].Parent == null)
+                    {
+                        AddChild(mapData[x, y]);
+                    }
                 }
             }
         }
@@ -200,71 +140,27 @@ namespace MapEdit
         //マップを右回転
         public void RotateRight()
         {
-            var tMapImage = mapImage;
-            mapImage = new MapImage[mapSize.Height, mapSize.Width];
-            for (int x = 0; x < mapImage.GetLength(0); x++)
-            {
-                for (int y = 0; y < mapImage.GetLength(1); y++)
-                {
-                    mapImage[x, y] = tMapImage[y, tMapImage.GetLength(1) - x - 1];
-                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
-                    mapImage[x, y].RotateRight();
-                }
-            }
-            mapSize.Width = mapImage.GetLength(0);
-            mapSize.Height = mapImage.GetLength(1);
+            mapData.RotateRight();
             mapWriteScroll.SetScrollMaximum();
         }
 
         //マップを左回転
         public void RotateLeft()
         {
-            var tMapImage = mapImage;
-            mapImage = new MapImage[mapSize.Height, mapSize.Width];
-            for (int x = 0; x < mapImage.GetLength(0); x++)
-            {
-                for (int y = 0; y < mapImage.GetLength(1); y++)
-                {
-                    mapImage[x, y] = tMapImage[tMapImage.GetLength(0) - y - 1, x];
-                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
-                    mapImage[x, y].RotateLeft();
-                }
-            }
-            mapSize.Width = mapImage.GetLength(0);
-            mapSize.Height = mapImage.GetLength(1);
+            mapData.RotateLeft();
             mapWriteScroll.SetScrollMaximum();
         }
 
         //マップを左右反転
         public void turnHorizontal()
         {
-            var tMapImage = mapImage;
-            mapImage = new MapImage[mapSize.Width, mapSize.Height];
-            for (int x = 0; x < mapImage.GetLength(0); x++)
-            {
-                for (int y = 0; y < mapImage.GetLength(1); y++)
-                {
-                    mapImage[x, y] = tMapImage[tMapImage.GetLength(0) - x - 1, y];
-                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
-                    mapImage[x, y].TurnHorizontal();
-                }
-            }
+            mapData.turnHorizontal();
         }
 
         //マップを上下反転
         public void turnVertical()
         {
-            var tMapImage = mapImage;
-            mapImage = new MapImage[mapSize.Width, mapSize.Height];
-            for (int x = 0; x < mapImage.GetLength(0); x++)
-            {
-                for (int y = 0; y < mapImage.GetLength(1); y++)
-                {
-                    mapImage[x, y] = tMapImage[x,tMapImage.GetLength(1) - y - 1];
-                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
-                    mapImage[x, y].TurnVertical();
-                }
-            }
+            mapData.turnVertical();
         }
     }
 }

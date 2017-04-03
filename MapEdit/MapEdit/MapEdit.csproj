@@ -91,6 +91,7 @@
       <DependentUpon>MapEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MapImage.cs" />
+    <Compile Include="MapImageDataMap.cs" />
     <Compile Include="MapWriteScene.cs" />
     <Compile Include="MapWriteScroll.cs" />
     <Compile Include="Program.cs" />

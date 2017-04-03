@@ -9,14 +9,14 @@ using DxLibDLL;
 namespace MapEdit
 {
     //マップの1マスを管理するクラス
-    class MapImage:DXEX.Node
+    public class MapImage:DXEX.Node
     {
         //画像を表示するスプライト
         //レイヤーの数だけ保持
-        private DXEX.Sprite[] picture=new DXEX.Sprite[MapEditForm.maxLayer];
+        private DXEX.Sprite[] mapChip=new DXEX.Sprite[MapEditForm.maxLayer];
 
         //画像のパス。Bitmapにするときに必要
-        private string[] picturePath=new string[MapEditForm.maxLayer];
+        private string[] mapChipPath=new string[MapEditForm.maxLayer];
 
         //マップチップサイズ保存用
         private int mapChipSize;
@@ -30,14 +30,15 @@ namespace MapEdit
         {
             this.mapChipSize = mapChipSize;
             anchor.SetVect(0, 0);
+           
 
             //レイヤーの数だけ画像表示用スプライトを生成する
             for (int i = 0; i < MapEditForm.maxLayer; i++)
             {
-                picturePath[i] = "";
-                picture[i] = new DXEX.Sprite();
-                picture[i].anchor.SetVect(0, 0);
-                AddChild(picture[i]);
+                mapChipPath[i] = "";
+                mapChip[i] = new DXEX.Sprite();
+                mapChip[i].anchor.SetVect(0, 0);
+                AddChild(mapChip[i]);
             }
         }
 
@@ -51,13 +52,13 @@ namespace MapEdit
             Bitmap[] bitmap = new Bitmap[MapEditForm.maxLayer];
             for(int i=0; i < MapEditForm.maxLayer; i++)
             {
-                if (picturePath[i] == "")
+                if (mapChipPath[i] == "")
                 {   
                     bitmap[i] = new Bitmap(mapChipSize, mapChipSize);
                 }
                 else
                 {
-                    bitmap[i] = (Bitmap)Bitmap.FromFile(picturePath[i]);
+                    bitmap[i] = (Bitmap)Bitmap.FromFile(mapChipPath[i]);
                 }
             }
 
@@ -70,8 +71,8 @@ namespace MapEdit
             //リサイズ&回転&反転して画像をresultBitmapに重ねる
             for (int i = 0; i < MapEditForm.maxLayer; i++)
             {
-                bitmap[i].RotateFlip((RotateFlipType)((int)picture[i].Angle / 90));
-                if (picture[i].turnFlag == DX.TRUE)
+                bitmap[i].RotateFlip((RotateFlipType)((int)mapChip[i].Angle / 90));
+                if (mapChip[i].turnFlag == DX.TRUE)
                 {
                     bitmap[i].RotateFlip(RotateFlipType.RotateNoneFlipX);
                 }
@@ -84,25 +85,25 @@ namespace MapEdit
         public void PutImage(SelectImage selectImage, int layer)
         {
             if (selectImage.FilePath == "") return;
-            picturePath[layer] = selectImage.FilePath;
-            picture[layer].SetTexture(selectImage.FilePath);
-            picture[layer].scale.SetVect(
-                mapChipSize / picture[layer].Rect.Width,
-                mapChipSize / picture[layer].Rect.Height
+            mapChipPath[layer] = selectImage.FilePath;
+            mapChip[layer].SetTexture(selectImage.FilePath);
+            mapChip[layer].scale.SetVect(
+                mapChipSize / mapChip[layer].Rect.Width,
+                mapChipSize / mapChip[layer].Rect.Height
             );
-            picture[layer].Angle = selectImage.Angle;
-            picture[layer].turnFlag = selectImage.turnFlag;
+            mapChip[layer].Angle = selectImage.Angle;
+            mapChip[layer].turnFlag = selectImage.turnFlag;
             RotateFix();
         }
 
         //画像をクリア
         public void ClearImage(int layer)
         {
-            picturePath[layer] = "";
-            picture[layer].ClearTexture();
-            picture[layer].scale.SetVect(
-                mapChipSize / picture[layer].Rect.Width,
-                mapChipSize / picture[layer].Rect.Height
+            mapChipPath[layer] = "";
+            mapChip[layer].ClearTexture();
+            mapChip[layer].scale.SetVect(
+                mapChipSize / mapChip[layer].Rect.Width,
+                mapChipSize / mapChip[layer].Rect.Height
             );
         }
 
@@ -111,9 +112,9 @@ namespace MapEdit
         {
             for (int i = 0; i < MapEditForm.maxLayer; i++)
             {
-                picture[i].scale.SetVect(
-                    mapChipSize / picture[i].Rect.Width,
-                    mapChipSize / picture[i].Rect.Height
+                mapChip[i].scale.SetVect(
+                    mapChipSize / mapChip[i].Rect.Width,
+                    mapChipSize / mapChip[i].Rect.Height
                 );
             }
         }
@@ -124,7 +125,7 @@ namespace MapEdit
         {
             for (int i = 0; i < MapEditForm.maxLayer; i++)
             {
-                picture[i].Angle += addAngle;
+                mapChip[i].Angle += addAngle;
             }
         }
 
@@ -133,20 +134,20 @@ namespace MapEdit
         {
             for (int i = 0; i < MapEditForm.maxLayer; i++)
             {
-                picture[i].Angle = (int)picture[i].Angle % 360;
-                switch ((int)picture[i].Angle / 90)
+                mapChip[i].Angle = (int)mapChip[i].Angle % 360;
+                switch ((int)mapChip[i].Angle / 90)
                 {
                     case 0:
-                        picture[i].offsetPos.SetVect(0, 0);
+                        mapChip[i].offsetPos.SetVect(0, 0);
                         break;
                     case 1:
-                        picture[i].offsetPos.SetVect(mapChipSize, 0);
+                        mapChip[i].offsetPos.SetVect(mapChipSize, 0);
                         break;
                     case 2:
-                        picture[i].offsetPos.SetVect(mapChipSize, mapChipSize);
+                        mapChip[i].offsetPos.SetVect(mapChipSize, mapChipSize);
                         break;
                     case 3:
-                        picture[i].offsetPos.SetVect(0, mapChipSize);
+                        mapChip[i].offsetPos.SetVect(0, mapChipSize);
                         break;
                 }
             }
@@ -161,13 +162,13 @@ namespace MapEdit
 
         private void SwitchTurnFlag(int i)
         {
-            if (picture[i].turnFlag == DX.TRUE)
+            if (mapChip[i].turnFlag == DX.TRUE)
             {
-                picture[i].turnFlag = DX.FALSE;
+                mapChip[i].turnFlag = DX.FALSE;
             }
             else
             {
-                picture[i].turnFlag = DX.TRUE;
+                mapChip[i].turnFlag = DX.TRUE;
             }
         }
 
@@ -176,9 +177,9 @@ namespace MapEdit
         {
             for (int i = 0; i < MapEditForm.maxLayer; i++)
             {
-                if (picture[i].Angle == 90 || picture[i].Angle == 270)
+                if (mapChip[i].Angle == 90 || mapChip[i].Angle == 270)
                 {
-                    picture[i].Angle += 180;
+                    mapChip[i].Angle += 180;
                 }
                 SwitchTurnFlag(i);
                 
@@ -192,9 +193,9 @@ namespace MapEdit
         {
             for (int i = 0; i < MapEditForm.maxLayer; i++)
             {
-                if (picture[i].Angle == 0 || picture[i].Angle == 180)
+                if (mapChip[i].Angle == 0 || mapChip[i].Angle == 180)
                 {
-                    picture[i].Angle += 180;
+                    mapChip[i].Angle += 180;
                 }
                 SwitchTurnFlag(i);
 

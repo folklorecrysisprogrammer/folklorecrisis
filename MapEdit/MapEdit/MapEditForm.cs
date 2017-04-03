@@ -31,6 +31,13 @@ namespace MapEdit
             Load += (o, e) => {
                 selectImageForm.Show();
             };
+
+            //メインウインドウに終了命令が出たら
+            //パレッドウインドウを速やかに閉じる
+            FormClosing += (o, e) =>
+            {
+                selectImageForm.Dispose();
+            };
             
             //キーが押された時の処理
             KeyDown += (o, e) =>
