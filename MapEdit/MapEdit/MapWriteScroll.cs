@@ -37,10 +37,12 @@ namespace MapEdit
             hScroll.ValueChanged += (o, e) =>
             {
                 mws.localPos.x = -hScroll.Value;
+                mws.UpdateShowMapImage();
             };
             vScroll.ValueChanged += (o, e) =>
             {
                 mws.localPos.y = -vScroll.Value;
+                mws.UpdateShowMapImage();
             };
         }
 
