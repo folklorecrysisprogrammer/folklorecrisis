@@ -32,7 +32,7 @@
             this.layerComboBox = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.画像出力ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ファイルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.drawModeComboBox = new System.Windows.Forms.ComboBox();
@@ -42,6 +42,10 @@
             this.rotateLeftButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.開くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.上書きToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.画像出力ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +80,7 @@
             this.menuStrip1.BackColor = System.Drawing.Color.Silver;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.設定ToolStripMenuItem,
-            this.画像出力ToolStripMenuItem});
+            this.ファイルToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(508, 24);
@@ -91,13 +95,17 @@
             this.設定ToolStripMenuItem.Text = "設定";
             this.設定ToolStripMenuItem.Click += new System.EventHandler(this.設定ToolStripMenuItem_Click);
             // 
-            // 画像出力ToolStripMenuItem
+            // ファイルToolStripMenuItem
             // 
-            this.画像出力ToolStripMenuItem.BackColor = System.Drawing.SystemColors.Menu;
-            this.画像出力ToolStripMenuItem.Name = "画像出力ToolStripMenuItem";
-            this.画像出力ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.画像出力ToolStripMenuItem.Text = "画像出力";
-            this.画像出力ToolStripMenuItem.Click += new System.EventHandler(this.画像出力ToolStripMenuItem_Click);
+            this.ファイルToolStripMenuItem.BackColor = System.Drawing.SystemColors.Menu;
+            this.ファイルToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.開くToolStripMenuItem,
+            this.保存ToolStripMenuItem,
+            this.上書きToolStripMenuItem,
+            this.画像出力ToolStripMenuItem1});
+            this.ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem";
+            this.ファイルToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.ファイルToolStripMenuItem.Text = "ファイル";
             // 
             // hScrollBar1
             // 
@@ -190,6 +198,31 @@
             this.button1.TabIndex = 6;
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // 開くToolStripMenuItem
+            // 
+            this.開くToolStripMenuItem.Name = "開くToolStripMenuItem";
+            this.開くToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.開くToolStripMenuItem.Text = "開く";
+            // 
+            // 保存ToolStripMenuItem
+            // 
+            this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.保存ToolStripMenuItem.Text = "保存";
+            // 
+            // 上書きToolStripMenuItem
+            // 
+            this.上書きToolStripMenuItem.Name = "上書きToolStripMenuItem";
+            this.上書きToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.上書きToolStripMenuItem.Text = "上書き";
+            // 
+            // 画像出力ToolStripMenuItem1
+            // 
+            this.画像出力ToolStripMenuItem1.Name = "画像出力ToolStripMenuItem1";
+            this.画像出力ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.画像出力ToolStripMenuItem1.Text = "画像出力";
+            this.画像出力ToolStripMenuItem1.Click += new System.EventHandler(this.画像出力ToolStripMenuItem_Click);
+            // 
             // MapEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -228,13 +261,17 @@
         private System.Windows.Forms.HScrollBar hScrollBar1;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.ComboBox drawModeComboBox;
-        private System.Windows.Forms.ToolStripMenuItem 画像出力ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ファイルToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button rotateLeftButton;
         private System.Windows.Forms.Button rotateRightButton;
         private System.Windows.Forms.Button turnHorizontalButton;
         private System.Windows.Forms.Button turnVerticalButton;
+        private System.Windows.Forms.ToolStripMenuItem 開くToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 保存ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 上書きToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 画像出力ToolStripMenuItem1;
     }
 }
 
