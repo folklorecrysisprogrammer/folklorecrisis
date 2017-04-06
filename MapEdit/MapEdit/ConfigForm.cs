@@ -49,21 +49,45 @@ namespace MapEdit
         //変更を反映する。
         private void updateButton_Click(object sender, EventArgs e)
         {
-            if (mapWriteScene.GetMapData().MapChipSize != int.Parse(mapChipSizeTextBox.Text))
+            int result;
+            //各種値が変更されていたら、変更処理を行う
+            //もし不正な値であれば、変更処理を行わない
+
+            //MapChipSizeの変更処理判定
+            if(
+                    TryParse(mapChipSizeTextBox.Text, out result) &&
+                    mapWriteScene.GetMapData().MapChipSize !=result
+               )
             {
-                mapWriteScene.GetMapData().MapChipSize = int.Parse(mapChipSizeTextBox.Text);
+                mapWriteScene.GetMapData().MapChipSize = result;
             }
-            if (mapWriteScene.GetMapData().MapSize.Width != int.Parse(mapSizeXtextBox.Text)||
-                mapWriteScene.GetMapData().MapSize.Height != int.Parse(mapSizeYtextBox.Text))
+            //MapSizeの変更処理判定
+            if (
+                    TryParse(mapSizeXtextBox.Text, out result) && 
+                    mapWriteScene.GetMapData().MapSize.Width != result||
+                    TryParse(mapSizeYtextBox.Text, out result) &&
+                    mapWriteScene.GetMapData().MapSize.Height != result 
+                )
             {
-                mapWriteScene.GetMapData().MapSize = new Size(
-                    int.Parse(mapSizeXtextBox.Text),
-                    int.Parse(mapSizeYtextBox.Text)
-                );
+                mapWriteScene.GetMapData().MapSize = 
+                    new Size(
+                        int.Parse(mapSizeXtextBox.Text),
+                        int.Parse(mapSizeYtextBox.Text)
+                    );
             }
 
             //設定ウインドウを閉じる。
             Dispose();
+        }
+
+        //文字列を変換したとき、0より大きい整数になるかどうかを判定
+        private bool TryParse(string s,out int result)
+        {
+           if(int.TryParse(s, out result) && result>0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
