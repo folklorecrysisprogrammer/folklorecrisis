@@ -16,46 +16,29 @@ namespace MapEdit
 
         private SelectImageForm selectImageForm;
 
-        //表示されてるマスの左上のインデックス
-        public Point showOriginMapImageIndex;
-        //表示されているマスの数
-        public Size ShowMapImageNumber;
-
-        //マップチップの一辺の長さ
-        public int MapChipSize
-        {
-            get { return mapData.MapChipSize; }
-            set { ChangeMapChipSize(value); }
-        }
-
-        //マップのサイズ（マス単位で）
-        public Size MapSize
-        {
-            get { return new Size(mapData.NumberX,mapData.NumberY); }
-            set { ChangeMapSize(value); }
-        }
 
         //表示先のパネル
         private Panel panel;
 
         //マップのスクロール制御用
         private readonly MapWriteScroll mapWriteScroll;
+        public MapWriteScroll GetScroll() { return mapWriteScroll; }
 
         //現在のレイヤー
         public int CurrentLayer { get; set; }
 
         //マップの各マスの画像情報
         private readonly MapImageDataMap mapData;
+        public MapImageDataMap GetMapData() { return mapData; }
 
         //初期化
         public MapWriteScene(SelectImageForm selectImageForm, Panel panel, HScrollBar hScroll, VScrollBar vScroll) : base(panel)
         {
             this.selectImageForm = selectImageForm;
             this.panel = panel;
-            mapData = new MapImageDataMap(20,20,40);
-            this.mapWriteScroll = new MapWriteScroll(hScroll, vScroll, this);
-            mapWriteScroll.SetScrollMaximum();
-            mapWriteScroll.SetScrollDelta();
+            mapData = new MapImageDataMap(this);
+            mapWriteScroll = new MapWriteScroll(hScroll, vScroll, this);
+            
             panel.SizeChanged += (o, e) =>
             {
                 mapWriteScroll.SetScrollMaximum();
@@ -71,14 +54,12 @@ namespace MapEdit
         //表示するMapImageをAddChildして、表示されなくなったMapImageをRemoveChildする
         public void UpdateShowMapImage()
         {
-            Point tshowOriginMapImageIndex=showOriginMapImageIndex;
-            Size tShowMapImageNumber=ShowMapImageNumber;
-            showOriginMapImageIndex = LocationToMap(new Point(0, 0));
-            ShowMapImageNumber = new Size(panel.Size.Width / MapChipSize+1, panel.Size.Height / MapChipSize+1);
+            Point showOriginMapImageIndex= LocationToMap(new Point(0, 0));
+            Size ShowMapImageNumber= new Size(panel.Size.Width / mapData.MapChipSize + 1, panel.Size.Height / mapData.MapChipSize + 1);
             GetAllChildren().ForEach((child)=>{ child.RemoveFromParent();});
-            for (int x = showOriginMapImageIndex.X; x < showOriginMapImageIndex.X + ShowMapImageNumber.Width && x<mapData.NumberX; x++)
+            for (int x = showOriginMapImageIndex.X; x < showOriginMapImageIndex.X + ShowMapImageNumber.Width && x<mapData.MapSize.Width; x++)
             {
-                for (int y = showOriginMapImageIndex.Y; y < showOriginMapImageIndex.Y+ShowMapImageNumber.Height && y < mapData.NumberY; y++)
+                for (int y = showOriginMapImageIndex.Y; y < showOriginMapImageIndex.Y+ShowMapImageNumber.Height && y < mapData.MapSize.Height; y++)
                 {
                     AddChild(mapData[x, y]);
                 }
@@ -90,7 +71,7 @@ namespace MapEdit
         {
             Point point = LocationToMap(e.Location);
             //マップサイズ範囲外なら終了
-            if (point.X >= mapData.NumberX || point.Y >=mapData.NumberY ||
+            if (point.X >= mapData.MapSize.Width || point.Y >=mapData.MapSize.Height ||
                 point.X < 0 || point.Y < 0) return;
 
             //マップ処理
@@ -114,65 +95,10 @@ namespace MapEdit
         private Point LocationToMap(Point Location)
         {
             Point point = new Point();
-            point.X = (int)((Location.X - localPos.x) / MapChipSize);
-            point.Y = (int)((Location.Y - localPos.y) / MapChipSize);
+            point.X = (int)((Location.X - localPos.x) / mapData.MapChipSize);
+            point.Y = (int)((Location.Y - localPos.y) / mapData.MapChipSize);
             return point;
         }
 
-        //マップ全体をBitmapに変換する
-        public Bitmap GetBitmap()
-        {
-            return mapData.GetBitmap();
-        }
-
-        //MapChipSize変更処理
-        private void ChangeMapChipSize(int mapChipSize)
-        {
-            mapData.ChangeMapChipSize(mapChipSize);
-            //スクロールバーの調整
-            mapWriteScroll.SetScrollDelta();
-            mapWriteScroll.SetScrollMaximum();
-            UpdateShowMapImage();
-            
-        }
-
-        //MapSize変更処理
-        private void ChangeMapSize(Size mapSize)
-        {
-            mapData.ChangeMapSize(mapSize.Width, mapSize.Height);
-
-            //スクロールバーの調整
-            mapWriteScroll.SetScrollMaximum();
-            UpdateShowMapImage();
-        }
-
-        //マップを右回転
-        public void RotateRight()
-        {
-            mapData.RotateRight();
-            mapWriteScroll.SetScrollMaximum();
-            UpdateShowMapImage();
-        }
-
-        //マップを左回転
-        public void RotateLeft()
-        {
-            mapData.RotateLeft();
-            mapWriteScroll.SetScrollMaximum();
-            UpdateShowMapImage();
-
-        }
-
-        //マップを左右反転
-        public void turnHorizontal()
-        {
-            mapData.turnHorizontal();
-        }
-
-        //マップを上下反転
-        public void turnVertical()
-        {
-            mapData.turnVertical();
-        }
     }
 }

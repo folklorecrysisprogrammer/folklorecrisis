@@ -13,11 +13,24 @@ namespace MapEdit
     {
         //マップチップの配列
         private MapImage[,] mapImage;
+
         //マップチップサイズ
-        public int MapChipSize { get; private set; }
+        private int mapChipSize = 40;
+        public int MapChipSize {
+            get { return mapChipSize; }
+            set { ChangeMapChipSize(value); }
+        }
         //マップチップの横の数と縦の数
-        public int NumberX { get; private set; }
-        public int NumberY { get; private set; }
+        private int numberX=20;
+        private int numberY=20;
+        public Size MapSize
+        {
+            get { return new Size(numberX, numberY); }
+            set { ChangeMapSize(value.Width,value.Height); }
+        }
+
+
+        private readonly MapWriteScene mapWriteScene;
 
         //配列ぽく振るまう
         public MapImage this[int x,int y]
@@ -26,12 +39,10 @@ namespace MapEdit
         }
 
         //初期化
-        public MapImageDataMap(int numberX,int numberY,int mapChipSize)
+        public MapImageDataMap(MapWriteScene mapWriteScene)
         {
+            this.mapWriteScene = mapWriteScene;
             mapImage = new MapImage[numberX, numberY];
-            this.NumberX = numberX;
-            this.NumberY = numberY;
-            this.MapChipSize = mapChipSize;
             for (int x = 0; x < numberX; x++)
             {
                 for (int y = 0; y <numberY; y++)
@@ -45,52 +56,56 @@ namespace MapEdit
         //マップ全体をBitmapに変換する
         public Bitmap GetBitmap()
         {
-            Bitmap unitedImg = new Bitmap(MapChipSize * NumberX, MapChipSize *NumberY);
+            Bitmap unitedImg = new Bitmap(mapChipSize * numberX, mapChipSize *numberY);
             Graphics g = Graphics.FromImage(unitedImg);
-            for (int countY = 0; countY < NumberY; ++countY)
+            for (int countY = 0; countY < numberY; ++countY)
             {
-                for (int countX = 0; countX < NumberX; ++countX)
+                for (int countX = 0; countX < numberX; ++countX)
                 {
                     Bitmap bitmap = mapImage[countX, countY].GetBitmap();
-                    g.DrawImage(bitmap, MapChipSize * countX, MapChipSize * countY);
+                    g.DrawImage(bitmap, mapChipSize * countX, mapChipSize * countY);
                 }
             }
             return unitedImg;
         }
 
         //MapChipSize変更処理
-        public void ChangeMapChipSize(int newMapChipSize)
+        private void ChangeMapChipSize(int newMapChipSize)
         {
-            MapChipSize = newMapChipSize;
+            mapChipSize = newMapChipSize;
             //マップチップの位置とサイズ調整
-            for (int x = 0; x < NumberX; x++)
+            for (int x = 0; x < numberX; x++)
             {
-                for (int y = 0; y < NumberY; y++)
+                for (int y = 0; y < numberY; y++)
                 {
-                    mapImage[x, y].MapChipSize = MapChipSize;
-                    mapImage[x, y].localPos.SetVect(x * MapChipSize, y * MapChipSize);
+                    mapImage[x, y].MapChipSize = mapChipSize;
+                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
                 }
             }
+            //スクロールバーの調整
+            mapWriteScene.GetScroll().SetScrollDelta();
+            mapWriteScene.GetScroll().SetScrollMaximum();
+            mapWriteScene.UpdateShowMapImage();
         }
 
         //MapSize変更処理
-        public void ChangeMapSize(int newNumberX,int newNumberY)
+        private void ChangeMapSize(int newNumberX,int newNumberY)
         {
 
             var tMapImage = mapImage;
             mapImage = new MapImage[newNumberX, newNumberY];
 
             //前のMapImageから、はみ出した部分があれば削除する
-            for (int x = newNumberX; x < NumberX; x++)
+            for (int x = newNumberX; x < numberX; x++)
             {
-                for (int y = 0; y < NumberY; y++)
+                for (int y = 0; y < numberY; y++)
                 {
                     tMapImage[x, y].Dispose();
                 }
             }
             for (int x = 0; x < newNumberX; x++)
             {
-                for (int y = newNumberY; y < NumberY; y++)
+                for (int y = newNumberY; y < numberY; y++)
                 {
                     tMapImage[x, y].Dispose();
                 }
@@ -98,11 +113,11 @@ namespace MapEdit
 
             //新しいMapImageに前のMapImageをサイズの範囲内でコピーする
             for (int x = 0;
-                x < NumberX && x <newNumberX;
+                x < numberX && x <newNumberX;
                 x++)
             {
                 for (int y = 0;
-                    y < NumberY && y < newNumberY;
+                    y < numberY && y < newNumberY;
                     y++)
                 {
                     mapImage[x, y] = tMapImage[x, y];
@@ -110,7 +125,7 @@ namespace MapEdit
             }
 
             //新しいMapImageの新しく生成された領域を初期化する
-            for (int x = NumberX; x < newNumberX; x++)
+            for (int x = numberX; x < newNumberX; x++)
             {
                 for (int y = 0; y < newNumberY; y++)
                 {
@@ -118,23 +133,26 @@ namespace MapEdit
                     mapImage[x, y].localPos.SetVect(x * MapChipSize, y * MapChipSize);
                 }
             }
-            for (int x = 0; x < NumberX; x++)
+            for (int x = 0; x < numberX; x++)
             {
-                for (int y =NumberY; y < newNumberY; y++)
+                for (int y =numberY; y < newNumberY; y++)
                 {
                     mapImage[x, y] = new MapImage(MapChipSize);
                     mapImage[x, y].localPos.SetVect(x * MapChipSize, y * MapChipSize);
                 }
             }
-            NumberX = newNumberX;
-            NumberY = newNumberY;
+            numberX = newNumberX;
+            numberY = newNumberY;
+            //スクロールバーの調整
+            mapWriteScene.GetScroll().SetScrollMaximum();
+            mapWriteScene.UpdateShowMapImage();
         }
 
         //マップを右回転
         public void RotateRight()
         {
             var tMapImage = mapImage;
-            mapImage = new MapImage[NumberY, NumberX];
+            mapImage = new MapImage[numberY, numberX];
             for (int x = 0; x < mapImage.GetLength(0); x++)
             {
                 for (int y = 0; y < mapImage.GetLength(1); y++)
@@ -144,15 +162,17 @@ namespace MapEdit
                     mapImage[x, y].RotateRight();
                 }
             }
-            NumberX = mapImage.GetLength(0);
-            NumberY = mapImage.GetLength(1);
+            numberX = mapImage.GetLength(0);
+            numberY = mapImage.GetLength(1);
+            mapWriteScene.GetScroll().SetScrollMaximum();
+            mapWriteScene.UpdateShowMapImage();
         }
 
         //マップを左回転
         public void RotateLeft()
         {
             var tMapImage = mapImage;
-            mapImage = new MapImage[NumberY, NumberX];
+            mapImage = new MapImage[numberY, numberX];
             for (int x = 0; x < mapImage.GetLength(0); x++)
             {
                 for (int y = 0; y < mapImage.GetLength(1); y++)
@@ -162,15 +182,17 @@ namespace MapEdit
                     mapImage[x, y].RotateLeft();
                 }
             }
-            NumberX = mapImage.GetLength(0);
-            NumberY = mapImage.GetLength(1);
+            numberX = mapImage.GetLength(0);
+            numberY = mapImage.GetLength(1);
+            mapWriteScene.GetScroll().SetScrollMaximum();
+            mapWriteScene.UpdateShowMapImage();
         }
 
         //マップを左右反転
         public void turnHorizontal()
         {
             var tMapImage = mapImage;
-            mapImage = new MapImage[NumberX, NumberY];
+            mapImage = new MapImage[numberX, numberY];
             for (int x = 0; x < mapImage.GetLength(0); x++)
             {
                 for (int y = 0; y < mapImage.GetLength(1); y++)
@@ -186,7 +208,7 @@ namespace MapEdit
         public void turnVertical()
         {
             var tMapImage = mapImage;
-            mapImage = new MapImage[NumberX, NumberY];
+            mapImage = new MapImage[numberX, numberY];
             for (int x = 0; x < mapImage.GetLength(0); x++)
             {
                 for (int y = 0; y < mapImage.GetLength(1); y++)

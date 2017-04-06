@@ -40,23 +40,23 @@ namespace MapEdit
                 }
             };
             //マップチップ、マップサイズの値をテキストボックスにセットする
-            mapChipSizeTextBox.Text = this.mapWriteScene.MapChipSize.ToString();
-            mapSizeXtextBox.Text = this.mapWriteScene.MapSize.Width.ToString();
-            mapSizeYtextBox.Text = this.mapWriteScene.MapSize.Height.ToString();
+            mapChipSizeTextBox.Text = this.mapWriteScene.GetMapData().MapChipSize.ToString();
+            mapSizeXtextBox.Text = this.mapWriteScene.GetMapData().MapSize.Width.ToString();
+            mapSizeYtextBox.Text = this.mapWriteScene.GetMapData().MapSize.Height.ToString();
         }
 
         //更新ボタンが押された時,マップチップ、マップサイズの値が変更されてたら、
         //変更を反映する。
         private void updateButton_Click(object sender, EventArgs e)
         {
-            if (mapWriteScene.MapChipSize != int.Parse(mapChipSizeTextBox.Text))
+            if (mapWriteScene.GetMapData().MapChipSize != int.Parse(mapChipSizeTextBox.Text))
             {
-                mapWriteScene.MapChipSize = int.Parse(mapChipSizeTextBox.Text);
+                mapWriteScene.GetMapData().MapChipSize = int.Parse(mapChipSizeTextBox.Text);
             }
-            if (mapWriteScene.MapSize.Width != int.Parse(mapSizeXtextBox.Text)||
-                mapWriteScene.MapSize.Height != int.Parse(mapSizeYtextBox.Text))
+            if (mapWriteScene.GetMapData().MapSize.Width != int.Parse(mapSizeXtextBox.Text)||
+                mapWriteScene.GetMapData().MapSize.Height != int.Parse(mapSizeYtextBox.Text))
             {
-                mapWriteScene.MapSize = new Size(
+                mapWriteScene.GetMapData().MapSize = new Size(
                     int.Parse(mapSizeXtextBox.Text),
                     int.Parse(mapSizeYtextBox.Text)
                 );

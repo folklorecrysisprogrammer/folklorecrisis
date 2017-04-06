@@ -147,31 +147,55 @@ namespace MapEdit
         //画像出力メニューが選択されたときの処理
         private void 画像出力ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mapWriteScene.GetBitmap().Save("w.png",ImageFormat.Png);
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.FileName = "w.png";
+            sfd.Filter = "png|*.png|jpeg|*.jpeg|bmp|*.bmp";
+            sfd.Title = "保存先を選択してください";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                ImageFormat imageFormat;
+                switch (sfd.FilterIndex)
+                {
+                    case 1:
+                        imageFormat = ImageFormat.Png;
+                        break;
+                    case 2:
+                        imageFormat = ImageFormat.Jpeg;
+                        break;
+                    case 3:
+                        imageFormat = ImageFormat.Bmp;
+                        break;
+                    default:
+                        imageFormat = ImageFormat.Png;
+                        break;
+                }
+                    
+                mapWriteScene.GetMapData().GetBitmap().Save(sfd.FileName, imageFormat);
+            }
         }
 
         //右回転ボタンを押したときの処理
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
-            mapWriteScene.RotateRight();
+            mapWriteScene.GetMapData().RotateRight();
         }
 
         //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
-            mapWriteScene.RotateLeft();
+            mapWriteScene.GetMapData().RotateLeft();
         }
 
         //上下反転ボタンを押したときの処理
         private void turnVerticalButton_Click(object sender, EventArgs e)
         {
-            mapWriteScene.turnVertical();
+            mapWriteScene.GetMapData().turnVertical();
         }
 
         //左右反転ボタンを押したときの処理
         private void turnHorizontalButton_Click(object sender, EventArgs e)
         {
-            mapWriteScene.turnHorizontal();
+            mapWriteScene.GetMapData().turnHorizontal();
         }
     }
 }
