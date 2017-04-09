@@ -31,7 +31,10 @@ namespace DXEX
                 return new Texture(textures[filePath]);
             }
             int gh = DX.LoadGraph(filePath);
-            DebugMessage.Mes(filePath+"は存在しません", gh==-1);
+            if (gh == -1)
+            {
+                throw new Exception("画像の読み込みに失敗しました");
+            }
             textures.Add(filePath, new TextureCore(gh));
             return new Texture(textures.Last().Value);
         }

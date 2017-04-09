@@ -8,11 +8,11 @@ using System.Drawing;
 namespace MapEdit
 {
 
-    //マップの画像情報を保持するクラス
-    public class MapImageDataMap
+    //マップ全体の画像情報を保持するクラス
+    public class MapData
     {
-        //マップチップの配列
-        private MapImage[,] mapImage;
+        //マップのマスごとの情報を保持
+        private MapOneMass[,] mapImage;
 
         //マップチップサイズ
         private int mapChipSize = 40;
@@ -33,22 +33,22 @@ namespace MapEdit
         private readonly MapWriteScene mapWriteScene;
 
         //配列ぽく振るまう
-        public MapImage this[int x,int y]
+        public MapOneMass this[int x,int y]
         {
             get { return mapImage[x, y]; }
         }
 
         //初期化
-        public MapImageDataMap(MapWriteScene mapWriteScene)
+        public MapData(MapWriteScene mapWriteScene)
         {
             this.mapWriteScene = mapWriteScene;
-            mapImage = new MapImage[numberX, numberY];
+            mapImage = new MapOneMass[numberX, numberY];
             for (int x = 0; x < numberX; x++)
             {
                 for (int y = 0; y <numberY; y++)
                 {
-                    mapImage[x, y] = new MapImage(mapChipSize);
-                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
+                    mapImage[x, y] = new MapOneMass(mapChipSize);
+                    mapImage[x, y].LocalPos=new DXEX.Vect(x * mapChipSize, y * mapChipSize);
                 }
             }
         }
@@ -79,7 +79,7 @@ namespace MapEdit
                 for (int y = 0; y < numberY; y++)
                 {
                     mapImage[x, y].MapChipSize = mapChipSize;
-                    mapImage[x, y].localPos.SetVect(x * mapChipSize, y * mapChipSize);
+                    mapImage[x, y].LocalPos=new DXEX.Vect(x * mapChipSize, y * mapChipSize);
                 }
             }
             //スクロールバーの調整
@@ -93,7 +93,7 @@ namespace MapEdit
         {
 
             var tMapImage = mapImage;
-            mapImage = new MapImage[newNumberX, newNumberY];
+            mapImage = new MapOneMass[newNumberX, newNumberY];
 
             //前のMapImageから、はみ出した部分があれば削除する
             for (int x = newNumberX; x < numberX; x++)
@@ -129,16 +129,16 @@ namespace MapEdit
             {
                 for (int y = 0; y < newNumberY; y++)
                 {
-                    mapImage[x, y] = new MapImage(MapChipSize);
-                    mapImage[x, y].localPos.SetVect(x * MapChipSize, y * MapChipSize);
+                    mapImage[x, y] = new MapOneMass(MapChipSize);
+                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }
             for (int x = 0; x < numberX; x++)
             {
                 for (int y =numberY; y < newNumberY; y++)
                 {
-                    mapImage[x, y] = new MapImage(MapChipSize);
-                    mapImage[x, y].localPos.SetVect(x * MapChipSize, y * MapChipSize);
+                    mapImage[x, y] = new MapOneMass(MapChipSize);
+                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }
             numberX = newNumberX;
@@ -152,13 +152,13 @@ namespace MapEdit
         public void RotateRight()
         {
             var tMapImage = mapImage;
-            mapImage = new MapImage[numberY, numberX];
+            mapImage = new MapOneMass[numberY, numberX];
             for (int x = 0; x < mapImage.GetLength(0); x++)
             {
                 for (int y = 0; y < mapImage.GetLength(1); y++)
                 {
                     mapImage[x, y] = tMapImage[y, tMapImage.GetLength(1) - x - 1];
-                    mapImage[x, y].localPos.SetVect(x * MapChipSize, y * MapChipSize);
+                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                     mapImage[x, y].RotateRight();
                 }
             }
@@ -172,13 +172,13 @@ namespace MapEdit
         public void RotateLeft()
         {
             var tMapImage = mapImage;
-            mapImage = new MapImage[numberY, numberX];
+            mapImage = new MapOneMass[numberY, numberX];
             for (int x = 0; x < mapImage.GetLength(0); x++)
             {
                 for (int y = 0; y < mapImage.GetLength(1); y++)
                 {
                     mapImage[x, y] = tMapImage[tMapImage.GetLength(0) - y - 1, x];
-                    mapImage[x, y].localPos.SetVect(x * MapChipSize, y * MapChipSize);
+                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                     mapImage[x, y].RotateLeft();
                 }
             }
@@ -192,13 +192,13 @@ namespace MapEdit
         public void turnHorizontal()
         {
             var tMapImage = mapImage;
-            mapImage = new MapImage[numberX, numberY];
+            mapImage = new MapOneMass[numberX, numberY];
             for (int x = 0; x < mapImage.GetLength(0); x++)
             {
                 for (int y = 0; y < mapImage.GetLength(1); y++)
                 {
                     mapImage[x, y] = tMapImage[tMapImage.GetLength(0) - x - 1, y];
-                    mapImage[x, y].localPos.SetVect(x * MapChipSize, y * MapChipSize);
+                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                     mapImage[x, y].TurnHorizontal();
                 }
             }
@@ -208,13 +208,13 @@ namespace MapEdit
         public void turnVertical()
         {
             var tMapImage = mapImage;
-            mapImage = new MapImage[numberX, numberY];
+            mapImage = new MapOneMass[numberX, numberY];
             for (int x = 0; x < mapImage.GetLength(0); x++)
             {
                 for (int y = 0; y < mapImage.GetLength(1); y++)
                 {
                     mapImage[x, y] = tMapImage[x, tMapImage.GetLength(1) - y - 1];
-                    mapImage[x, y].localPos.SetVect(x * MapChipSize, y * MapChipSize);
+                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                     mapImage[x, y].TurnVertical();
                 }
             }

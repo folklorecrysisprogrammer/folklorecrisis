@@ -12,41 +12,47 @@ namespace MapEdit
 {
     public partial class SelectImageForm : Form
     {
-        private int imageCountX = 0, imageCountY = 0;
 
-        private SelectImage selectImage;
 
-        public SelectImage GetSelectImage() { return selectImage; }
+        private MapPalletScene mapPalletScene;
+
+        private SelectMapChipScene selectMapChipScene;
+
+        public MapChip GetSelectMapChip() { return selectMapChipScene.MapChip; }
 
         //右回転ボタンを押したときの処理
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
-            selectImage.RotateRight();
+            selectMapChipScene.MapChip.Angle+=90;
         }
 
         //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
-            selectImage.RotateLeft();
+            selectMapChipScene.MapChip.Angle += 270;
         }
 
         //上下反転ボタンを押したときの処理
         private void turnVerticalButton_Click(object sender, EventArgs e)
         {
-            selectImage.turnVertical();
+            selectMapChipScene.MapChip.TurnVertical();
         }
 
         //左右反転ボタンを押したときの処理
         private void turnHorizontalButton_Click(object sender, EventArgs e)
         {
-            selectImage.TurnHorizontal();
+            selectMapChipScene.MapChip.TurnHorizontal();
         }
 
         public SelectImageForm()
         {
             
             InitializeComponent();
-            selectImage = new SelectImage(selectPicture);
+            selectMapChipScene = new SelectMapChipScene(selectPicture);
+            mapPalletScene = new MapPalletScene(palletPanel,selectMapChipScene);
+            
+            DXEX.Director.AddSubScene(mapPalletScene);
+            DXEX.Director.AddSubScene(selectMapChipScene);
             //ドラッグされた時のイベント
             DragEnter += (object sender, DragEventArgs e) =>
             {
@@ -67,37 +73,24 @@ namespace MapEdit
                 }
                 for (int i = 0; i < fileName.Length; i++)
                 {
-                    var pictureBox = new SelectPictureBox();
-                    //PictureBox1に画像ファイルはりつけ
-                    try
-                    {
-                        pictureBox.SetImage(fileName[i]);
-                    }
-                    catch (System.OutOfMemoryException)
-                    {
-                        continue;
-                    }
-                    
-                    //マウスクリックのイベント
-                    pictureBox.MouseClick += (object _o, MouseEventArgs _e) =>
-                    {
-                        selectPicture.Image = pictureBox.Image;
-                        selectImage.FilePath =pictureBox.FilePath;
-                        selectImage.Reset();
-                        pictureBox.Focus();
-                    };
-                    pictureBox.Size = new Size(40, 40);
-                    pictureBox.Location = new Point(40 * imageCountX, 40 * imageCountY-panel1.VerticalScroll.Value);
-                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                    panel1.Controls.Add(pictureBox);
-                    imageCountX++;
-                    if (imageCountX == 6) { imageCountX = 0; imageCountY++; }
+                    mapPalletScene.AddMapChip(fileName[i]);
                 }
             };
             //フォームを閉じるのを無効化する
             FormClosing += (o, e) =>
             {
                 e.Cancel = true;
+            };
+
+            vScrollBar1.SmallChange = 40;
+            vScrollBar1.LargeChange = 40;
+            vScrollBar1.Scroll += (o, e)=>{
+                vScrollBar1.Focus();
+            };
+            vScrollBar1.Maximum = 50 * 40 - palletPanel.Size.Height;
+            vScrollBar1.ValueChanged += (o, e) =>
+            {
+                mapPalletScene.LocalPosY = -vScrollBar1.Value;
             };
         }
     }

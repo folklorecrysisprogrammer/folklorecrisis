@@ -11,7 +11,7 @@ namespace MapEdit
 {
 
     //マップを表示、編集を行うシーン
-    public class MapWriteScene : DXEX.Scene
+    public class MapWriteScene : MapSceneBase
     {
 
         private SelectImageForm selectImageForm;
@@ -28,15 +28,15 @@ namespace MapEdit
         public int CurrentLayer { get; set; }
 
         //マップの各マスの画像情報
-        private readonly MapImageDataMap mapData;
-        public MapImageDataMap GetMapData() { return mapData; }
+        private readonly MapData mapData;
+        public MapData GetMapData() { return mapData; }
 
         //初期化
         public MapWriteScene(SelectImageForm selectImageForm, Panel panel, HScrollBar hScroll, VScrollBar vScroll) : base(panel)
         {
             this.selectImageForm = selectImageForm;
             this.panel = panel;
-            mapData = new MapImageDataMap(this);
+            mapData = new MapData(this);
             mapWriteScroll = new MapWriteScroll(hScroll, vScroll, this);
             
             panel.SizeChanged += (o, e) =>
@@ -54,7 +54,7 @@ namespace MapEdit
         //表示するMapImageをAddChildして、表示されなくなったMapImageをRemoveChildする
         public void UpdateShowMapImage()
         {
-            Point showOriginMapImageIndex= LocationToMap(new Point(0, 0));
+            Point showOriginMapImageIndex= LocationToMap(new Point(0, 0),mapData.MapChipSize);
             Size ShowMapImageNumber= new Size(panel.Size.Width / mapData.MapChipSize + 1, panel.Size.Height / mapData.MapChipSize + 1);
             GetAllChildren().ForEach((child)=>{ child.RemoveFromParent();});
             for (int x = showOriginMapImageIndex.X; x < showOriginMapImageIndex.X + ShowMapImageNumber.Width && x<mapData.MapSize.Width; x++)
@@ -69,7 +69,7 @@ namespace MapEdit
         //マウスでマップを書く処理
         private void MouseAction(object o, MouseEventArgs e)
         {
-            Point point = LocationToMap(e.Location);
+            Point point = LocationToMap(e.Location,mapData.MapChipSize);
             //マップサイズ範囲外なら終了
             if (point.X >= mapData.MapSize.Width || point.Y >=mapData.MapSize.Height ||
                 point.X < 0 || point.Y < 0) return;
@@ -80,7 +80,7 @@ namespace MapEdit
             {
                 //左クリックされている時の処理
                 //マップを書く
-                mapData[point.X, point.Y].PutImage(selectImageForm.GetSelectImage(), CurrentLayer);
+                mapData[point.X, point.Y].PutImage(selectImageForm.GetSelectMapChip(), CurrentLayer);
             }
             if ((Control.MouseButtons & MouseButtons.Right)
                 == MouseButtons.Right)
@@ -89,15 +89,6 @@ namespace MapEdit
                 //マップをクリアします
                 mapData[point.X, point.Y].ClearImage(CurrentLayer);
             }
-        }
-
-        //座標からマップチップのマス座標へ変換
-        private Point LocationToMap(Point Location)
-        {
-            Point point = new Point();
-            point.X = (int)((Location.X - localPos.x) / mapData.MapChipSize);
-            point.Y = (int)((Location.Y - localPos.y) / mapData.MapChipSize);
-            return point;
         }
 
     }

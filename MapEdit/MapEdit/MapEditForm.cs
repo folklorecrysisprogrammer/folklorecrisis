@@ -119,8 +119,6 @@ namespace MapEdit
         {
             var configForm = new ConfigForm(mapWriteScene);
             configForm.ShowDialog(this);
-            
-
         }
 
         //layerが変更された時の処理

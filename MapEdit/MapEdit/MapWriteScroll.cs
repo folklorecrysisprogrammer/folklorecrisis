@@ -35,12 +35,12 @@ namespace MapEdit
             //MapWriteSceneの位置を変更する
             hScroll.ValueChanged += (o, e) =>
             {
-                mws.localPos.x = -hScroll.Value;
+                mws.LocalPosX=-hScroll.Value;
                 mws.UpdateShowMapImage();
             };
             vScroll.ValueChanged += (o, e) =>
             {
-                mws.localPos.y = -vScroll.Value;
+                mws.LocalPosY = -vScroll.Value;
                 mws.UpdateShowMapImage();
             };
 
@@ -63,7 +63,7 @@ namespace MapEdit
         {
             hScroll.Value = 0;
             vScroll.Value = 0;
-            mws.localPos.SetVect(0, 0);
+            mws.LocalPos=new DXEX.Vect(0, 0);
             int temp = mws.GetMapData().MapSize.Width * mws.GetMapData().MapChipSize - mws.GetControl.Size.Width;
             if (temp < 0) hScroll.Maximum = 0;
             else hScroll.Maximum = temp;
