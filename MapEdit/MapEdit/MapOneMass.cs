@@ -15,9 +15,6 @@ namespace MapEdit
         //レイヤーの数だけ保持
         private MapChip[] mapChips=new MapChip[MapEditForm.maxLayer];
 
-        //画像のパス。Bitmapにするときに必要
-        private string[] mapChipPath=new string[MapEditForm.maxLayer];
-
         //マップチップサイズ保存用
         private int mapChipSize;
         public int MapChipSize {
@@ -35,7 +32,6 @@ namespace MapEdit
             //レイヤーの数だけ画像表示用スプライトを生成する
             for (int i = 0; i < MapEditForm.maxLayer; i++)
             {
-                mapChipPath[i] = "";
                 mapChips[i] = new MapChip(mapChipSize);
                 mapChips[i].anchor.SetVect(0, 0);
                 AddChild(mapChips[i]);
@@ -52,13 +48,13 @@ namespace MapEdit
             Bitmap[] bitmap = new Bitmap[MapEditForm.maxLayer];
             for(int i=0; i < MapEditForm.maxLayer; i++)
             {
-                if (mapChipPath[i] == "")
+                if (mapChips[i].Id == -1)
                 {   
                     bitmap[i] = new Bitmap(mapChipSize, mapChipSize);
                 }
                 else
                 {
-                    bitmap[i] = (Bitmap)Bitmap.FromFile(mapChipPath[i]);
+                    bitmap[i] = MapChipResourceManager.GetBitmap(mapChips[i].Id);
                 }
             }
 
@@ -84,9 +80,8 @@ namespace MapEdit
         //画像をセット
         public void PutImage(MapChip mapChip, int layer)
         {
-            // if (selectImage.FilePath == "") return;
-            // mapChipPath[layer] = selectImage.FilePath;
             if(mapChip.GetTexture() == null)return;
+            mapChips[layer].Id = mapChip.Id;
             mapChips[layer].SetTexture(mapChip.GetTexture());
             mapChips[layer].Angle = mapChip.Angle;
             mapChips[layer].turnFlag = mapChip.turnFlag;
@@ -95,8 +90,8 @@ namespace MapEdit
         //画像をクリア
         public void ClearImage(int layer)
         {
-            mapChipPath[layer] = "";
             mapChips[layer].ClearTexture();
+            mapChips[layer].Id = -1;
         }
 
         //PixelSizeが変更された時の処理

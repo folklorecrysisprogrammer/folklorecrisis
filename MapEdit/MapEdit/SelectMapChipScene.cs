@@ -16,9 +16,10 @@ namespace MapEdit
             MapChip = new MapChip(40);
             AddChild(MapChip);
         }
-        public void setTexture(DXEX.Texture texture)
+        public void setMapChip(DXEX.Texture texture,int id)
         {
             MapChip.SetTexture(texture);
+            MapChip.Id = id;
         }
     }
 }

@@ -33,6 +33,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ファイルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.開くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.上書きToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.画像出力ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.drawModeComboBox = new System.Windows.Forms.ComboBox();
@@ -42,10 +46,6 @@
             this.rotateLeftButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.開くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.上書きToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.画像出力ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,6 +106,32 @@
             this.ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem";
             this.ファイルToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ファイルToolStripMenuItem.Text = "ファイル";
+            // 
+            // 開くToolStripMenuItem
+            // 
+            this.開くToolStripMenuItem.Name = "開くToolStripMenuItem";
+            this.開くToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.開くToolStripMenuItem.Text = "開く";
+            // 
+            // 保存ToolStripMenuItem
+            // 
+            this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.保存ToolStripMenuItem.Text = "保存";
+            this.保存ToolStripMenuItem.Click += new System.EventHandler(this.保存ToolStripMenuItem_Click);
+            // 
+            // 上書きToolStripMenuItem
+            // 
+            this.上書きToolStripMenuItem.Name = "上書きToolStripMenuItem";
+            this.上書きToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.上書きToolStripMenuItem.Text = "上書き";
+            // 
+            // 画像出力ToolStripMenuItem1
+            // 
+            this.画像出力ToolStripMenuItem1.Name = "画像出力ToolStripMenuItem1";
+            this.画像出力ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.画像出力ToolStripMenuItem1.Text = "画像出力";
+            this.画像出力ToolStripMenuItem1.Click += new System.EventHandler(this.画像出力ToolStripMenuItem_Click);
             // 
             // hScrollBar1
             // 
@@ -197,31 +223,6 @@
             this.button1.Size = new System.Drawing.Size(24, 23);
             this.button1.TabIndex = 6;
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // 開くToolStripMenuItem
-            // 
-            this.開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-            this.開くToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.開くToolStripMenuItem.Text = "開く";
-            // 
-            // 保存ToolStripMenuItem
-            // 
-            this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.保存ToolStripMenuItem.Text = "保存";
-            // 
-            // 上書きToolStripMenuItem
-            // 
-            this.上書きToolStripMenuItem.Name = "上書きToolStripMenuItem";
-            this.上書きToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.上書きToolStripMenuItem.Text = "上書き";
-            // 
-            // 画像出力ToolStripMenuItem1
-            // 
-            this.画像出力ToolStripMenuItem1.Name = "画像出力ToolStripMenuItem1";
-            this.画像出力ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.画像出力ToolStripMenuItem1.Text = "画像出力";
-            this.画像出力ToolStripMenuItem1.Click += new System.EventHandler(this.画像出力ToolStripMenuItem_Click);
             // 
             // MapEditForm
             // 

@@ -26,6 +26,8 @@ namespace MapEdit
             try
             {
                 mapChip.SetTexture(fileName);
+                mapChip.Id=MapChipResourceManager.pushImageFile(fileName);
+                
             }
             catch (Exception)
             {
@@ -38,7 +40,11 @@ namespace MapEdit
         private void MouseAction(object o,MouseEventArgs e)
         {
             Point point=LocationToMap(e.Location,40);
-            sms.setTexture(MapPalletData[point.X, point.Y].GetTexture());
+            if (MapPalletData[point.X, point.Y] == null) return;
+            sms.setMapChip(
+                MapPalletData[point.X, point.Y].GetTexture(),
+                MapPalletData[point.X, point.Y].Id    
+            );
         }
 
     }

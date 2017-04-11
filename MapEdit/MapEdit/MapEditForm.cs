@@ -18,9 +18,11 @@ namespace MapEdit
         //layerの数
         public const int maxLayer = 3;
         //マップチップパレットフォーム
-        public SelectImageForm selectImageForm=new SelectImageForm();
+        public SelectImageForm sif=new SelectImageForm();
         //実際にマップを描画するシーン
-        private MapWriteScene mapWriteScene;
+        private MapWriteScene mws;
+        //ファイル操作に関係するクラス
+        private FileManager filem=new FileManager();
         //初期化
         public MapEditForm()
         {
@@ -29,14 +31,14 @@ namespace MapEdit
            //メインウインドウのロードが終わったら、
            //パレッドウインドウを表示する。
             Load += (o, e) => {
-                selectImageForm.Show();
+                sif.Show();
             };
 
             //メインウインドウに終了命令が出たら
             //パレッドウインドウを速やかに閉じる
             FormClosing += (o, e) =>
             {
-                selectImageForm.Dispose();
+                sif.Dispose();
             };
             
             //キーが押された時の処理
@@ -84,8 +86,8 @@ namespace MapEdit
 
             //mapWriteScene初期化
             //mapWritePanelをDXライブラリの描画先に設定
-            mapWriteScene = 
-                new MapWriteScene(selectImageForm,mapWritePanel,hScrollBar1,vScrollBar1);
+            mws = 
+                new MapWriteScene(sif,mapWritePanel,hScrollBar1,vScrollBar1);
 
             //comboボックスのデフォルト値設定
             layerComboBox.SelectedIndex = 0;
@@ -94,7 +96,7 @@ namespace MapEdit
             //メインウインドウ表示
             Show();
             //DXライブラリループ開始
-            DXEX.Director.StartLoop(this,mapWriteScene);
+            DXEX.Director.StartLoop(this,mws);
         }
 
         //スクロールバーの値を範囲内に収めながら加算する
@@ -117,14 +119,27 @@ namespace MapEdit
         //設定ボタンが押された時の処理
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var configForm = new ConfigForm(mapWriteScene);
+            var configForm = new ConfigForm(mws);
             configForm.ShowDialog(this);
+        }
+
+        //画像出力メニューが選択されたときの処理
+        private void 画像出力ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            filem.MapImageOutPut(mws.GetMapData().GetBitmap());
+        }
+
+        //保存メニューが選択された時の処理
+        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var snpf=new SaveNewProjectForm();
+            snpf.ShowDialog(this);
         }
 
         //layerが変更された時の処理
         private void layerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mapWriteScene.CurrentLayer = layerComboBox.SelectedIndex;
+            mws.CurrentLayer = layerComboBox.SelectedIndex;
         }
 
         //描画方法変更された時の処理
@@ -142,58 +157,28 @@ namespace MapEdit
             }
         }
 
-        //画像出力メニューが選択されたときの処理
-        private void 画像出力ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.FileName = "w.png";
-            sfd.Filter = "png|*.png|jpeg|*.jpeg|bmp|*.bmp";
-            sfd.Title = "保存先を選択してください";
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                ImageFormat imageFormat;
-                switch (sfd.FilterIndex)
-                {
-                    case 1:
-                        imageFormat = ImageFormat.Png;
-                        break;
-                    case 2:
-                        imageFormat = ImageFormat.Jpeg;
-                        break;
-                    case 3:
-                        imageFormat = ImageFormat.Bmp;
-                        break;
-                    default:
-                        imageFormat = ImageFormat.Png;
-                        break;
-                }
-                    
-                mapWriteScene.GetMapData().GetBitmap().Save(sfd.FileName, imageFormat);
-            }
-        }
-
         //右回転ボタンを押したときの処理
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
-            mapWriteScene.GetMapData().RotateRight();
+            mws.GetMapData().RotateRight();
         }
 
         //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
-            mapWriteScene.GetMapData().RotateLeft();
+            mws.GetMapData().RotateLeft();
         }
 
         //上下反転ボタンを押したときの処理
         private void turnVerticalButton_Click(object sender, EventArgs e)
         {
-            mapWriteScene.GetMapData().turnVertical();
+            mws.GetMapData().turnVertical();
         }
 
         //左右反転ボタンを押したときの処理
         private void turnHorizontalButton_Click(object sender, EventArgs e)
         {
-            mapWriteScene.GetMapData().turnHorizontal();
+            mws.GetMapData().turnHorizontal();
         }
     }
 }

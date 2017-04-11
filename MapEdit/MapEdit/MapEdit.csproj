@@ -85,6 +85,7 @@
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MapChip.cs" />
+    <Compile Include="MapChipResourceManager.cs" />
     <Compile Include="MapEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,8 +99,14 @@
     <Compile Include="MapWriteScene.cs" />
     <Compile Include="MapWriteScroll.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="FileManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelectImage.cs" />
+    <Compile Include="SaveNewProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaveNewProjectForm.Designer.cs">
+      <DependentUpon>SaveNewProjectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectImageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,9 +114,6 @@
       <DependentUpon>SelectImageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SelectMapChipScene.cs" />
-    <Compile Include="SelectPictureBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="MapSceneBase.cs" />
     <EmbeddedResource Include="ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
@@ -127,6 +131,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SaveNewProjectForm.resx">
+      <DependentUpon>SaveNewProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SelectImageForm.resx">
       <DependentUpon>SelectImageForm.cs</DependentUpon>
     </EmbeddedResource>

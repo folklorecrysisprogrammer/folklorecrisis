@@ -16,9 +16,12 @@ namespace MapEdit
         }
         private int mapChipSize;
 
+        public int Id { get; set; }
+
         public MapChip(int mapChipSize)
         {
             MapChipSize = mapChipSize;
+            Id = -1;
         }
 
         protected override void UpdateAngle()
