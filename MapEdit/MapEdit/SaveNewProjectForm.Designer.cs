@@ -33,6 +33,7 @@
             this.folderPathTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // newProjectNameTextBox
@@ -78,11 +79,22 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "フォルダパス";
             // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(131, 112);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(210, 27);
+            this.saveButton.TabIndex = 5;
+            this.saveButton.Text = "保存";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
             // SaveNewProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 117);
+            this.ClientSize = new System.Drawing.Size(496, 152);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.folderPathTextBox);
@@ -102,5 +114,6 @@
         private System.Windows.Forms.TextBox folderPathTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button saveButton;
     }
 }

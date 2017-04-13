@@ -32,11 +32,11 @@ namespace MapEdit
         public MapData GetMapData() { return mapData; }
 
         //初期化
-        public MapWriteScene(SelectImageForm selectImageForm, Panel panel, HScrollBar hScroll, VScrollBar vScroll) : base(panel)
+        public MapWriteScene(SelectImageForm selectImageForm, Panel panel, HScrollBar hScroll, VScrollBar vScroll,MapEditForm meForm) : base(panel)
         {
             this.selectImageForm = selectImageForm;
             this.panel = panel;
-            mapData = new MapData(this);
+            mapData = new MapData(meForm);
             mapWriteScroll = new MapWriteScroll(hScroll, vScroll, this);
             
             panel.SizeChanged += (o, e) =>

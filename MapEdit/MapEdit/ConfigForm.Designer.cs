@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.mapChipSizeTextBox = new System.Windows.Forms.TextBox();
             this.mapSizeYtextBox = new System.Windows.Forms.TextBox();
             this.mapSizeXtextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,15 +38,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chara)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "マップチップサイズ";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -57,13 +46,6 @@
             this.label2.Size = new System.Drawing.Size(59, 12);
             this.label2.TabIndex = 1;
             this.label2.Text = "マップサイズ";
-            // 
-            // mapChipSizeTextBox
-            // 
-            this.mapChipSizeTextBox.Location = new System.Drawing.Point(28, 24);
-            this.mapChipSizeTextBox.Name = "mapChipSizeTextBox";
-            this.mapChipSizeTextBox.Size = new System.Drawing.Size(77, 19);
-            this.mapChipSizeTextBox.TabIndex = 2;
             // 
             // mapSizeYtextBox
             // 
@@ -127,9 +109,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.mapSizeXtextBox);
             this.Controls.Add(this.mapSizeYtextBox);
-            this.Controls.Add(this.mapChipSizeTextBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "ConfigForm";
             this.Text = "設定";
             this.TopMost = true;
@@ -140,10 +120,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox mapChipSizeTextBox;
         private System.Windows.Forms.TextBox mapSizeYtextBox;
         private System.Windows.Forms.TextBox mapSizeXtextBox;
         private System.Windows.Forms.Label label3;

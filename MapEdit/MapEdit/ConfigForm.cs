@@ -13,7 +13,7 @@ namespace MapEdit
     //設定ウインドウ
     public partial class ConfigForm : Form
     {
-        private MapWriteScene mapWriteScene;
+        private MapWriteScene mws;
         private Timer timer=new Timer();
         private bool runFlag=false;
 
@@ -21,7 +21,7 @@ namespace MapEdit
         public ConfigForm(MapWriteScene mapWriteScene)
         {
             InitializeComponent();
-            this.mapWriteScene = mapWriteScene;
+            this.mws = mapWriteScene;
             var myAssembly=System.Reflection.Assembly.GetExecutingAssembly();
             chara.Image =new Bitmap(myAssembly.GetManifestResourceStream("MapEdit.Resources.プルヌ.png"));
             var rnd=new System.Random();
@@ -39,10 +39,9 @@ namespace MapEdit
                     chara.Location=new Point(chara.Location.X+3,chara.Location.Y);
                 }
             };
-            //マップチップ、マップサイズの値をテキストボックスにセットする
-            mapChipSizeTextBox.Text = this.mapWriteScene.GetMapData().MapChipSize.ToString();
-            mapSizeXtextBox.Text = this.mapWriteScene.GetMapData().MapSize.Width.ToString();
-            mapSizeYtextBox.Text = this.mapWriteScene.GetMapData().MapSize.Height.ToString();
+            //マップサイズの値をテキストボックスにセットする
+            mapSizeXtextBox.Text = this.mws.GetMapData().MapSize.Width.ToString();
+            mapSizeYtextBox.Text = this.mws.GetMapData().MapSize.Height.ToString();
         }
 
         //更新ボタンが押された時,マップチップ、マップサイズの値が変更されてたら、
@@ -53,27 +52,23 @@ namespace MapEdit
             //各種値が変更されていたら、変更処理を行う
             //もし不正な値であれば、変更処理を行わない
 
-            //MapChipSizeの変更処理判定
-            if(
-                    TryParse(mapChipSizeTextBox.Text, out result) &&
-                    mapWriteScene.GetMapData().MapChipSize !=result
-               )
-            {
-                mapWriteScene.GetMapData().MapChipSize = result;
-            }
             //MapSizeの変更処理判定
             if (
                     TryParse(mapSizeXtextBox.Text, out result) && 
-                    mapWriteScene.GetMapData().MapSize.Width != result||
+                    mws.GetMapData().MapSize.Width != result||
                     TryParse(mapSizeYtextBox.Text, out result) &&
-                    mapWriteScene.GetMapData().MapSize.Height != result 
+                    mws.GetMapData().MapSize.Height != result 
                 )
             {
-                mapWriteScene.GetMapData().MapSize = 
+                mws.GetMapData().MapSize = 
                     new Size(
                         int.Parse(mapSizeXtextBox.Text),
                         int.Parse(mapSizeYtextBox.Text)
                     );
+                //スクロールバーの調整
+                mws.GetScroll().SetScrollMaximum();
+                //表示するスプライトの設定
+                mws.UpdateShowMapImage();
             }
 
             //設定ウインドウを閉じる。

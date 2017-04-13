@@ -10,10 +10,10 @@ using System.Windows.Forms;
 namespace MapEdit
 {
     //ファイル操作に関係するクラス
-    public class FileManager
+    static public class FileManager
     {
-        //マップを画像ファイルとして出力する
-        public void MapImageOutPut(Bitmap bitmap)
+        //Bitmapを画像ファイルとして出力する
+        static public void BitmapOutPut(Bitmap bitmap)
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.FileName = "w.png";
@@ -40,12 +40,6 @@ namespace MapEdit
 
                 bitmap.Save(sfd.FileName, imageFormat);
             }
-        }
-
-        //作業データを新規保存する
-        public void SaveNewProject()
-        {
-            
         }
     }
 }

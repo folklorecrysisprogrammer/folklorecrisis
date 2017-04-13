@@ -17,8 +17,10 @@ namespace MapEdit
            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new MapEditForm());
-            var form=new MapEditForm();
+            var form = new StartForm();
+            Application.Run(form);
+            if (form.MapChipSize == -1) return;
+            new MapEditForm(form.MapChipSize);
         }
     }
 }

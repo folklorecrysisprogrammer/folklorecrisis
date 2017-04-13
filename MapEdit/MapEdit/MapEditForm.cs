@@ -18,18 +18,26 @@ namespace MapEdit
         //layerの数
         public const int maxLayer = 3;
         //マップチップパレットフォーム
-        public SelectImageForm sif=new SelectImageForm();
+        private SelectImageForm sif;
+        //プロジェクトデータを保存,上書き,開く機能をするクラス
+        private ProjectManager pm;
         //実際にマップを描画するシーン
         private MapWriteScene mws;
-        //ファイル操作に関係するクラス
-        private FileManager filem=new FileManager();
+        //マップチップリソース管理
+        public MapChipResourceManager mcrm { get; private set;}
+
+        public int MapChipSize { get; private set; } 
+
         //初期化
-        public MapEditForm()
+        public MapEditForm(int mapChipSize)
         {
-            InitializeComponent();    
-                    
-           //メインウインドウのロードが終わったら、
-           //パレッドウインドウを表示する。
+            InitializeComponent();
+            pm = new ProjectManager(this);
+            MapChipSize = mapChipSize;
+            mcrm = new MapChipResourceManager(mapChipSize);
+            sif = new SelectImageForm(this);
+            //メインウインドウのロードが終わったら、
+            //パレッドウインドウを表示する。
             Load += (o, e) => {
                 sif.Show();
             };
@@ -87,7 +95,7 @@ namespace MapEdit
             //mapWriteScene初期化
             //mapWritePanelをDXライブラリの描画先に設定
             mws = 
-                new MapWriteScene(sif,mapWritePanel,hScrollBar1,vScrollBar1);
+                new MapWriteScene(sif,mapWritePanel,hScrollBar1,vScrollBar1,this);
 
             //comboボックスのデフォルト値設定
             layerComboBox.SelectedIndex = 0;
@@ -126,13 +134,13 @@ namespace MapEdit
         //画像出力メニューが選択されたときの処理
         private void 画像出力ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            filem.MapImageOutPut(mws.GetMapData().GetBitmap());
+            FileManager.BitmapOutPut(mws.GetMapData().GetBitmap());
         }
 
         //保存メニューが選択された時の処理
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var snpf=new SaveNewProjectForm();
+            var snpf=new SaveNewProjectForm(pm);
             snpf.ShowDialog(this);
         }
 
@@ -161,12 +169,20 @@ namespace MapEdit
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
             mws.GetMapData().RotateRight();
+            //スクロールバーの調整
+            mws.GetScroll().SetScrollMaximum();
+            //表示するスプライトの設定
+            mws.UpdateShowMapImage();
         }
 
         //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
             mws.GetMapData().RotateLeft();
+            //スクロールバーの調整
+            mws.GetScroll().SetScrollMaximum();
+            //表示するスプライトの設定
+            mws.UpdateShowMapImage();
         }
 
         //上下反転ボタンを押したときの処理

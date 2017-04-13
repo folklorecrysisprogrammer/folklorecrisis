@@ -7,15 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MapEdit
 {
     //プロジェクト保存ウインドウ
     public partial class SaveNewProjectForm : Form
     {
-        public SaveNewProjectForm()
+        private readonly ProjectManager pm;
+
+        public SaveNewProjectForm(ProjectManager pm)
         {
             InitializeComponent();
+            this.pm = pm;
         }
 
         private void folderSelectButton_Click(object sender, EventArgs e)
@@ -28,6 +32,16 @@ namespace MapEdit
                 //選択されたフォルダを表示する
                 folderPathTextBox.Text=fbd.SelectedPath;
             }
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            if(pm.SaveNewProject(folderPathTextBox.Text, newProjectNameTextBox.Text) == false)
+            {
+                MessageBox.Show("パスが存在しません", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Dispose();
         }
     }
 }

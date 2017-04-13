@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MapEdit
 {
     //マップパレットに表示する画像を管理するクラス
-    class MapPalletData
+    public class MapPalletData
     {
         private MapChip[,] mapChips;
         private int index = 0;

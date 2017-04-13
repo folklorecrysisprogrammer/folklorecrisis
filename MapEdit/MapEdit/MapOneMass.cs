@@ -15,17 +15,15 @@ namespace MapEdit
         //レイヤーの数だけ保持
         private MapChip[] mapChips=new MapChip[MapEditForm.maxLayer];
 
-        //マップチップサイズ保存用
-        private int mapChipSize;
-        public int MapChipSize {
-            get { return mapChipSize; }
-            set { mapChipSize = value; ChangePixelSize(); }
-        }
+        private readonly int mapChipSize;
+
+        private readonly MapChipResourceManager mcrm;
 
         //初期化
-        public MapOneMass(int mapChipSize)
+        public MapOneMass(MapEditForm meForm)
         {
-            this.mapChipSize = mapChipSize;
+            mapChipSize = meForm.MapChipSize;
+            mcrm = meForm.mcrm;
             anchor.SetVect(0, 0);
            
 
@@ -54,7 +52,7 @@ namespace MapEdit
                 }
                 else
                 {
-                    bitmap[i] = MapChipResourceManager.GetBitmap(mapChips[i].Id);
+                    bitmap[i] = mcrm.GetBitmap(mapChips[i].Id);
                 }
             }
 
@@ -72,7 +70,7 @@ namespace MapEdit
                 {
                     bitmap[i].RotateFlip(RotateFlipType.RotateNoneFlipX);
                 }
-                g.DrawImage(bitmap[i], 0, 0, mapChipSize, mapChipSize);
+                g.DrawImage(bitmap[i],0,0);
             }
             return resultBitmap;
         }

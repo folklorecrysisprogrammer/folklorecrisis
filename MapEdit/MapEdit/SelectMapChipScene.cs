@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace MapEdit
 {
-    class SelectMapChipScene:DXEX.Scene
+    public class SelectMapChipScene : DXEX.Scene
     {
         public MapChip MapChip { get; private set; }
         public SelectMapChipScene(Control control) : base(control)
@@ -16,7 +16,7 @@ namespace MapEdit
             MapChip = new MapChip(40);
             AddChild(MapChip);
         }
-        public void setMapChip(DXEX.Texture texture,int id)
+        public void setMapChip(DXEX.Texture texture, int id)
         {
             MapChip.SetTexture(texture);
             MapChip.Id = id;
