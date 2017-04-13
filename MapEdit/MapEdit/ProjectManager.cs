@@ -38,6 +38,32 @@ namespace MapEdit
                     System.Text.Encoding.GetEncoding("shift_jis"));
                 sw.Write(""+meForm.mcrm.LastID());
                 sw.Close();
+                // マップの中身を書き出す
+                string mapData = "";
+                MapData md = meForm.mws.GetMapData();
+                for (int y = 0; y < md.MapSize.Height; y++)
+                {
+                    for (int x = 0; x < md.MapSize.Width; x++)
+                    {
+                        MapOneMass mom = md[x, y];
+                        MapChip[] ChipId = mom.mapChips;
+                        for (int i = 0; i < ChipId.Length; i++)
+                        {
+                            int Id = ChipId[i].Id;
+                            int Angle = (int)(ChipId[i].Angle / 90.0);
+                            int turnFlag = ChipId[i].turnFlag;
+                            mapData += Id + "," + Angle + "," + turnFlag + ",";
+                        }
+                    }
+                    mapData += Environment.NewLine;
+                }
+                // テキストファイル生成(マップデータ)
+                sw = new System.IO.StreamWriter(
+                currentProjectPath + @"\MapData.txt",
+                false,
+                System.Text.Encoding.GetEncoding("shift_jis"));
+                sw.Write(mapData);
+                sw.Close();
             }
             return true;
         }
