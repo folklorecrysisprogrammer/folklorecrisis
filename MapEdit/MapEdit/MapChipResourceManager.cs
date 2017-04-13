@@ -63,5 +63,12 @@ namespace MapEdit
             }
             return null;
         }
+
+        public int LastID()
+        {
+            return bitmapList.Count - 1;
+        }
+
+
     }
 }
