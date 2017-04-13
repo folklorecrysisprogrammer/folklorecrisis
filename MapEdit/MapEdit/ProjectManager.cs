@@ -29,7 +29,15 @@ namespace MapEdit
             var bitmap = meForm.mcrm.GetBitmapSheet();
             if (bitmap != null)
             {
+                // 画像生成
                 bitmap.Save(currentProjectPath + @"\MapChip.png", ImageFormat.Png);
+                // テキストファイル生成
+                System.IO.StreamWriter sw = new System.IO.StreamWriter(
+                    currentProjectPath + @"\MapChip.txt",
+                    false,
+                    System.Text.Encoding.GetEncoding("shift_jis"));
+                sw.Write(""+meForm.mcrm.LastID());
+                sw.Close();
             }
             return true;
         }
