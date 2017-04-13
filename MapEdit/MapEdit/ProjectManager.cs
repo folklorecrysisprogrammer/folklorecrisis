@@ -21,6 +21,13 @@ namespace MapEdit
             this.meForm = meForm;
         }
 
+        //プロジェクトをロードする（引数のパスはプロジェクト名を含むとこまで）
+        public bool LoadProject(string path)
+        {
+
+            return true;
+        }
+
         public bool SaveNewProject(string path,string projectName)
         {
             currentProjectPath = path + @"\" + projectName;
