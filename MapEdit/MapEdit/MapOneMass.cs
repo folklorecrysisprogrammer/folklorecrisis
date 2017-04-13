@@ -13,8 +13,7 @@ namespace MapEdit
     {
         //画像を表示するスプライト
         //レイヤーの数だけ保持
-        private MapChip[] mapChips=new MapChip[MapEditForm.maxLayer];
-
+        public MapChip[] mapChips { get; private set; }
         private readonly int mapChipSize;
 
         private readonly MapChipResourceManager mcrm;
@@ -22,10 +21,10 @@ namespace MapEdit
         //初期化
         public MapOneMass(MapEditForm meForm)
         {
+            mapChips = new MapChip[MapEditForm.maxLayer];
             mapChipSize = meForm.MapChipSize;
             mcrm = meForm.mcrm;
-            anchor.SetVect(0, 0);
-           
+            anchor.SetVect(0, 0);           
 
             //レイヤーの数だけ画像表示用スプライトを生成する
             for (int i = 0; i < MapEditForm.maxLayer; i++)
