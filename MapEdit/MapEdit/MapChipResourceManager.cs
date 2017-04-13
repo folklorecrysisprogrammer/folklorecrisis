@@ -63,11 +63,5 @@ namespace MapEdit
             }
             return null;
         }
-
-        //一番最後のIdを返す
-        public int LastId()
-        {
-            return bitmapList.Count - 1;
-        }
     }
 }
