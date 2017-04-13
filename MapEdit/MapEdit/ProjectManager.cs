@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace MapEdit
 {
@@ -24,7 +25,13 @@ namespace MapEdit
         //プロジェクトをロードする（引数のパスはプロジェクト名を含むとこまで）
         public bool LoadProject(string path)
         {
-
+            if (Directory.Exists(path) == false) return false;
+            Bitmap bitmap = (Bitmap)Image.FromFile(path + @"MapChip.png");
+            StreamReader sr=new StreamReader(
+                    path + @"\MapChip.txt",
+                    Encoding.GetEncoding("shift_jis"));
+            int lastId=int.Parse(sr.ReadLine());
+            meForm.mcrm.LoadBitmapSheet(lastId, bitmap);
             return true;
         }
 
@@ -39,10 +46,10 @@ namespace MapEdit
                 // 画像生成
                 bitmap.Save(currentProjectPath + @"\MapChip.png", ImageFormat.Png);
                 // テキストファイル生成
-                System.IO.StreamWriter sw = new System.IO.StreamWriter(
+                StreamWriter sw = new StreamWriter(
                     currentProjectPath + @"\MapChip.txt",
                     false,
-                    System.Text.Encoding.GetEncoding("shift_jis"));
+                    Encoding.GetEncoding("shift_jis"));
                 sw.Write(""+meForm.mcrm.LastID());
                 sw.Close();
             }
