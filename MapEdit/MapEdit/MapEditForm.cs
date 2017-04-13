@@ -22,7 +22,7 @@ namespace MapEdit
         //プロジェクトデータを保存,上書き,開く機能をするクラス
         private ProjectManager pm;
         //実際にマップを描画するシーン
-        private MapWriteScene mws;
+        public MapWriteScene mws;
         //マップチップリソース管理
         public MapChipResourceManager mcrm { get; private set;}
 
