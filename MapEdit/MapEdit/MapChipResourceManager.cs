@@ -64,6 +64,26 @@ namespace MapEdit
             return null;
         }
 
+        //ビットマップを読み込み
+        //マップチップ画像データを
+        public void LoadBitmapSheet(int lastId,Bitmap bitmap)
+        {
+            bitmapList.Clear();
+            for (int y = 0; y < bitmap.Height/mapChipSize; y++)
+            {
+                for (int x = 0; x < 6; x++)
+                {
+                    Bitmap resultBitmap=new Bitmap(mapChipSize,mapChipSize);
+                    Graphics g = Graphics.FromImage(resultBitmap);
+                    g.DrawImage(bitmap, x * mapChipSize, y * mapChipSize);
+                    bitmapList.Add(resultBitmap);
+                    if (bitmapList.Count - 1 == lastId) return;
+                }
+            }
+            
+
+        }
+
         public int LastID()
         {
             return bitmapList.Count - 1;
