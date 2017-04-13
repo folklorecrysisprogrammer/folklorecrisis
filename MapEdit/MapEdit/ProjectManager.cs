@@ -31,10 +31,12 @@ namespace MapEdit
                     path + @"\MapChip.txt",
                     Encoding.GetEncoding("shift_jis"));
             int lastId=int.Parse(sr.ReadLine());
+            sr.Close();
             meForm.mcrm.LoadBitmapSheet(lastId, bitmap);
             return true;
         }
 
+        //プロジェクトを新しく保存する
         public bool SaveNewProject(string path,string projectName)
         {
             currentProjectPath = path + @"\" + projectName;

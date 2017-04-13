@@ -21,49 +21,87 @@ namespace DXEX
     public static class TextureCache
     {
         //画像キャッシュdata
-       static public Dictionary<string,TextureCore> textures = new Dictionary<string, TextureCore>();
+        static public Dictionary<string, TextureCore> textureList = new Dictionary<string, TextureCore>();
+        //分割画像キャッシュdata
+        static public List<TextureCore> textureAtlasList = new List<TextureCore>();
 
         //Textureを返す
         static public Texture GetTexture(string filePath)
         {
-            if (textures.ContainsKey(filePath) == true)
+            if (textureList.ContainsKey(filePath) == true)
             {
-                return new Texture(textures[filePath]);
+                return new Texture(textureList[filePath]);
             }
             int gh = DX.LoadGraph(filePath);
             if (gh == -1)
             {
                 throw new Exception("画像の読み込みに失敗しました");
             }
-            textures.Add(filePath, new TextureCore(gh));
-            return new Texture(textures.Last().Value);
+            textureList.Add(filePath, new TextureCore(gh));
+            return new Texture(textureList.Last().Value);
+        }
+
+        //画像を分割してTexture配列を返す
+        static public Texture[] GetTextureAtlas(string filePath ,int AllNum,int XNum, int YNum,
+                                              int XSize, int YSize)
+        {
+            int[] gh = new int[AllNum];
+            Texture[] textures = new Texture[AllNum]; 
+            int flag=DX.LoadDivGraph(filePath, AllNum, XNum, YNum,XSize,YSize, out gh[0]);
+            if (flag == -1)
+            {
+                throw new Exception("画像の読み込みに失敗しました");
+            }
+            for (int i = 0; i < AllNum; i++)
+            {
+                textureAtlasList.Add(new TextureCore(gh[i]));
+                textures[i] = new Texture(textureAtlasList.Last());
+            }
+            return textures;
         }
 
         //使用していない画像リソースを解放
         static public void NotUsingTextureDelete() {
-            var keys=new List<string>(); 
-            foreach(var key in textures.Keys)
+            var removeKeys=new List<string>(); 
+            foreach(var key in textureList.Keys)
             {
-                if (textures[key].NotUsing())
+                if (textureList[key].NotUsing())
                 {
-                    keys.Add(key);
+                    removeKeys.Add(key);
                 }
             }
-            foreach (var key in keys)
+            foreach (var key in removeKeys)
             {
-                textures[key].Dispose();
-                textures.Remove(key);
+                textureList[key].Dispose();
+                textureList.Remove(key);
             }
+            var removeList = new List<TextureCore>();
+            textureAtlasList.ForEach((textureCore) => {
+                if (textureCore.NotUsing())
+                {
+                    removeList.Add(textureCore);
+                }
+            });
+            removeList.ForEach((textureCore) =>{
+                textureCore.Dispose();
+                textureAtlasList.Remove(textureCore);
+            }
+                );
+
         }
 
         //全ての画像リソースを解放
         static public void AllTextureDelete()
         {
-            foreach (var key in textures.Keys)
+            foreach (var key in textureList.Keys)
             {
-                textures[key].Dispose();
+                textureList[key].Dispose();
             }
-            textures.Clear();
+            textureAtlasList.ForEach((textureCache) =>{
+                textureCache.Dispose();
+            });
+            textureAtlasList.Clear();
+            textureList.Clear();
         }
     }
 }
