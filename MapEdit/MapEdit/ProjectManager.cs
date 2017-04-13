@@ -14,7 +14,7 @@ namespace MapEdit
         private readonly MapEditForm meForm;
 
         //開いているプロジェクトへのパス
-        private string currentProjectPath;
+        private string currentProjectPath="";
 
         public ProjectManager(MapEditForm meForm)
         {
@@ -23,14 +23,19 @@ namespace MapEdit
 
         public bool SaveNewProject(string path,string projectName)
         {
+            //データを保存する場所を設定
             currentProjectPath = path + @"\" + projectName;
+            //ディレクトリが存在しないならfalseで抜ける
             if (Directory.Exists(path) == false) return false;
+            //プロジェクトフォルダを作成する
             Directory.CreateDirectory(currentProjectPath);
             var bitmap = meForm.mcrm.GetBitmapSheet();
             if (bitmap != null)
             {
                 bitmap.Save(currentProjectPath + @"\MapChip.png", ImageFormat.Png);
             }
+            //78461616646988
+
             return true;
         }
 
