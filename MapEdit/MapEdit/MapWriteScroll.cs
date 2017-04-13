@@ -31,27 +31,31 @@ namespace MapEdit
                 vScroll.Focus();
             };
 
-
             //スクロールバーの値が更新されたら
             //MapWriteSceneの位置を変更する
             hScroll.ValueChanged += (o, e) =>
             {
-                mws.localPos.x = -hScroll.Value;
+                mws.LocalPosX=-hScroll.Value;
+                mws.UpdateShowMapImage();
             };
             vScroll.ValueChanged += (o, e) =>
             {
-                mws.localPos.y = -vScroll.Value;
+                mws.LocalPosY = -vScroll.Value;
+                mws.UpdateShowMapImage();
             };
+
+            SetScrollDelta();
+            SetScrollMaximum();
         }
 
         //スクロールバーの変化量を設定
         //一回スクロールで一マス移動するようにする
         public void SetScrollDelta()
         {
-            vScroll.SmallChange = mws.MapChipSize;
-            vScroll.LargeChange = mws.MapChipSize;
-            hScroll.SmallChange = mws.MapChipSize;
-            hScroll.LargeChange = mws.MapChipSize;
+            vScroll.SmallChange = mws.GetMapData().MapChipSize;
+            vScroll.LargeChange = mws.GetMapData().MapChipSize;
+            hScroll.SmallChange = mws.GetMapData().MapChipSize;
+            hScroll.LargeChange = mws.GetMapData().MapChipSize;
         }
 
         //スクロールバーの最大値を設定
@@ -59,11 +63,11 @@ namespace MapEdit
         {
             hScroll.Value = 0;
             vScroll.Value = 0;
-            mws.localPos.SetVect(0, 0);
-            int temp = mws.MapSize.Width * mws.MapChipSize - mws.GetControl.Size.Width;
+            mws.LocalPos=new DXEX.Vect(0, 0);
+            int temp = mws.GetMapData().MapSize.Width * mws.GetMapData().MapChipSize - mws.GetControl.Size.Width;
             if (temp < 0) hScroll.Maximum = 0;
             else hScroll.Maximum = temp;
-            temp = mws.MapSize.Height * mws.MapChipSize - mws.GetControl.Size.Height;
+            temp = mws.GetMapData().MapSize.Height * mws.GetMapData().MapChipSize - mws.GetControl.Size.Height;
             if (temp < 0) vScroll.Maximum = 0;
             else vScroll.Maximum = temp;
         }

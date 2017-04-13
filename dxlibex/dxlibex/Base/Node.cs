@@ -16,7 +16,7 @@ namespace DXEX
      * 子の管理はChildListクラスに任せる*/
 
     //親子関係が設定可能なクラス
-  public  class Node : GameObject
+  public partial class Node : GameObject
     {
 
         //レイヤー
@@ -50,8 +50,8 @@ namespace DXEX
         {
             get
             {
-                if (parent == null) return Angle;
-                return parent.GlobalAngle+Angle;
+                if (parent == null) return angle;
+                return parent.GlobalAngle+angle;
             }
         }
 
@@ -76,7 +76,7 @@ namespace DXEX
         }
         public override double Angle
         {
-            get{return base.Angle;}
+            get{return angle;}
             set
             {
                 base.Angle = value;
@@ -91,10 +91,6 @@ namespace DXEX
         {
             return childList.GetList();
         }
-        //親に取り付けられた時に呼ばれる
-        public virtual void Attach() { }
-        //親から取り外された時に呼ばれる
-        public virtual void Detach() { }
 
         //親Nodeをセットする（返り値trueで成功）
         private void SetParent(Node _parent)

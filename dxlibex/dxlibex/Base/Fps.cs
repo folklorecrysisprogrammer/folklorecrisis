@@ -27,7 +27,11 @@ namespace DXEX
             {
                 count++;
             }
-            DX.DrawString(0, 0, "FPS"+fps.ToString("F"), DX.GetColor(255, 255, 255));
+        }
+
+        public static void FpsShow()
+        {
+            DX.DrawString(0, 0, "FPS" + fps.ToString("F"), DX.GetColor(255, 255, 255));
         }
 
         public static double GetFps() { return fps; }

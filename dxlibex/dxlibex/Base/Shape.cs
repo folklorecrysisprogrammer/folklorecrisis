@@ -41,8 +41,8 @@ namespace DXEX
         //cornerを計算で求める
         private void SetCorner()
         {
-            tsize.Width = size.Width * node.scale.x;
-            tsize.Height = size.Height * node.scale.y;
+            tsize.Width = size.Width * node.Scale.x;
+            tsize.Height = size.Height * node.Scale.y;
             corner[0].SetVect(
                 node.GlobalPos.x - (tsize.Width * node.anchor.x), 
                 node.GlobalPos.y - (tsize.Height * node.anchor.y)

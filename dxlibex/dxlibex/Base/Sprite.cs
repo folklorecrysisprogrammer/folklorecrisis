@@ -22,13 +22,13 @@ namespace DXEX
         //グラフィックハンドルをセット
         public void SetTexture(Texture _texture)
         {
-            //if (texture != null) texture.Dispose();
             texture = _texture;
             gh = _texture.Gh;
             int width,height;
             DX.GetGraphSize(gh, out width, out height);
             rect.Width = width;
             rect.Height = height;
+            UpdateTexture();
         }
         public void SetTexture(string filePath)
         {
@@ -39,12 +39,19 @@ namespace DXEX
             DX.GetGraphSize(gh, out width, out height);
             rect.Width = width;
             rect.Height = height;
+            UpdateTexture();
+        }
+
+        public Texture GetTexture()
+        {
+            return texture;
         }
 
         public void ClearTexture()
         {
             texture = null;
             gh = -1;
+            UpdateTexture();
         }
 
         //コンストラクタ-
@@ -77,6 +84,10 @@ namespace DXEX
             gh = -1;
             base.Dispose(isFinalize);
         }
+
+        //Textureが変更された時の処理
+        protected virtual void UpdateTexture(){}
+
 
     }
 }

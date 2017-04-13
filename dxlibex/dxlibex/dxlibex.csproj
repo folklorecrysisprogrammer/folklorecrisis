@@ -56,9 +56,11 @@
     <Compile Include="Base\ExclusiveList.cs" />
     <Compile Include="Base\Fps.cs" />
     <Compile Include="Base\GameObject.cs" />
+    <Compile Include="Base\GameObjectEvent.cs" />
     <Compile Include="Base\KeyControl.cs" />
     <Compile Include="Base\Letter.cs" />
     <Compile Include="Base\Node.cs" />
+    <Compile Include="Base\NodeEvent.cs" />
     <Compile Include="Base\Scene.cs" />
     <Compile Include="Base\Shape.cs" />
     <Compile Include="Base\Sprite.cs" />

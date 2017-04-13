@@ -21,7 +21,7 @@ namespace DXEX
             {
                 int x, y;
                 DX.GetMousePoint(out x, out y);
-                point.node.localPos.SetVect(x, y);
+                point.node.LocalPos.SetVect(x, y);
                 if (owner.CShape.CheckHit(point))
                 {
                     MouseDown();

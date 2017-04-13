@@ -10,10 +10,11 @@ namespace DXEX
     /*ゲームで使用するオブジェクトの基底クラス
      * 毎フレーム行う処理を追加したいならUpdate（）をオーバーライド
     */
-    public class GameObject:Coroutine,IDisposable
+    public partial class GameObject:Coroutine,IDisposable
     {
         //コンポーネントリスト
         List<Coroutine> components = new List<Coroutine>();
+
         //コンポーネント追加
        public void AddComponent(Coroutine component)
         {
@@ -25,7 +26,22 @@ namespace DXEX
         public virtual int Tag{ get { return tag; }set { tag = value; } }
 
         //ローカル座標
-        public Vect localPos;
+        protected Vect localPos;
+        public Vect LocalPos
+        {
+            get { return localPos; }
+            set { localPos = value; UpdateLocalPos(); }
+        }
+        public double LocalPosX
+        {
+            get { return localPos.x; }
+            set { localPos.x = value; UpdateLocalPos(); }
+        }
+        public double LocalPosY
+        {
+            get { return localPos.y; }
+            set { localPos.y = value; UpdateLocalPos(); }
+        }
 
         //オフセット座標
         public Vect offsetPos;
@@ -39,15 +55,20 @@ namespace DXEX
         public Vect anchor = new Vect(0, 0);
 
         //回転角度(度数法)
-        private double angle=0;
+        protected double angle=0;
         public virtual double Angle
         {
             get { return angle; }
-            set { angle = value; }
+            set { angle = value; UpdateAngle(); }
         }
 
         //拡大率(1.0で等倍)
-        public Vect scale=new Vect(1.0,1.0);
+        protected Vect scale=new Vect(1.0,1.0);
+        public Vect Scale
+        {
+            get { return scale; }
+            set { scale = value; UpdateScale(); }
+        }
 
         //不透明度（0～255）
         private byte opacity =255;

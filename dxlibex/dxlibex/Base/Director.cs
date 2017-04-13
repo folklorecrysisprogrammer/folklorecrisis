@@ -77,7 +77,6 @@ namespace DXEX
             
             while (DX.ScreenFlip() == 0 && DX.ProcessMessage() == 0 && DX.ClearDrawScreen() == 0)
             {
-
                 mainScene.LoopDo();
                 DX.SetDrawBlendMode(DX.DX_BLENDMODE_ALPHA,255);
                 FpsControl.Fps();
@@ -95,11 +94,13 @@ namespace DXEX
                 subSceneList.Lock();
                 subSceneList.GetList.ForEach(
                     (scene) => {
+                        DX.ClearDrawScreen();
                         DX.SetScreenFlipTargetWindow(scene.control.Handle);
                         scene.LoopDo();
+                        FpsControl.FpsShow();
                         DX.SetDrawScreen(DX.DX_SCREEN_BACK);
                         DX.ScreenFlip();
-                        //DX.ClearDrawScreen();
+                        //
                     }
                 );
                 subSceneList.UnLock();
