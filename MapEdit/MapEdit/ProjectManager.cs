@@ -30,7 +30,7 @@ namespace MapEdit
             if (bitmap != null)
             {
                 bitmap.Save(currentProjectPath + @"\MapChip.png", ImageFormat.Png);
-                // TEST      
+                meForm.mcrm.lastId();
             }
             return true;
         }
