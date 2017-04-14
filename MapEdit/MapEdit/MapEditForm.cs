@@ -18,7 +18,7 @@ namespace MapEdit
         //layerの数
         public const int maxLayer = 3;
         //マップチップパレットフォーム
-        private SelectImageForm sif;
+        public SelectImageForm sif { get; private set;}
         //プロジェクトデータを保存,上書き,開く機能をするクラス
         private ProjectManager pm;
         //実際にマップを描画するシーン
@@ -100,6 +100,21 @@ namespace MapEdit
             snpf.ShowDialog(this);
         }
 
+        //開くメニューが選択された時の処理
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fbd = new FolderBrowserDialog();
+
+            //ダイアログを表示する
+            if (fbd.ShowDialog(this) == DialogResult.OK)
+            {
+                if (pm.LoadProject(fbd.SelectedPath) == false)
+                {
+                    MessageBox.Show("エラー", "プロジェクトが存在しません", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         //layerが変更された時の処理
         private void layerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -158,5 +173,6 @@ namespace MapEdit
         {
                 mws.GetScroll().KeyScroll(e);
         }
+
     }
 }

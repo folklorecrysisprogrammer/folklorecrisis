@@ -35,5 +35,23 @@ namespace MapEdit
             index++;
         }
 
+        public void ClearMapChip()
+        {
+            if (index == 0) return;
+            for (int x = 0; x < mapChips.GetLength(0); x++)
+            {
+                for (int y = 0; y < mapChips.GetLength(1); y++)
+                {
+                    if (mapChips[x,y] != null)
+                    {
+                        mapChips[x, y].Dispose();
+                    }
+                }
+            }
+            index = 0;
+            mapChips = new MapChip[6, 50];
+
+        }
+
     }
 }

@@ -12,26 +12,26 @@ namespace MapEdit
     {
         private readonly MapPalletData mapPalletData;
 
-        private readonly MapChipResourceManager mcrm;
+        private readonly MapEditForm meForm;
 
         private SelectMapChipScene sms;
         public MapPalletScene(Panel panel,SelectImageForm sif) : base(panel)
         {
             panel.MouseDown += MouseAction;
             this.sms = sif.SelectMapChipScene;
-            mcrm = sif.MeForm.mcrm;
+            meForm = sif.MeForm;
             mapPalletData = new MapPalletData();
             localPos.SetVect(0, 0);
         }
 
         //ファイルから新しいマップチップを生成し登録する
-        private void AddMapChip(string fileName)
+        public void AddMapChip(string fileName)
         {
             MapChip mapChip = new MapChip(40);
             try
             {
                 mapChip.SetTexture(fileName);
-                mapChip.Id=mcrm.pushImageFile(fileName);
+                mapChip.Id=meForm.mcrm.pushImageFile(fileName);
             }
             catch (Exception)
             {
@@ -52,10 +52,21 @@ namespace MapEdit
             );
         }
 
-        //プロジェクトからパレットをロードする
-        public void Load()
+        //プロジェクトからマップチップパレットをロードする
+        public void LoadProject(string filePath,int yCount)
         {
-
+            mapPalletData.ClearMapChip();
+            int allNum = 6 * yCount;
+            DXEX.Texture[] textures =
+            DXEX.TextureCache.GetTextureAtlas(filePath, allNum, 6, yCount, meForm.MapChipSize, meForm.MapChipSize);
+            for(int id = 0; id <= meForm.mcrm.LastID(); id++)
+            {
+                MapChip mapChip = new MapChip(40);
+                mapChip.SetTexture(textures[id]);
+                mapChip.Id = id;
+                mapPalletData.AddMapChip(mapChip);
+                AddChild(mapChip);
+            }
         }
 
     }
