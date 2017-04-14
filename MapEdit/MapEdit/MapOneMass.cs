@@ -11,7 +11,7 @@ namespace MapEdit
     //マップの1マスを管理するクラス
     public class MapOneMass:DXEX.Node
     {
-        //画像を表示するスプライト
+        //画像を表示するスプライトを
         //レイヤーの数だけ保持
         public MapChip[] mapChips { get; private set; }
         private readonly int mapChipSize;

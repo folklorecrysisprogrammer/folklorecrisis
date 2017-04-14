@@ -110,26 +110,26 @@
             // 開くToolStripMenuItem
             // 
             this.開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-            this.開くToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.開くToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.開くToolStripMenuItem.Text = "開く";
             // 
             // 保存ToolStripMenuItem
             // 
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.保存ToolStripMenuItem.Text = "保存";
             this.保存ToolStripMenuItem.Click += new System.EventHandler(this.保存ToolStripMenuItem_Click);
             // 
             // 上書きToolStripMenuItem
             // 
             this.上書きToolStripMenuItem.Name = "上書きToolStripMenuItem";
-            this.上書きToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.上書きToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.上書きToolStripMenuItem.Text = "上書き";
             // 
             // 画像出力ToolStripMenuItem1
             // 
             this.画像出力ToolStripMenuItem1.Name = "画像出力ToolStripMenuItem1";
-            this.画像出力ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.画像出力ToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
             this.画像出力ToolStripMenuItem1.Text = "画像出力";
             this.画像出力ToolStripMenuItem1.Click += new System.EventHandler(this.画像出力ToolStripMenuItem_Click);
             // 
@@ -246,6 +246,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MapEditForm";
             this.Text = "MapEdit";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MapEditForm_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

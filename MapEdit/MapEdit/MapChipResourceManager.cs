@@ -8,7 +8,7 @@ using System.Drawing.Drawing2D;
 
 namespace MapEdit
 {
-    //マップチップ画像をBMPとして保持するクラス
+    //マップチップ画像をBMPとして保持し、IDで紐づけして管理するクラス
     public class MapChipResourceManager
     {
         private List<Bitmap> bitmapList=new List<Bitmap>();

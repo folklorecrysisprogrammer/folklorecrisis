@@ -18,11 +18,13 @@ namespace MapEdit
             get { return mapChips[x, y]; }
         }
 
+        //初期化
         public MapPalletData()
         {
             mapChips = new MapChip[6, 50];
         }
 
+        //マップpalletに新しいマップチップを登録する
         public void AddMapChip(MapChip mapChip)
         {
             int x = index % 6;

@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 namespace MapEdit
 {
+    //マップパレットフォームのパネルのとこに表示される画像を制御するシーン
    public class MapPalletScene:MapSceneBase
     {
         private readonly MapPalletData mapPalletData;
@@ -23,14 +24,14 @@ namespace MapEdit
             localPos.SetVect(0, 0);
         }
 
-        public void AddMapChip(string fileName)
+        //ファイルから新しいマップチップを生成し登録する
+        private void AddMapChip(string fileName)
         {
             MapChip mapChip = new MapChip(40);
             try
             {
                 mapChip.SetTexture(fileName);
                 mapChip.Id=mcrm.pushImageFile(fileName);
-                
             }
             catch (Exception)
             {
@@ -40,6 +41,7 @@ namespace MapEdit
             AddChild(mapChip);
         }
 
+        //クリックされた場所にあるマップチップを選択する
         private void MouseAction(object o,MouseEventArgs e)
         {
             Point point=LocationToMap(e.Location,40);
@@ -48,6 +50,12 @@ namespace MapEdit
                 mapPalletData[point.X, point.Y].GetTexture(),
                 mapPalletData[point.X, point.Y].Id    
             );
+        }
+
+        //プロジェクトからパレットをロードする
+        public void Load()
+        {
+
         }
 
     }

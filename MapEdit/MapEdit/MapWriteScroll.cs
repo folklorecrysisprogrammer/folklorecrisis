@@ -71,5 +71,50 @@ namespace MapEdit
             if (temp < 0) vScroll.Maximum = 0;
             else vScroll.Maximum = temp;
         }
+
+        //スクロールバーの値を範囲内に収めながら加算する
+        static public void ScrollBarAddValue(ScrollBar scrollBar, int plus)
+        {
+            if (scrollBar.Value + plus > scrollBar.Maximum)
+            {
+                scrollBar.Value = scrollBar.Maximum;
+            }
+            else if (scrollBar.Value + plus < scrollBar.Minimum)
+            {
+                scrollBar.Value = scrollBar.Minimum;
+            }
+            else
+            {
+                scrollBar.Value += plus;
+            }
+        }
+
+        //キーが押されたらスクロールバーをスクロールする
+        public void KeyScroll(KeyEventArgs e)
+        {
+            mws.control.Focus();
+
+            //WASDキーが押されていたら、スクロールバーをスクロール
+            if (e.KeyData == Keys.D)
+            {
+                ScrollBarAddValue(hScroll, hScroll.LargeChange);
+                hScroll.Focus();
+            }
+            if (e.KeyData == Keys.A)
+            {
+                ScrollBarAddValue(hScroll, -hScroll.LargeChange);
+                hScroll.Focus();
+            }
+            if (e.KeyData == Keys.S)
+            {
+                ScrollBarAddValue(vScroll, vScroll.LargeChange);
+                vScroll.Focus();
+            }
+            if (e.KeyData == Keys.W)
+            {
+                ScrollBarAddValue(vScroll, -vScroll.LargeChange);
+                vScroll.Focus();
+            }
+        }
     }
 }
