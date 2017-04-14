@@ -51,11 +51,13 @@ namespace DXEX
             DX.DxLib_End(); // DXライブラリ終了処理
         }
 
+        //シーンの追加（フォームと連携する場合のみ使用）
         static public void AddSubScene(Scene scene)
         {
             subSceneList.AddCheck(scene);
         }
 
+        //シーンの削除（フォームと連携する場合のみ使用）
         static public void RemoveSubScene(Scene scene)
         {
             subSceneList.RemoveCheck(scene);
@@ -77,9 +79,12 @@ namespace DXEX
             
             while (DX.ScreenFlip() == 0 && DX.ProcessMessage() == 0 && DX.ClearDrawScreen() == 0)
             {
+                //シーンのUpdate
                 mainScene.LoopDo();
+                //透明度リセット
                 DX.SetDrawBlendMode(DX.DX_BLENDMODE_ALPHA,255);
                 FpsControl.Fps();
+                //キー判定の更新
                 KeyControl.Getkey();
             }
         }

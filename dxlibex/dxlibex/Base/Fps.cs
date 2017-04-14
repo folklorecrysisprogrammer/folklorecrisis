@@ -29,6 +29,7 @@ namespace DXEX
             }
         }
 
+        //FPSを画面に表示する
         public static void FpsShow()
         {
             DX.DrawString(0, 0, "FPS" + fps.ToString("F"), DX.GetColor(255, 255, 255));

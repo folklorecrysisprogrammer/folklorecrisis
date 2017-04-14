@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DxLibDLL;
 
+
+//まるで未完成
 namespace DXEX
 {
     //物の形を表す基底クラス

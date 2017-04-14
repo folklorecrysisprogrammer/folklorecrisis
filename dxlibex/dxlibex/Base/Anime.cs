@@ -39,5 +39,9 @@ namespace DXEX
         {
             textures.Add(texture);
         }
+
+        //ここにアニメーション画像の削除関数が入る予定
+
+        //
     }
 }
