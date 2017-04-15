@@ -22,7 +22,7 @@ namespace MapEdit
         //プロジェクトデータを保存,上書き,開く機能をするクラス
         private ProjectManager pm;
         //実際にマップを描画するシーン
-        public MapWriteScene mws;
+        public MapWriteScene mws { get; private set; }
         //マップチップリソース管理
         public MapChipResourceManager mcrm { get; private set;}
 
@@ -48,7 +48,17 @@ namespace MapEdit
             {
                 sif.Dispose();
             };
-           
+
+            //スクロールバーの値が更新されたら、mwsの位置を更新する処理を呼ぶ
+            hScrollBar1.ValueChanged += (o, e) =>
+            {
+                mws.GetScroll().UpdateValue();
+            };
+            vScrollBar1.ValueChanged += (o, e) =>
+            {
+                mws.GetScroll().UpdateValue();
+            };
+
             //DXEX初期化
             DXEX.Director.init(this);
             DX.SetAlwaysRunFlag(DX.TRUE);
@@ -67,7 +77,7 @@ namespace MapEdit
             //mapWriteScene初期化
             //mapWritePanelをDXライブラリの描画先に設定
             mws = 
-                new MapWriteScene(sif,mapWritePanel,hScrollBar1,vScrollBar1,this);
+                new MapWriteScene(mapWritePanel,hScrollBar1,vScrollBar1,this,new Size(20,20));
 
             //comboボックスのデフォルト値設定
             layerComboBox.SelectedIndex = 0;
@@ -77,6 +87,18 @@ namespace MapEdit
             Show();
             //DXライブラリループ開始
             DXEX.Director.StartLoop(this,mws);
+        }
+
+        public void LoadProject(int mapChipSize,Size mapSize) {
+            MapChipSize = mapChipSize;
+            mcrm = new MapChipResourceManager(mapChipSize);
+            //mapWriteScene初期化
+            //mapWritePanelをDXライブラリの描画先に設定
+            DXEX.Director.RemoveSubScene(mws);
+            mws.Dispose();
+            mws =
+                new MapWriteScene(mapWritePanel, hScrollBar1, vScrollBar1, this,mapSize);
+            DXEX.Director.AddSubScene(mws);
         }
 
 
@@ -112,6 +134,15 @@ namespace MapEdit
                 {
                     MessageBox.Show("エラー", "プロジェクトが存在しません", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        //上書きメニューが選択された時の処理
+        private void 上書きToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pm.OverwriteProject() == false)
+            {
+                MessageBox.Show("エラー", "プロジェクトが存在しません", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -173,6 +204,7 @@ namespace MapEdit
         {
                 mws.GetScroll().KeyScroll(e);
         }
+
 
     }
 }

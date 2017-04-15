@@ -31,21 +31,17 @@ namespace MapEdit
                 vScroll.Focus();
             };
 
-            //スクロールバーの値が更新されたら
-            //MapWriteSceneの位置を変更する
-            hScroll.ValueChanged += (o, e) =>
-            {
-                mws.LocalPosX=-hScroll.Value;
-                mws.UpdateShowMapImage();
-            };
-            vScroll.ValueChanged += (o, e) =>
-            {
-                mws.LocalPosY = -vScroll.Value;
-                mws.UpdateShowMapImage();
-            };
 
             SetScrollDelta();
             SetScrollMaximum();
+        }
+
+        //スクロールバーの値を元に、mwsの位置を更新する
+        public void UpdateValue()
+        {
+            mws.LocalPosX = -hScroll.Value;
+            mws.LocalPosY = -vScroll.Value;
+            mws.UpdateShowMapImage();
         }
 
         //スクロールバーの変化量を設定

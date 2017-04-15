@@ -102,6 +102,7 @@
             this.Controls.Add(this.newProjectNameTextBox);
             this.Name = "SaveNewProjectForm";
             this.Text = "保存";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

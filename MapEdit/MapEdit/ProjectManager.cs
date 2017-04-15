@@ -20,29 +20,40 @@ namespace MapEdit
         public ProjectManager(MapEditForm meForm)
         {
             this.meForm = meForm;
+            currentProjectPath = "";
         }
 
         //プロジェクトをロードする（引数のパスはプロジェクト名を含むとこまで）
         public bool LoadProject(string path)
         {
             if (Directory.Exists(path) == false) return false;
-            if (Directory.Exists(path + @"\MapChip.png") == false) return false;
-            if (Directory.Exists(path + @"\MapChip.txt") == false) return false;
-            Bitmap bitmap = (Bitmap)Image.FromFile(path + @"\MapChip.png");
+            if (File.Exists(path + @"\MapChip.png") == false) return false;
+            if (File.Exists(path + @"\MapChip.txt") == false) return false;
+            currentProjectPath = path;
+            //MapChip.txt読み込み
             StreamReader sr=new StreamReader(
                     path + @"\MapChip.txt",
                     Encoding.GetEncoding("shift_jis"));
             int lastId=int.Parse(sr.ReadLine());
             sr.Close();
-            meForm.mcrm.LoadBitmapSheet(lastId, bitmap);
-            meForm.sif.MapPalletScene.LoadProject(path + @"\MapChip.png", bitmap.Height / meForm.MapChipSize);
+            //MapData.txt読み込み
+            sr= new StreamReader(
+                    path + @"\MapData.txt",
+                    Encoding.GetEncoding("shift_jis"));
+            var mapDataFromText = new MapDataFromText(sr);
+            sr.Close();
+            meForm.LoadProject(mapDataFromText.MapChipSize,mapDataFromText.MapSize);
+            meForm.mcrm.LoadBitmapSheet(lastId, path + @"\MapChip.png");
+            meForm.sif.MapPalletScene.LoadProject();
+            meForm.mws.GetMapData().LoadProject(mapDataFromText);
+            meForm.sif.SelectMapChipScene.resetMapChip();
             return true;
         }
 
         //プロジェクトを新しく保存する
-        public bool SaveNewProject(string path,string projectName)
+        public bool SaveNewProject(string path)
         {
-            currentProjectPath = path + @"\" + projectName;
+            currentProjectPath = path;
             if (Directory.Exists(path) == false) return false;
             Directory.CreateDirectory(currentProjectPath);
             var bitmap = meForm.mcrm.GetBitmapSheet();
@@ -87,6 +98,12 @@ namespace MapEdit
                 sw.Close();
             }
             return true;
+        }
+        //プロジェクトの上書き
+        public bool OverwriteProject()
+        {
+            if (currentProjectPath == "") return false;
+            return SaveNewProject(currentProjectPath);
         }
 
     }

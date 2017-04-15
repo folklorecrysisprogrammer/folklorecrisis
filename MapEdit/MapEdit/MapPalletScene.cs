@@ -53,16 +53,13 @@ namespace MapEdit
         }
 
         //プロジェクトからマップチップパレットをロードする
-        public void LoadProject(string filePath,int yCount)
+        public void LoadProject()
         {
             mapPalletData.ClearMapChip();
-            int allNum = 6 * yCount;
-            DXEX.Texture[] textures =
-            DXEX.TextureCache.GetTextureAtlas(filePath, allNum, 6, yCount, meForm.MapChipSize, meForm.MapChipSize);
             for(int id = 0; id <= meForm.mcrm.LastID(); id++)
             {
                 MapChip mapChip = new MapChip(40);
-                mapChip.SetTexture(textures[id]);
+                mapChip.SetTexture(meForm.mcrm.GetTexture(id));
                 mapChip.Id = id;
                 mapPalletData.AddMapChip(mapChip);
                 AddChild(mapChip);

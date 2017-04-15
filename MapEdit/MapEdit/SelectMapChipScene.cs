@@ -21,5 +21,10 @@ namespace MapEdit
             MapChip.SetTexture(texture);
             MapChip.Id = id;
         }
+
+        public void resetMapChip()
+        {
+            MapChip.ClearTexture();
+        }
     }
 }
