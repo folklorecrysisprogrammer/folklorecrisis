@@ -58,10 +58,12 @@ namespace MapEdit
                 sw.Write(""+meForm.mcrm.LastID());
                 sw.Close();
                 // マップの中身を書き出す
-                string mapData = "";
+                string mapDataText = "";
                 MapData md = meForm.mws.GetMapData();
+                mapDataText = meForm.MapChipSize + "," + md.MapSize.Width + "," + md.MapSize.Height;
                 for (int y = 0; y < md.MapSize.Height; y++)
                 {
+                    mapDataText += Environment.NewLine;
                     for (int x = 0; x < md.MapSize.Width; x++)
                     {
                         MapOneMass mom = md[x, y];
@@ -71,17 +73,17 @@ namespace MapEdit
                             int Id = ChipId[i].Id;
                             int Angle = (int)(ChipId[i].Angle / 90.0);
                             int turnFlag = ChipId[i].turnFlag;
-                            mapData += Id + "," + Angle + "," + turnFlag + ",";
+                            mapDataText += Id + "," + Angle + "," + turnFlag + ",";
                         }
                     }
-                    mapData += Environment.NewLine;
+                    
                 }
                 // テキストファイル生成(マップデータ)
                 sw = new System.IO.StreamWriter(
                 currentProjectPath + @"\MapData.txt",
                 false,
                 System.Text.Encoding.GetEncoding("shift_jis"));
-                sw.Write(mapData);
+                sw.Write(mapDataText);
                 sw.Close();
             }
             return true;
