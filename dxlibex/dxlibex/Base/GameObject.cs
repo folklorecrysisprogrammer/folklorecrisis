@@ -69,6 +69,16 @@ namespace DXEX
             get { return scale; }
             set { scale = value; UpdateScale(); }
         }
+        public double ScaleX
+        {
+            get { return scale.x; }
+            set { scale.x = value; UpdateScale(); }
+        }
+        public double ScaleY
+        {
+            get { return scale.y; }
+            set { scale.y = value; UpdateScale(); }
+        }
 
         //不透明度（0～255）
         private byte opacity =255;
