@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace MapEdit
 {
-    //マップデータをtxtから解析するクラス
+    //マップデータをmapData.txtから解析するクラス
     public class MapDataFromText
     {
         public int MapChipSize { get; }
