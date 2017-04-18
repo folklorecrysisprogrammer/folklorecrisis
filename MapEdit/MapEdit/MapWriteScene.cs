@@ -14,11 +14,8 @@ namespace MapEdit
     public class MapWriteScene : MapSceneBase
     {
 
-        private SelectImageForm selectImageForm;
-
-
-        //表示先のパネル
-        private Panel panel;
+        //親フォーム
+        private MapEditForm meForm;
 
         //マップのスクロール制御用
         private readonly MapWriteScroll mapWriteScroll;
@@ -28,50 +25,45 @@ namespace MapEdit
         public int CurrentLayer { get; set; }
 
         //マップの各マスの画像情報
-        private readonly MapData mapData;
-        public MapData GetMapData() { return mapData; }
+        public MapData MapData{ get; }
 
-        //初期化
-        public MapWriteScene(Panel panel, HScrollBar hScroll, VScrollBar vScroll,MapEditForm meForm,Size mapSize) : base(panel)
+        //初期化                                               //描画先をmwpにする
+        public MapWriteScene(MapEditForm meForm,Size mapSize,int mapChipSize) : base(meForm.mwp)
         {
-            this.selectImageForm =meForm.sif;
-            this.panel = panel;
-            mapData = new MapData(meForm,mapSize);
-            mapWriteScroll = new MapWriteScroll(hScroll, vScroll, this);
-            
-            panel.SizeChanged += (o, e) =>
-            {
-                mapWriteScroll.SetScrollMaximum();
-                UpdateShowMapImage();
-            };
-            panel.MouseDown += MouseAction;
-            panel.MouseMove += MouseAction;
+            this.meForm =meForm;
+            MapData = new MapData(meForm,mapSize,mapChipSize);
+            mapWriteScroll = new MapWriteScroll(meForm.Hscroll, meForm.Vscroll, this);
             localPos.SetVect(0, 0);
-
             UpdateShowMapImage();
         }
 
         //表示するMapImageをAddChildして、表示されなくなったMapImageをRemoveChildする
         public void UpdateShowMapImage()
         {
-            Point showOriginMapImageIndex= LocationToMap(new Point(0, 0),mapData.MapChipSize);
-            Size ShowMapImageNumber= new Size(panel.Size.Width / mapData.MapChipSize + 1, panel.Size.Height / mapData.MapChipSize + 1);
+            Panel panel = meForm.mwp;
+            //マップに表示されている左上のMapImageにアクセスするために、MapImage配列の添え字を計算する
+            Point leftUpIndex = LocationToMap(new Point(0, 0),MapData.MapChipSize);
+            //表示される領域はMapImage配列のどこからどこまでか計算
+            Size showNumber = 
+                new Size(panel.Size.Width / MapData.MapChipSize + 1, panel.Size.Height / MapData.MapChipSize + 1);
+            //全てのMapImageを親から外す
             GetAllChildren().ForEach((child)=>{ child.RemoveFromParent();});
-            for (int x = showOriginMapImageIndex.X; x < showOriginMapImageIndex.X + ShowMapImageNumber.Width && x<mapData.MapSize.Width; x++)
+            //画面に表示されるMapImageだけAddChild
+            for (int x = leftUpIndex.X; x < leftUpIndex.X + showNumber.Width && x<MapData.MapSizeX; x++)
             {
-                for (int y = showOriginMapImageIndex.Y; y < showOriginMapImageIndex.Y+ShowMapImageNumber.Height && y < mapData.MapSize.Height; y++)
+                for (int y = leftUpIndex.Y; y < leftUpIndex.Y+showNumber.Height && y < MapData.MapSizeY; y++)
                 {
-                    AddChild(mapData[x, y]);
+                    AddChild(MapData[x, y]);
                 }
             }
         }
 
         //マウスでマップを書く処理
-        private void MouseAction(object o, MouseEventArgs e)
+        public void MouseAction(object o, MouseEventArgs e)
         {
-            Point point = LocationToMap(e.Location,mapData.MapChipSize);
+            Point point = LocationToMap(e.Location,MapData.MapChipSize);
             //マップサイズ範囲外なら終了
-            if (point.X >= mapData.MapSize.Width || point.Y >=mapData.MapSize.Height ||
+            if (point.X >= MapData.MapSizeX || point.Y >=MapData.MapSizeY ||
                 point.X < 0 || point.Y < 0) return;
 
             //マップ処理
@@ -80,14 +72,14 @@ namespace MapEdit
             {
                 //左クリックされている時の処理
                 //マップを書く
-                mapData[point.X, point.Y].PutImage(selectImageForm.GetSelectMapChip(), CurrentLayer);
+                MapData[point.X, point.Y].PutImage(meForm.sif.GetSelectMapChip(), CurrentLayer);
             }
             if ((Control.MouseButtons & MouseButtons.Right)
                 == MouseButtons.Right)
             {
                 //右クリックされている時の処理
                 //マップをクリアします
-                mapData[point.X, point.Y].ClearImage(CurrentLayer);
+                MapData[point.X, point.Y].ClearImage(CurrentLayer);
             }
         }
 

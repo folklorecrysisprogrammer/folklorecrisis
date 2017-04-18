@@ -8,29 +8,17 @@ using System.Windows.Forms;
 namespace MapEdit
 {
     //MapWriteSceneをスクロールするためのクラス
-   public class MapWriteScroll
+    public class MapWriteScroll
     {
-        private HScrollBar hScroll;
-        private VScrollBar vScroll;
-        private MapWriteScene mws;
+        private readonly HScrollBar hScroll;
+        private readonly VScrollBar vScroll;
+        private readonly MapWriteScene mws;
 
-        public MapWriteScroll(HScrollBar hScroll,VScrollBar vScroll,MapWriteScene mws)
+        public MapWriteScroll(HScrollBar hScroll, VScrollBar vScroll, MapWriteScene mws)
         {
             this.hScroll = hScroll;
             this.vScroll = vScroll;
             this.mws = mws;
-
-            //スクロールバーがスクロールされたら、
-            //フォーカスを当てるようにしてmouseホイールしやすくする
-            hScroll.Scroll += (o, e) =>
-            {
-                hScroll.Focus();
-            };
-            vScroll.Scroll += (o, e) =>
-            {
-                vScroll.Focus();
-            };
-
 
             SetScrollDelta();
             SetScrollMaximum();
@@ -48,10 +36,10 @@ namespace MapEdit
         //一回スクロールで一マス移動するようにする
         public void SetScrollDelta()
         {
-            vScroll.SmallChange = mws.GetMapData().MapChipSize;
-            vScroll.LargeChange = mws.GetMapData().MapChipSize;
-            hScroll.SmallChange = mws.GetMapData().MapChipSize;
-            hScroll.LargeChange = mws.GetMapData().MapChipSize;
+            vScroll.SmallChange = mws.MapData.MapChipSize;
+            vScroll.LargeChange = mws.MapData.MapChipSize;
+            hScroll.SmallChange = mws.MapData.MapChipSize;
+            hScroll.LargeChange = mws.MapData.MapChipSize;
         }
 
         //スクロールバーの最大値を設定
@@ -59,11 +47,11 @@ namespace MapEdit
         {
             hScroll.Value = 0;
             vScroll.Value = 0;
-            mws.LocalPos=new DXEX.Vect(0, 0);
-            int temp = mws.GetMapData().MapSize.Width * mws.GetMapData().MapChipSize - mws.GetControl.Size.Width;
+            mws.LocalPos = new DXEX.Vect(0, 0);
+            int temp = mws.MapData.MapSizeX * mws.MapData.MapChipSize - mws.GetControl.Size.Width;
             if (temp < 0) hScroll.Maximum = 0;
             else hScroll.Maximum = temp;
-            temp = mws.GetMapData().MapSize.Height * mws.GetMapData().MapChipSize - mws.GetControl.Size.Height;
+            temp = mws.MapData.MapSizeY * mws.MapData.MapChipSize - mws.GetControl.Size.Height;
             if (temp < 0) vScroll.Maximum = 0;
             else vScroll.Maximum = temp;
         }

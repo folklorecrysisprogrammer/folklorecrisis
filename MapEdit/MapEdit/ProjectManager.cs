@@ -33,7 +33,8 @@ namespace MapEdit
             //MapChip.txt読み込み
             StreamReader sr=new StreamReader(
                     path + @"\MapChip.txt",
-                    Encoding.GetEncoding("shift_jis"));
+                    Encoding.GetEncoding("shift_jis")
+                );
             int lastId=int.Parse(sr.ReadLine());
             sr.Close();
             //MapData.txt読み込み
@@ -45,7 +46,7 @@ namespace MapEdit
             meForm.LoadProject(mapDataFromText.MapChipSize,mapDataFromText.MapSize);
             meForm.mcrm.LoadBitmapSheet(lastId, path + @"\MapChip.png");
             meForm.sif.MapPalletScene.LoadProject();
-            meForm.mws.GetMapData().LoadProject(mapDataFromText);
+            meForm.mws.MapData.LoadProject(mapDataFromText);
             meForm.sif.SelectMapChipScene.resetMapChip();
             return true;
         }
@@ -70,12 +71,12 @@ namespace MapEdit
                 sw.Close();
                 // マップの中身を書き出す
                 string mapDataText = "";
-                MapData md = meForm.mws.GetMapData();
-                mapDataText = meForm.MapChipSize + "," + md.MapSize.Width + "," + md.MapSize.Height;
-                for (int y = 0; y < md.MapSize.Height; y++)
+                MapData md = meForm.mws.MapData;
+                mapDataText = md.MapChipSize + "," + md.MapSizeX + "," + md.MapSizeY;
+                for (int y = 0; y < md.MapSizeY; y++)
                 {
                     mapDataText += Environment.NewLine;
-                    for (int x = 0; x < md.MapSize.Width; x++)
+                    for (int x = 0; x < md.MapSizeX; x++)
                     {
                         MapOneMass mom = md[x, y];
                         MapChip[] ChipId = mom.mapChips;

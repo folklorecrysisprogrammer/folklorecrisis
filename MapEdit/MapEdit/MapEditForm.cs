@@ -26,14 +26,19 @@ namespace MapEdit
         //マップチップリソース管理
         public MapChipResourceManager mcrm { get; private set;}
 
-        public int MapChipSize { get; private set; } 
+        //マップをスクロールするスクロールバー
+        public VScrollBar Vscroll { get { return vScrollBar1; } }
+        public HScrollBar Hscroll { get { return hScrollBar1; } }
+        //マップを表示するパネル
+        public Panel mwp { get { return mapWritePanel; } }
+
+       // public int MapChipSize { get; private set; } 
 
         //初期化
         public MapEditForm(int mapChipSize)
         {
             InitializeComponent();
             pm = new ProjectManager(this);
-            MapChipSize = mapChipSize;
             mcrm = new MapChipResourceManager(mapChipSize);
             sif = new SelectImageForm(this);
             //メインウインドウのロードが終わったら、
@@ -59,6 +64,17 @@ namespace MapEdit
                 mws.GetScroll().UpdateValue();
             };
 
+            //スクロールバーがスクロールされたら、
+            //フォーカスを当てるようにしてmouseホイールしやすくする
+            hScrollBar1.Scroll += (o, e) =>
+            {
+                hScrollBar1.Focus();
+            };
+            vScrollBar1.Scroll += (o, e) =>
+            {
+                vScrollBar1.Focus();
+            };
+
             //DXEX初期化
             DXEX.Director.init(this);
             DX.SetAlwaysRunFlag(DX.TRUE);
@@ -77,7 +93,7 @@ namespace MapEdit
             //mapWriteScene初期化
             //mapWritePanelをDXライブラリの描画先に設定
             mws = 
-                new MapWriteScene(mapWritePanel,hScrollBar1,vScrollBar1,this,new Size(20,20));
+                new MapWriteScene(this,new Size(20,20),mapChipSize);
 
             //comboボックスのデフォルト値設定
             layerComboBox.SelectedIndex = 0;
@@ -90,14 +106,13 @@ namespace MapEdit
         }
 
         public void LoadProject(int mapChipSize,Size mapSize) {
-            MapChipSize = mapChipSize;
             mcrm = new MapChipResourceManager(mapChipSize);
             //mapWriteScene初期化
             //mapWritePanelをDXライブラリの描画先に設定
             DXEX.Director.RemoveSubScene(mws);
             mws.Dispose();
             mws =
-                new MapWriteScene(mapWritePanel, hScrollBar1, vScrollBar1, this,mapSize);
+                new MapWriteScene(this,mapSize,mapChipSize);
             DXEX.Director.AddSubScene(mws);
         }
 
@@ -112,7 +127,7 @@ namespace MapEdit
         //画像出力メニューが選択されたときの処理
         private void 画像出力ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileManager.BitmapOutPut(mws.GetMapData().GetBitmap());
+            FileManager.BitmapOutPut(mws.MapData.GetBitmap());
         }
 
         //保存メニューが選択された時の処理
@@ -170,7 +185,7 @@ namespace MapEdit
         //右回転ボタンを押したときの処理
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
-            mws.GetMapData().RotateRight();
+            mws.MapData.RotateRight();
             //スクロールバーの調整
             mws.GetScroll().SetScrollMaximum();
             //表示するスプライトの設定
@@ -180,7 +195,7 @@ namespace MapEdit
         //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
-            mws.GetMapData().RotateLeft();
+            mws.MapData.RotateLeft();
             //スクロールバーの調整
             mws.GetScroll().SetScrollMaximum();
             //表示するスプライトの設定
@@ -190,13 +205,13 @@ namespace MapEdit
         //上下反転ボタンを押したときの処理
         private void turnVerticalButton_Click(object sender, EventArgs e)
         {
-            mws.GetMapData().turnVertical();
+            mws.MapData.turnVertical();
         }
 
         //左右反転ボタンを押したときの処理
         private void turnHorizontalButton_Click(object sender, EventArgs e)
         {
-            mws.GetMapData().turnHorizontal();
+            mws.MapData.turnHorizontal();
         }
 
         //キーが押された時の処理
@@ -205,6 +220,23 @@ namespace MapEdit
                 mws.GetScroll().KeyScroll(e);
         }
 
+        //マップ描画のパネルのサイズが変更されたら、
+        //マップに表示するスプライトの調整や
+        //スクロールバーの調整を行う
+        private void mapWritePanel_SizeChanged(object sender, EventArgs e)
+        {
+            mws.GetScroll().SetScrollMaximum();
+            mws.UpdateShowMapImage();
+        }
 
+        //パネル上でマウスが操作された時の処理をする
+        private void mapWritePanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            mws.MouseAction(sender, e);
+        }
+        private void mapWritePanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            mws.MouseAction(sender, e);
+        }
     }
 }

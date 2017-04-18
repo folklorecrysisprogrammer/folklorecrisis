@@ -40,8 +40,8 @@ namespace MapEdit
                 }
             };
             //マップサイズの値をテキストボックスにセットする
-            mapSizeXtextBox.Text = this.mws.GetMapData().MapSize.Width.ToString();
-            mapSizeYtextBox.Text = this.mws.GetMapData().MapSize.Height.ToString();
+            mapSizeXtextBox.Text = this.mws.MapData.MapSizeX.ToString();
+            mapSizeYtextBox.Text = this.mws.MapData.MapSizeY.ToString();
         }
 
         //更新ボタンが押された時,マップチップ、マップサイズの値が変更されてたら、
@@ -55,12 +55,12 @@ namespace MapEdit
             //MapSizeの変更処理判定
             if (
                     TryParse(mapSizeXtextBox.Text, out result) && 
-                    mws.GetMapData().MapSize.Width != result||
+                    mws.MapData.MapSizeX != result||
                     TryParse(mapSizeYtextBox.Text, out result) &&
-                    mws.GetMapData().MapSize.Height != result 
+                    mws.MapData.MapSizeY != result 
                 )
             {
-                mws.GetMapData().MapSize = 
+                mws.MapData.MapSize = 
                     new Size(
                         int.Parse(mapSizeXtextBox.Text),
                         int.Parse(mapSizeYtextBox.Text)

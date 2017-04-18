@@ -22,8 +22,10 @@ namespace MapEdit
         public Size MapSize
         {
             get { return new Size(numberX, numberY); }
-            set { ChangeMapSize(value.Width,value.Height); }
+            set { ChangeMapSize(value.Width, value.Height); }
         }
+        public int MapSizeX { get { return numberX; } }
+        public int MapSizeY { get { return numberY; }}
 
         private readonly MapEditForm meForm;
 
@@ -34,18 +36,18 @@ namespace MapEdit
         }
 
         //初期化
-        public MapData(MapEditForm meForm, Size mapSize)
+        public MapData(MapEditForm meForm, Size mapSize,int mapChipSize)
         {
             numberX = mapSize.Width;
             numberY = mapSize.Height;
             this.meForm = meForm;
-            MapChipSize = meForm.MapChipSize;
+            MapChipSize = mapChipSize;
             mapOneMass = new MapOneMass[numberX, numberY];
             for (int x = 0; x < numberX; x++)
             {
                 for (int y = 0; y < numberY; y++)
                 {
-                    mapOneMass[x, y] = new MapOneMass(meForm);
+                    mapOneMass[x, y] = new MapOneMass(meForm,mapChipSize);
                     mapOneMass[x, y].LocalPos = new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }
@@ -130,7 +132,7 @@ namespace MapEdit
             {
                 for (int y = 0; y < newNumberY; y++)
                 {
-                    mapOneMass[x, y] = new MapOneMass(meForm);
+                    mapOneMass[x, y] = new MapOneMass(meForm,MapChipSize);
                     mapOneMass[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }
@@ -138,7 +140,7 @@ namespace MapEdit
             {
                 for (int y =numberY; y < newNumberY; y++)
                 {
-                    mapOneMass[x, y] = new MapOneMass(meForm);
+                    mapOneMass[x, y] = new MapOneMass(meForm,MapChipSize);
                     mapOneMass[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }

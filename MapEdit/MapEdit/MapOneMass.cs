@@ -19,10 +19,10 @@ namespace MapEdit
         private readonly MapChipResourceManager mcrm;
 
         //初期化
-        public MapOneMass(MapEditForm meForm)
+        public MapOneMass(MapEditForm meForm,int mapChipSize)
         {
             mapChips = new MapChip[MapEditForm.maxLayer];
-            mapChipSize = meForm.MapChipSize;
+            this.mapChipSize = mapChipSize;
             mcrm = meForm.mcrm;
             anchor.SetVect(0, 0);           
 
