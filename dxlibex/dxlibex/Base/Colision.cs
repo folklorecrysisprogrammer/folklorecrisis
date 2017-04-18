@@ -24,7 +24,7 @@ namespace DXEX
         public override void Draw()
         {
             if (cShape == null) return;
-          //  cShape.DebugDraw();
+            cShape.DebugDraw();
         }
     }
 }

@@ -14,6 +14,7 @@ namespace DXEX
     {
         public Node node;
         public Shape(Node _node) { node = _node; }
+        [System.Diagnostics.Conditional("DEBUG")]
         public abstract void DebugDraw();
         public abstract bool CheckHit(Shape shape);
         public abstract bool CheckHit(Rect shape);
