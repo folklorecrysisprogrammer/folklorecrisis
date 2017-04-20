@@ -36,7 +36,7 @@ namespace MapEdit
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if(pm.SaveNewProject(folderPathTextBox.Text+@"\"+newProjectNameTextBox.Text) == false)
+            if(pm.SaveNewProject(folderPathTextBox.Text,newProjectNameTextBox.Text) == false)
             {
                 MessageBox.Show("パスが存在しません", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

@@ -14,7 +14,7 @@ namespace MapEdit
     {
         private readonly MapEditForm meForm;
 
-        //開いているプロジェクトへのパス
+        //開いているプロジェクトのパス
         private string currentProjectPath;
 
         public ProjectManager(MapEditForm meForm)
@@ -52,9 +52,9 @@ namespace MapEdit
         }
 
         //プロジェクトを新しく保存する
-        public bool SaveNewProject(string path)
+        public bool SaveNewProject(string path,string projectName)
         {
-            currentProjectPath = path;
+            currentProjectPath = path+ @"\"+projectName;
             if (Directory.Exists(path) == false) return false;
             Directory.CreateDirectory(currentProjectPath);
             var bitmap = meForm.mcrm.GetBitmapSheet();
@@ -104,7 +104,50 @@ namespace MapEdit
         public bool OverwriteProject()
         {
             if (currentProjectPath == "") return false;
-            return SaveNewProject(currentProjectPath);
+            if (Directory.Exists(currentProjectPath) == false) return false;
+            Directory.CreateDirectory(currentProjectPath);
+            var bitmap = meForm.mcrm.GetBitmapSheet();
+            if (bitmap != null)
+            {
+                // 画像生成
+                bitmap.Save(currentProjectPath + @"\MapChip.png", ImageFormat.Png);
+                // テキストファイル生成
+                StreamWriter sw = new StreamWriter(
+                    currentProjectPath + @"\MapChip.txt",
+                    false,
+                    Encoding.GetEncoding("shift_jis"));
+                sw.Write("" + meForm.mcrm.LastID());
+                sw.Close();
+                // マップの中身を書き出す
+                StringBuilder mapDataText = new StringBuilder();
+                MapData md = meForm.mws.MapData;
+                mapDataText.Append(md.MapChipSize + "," + md.MapSizeX + "," + md.MapSizeY);
+                for (int y = 0; y < md.MapSizeY; y++)
+                {
+                    mapDataText.Append(Environment.NewLine);
+                    for (int x = 0; x < md.MapSizeX; x++)
+                    {
+                        MapOneMass mom = md[x, y];
+                        MapChip[] ChipId = mom.mapChips;
+                        for (int i = 0; i < ChipId.Length; i++)
+                        {
+                            int Id = ChipId[i].Id;
+                            int Angle = (int)(ChipId[i].Angle / 90.0);
+                            int turnFlag = ChipId[i].turnFlag;
+                            mapDataText.Append(Id + "," + Angle + "," + turnFlag + ",");
+                        }
+                    }
+
+                }
+                // テキストファイル生成(マップデータ)
+                sw = new System.IO.StreamWriter(
+                currentProjectPath + @"\MapData.txt",
+                false,
+                System.Text.Encoding.GetEncoding("shift_jis"));
+                sw.Write(mapDataText.ToString());
+                sw.Close();
+            }
+            return true;
         }
 
     }
