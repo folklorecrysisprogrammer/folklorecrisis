@@ -27,11 +27,16 @@ namespace MapEdit
         //マップの各マスの画像情報
         public MapData MapData{ get; }
 
+        //マップに表示されている左上のMapImageを表すMapImage配列の添え字
+        private Point lUpIndex=new Point(0,0);
+        private Point rDownIndex=new Point(-1,-1);
+
         //初期化                                               //描画先をmwpにする
         public MapWriteScene(MapEditForm meForm,Size mapSize,int mapChipSize) : base(meForm.mwp)
         {
             this.meForm =meForm;
             MapData = new MapData(meForm,mapSize,mapChipSize);
+            AddChild(new MapGrid(this),1);
             mapWriteScroll = new MapWriteScroll(meForm.Hscroll, meForm.Vscroll, this);
             localPos.SetVect(0, 0);
             UpdateShowMapImage();
@@ -41,21 +46,33 @@ namespace MapEdit
         public void UpdateShowMapImage()
         {
             Panel panel = meForm.mwp;
-            //マップに表示されている左上のMapImageにアクセスするために、MapImage配列の添え字を計算する
-            Point leftUpIndex = LocationToMap(new Point(0, 0),MapData.MapChipSize);
-            //表示される領域はMapImage配列のどこからどこまでか計算
-            Size showNumber = 
-                new Size(panel.Size.Width / MapData.MapChipSize + 1, panel.Size.Height / MapData.MapChipSize + 1);
+            //新たにlUpIndexを計算する
+            Point newLUpIndex = LocationToMap(new Point(0, 0),MapData.MapChipSize);
+            //新たにrDownIndexを計算する
+            Point newRDownIndex = 
+                new Point(
+                    panel.Size.Width / MapData.MapChipSize+newLUpIndex.X + 1,
+                    panel.Size.Height / MapData.MapChipSize+newLUpIndex.Y + 1
+                );
             //全てのMapImageを親から外す
-            GetAllChildren().ForEach((child)=>{ child.RemoveFromParent();});
-            //画面に表示されるMapImageだけAddChild
-            for (int x = leftUpIndex.X; x < leftUpIndex.X + showNumber.Width && x<MapData.MapSizeX; x++)
+//            GetAllChildren().ForEach((child)=>{ child.RemoveFromParent();});
+            for(int x = lUpIndex.X; x < rDownIndex.X && x < MapData.MapSizeX; x++)
             {
-                for (int y = leftUpIndex.Y; y < leftUpIndex.Y+showNumber.Height && y < MapData.MapSizeY; y++)
+                for(int y=lUpIndex.Y; y < rDownIndex.Y && y < MapData.MapSizeY; y++)
+                {
+                    MapData[x, y].RemoveFromParent();
+                }
+            }
+            //画面に表示されるMapImageだけAddChild
+            for (int x = newLUpIndex.X; x <newRDownIndex.X && x<MapData.MapSizeX; x++)
+            {
+                for (int y = newLUpIndex.Y; y <newRDownIndex.Y && y < MapData.MapSizeY; y++)
                 {
                     AddChild(MapData[x, y]);
                 }
             }
+            lUpIndex = newLUpIndex;
+            rDownIndex = newRDownIndex;
         }
 
         //マウスでマップを書く処理

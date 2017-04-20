@@ -93,6 +93,7 @@
     <Compile Include="MapEditForm.Designer.cs">
       <DependentUpon>MapEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MapGrid.cs" />
     <Compile Include="MapOneMass.cs" />
     <Compile Include="MapData.cs" />
     <Compile Include="MapPalletData.cs" />
