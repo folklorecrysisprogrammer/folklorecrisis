@@ -16,7 +16,7 @@ namespace DXEX
         List<Coroutine> components = new List<Coroutine>();
 
         //コンポーネント追加
-       public void AddComponent(Coroutine component)
+       internal void AddComponent(Coroutine component)
         {
             components.Add(component);
         }
