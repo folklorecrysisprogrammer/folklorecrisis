@@ -45,7 +45,7 @@ namespace MapEdit
             sr.Close();
             meForm.LoadProject(mapDataFromText.MapChipSize,mapDataFromText.MapSize);
             meForm.mcrm.LoadBitmapSheet(lastId, path + @"\MapChip.png");
-            meForm.sif.MapPalletScene.LoadProject();
+            meForm.sif.mps.LoadProject();
             meForm.mws.MapData.LoadProject(mapDataFromText);
             meForm.sif.SelectMapChipScene.resetMapChip();
             return true;

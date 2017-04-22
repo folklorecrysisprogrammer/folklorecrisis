@@ -38,6 +38,26 @@ namespace MapEdit
         public MapEditForm(int mapChipSize)
         {
             InitializeComponent();
+            //DXEX初期化
+            DXEX.Director.init(this);
+            DX.SetAlwaysRunFlag(DX.TRUE);
+
+            //描画領域をセット
+            //（見切れないように、画面いっぱいに設定する）
+            DxLibDLL.DX.SetGraphMode(
+                Screen.PrimaryScreen.Bounds.Width,
+                Screen.PrimaryScreen.Bounds.Height,
+                32
+                );
+
+            //DXライブラリの描画先の背景色を設定する
+            DxLibDLL.DX.SetBackgroundColor(100, 240, 130);
+
+            //mapWriteScene初期化
+            //mapWritePanelをDXライブラリの描画先に設定
+            mws =
+                new MapWriteScene(this, new Size(20, 20), mapChipSize);
+
             pm = new ProjectManager(this);
             mcrm = new MapChipResourceManager(mapChipSize);
             sif = new SelectImageForm(this);
@@ -75,25 +95,6 @@ namespace MapEdit
                 vScrollBar1.Focus();
             };
 
-            //DXEX初期化
-            DXEX.Director.init(this);
-            DX.SetAlwaysRunFlag(DX.TRUE);
-
-            //描画領域をセット
-            //（見切れないように、画面いっぱいに設定する）
-            DxLibDLL.DX.SetGraphMode(
-                Screen.PrimaryScreen.Bounds.Width,
-                Screen.PrimaryScreen.Bounds.Height,
-                32
-                );
-
-            //DXライブラリの描画先の背景色を設定する
-            DxLibDLL.DX.SetBackgroundColor(100, 240, 130);
-
-            //mapWriteScene初期化
-            //mapWritePanelをDXライブラリの描画先に設定
-            mws = 
-                new MapWriteScene(this,new Size(20,20),mapChipSize);
 
             //comboボックスのデフォルト値設定
             layerComboBox.SelectedIndex = 0;
@@ -237,6 +238,19 @@ namespace MapEdit
         private void mapWritePanel_MouseMove(object sender, MouseEventArgs e)
         {
             mws.MouseAction(sender, e);
+        }
+
+        private void gridButton_Click(object sender, EventArgs e)
+        {
+            if (mws.MapGrid.DrawFlag)
+            {
+                sif.mps.MapGrid.DrawDisable();
+                mws.MapGrid.DrawDisable();
+            }else
+            {
+                sif.mps.MapGrid.DrawEnable();
+                mws.MapGrid.DrawEnable();
+            }
         }
     }
 }

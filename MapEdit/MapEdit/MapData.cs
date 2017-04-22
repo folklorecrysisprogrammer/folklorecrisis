@@ -52,7 +52,7 @@ namespace MapEdit
                 }
             }
         }
-
+        //
         public void LoadProject(MapDataFromText mdft)
         {
             int count=0;

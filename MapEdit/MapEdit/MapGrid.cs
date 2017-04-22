@@ -8,26 +8,28 @@ using DxLibDLL;
 namespace MapEdit
 {
     //マップに線を引く
-    class MapGrid:DXEX.Node
+   public class MapGrid:DXEX.Node
     {
-        private readonly MapWriteScene mws;
+        private readonly MapSceneBase msb;
         private readonly uint color=DX.GetColor(0,0,0);
-        public MapGrid(MapWriteScene mws)
+        private readonly int mapChipSize;
+        public MapGrid(MapSceneBase msb,int mapChipSize)
         {
-            this.mws = mws;
+            this.msb = msb;
+            this.mapChipSize = mapChipSize;
         }
 
         public override void Draw()
         {
-            int fixX = (int)mws.LocalPosX % mws.MapData.MapChipSize;
-            int fixY = (int)mws.LocalPosY % mws.MapData.MapChipSize;
-            for(int x = 0; x < mws.control.Size.Width; x+= mws.MapData.MapChipSize)
+            int fixX = (int)msb.LocalPosX % mapChipSize;
+            int fixY = (int)msb.LocalPosY % mapChipSize;
+            for(int x = 0; x < msb.control.Size.Width; x+= mapChipSize)
             {
-                DX.DrawLine(x+fixX, 0, x+fixX, mws.control.Size.Height,color);
+                DX.DrawLine(x+fixX, 0, x+fixX, msb.control.Size.Height,color);
             }
-            for (int y = 0; y < mws.control.Size.Height; y += mws.MapData.MapChipSize)
+            for (int y = 0; y < msb.control.Size.Height; y += mapChipSize)
             {
-                DX.DrawLine(0,y+fixY, mws.control.Size.Width,y+fixY, color);
+                DX.DrawLine(0,y+fixY, msb.control.Size.Width,y+fixY, color);
             }
         }
     }

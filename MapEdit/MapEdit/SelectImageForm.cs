@@ -13,8 +13,7 @@ namespace MapEdit
     public partial class SelectImageForm : Form
     {
 
-
-        public MapPalletScene MapPalletScene { get; }
+        public MapPalletScene mps { get; }
 
         public SelectMapChipScene SelectMapChipScene { get; }
 
@@ -52,9 +51,9 @@ namespace MapEdit
             InitializeComponent();
             MeForm = meform;
             SelectMapChipScene = new SelectMapChipScene(selectPicture);
-            MapPalletScene = new MapPalletScene(palletPanel,this);
+            mps = new MapPalletScene(palletPanel,this);
             
-            DXEX.Director.AddSubScene(MapPalletScene);
+            DXEX.Director.AddSubScene(mps);
             DXEX.Director.AddSubScene(SelectMapChipScene);
             //ドラッグされた時のイベント
             DragEnter += (object sender, DragEventArgs e) =>
@@ -76,7 +75,7 @@ namespace MapEdit
                 }
                 for (int i = 0; i < fileName.Length; i++)
                 {
-                    MapPalletScene.AddMapChip(fileName[i]);
+                    mps.AddMapChip(fileName[i]);
                 }
             };
             //フォームを閉じるのを無効化する
@@ -93,7 +92,7 @@ namespace MapEdit
             vScrollBar1.Maximum = 50 * 40 - palletPanel.Size.Height;
             vScrollBar1.ValueChanged += (o, e) =>
             {
-                MapPalletScene.LocalPosY = -vScrollBar1.Value;
+                mps.LocalPosY = -vScrollBar1.Value;
             };
         }
     }

@@ -39,11 +39,11 @@ namespace MapEdit
             return bitmapList.Count - 1;
         }
 
+        //IDから画像リソースを得る
         public Bitmap GetBitmap(int id)
         {
             return (Bitmap)bitmapList[id].Clone();
         }
-
         public DXEX.Texture GetTexture(int id)
         {
             return textureList[id];
@@ -112,6 +112,7 @@ namespace MapEdit
 
         }
 
+        //最後のID
         public int LastID()
         {
             return bitmapList.Count - 1;

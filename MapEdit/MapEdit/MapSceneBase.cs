@@ -10,9 +10,11 @@ namespace MapEdit
 {
     public class MapSceneBase:DXEX.Scene
     { 
-        public MapSceneBase(Control control) : base(control)
+        //親フォーム
+        public MapEditForm meForm { get; }
+        public MapSceneBase(MapEditForm meform,Control control) : base(control)
         {
-
+            this.meForm = meform;
         }
 
         //C#のコントロールの座標をSceneのMapChip配列やMapOneMass配列などの

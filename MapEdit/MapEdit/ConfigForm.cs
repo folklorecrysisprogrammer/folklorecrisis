@@ -60,6 +60,7 @@ namespace MapEdit
                     mws.MapData.MapSizeY != result 
                 )
             {
+                mws.ClearShowMapImage();
                 mws.MapData.MapSize = 
                     new Size(
                         int.Parse(mapSizeXtextBox.Text),
@@ -68,7 +69,7 @@ namespace MapEdit
                 //スクロールバーの調整
                 mws.GetScroll().SetScrollMaximum();
                 //表示するスプライトの設定
-                mws.UpdateShowMapImage();
+                mws.AddShowMapImage();
             }
 
             //設定ウインドウを閉じる。
