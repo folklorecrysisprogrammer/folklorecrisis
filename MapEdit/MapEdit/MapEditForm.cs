@@ -44,7 +44,7 @@ namespace MapEdit
         {
             InitializeComponent();
             //DXEX初期化
-            DXEX.Director.init(this);
+            DXEX.DirectorForForm.init(this);
             DX.SetAlwaysRunFlag(DX.TRUE);
 
             //描画領域をセット
@@ -115,7 +115,7 @@ namespace MapEdit
             //メインウインドウ表示
             Show();
             //DXライブラリループ開始
-            DXEX.Director.StartLoop(this);
+            DXEX.DirectorForForm.StartLoop(this);
         }
 
         public void LoadProject(MapDataFromText mdft,int lastId,string path) {

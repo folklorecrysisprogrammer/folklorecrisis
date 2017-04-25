@@ -53,8 +53,8 @@ namespace MapEdit
             SelectMapChipScene = new SelectMapChipScene(selectPicture);
             mps = new MapPalletScene(palletPanel,meform,this);
             
-            DXEX.Director.AddSubScene(mps);
-            DXEX.Director.AddSubScene(SelectMapChipScene);
+            DXEX.DirectorForForm.AddSubScene(mps);
+            DXEX.DirectorForForm.AddSubScene(SelectMapChipScene);
             //ドラッグされた時のイベント
             DragEnter += (object sender, DragEventArgs e) =>
             {

@@ -27,7 +27,7 @@ namespace MapEdit
             mapShowArea.UpdateShowMapImage();
             editMapChip = new EditMapChip(mapData, sif, mapWriteScene, layerComboBox);
             mapWriteScroll = new MapWriteScroll(hScroll, vScroll, mapWriteScene, mapData, mapShowArea);
-            DXEX.Director.AddSubScene(mapWriteScene);
+            DXEX.DirectorForForm.AddSubScene(mapWriteScene);
         }
 
         public MapEdit(MapDataFromText mdft,Panel mwp, MapChipResourceManager mcrm, SelectImageForm sif, ComboBox layerComboBox, HScrollBar hScroll, VScrollBar vScroll, Size MapSize, int mapChipSize):this(mwp,mcrm,sif,layerComboBox,hScroll,vScroll, MapSize, mapChipSize)
@@ -37,7 +37,7 @@ namespace MapEdit
 
         public void Dispose()
         {
-            DXEX.Director.RemoveSubScene(mapWriteScene);
+            DXEX.DirectorForForm.RemoveSubScene(mapWriteScene);
             mapWriteScene.Dispose();
         }
         //マップの右回転
