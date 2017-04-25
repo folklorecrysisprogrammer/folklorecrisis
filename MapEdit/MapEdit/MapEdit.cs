@@ -30,9 +30,10 @@ namespace MapEdit
             DXEX.DirectorForForm.AddSubScene(mapWriteScene);
         }
 
-        public MapEdit(MapDataFromText mdft,Panel mwp, MapChipResourceManager mcrm, SelectImageForm sif, ComboBox layerComboBox, HScrollBar hScroll, VScrollBar vScroll, Size MapSize, int mapChipSize):this(mwp,mcrm,sif,layerComboBox,hScroll,vScroll, MapSize, mapChipSize)
+        public MapEdit(MapInfoFromText mift,Panel mwp, MapChipResourceManager mcrm, SelectImageForm sif, ComboBox layerComboBox, HScrollBar hScroll, VScrollBar vScroll):
+            this(mwp,mcrm,sif,layerComboBox,hScroll,vScroll, mift.MapSize, mift.MapChipSize)
         {
-            mapData.LoadProject(mdft);
+            mapData.LoadProject(mift);
         }
 
         public void Dispose()

@@ -40,9 +40,9 @@ namespace MapEdit
             sr= new StreamReader(
                     path + @"\MapData.txt",
                     Encoding.GetEncoding("shift_jis"));
-            var mapDataFromText = new MapDataFromText(sr);
+            var mapInfoFromText = new MapInfoFromText(sr,lastId);
             sr.Close();
-            meForm.LoadProject(mapDataFromText,lastId,path);
+            meForm.LoadProject(mapInfoFromText,path);
             meForm.sif.SelectMapChipScene.resetMapChip();
             return true;
         }

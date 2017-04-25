@@ -53,7 +53,7 @@ namespace MapEdit
             }
         }
         //
-        public void LoadProject(MapDataFromText mdft)
+        public void LoadProject(MapInfoFromText mift)
         {
             int count=0;
             for(int y = 0; y < numberY; y++)
@@ -62,12 +62,12 @@ namespace MapEdit
                 {
                     for (int layer = 0; layer < MapEditForm.maxLayer; layer++)
                     {
-                        if (mdft.Id[count] != -1)
+                        if (mift.Id[count] != -1)
                         {
-                            mapOneMass[x, y].mapChips[layer].SetTexture(mcrm.GetTexture(mdft.Id[count]));
-                            mapOneMass[x, y].mapChips[layer].Id = mdft.Id[count];
-                            mapOneMass[x, y].mapChips[layer].Angle = mdft.Angle[count];
-                            mapOneMass[x, y].mapChips[layer].turnFlag = mdft.Turn[count];
+                            mapOneMass[x, y].mapChips[layer].SetTexture(mcrm.GetTexture(mift.Id[count]));
+                            mapOneMass[x, y].mapChips[layer].Id = mift.Id[count];
+                            mapOneMass[x, y].mapChips[layer].Angle = mift.Angle[count];
+                            mapOneMass[x, y].mapChips[layer].turnFlag = mift.Turn[count];
                         }
                         count++;
                     }

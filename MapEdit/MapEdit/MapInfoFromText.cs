@@ -8,16 +8,18 @@ using System.Drawing;
 
 namespace MapEdit
 {
-    //マップデータをmapData.txtから解析するクラス
-    public class MapDataFromText
+    //マップ情報をtxtから取得するクラス
+    public class MapInfoFromText
     {
         public int MapChipSize { get; }
         public Size MapSize { get; }
         public int[] Id { get; }
         public int[] Angle { get; }
         public int[] Turn { get; }
-        public MapDataFromText(StreamReader sr)
+        public int LastId { get; }
+        public MapInfoFromText(StreamReader sr,int lastId)
         {
+            LastId = lastId;
             string[] data=sr.ReadLine().Split(',');
             MapChipSize =int.Parse(data[0]);
             MapSize = new Size(int.Parse(data[1]), int.Parse(data[2]));

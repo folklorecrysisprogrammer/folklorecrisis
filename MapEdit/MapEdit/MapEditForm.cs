@@ -21,19 +21,10 @@ namespace MapEdit
         public SelectImageForm sif { get; private set;}
         //プロジェクトデータを保存,上書き,開く機能をするクラス
         private ProjectManager pm;
-        //実際にマップを描画するシーン
-       // public MapWriteScene mws { get; private set; }
-       // public MapData MapData { get; private set; }
-        //private EditMapChip editMapData;
-        //private MapShowArea mapShowArea;
         //マップチップリソース管理
         public MapChipResourceManager mcrm { get; private set;}
         public MapEdit mapEdit;
 
-        //マップをスクロールするスクロールバー
-       // public VScrollBar Vscroll { get { return vScrollBar1; } }
-       // public HScrollBar Hscroll { get { return hScrollBar1; } }
-      //  private MapWriteScroll mapWriteScroll;
         //マップを表示するパネル
         public Panel mwp { get { return mapWritePanel; } }
 
@@ -57,22 +48,11 @@ namespace MapEdit
 
             //DXライブラリの描画先の背景色を設定する
             DxLibDLL.DX.SetBackgroundColor(100, 240, 130);
-
-            //mapWriteScene初期化
-            //mapWritePanelをDXライブラリの描画先に設定
-            //this.MapData = new MapData(this, new Size(20, 20),mapChipSize);
-            //mws =
-              //  new MapWriteScene(this, mapChipSize);
-           // mapShowArea = new MapShowArea(mws, MapData);
-           // mapShowArea.UpdateShowMapImage();
-           // mapWriteScroll = new MapWriteScroll(hScrollBar1, vScrollBar1, mws, MapData,mapShowArea);
-
             
             mcrm = new MapChipResourceManager(mapChipSize);
             sif = new SelectImageForm(this);
             mapEdit = new MapEdit(mwp,mcrm, sif, layerComboBox, hScrollBar1, vScrollBar1, new Size(20, 20), mapChipSize);
             pm = new ProjectManager(this);
-           // editMapData = new EditMapChip(MapData, sif,mws, layerComboBox);
             //メインウインドウのロードが終わったら、
             //パレッドウインドウを表示する。
             Load += (o, e) => {
@@ -118,26 +98,14 @@ namespace MapEdit
             DXEX.DirectorForForm.StartLoop(this);
         }
 
-        public void LoadProject(MapDataFromText mdft,int lastId,string path) {
+        public void LoadProject(MapInfoFromText mift,string path) {
             hScrollBar1.Value = 0;
             vScrollBar1.Value = 0;
             mapEdit.Dispose();
-            mcrm = new MapChipResourceManager(mdft.MapChipSize);
-            mcrm.LoadBitmapSheet(lastId, path + @"\MapChip.png");
+            mcrm = new MapChipResourceManager(mift.MapChipSize);
+            mcrm.LoadBitmapSheet(mift.LastId, path + @"\MapChip.png");
             sif.mps.LoadProject();
-            //mapWriteScene初期化
-            //mapWritePanelをDXライブラリの描画先に設定
-            /*DXEX.Director.RemoveSubScene(mws);
-            mws.Dispose();
-            MapData = new MapData(this, mapSize, mapChipSize);
-            mws =
-                new MapWriteScene(this,mapChipSize);
-            mapShowArea = new MapShowArea(mws, MapData);
-            mapShowArea.UpdateShowMapImage();
-            mapWriteScroll = new MapWriteScroll(hScrollBar1, vScrollBar1, mws, MapData, mapShowArea);
-            editMapData = new EditMapChip(MapData, sif, mws, layerComboBox);
-            DXEX.Director.AddSubScene(mws);*/
-            mapEdit = new MapEdit(mdft,mwp,mcrm,sif,layerComboBox,hScrollBar1,vScrollBar1,mdft.MapSize,mdft.MapChipSize);
+            mapEdit = new MapEdit(mift,mwp,mcrm,sif,layerComboBox,hScrollBar1,vScrollBar1);
         }
 
 
