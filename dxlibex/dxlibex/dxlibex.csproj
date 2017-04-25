@@ -53,6 +53,7 @@
     <Compile Include="Base\Coroutine.cs" />
     <Compile Include="Base\DebugMessage.cs" />
     <Compile Include="Base\Director.cs" />
+    <Compile Include="Base\DirectorForForm.cs" />
     <Compile Include="Base\ExclusiveList.cs" />
     <Compile Include="Base\Fps.cs" />
     <Compile Include="Base\GameObject.cs" />
