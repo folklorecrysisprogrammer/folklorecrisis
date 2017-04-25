@@ -27,7 +27,7 @@ namespace MapEdit
         public int MapSizeX { get { return numberX; } }
         public int MapSizeY { get { return numberY; }}
 
-        private readonly MapEditForm meForm;
+        private readonly MapChipResourceManager mcrm;
 
         //配列ぽく振るまう
         public MapOneMass this[int x,int y]
@@ -36,18 +36,18 @@ namespace MapEdit
         }
 
         //初期化
-        public MapData(MapEditForm meForm, Size mapSize,int mapChipSize)
+        public MapData(MapChipResourceManager mcrm, Size mapSize,int mapChipSize)
         {
             numberX = mapSize.Width;
             numberY = mapSize.Height;
-            this.meForm = meForm;
+            this.mcrm = mcrm;
             MapChipSize = mapChipSize;
             mapOneMass = new MapOneMass[numberX, numberY];
             for (int x = 0; x < numberX; x++)
             {
                 for (int y = 0; y < numberY; y++)
                 {
-                    mapOneMass[x, y] = new MapOneMass(meForm,mapChipSize);
+                    mapOneMass[x, y] = new MapOneMass(mcrm,mapChipSize);
                     mapOneMass[x, y].LocalPos = new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }
@@ -64,7 +64,7 @@ namespace MapEdit
                     {
                         if (mdft.Id[count] != -1)
                         {
-                            mapOneMass[x, y].mapChips[layer].SetTexture(meForm.mcrm.GetTexture(mdft.Id[count]));
+                            mapOneMass[x, y].mapChips[layer].SetTexture(mcrm.GetTexture(mdft.Id[count]));
                             mapOneMass[x, y].mapChips[layer].Id = mdft.Id[count];
                             mapOneMass[x, y].mapChips[layer].Angle = mdft.Angle[count];
                             mapOneMass[x, y].mapChips[layer].turnFlag = mdft.Turn[count];
@@ -89,6 +89,30 @@ namespace MapEdit
                 }
             }
             return unitedImg;
+        }
+
+        public StringBuilder GetMapDataText()
+        {
+            // マップの中身を書き出す
+            StringBuilder mapDataText = new StringBuilder();
+            mapDataText.Append(MapChipSize + "," + MapSizeX + "," + MapSizeY);
+            for (int y = 0; y < MapSizeY; y++)
+            {
+                mapDataText.Append(Environment.NewLine);
+                for (int x = 0; x < MapSizeX; x++)
+                {
+                    MapOneMass mom = mapOneMass[x, y];
+                    MapChip[] ChipId = mom.mapChips;
+                    for (int i = 0; i < ChipId.Length; i++)
+                    {
+                        int Id = ChipId[i].Id;
+                        int Angle = (int)(ChipId[i].Angle / 90.0);
+                        int turnFlag = ChipId[i].turnFlag;
+                        mapDataText.Append(Id + "," + Angle + "," + turnFlag + ",");
+                    }
+                }
+            }
+            return mapDataText;
         }
 
         //MapSize変更処理
@@ -132,7 +156,7 @@ namespace MapEdit
             {
                 for (int y = 0; y < newNumberY; y++)
                 {
-                    mapOneMass[x, y] = new MapOneMass(meForm,MapChipSize);
+                    mapOneMass[x, y] = new MapOneMass(mcrm,MapChipSize);
                     mapOneMass[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }
@@ -140,7 +164,7 @@ namespace MapEdit
             {
                 for (int y =numberY; y < newNumberY; y++)
                 {
-                    mapOneMass[x, y] = new MapOneMass(meForm,MapChipSize);
+                    mapOneMass[x, y] = new MapOneMass(mcrm,MapChipSize);
                     mapOneMass[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }

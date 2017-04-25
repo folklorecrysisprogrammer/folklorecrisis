@@ -51,7 +51,7 @@ namespace MapEdit
             InitializeComponent();
             MeForm = meform;
             SelectMapChipScene = new SelectMapChipScene(selectPicture);
-            mps = new MapPalletScene(palletPanel,this);
+            mps = new MapPalletScene(palletPanel,meform,this);
             
             DXEX.Director.AddSubScene(mps);
             DXEX.Director.AddSubScene(SelectMapChipScene);

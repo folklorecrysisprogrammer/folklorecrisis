@@ -77,7 +77,6 @@
             this.layerComboBox.Name = "layerComboBox";
             this.layerComboBox.Size = new System.Drawing.Size(61, 20);
             this.layerComboBox.TabIndex = 1;
-            this.layerComboBox.SelectedIndexChanged += new System.EventHandler(this.layerComboBox_SelectedIndexChanged);
             // 
             // menuStrip1
             // 

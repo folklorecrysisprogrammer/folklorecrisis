@@ -13,12 +13,16 @@ namespace MapEdit
         private readonly HScrollBar hScroll;
         private readonly VScrollBar vScroll;
         private readonly MapWriteScene mws;
+        private readonly MapShowArea mapShowArea;
+        private readonly MapData mapData;
 
-        public MapWriteScroll(HScrollBar hScroll, VScrollBar vScroll, MapWriteScene mws)
+        public MapWriteScroll(HScrollBar hScroll, VScrollBar vScroll, MapWriteScene mws,MapData mapData,MapShowArea mapShowArea)
         {
+            this.mapShowArea = mapShowArea;
             this.hScroll = hScroll;
             this.vScroll = vScroll;
             this.mws = mws;
+            this.mapData = mapData;
 
             SetScrollDelta();
             SetScrollMaximum();
@@ -29,17 +33,17 @@ namespace MapEdit
         {
             mws.LocalPosX = -hScroll.Value;
             mws.LocalPosY = -vScroll.Value;
-            mws.UpdateShowMapImage();
+            mapShowArea.UpdateShowMapImage();
         }
 
         //スクロールバーの変化量を設定
         //一回スクロールで一マス移動するようにする
         public void SetScrollDelta()
         {
-            vScroll.SmallChange = mws.MapData.MapChipSize;
-            vScroll.LargeChange = mws.MapData.MapChipSize;
-            hScroll.SmallChange = mws.MapData.MapChipSize;
-            hScroll.LargeChange = mws.MapData.MapChipSize;
+            vScroll.SmallChange = mapData.MapChipSize;
+            vScroll.LargeChange = mapData.MapChipSize;
+            hScroll.SmallChange = mapData.MapChipSize;
+            hScroll.LargeChange = mapData.MapChipSize;
         }
 
         //スクロールバーの最大値を設定
@@ -48,10 +52,10 @@ namespace MapEdit
             hScroll.Value = 0;
             vScroll.Value = 0;
             mws.LocalPos = new DXEX.Vect(0, 0);
-            int temp = mws.MapData.MapSizeX * mws.MapData.MapChipSize - mws.GetControl.Size.Width;
+            int temp = mapData.MapSizeX * mapData.MapChipSize - mws.GetControl.Size.Width;
             if (temp < 0) hScroll.Maximum = 0;
             else hScroll.Maximum = temp;
-            temp = mws.MapData.MapSizeY * mws.MapData.MapChipSize - mws.GetControl.Size.Height;
+            temp = mapData.MapSizeY * mapData.MapChipSize - mws.GetControl.Size.Height;
             if (temp < 0) vScroll.Maximum = 0;
             else vScroll.Maximum = temp;
         }

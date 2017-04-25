@@ -73,6 +73,14 @@ namespace DXEX
             // DXライブラリ終了処理
             DX.DxLib_End(); 
         }
+        //メインループを起動(フォームと連携する場合)
+        static public void StartLoop(Form mainForm)
+        {
+            //ループ
+            MainLoop(mainForm);
+            // DXライブラリ終了処理
+            DX.DxLib_End();
+        }
         //メインループ
         static private void MainLoop()
         {

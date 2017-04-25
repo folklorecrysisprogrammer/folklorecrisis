@@ -22,13 +22,18 @@ namespace MapEdit
         //プロジェクトデータを保存,上書き,開く機能をするクラス
         private ProjectManager pm;
         //実際にマップを描画するシーン
-        public MapWriteScene mws { get; private set; }
+       // public MapWriteScene mws { get; private set; }
+       // public MapData MapData { get; private set; }
+        //private EditMapChip editMapData;
+        //private MapShowArea mapShowArea;
         //マップチップリソース管理
         public MapChipResourceManager mcrm { get; private set;}
+        public MapEdit mapEdit;
 
         //マップをスクロールするスクロールバー
-        public VScrollBar Vscroll { get { return vScrollBar1; } }
-        public HScrollBar Hscroll { get { return hScrollBar1; } }
+       // public VScrollBar Vscroll { get { return vScrollBar1; } }
+       // public HScrollBar Hscroll { get { return hScrollBar1; } }
+      //  private MapWriteScroll mapWriteScroll;
         //マップを表示するパネル
         public Panel mwp { get { return mapWritePanel; } }
 
@@ -55,12 +60,19 @@ namespace MapEdit
 
             //mapWriteScene初期化
             //mapWritePanelをDXライブラリの描画先に設定
-            mws =
-                new MapWriteScene(this, new Size(20, 20), mapChipSize);
+            //this.MapData = new MapData(this, new Size(20, 20),mapChipSize);
+            //mws =
+              //  new MapWriteScene(this, mapChipSize);
+           // mapShowArea = new MapShowArea(mws, MapData);
+           // mapShowArea.UpdateShowMapImage();
+           // mapWriteScroll = new MapWriteScroll(hScrollBar1, vScrollBar1, mws, MapData,mapShowArea);
 
-            pm = new ProjectManager(this);
+            
             mcrm = new MapChipResourceManager(mapChipSize);
             sif = new SelectImageForm(this);
+            mapEdit = new MapEdit(mwp,mcrm, sif, layerComboBox, hScrollBar1, vScrollBar1, new Size(20, 20), mapChipSize);
+            pm = new ProjectManager(this);
+           // editMapData = new EditMapChip(MapData, sif,mws, layerComboBox);
             //メインウインドウのロードが終わったら、
             //パレッドウインドウを表示する。
             Load += (o, e) => {
@@ -77,11 +89,11 @@ namespace MapEdit
             //スクロールバーの値が更新されたら、mwsの位置を更新する処理を呼ぶ
             hScrollBar1.ValueChanged += (o, e) =>
             {
-                mws.GetScroll().UpdateValue();
+                mapEdit.UpdateScrollValue();
             };
             vScrollBar1.ValueChanged += (o, e) =>
             {
-                mws.GetScroll().UpdateValue();
+                mapEdit.UpdateScrollValue();
             };
 
             //スクロールバーがスクロールされたら、
@@ -103,32 +115,43 @@ namespace MapEdit
             //メインウインドウ表示
             Show();
             //DXライブラリループ開始
-            DXEX.Director.StartLoop(this,mws);
+            DXEX.Director.StartLoop(this);
         }
 
-        public void LoadProject(int mapChipSize,Size mapSize) {
-            mcrm = new MapChipResourceManager(mapChipSize);
+        public void LoadProject(MapDataFromText mdft,int lastId,string path) {
+            hScrollBar1.Value = 0;
+            vScrollBar1.Value = 0;
+            mapEdit.Dispose();
+            mcrm = new MapChipResourceManager(mdft.MapChipSize);
+            mcrm.LoadBitmapSheet(lastId, path + @"\MapChip.png");
+            sif.mps.LoadProject();
             //mapWriteScene初期化
             //mapWritePanelをDXライブラリの描画先に設定
-            DXEX.Director.RemoveSubScene(mws);
+            /*DXEX.Director.RemoveSubScene(mws);
             mws.Dispose();
+            MapData = new MapData(this, mapSize, mapChipSize);
             mws =
-                new MapWriteScene(this,mapSize,mapChipSize);
-            DXEX.Director.AddSubScene(mws);
+                new MapWriteScene(this,mapChipSize);
+            mapShowArea = new MapShowArea(mws, MapData);
+            mapShowArea.UpdateShowMapImage();
+            mapWriteScroll = new MapWriteScroll(hScrollBar1, vScrollBar1, mws, MapData, mapShowArea);
+            editMapData = new EditMapChip(MapData, sif, mws, layerComboBox);
+            DXEX.Director.AddSubScene(mws);*/
+            mapEdit = new MapEdit(mdft,mwp,mcrm,sif,layerComboBox,hScrollBar1,vScrollBar1,mdft.MapSize,mdft.MapChipSize);
         }
 
 
         //設定ボタンが押された時の処理
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var configForm = new ConfigForm(mws);
+            var configForm = mapEdit.CreateConfigForm();
             configForm.ShowDialog(this);
         }
 
         //画像出力メニューが選択されたときの処理
         private void 画像出力ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileManager.BitmapOutPut(mws.MapData.GetBitmap());
+            FileManager.BitmapOutPut(mapEdit.GetBitmap());
         }
 
         //保存メニューが選択された時の処理
@@ -162,11 +185,6 @@ namespace MapEdit
             }
         }
 
-        //layerが変更された時の処理
-        private void layerComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            mws.CurrentLayer = layerComboBox.SelectedIndex;
-        }
 
         //描画方法変更された時の処理
         private void drawModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -186,39 +204,32 @@ namespace MapEdit
         //右回転ボタンを押したときの処理
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
-            mws.MapData.RotateRight();
-            //スクロールバーの調整
-            mws.GetScroll().SetScrollMaximum();
-            //表示するスプライトの設定
-            mws.UpdateShowMapImage();
+            mapEdit.MapRotateRight();
         }
 
         //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
-            mws.MapData.RotateLeft();
-            //スクロールバーの調整
-            mws.GetScroll().SetScrollMaximum();
-            //表示するスプライトの設定
-            mws.UpdateShowMapImage();
+            mapEdit.MapRotateLeft();
         }
 
         //上下反転ボタンを押したときの処理
         private void turnVerticalButton_Click(object sender, EventArgs e)
         {
-            mws.MapData.turnVertical();
+            mapEdit.MapTurnVertical();
         }
 
         //左右反転ボタンを押したときの処理
         private void turnHorizontalButton_Click(object sender, EventArgs e)
         {
-            mws.MapData.turnHorizontal();
+            mapEdit.MapTurnHorizontal();
+
         }
 
         //キーが押された時の処理
         private void MapEditForm_KeyDown(object sender, KeyEventArgs e)
         {
-                mws.GetScroll().KeyScroll(e);
+            mapEdit.KeyScroll(e);
         }
 
         //マップ描画のパネルのサイズが変更されたら、
@@ -226,31 +237,22 @@ namespace MapEdit
         //スクロールバーの調整を行う
         private void mapWritePanel_SizeChanged(object sender, EventArgs e)
         {
-            mws.GetScroll().SetScrollMaximum();
-            mws.UpdateShowMapImage();
+            mapEdit.mapWritePanel_SizeChanged();
         }
 
         //パネル上でマウスが操作された時の処理をする
         private void mapWritePanel_MouseDown(object sender, MouseEventArgs e)
         {
-            mws.MouseAction(sender, e);
+            mapEdit.MapMouseAction( e);
         }
         private void mapWritePanel_MouseMove(object sender, MouseEventArgs e)
         {
-            mws.MouseAction(sender, e);
+            mapEdit.MapMouseAction(e);
         }
 
         private void gridButton_Click(object sender, EventArgs e)
         {
-            if (mws.MapGrid.DrawFlag)
-            {
-                sif.mps.MapGrid.DrawDisable();
-                mws.MapGrid.DrawDisable();
-            }else
-            {
-                sif.mps.MapGrid.DrawEnable();
-                mws.MapGrid.DrawEnable();
-            }
+            mapEdit.gridOnOff();
         }
     }
 }

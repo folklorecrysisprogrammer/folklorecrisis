@@ -19,11 +19,11 @@ namespace MapEdit
         private readonly MapChipResourceManager mcrm;
 
         //初期化
-        public MapOneMass(MapEditForm meForm,int mapChipSize)
+        public MapOneMass(MapChipResourceManager mcrm,int mapChipSize)
         {
             mapChips = new MapChip[MapEditForm.maxLayer];
             this.mapChipSize = mapChipSize;
-            mcrm = meForm.mcrm;
+            this.mcrm = mcrm;
             anchor.SetVect(0, 0);           
 
             //レイヤーの数だけ画像表示用スプライトを生成する

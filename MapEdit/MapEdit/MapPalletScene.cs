@@ -11,10 +11,12 @@ namespace MapEdit
    public class MapPalletScene:MapSceneBase
     {
         private readonly MapPalletData mapPalletData;
+        private readonly MapEditForm meForm;
         public MapGrid MapGrid { get; }
         private SelectMapChipScene sms;
-        public MapPalletScene(Panel panel,SelectImageForm sif) : base(sif.MeForm,panel)
+        public MapPalletScene(Panel panel,MapEditForm meForm,SelectImageForm sif) : base(panel)
         {
+            this.meForm = meForm;
             panel.MouseDown += MouseAction;
             this.sms = sif.SelectMapChipScene;
             mapPalletData = new MapPalletData();
@@ -55,7 +57,7 @@ namespace MapEdit
         public void LoadProject()
         {
             mapPalletData.ClearMapChip();
-            for(int id = 0; id <= meForm.mcrm.LastID(); id++)
+            for(int id = 0; id <=meForm. mcrm.LastID(); id++)
             {
                 MapChip mapChip = new MapChip(40);
                 mapChip.SetTexture(meForm.mcrm.GetTexture(id));

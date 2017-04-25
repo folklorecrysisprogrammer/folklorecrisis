@@ -13,7 +13,6 @@ namespace MapEdit
     public class ProjectManager
     {
         private readonly MapEditForm meForm;
-
         //開いているプロジェクトのパス
         private string currentProjectPath;
 
@@ -43,10 +42,7 @@ namespace MapEdit
                     Encoding.GetEncoding("shift_jis"));
             var mapDataFromText = new MapDataFromText(sr);
             sr.Close();
-            meForm.LoadProject(mapDataFromText.MapChipSize,mapDataFromText.MapSize);
-            meForm.mcrm.LoadBitmapSheet(lastId, path + @"\MapChip.png");
-            meForm.sif.mps.LoadProject();
-            meForm.mws.MapData.LoadProject(mapDataFromText);
+            meForm.LoadProject(mapDataFromText,lastId,path);
             meForm.sif.SelectMapChipScene.resetMapChip();
             return true;
         }
@@ -70,26 +66,7 @@ namespace MapEdit
                 sw.Write(""+meForm.mcrm.LastID());
                 sw.Close();
                 // マップの中身を書き出す
-                StringBuilder mapDataText =new StringBuilder();
-                MapData md = meForm.mws.MapData;
-                mapDataText.Append(md.MapChipSize + "," + md.MapSizeX + "," + md.MapSizeY);
-                for (int y = 0; y < md.MapSizeY; y++)
-                {
-                    mapDataText.Append(Environment.NewLine);
-                    for (int x = 0; x < md.MapSizeX; x++)
-                    {
-                        MapOneMass mom = md[x, y];
-                        MapChip[] ChipId = mom.mapChips;
-                        for (int i = 0; i < ChipId.Length; i++)
-                        {
-                            int Id = ChipId[i].Id;
-                            int Angle = (int)(ChipId[i].Angle / 90.0);
-                            int turnFlag = ChipId[i].turnFlag;
-                            mapDataText.Append( Id + "," + Angle + "," + turnFlag + ",");
-                        }
-                    }
-                    
-                }
+                StringBuilder mapDataText = meForm.mapEdit.GetMapDataText();
                 // テキストファイル生成(マップデータ)
                 sw = new System.IO.StreamWriter(
                 currentProjectPath + @"\MapData.txt",
@@ -119,26 +96,7 @@ namespace MapEdit
                 sw.Write("" + meForm.mcrm.LastID());
                 sw.Close();
                 // マップの中身を書き出す
-                StringBuilder mapDataText = new StringBuilder();
-                MapData md = meForm.mws.MapData;
-                mapDataText.Append(md.MapChipSize + "," + md.MapSizeX + "," + md.MapSizeY);
-                for (int y = 0; y < md.MapSizeY; y++)
-                {
-                    mapDataText.Append(Environment.NewLine);
-                    for (int x = 0; x < md.MapSizeX; x++)
-                    {
-                        MapOneMass mom = md[x, y];
-                        MapChip[] ChipId = mom.mapChips;
-                        for (int i = 0; i < ChipId.Length; i++)
-                        {
-                            int Id = ChipId[i].Id;
-                            int Angle = (int)(ChipId[i].Angle / 90.0);
-                            int turnFlag = ChipId[i].turnFlag;
-                            mapDataText.Append(Id + "," + Angle + "," + turnFlag + ",");
-                        }
-                    }
-
-                }
+                StringBuilder mapDataText = meForm.mapEdit.GetMapDataText();
                 // テキストファイル生成(マップデータ)
                 sw = new System.IO.StreamWriter(
                 currentProjectPath + @"\MapData.txt",

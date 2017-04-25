@@ -84,9 +84,11 @@
     <Compile Include="ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditMapChip.cs" />
     <Compile Include="MapChip.cs" />
     <Compile Include="MapChipResourceManager.cs" />
     <Compile Include="MapDataText.cs" />
+    <Compile Include="MapEdit.cs" />
     <Compile Include="MapEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +100,7 @@
     <Compile Include="MapData.cs" />
     <Compile Include="MapPalletData.cs" />
     <Compile Include="MapPalletScene.cs" />
+    <Compile Include="MapshowArea.cs" />
     <Compile Include="MapWriteScene.cs" />
     <Compile Include="MapWriteScroll.cs" />
     <Compile Include="Program.cs" />
@@ -125,6 +128,7 @@
     <Compile Include="StartForm.Designer.cs">
       <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utility.cs" />
     <EmbeddedResource Include="ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
