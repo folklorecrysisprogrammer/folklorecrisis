@@ -10,7 +10,7 @@ namespace DXEX
     /*ゲームで使用するオブジェクトの基底クラス
      * 毎フレーム行う処理を追加したいならUpdate（）をオーバーライド
     */
-    public partial class GameObject:Coroutine,IDisposable
+    public partial class GameObject:Colision,IDisposable
     {
         //コンポーネントリスト
         List<Coroutine> components = new List<Coroutine>();

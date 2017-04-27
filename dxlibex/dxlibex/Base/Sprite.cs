@@ -10,7 +10,7 @@ namespace DXEX
 {
    
     //画面に画像を表示するオブジェクト
-    public class Sprite:Colision
+    public class Sprite:Node
     {
         //テクスチャークラス参照
         private Texture texture=null;
