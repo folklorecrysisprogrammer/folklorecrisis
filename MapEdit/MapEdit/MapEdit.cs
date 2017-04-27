@@ -101,11 +101,12 @@ namespace MapEdit
             editMapChip.MouseAction(e);
         }
 
+        //グリッドのオンオフ
         public void gridOnOff()
         {
             MapGrid.GridOnOf();
         }
-
+        //マップをbitmapで得る
         public Bitmap GetBitmap()
         {
             return mapData.GetBitmap();

@@ -85,9 +85,9 @@ namespace MapEdit
             DXEX.DirectorForForm.StartLoop(this);
         }
 
+        //プロジェクトを読み込みしたときの処理
         public void LoadProject(MapInfoFromText mift,string path) {
-            mcrm = new MapChipResourceManager(mift.MapChipSize);
-            mcrm.LoadBitmapSheet(mift.LastId, path + @"\MapChip.png");
+            mcrm = mcrm.LoadProject(mift, path + @"\MapChip.png");
             sif.LoadProject();
             mapEdit = mapEdit.LoadProject(mift,mapWritePanel,mcrm,sif,layerComboBox,hScrollBar1,vScrollBar1);
         }

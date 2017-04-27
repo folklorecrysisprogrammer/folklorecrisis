@@ -76,9 +76,16 @@ namespace MapEdit
             return null;
         }
 
+        public MapChipResourceManager LoadProject(MapInfoFromText mift,string filePath)
+        {
+            var newMcrm = new MapChipResourceManager(mift.MapChipSize);
+            newMcrm.LoadBitmapSheet(mift.LastId, filePath);
+            return newMcrm;
+        } 
+
         //ビットマップを読み込み
         //マップチップ画像データを
-        public void LoadBitmapSheet(int lastId,string filePath)
+        private void LoadBitmapSheet(int lastId,string filePath)
         {
             var bitmap = (Bitmap)Bitmap.FromFile(filePath);
             bitmapList.Clear();
