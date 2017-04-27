@@ -13,48 +13,50 @@ namespace MapEdit
     public partial class SelectImageForm : Form
     {
 
-        public MapPalletScene mps { get; }
+        private readonly MapPalletScene mps;
 
-        public SelectMapChipScene SelectMapChipScene { get; }
+        private readonly SelectMapChipScene sms;
 
-        public MapEditForm MeForm { get;}
-
-        public MapChip GetSelectMapChip() { return SelectMapChipScene.MapChip; }
+        public MapChip GetSelectMapChip() { return sms.MapChip; }
 
         //右回転ボタンを押したときの処理
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
-            SelectMapChipScene.MapChip.Angle+=90;
+            sms.MapChip.Angle+=90;
         }
 
         //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
-            SelectMapChipScene.MapChip.Angle += 270;
+            sms.MapChip.Angle += 270;
         }
 
         //上下反転ボタンを押したときの処理
         private void turnVerticalButton_Click(object sender, EventArgs e)
         {
-            SelectMapChipScene.MapChip.TurnVertical();
+            sms.MapChip.TurnVertical();
         }
 
         //左右反転ボタンを押したときの処理
         private void turnHorizontalButton_Click(object sender, EventArgs e)
         {
-            SelectMapChipScene.MapChip.TurnHorizontal();
+            sms.MapChip.TurnHorizontal();
         }
 
+        public void LoadProject()
+        {
+            mps.LoadProject();
+            sms.resetMapChip();
+        }
         public SelectImageForm(MapEditForm meform)
         {
             
             InitializeComponent();
-            MeForm = meform;
-            SelectMapChipScene = new SelectMapChipScene(selectPicture);
-            mps = new MapPalletScene(palletPanel,meform,this);
+            sms = new SelectMapChipScene(selectPicture);
+            mps = new MapPalletScene(palletPanel,meform,sms);
             
             DXEX.DirectorForForm.AddSubScene(mps);
-            DXEX.DirectorForForm.AddSubScene(SelectMapChipScene);
+            DXEX.DirectorForForm.AddSubScene(sms);
             //ドラッグされた時のイベント
             DragEnter += (object sender, DragEventArgs e) =>
             {

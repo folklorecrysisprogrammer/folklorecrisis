@@ -16,17 +16,16 @@ namespace MapEdit
         private readonly MapShowArea mapShowArea;
         private readonly MapWriteScroll mapWriteScroll;
         private readonly EditMapChip editMapChip;
-        private readonly SelectImageForm sif;
         public MapEdit(Panel mwp, MapChipResourceManager mcrm,SelectImageForm sif,ComboBox layerComboBox,HScrollBar hScroll,VScrollBar vScroll,Size MapSize,int mapChipSize)
         {
-            this.sif = sif;
             this.mapData = new MapData(mcrm, MapSize, mapChipSize);
             mapWriteScene =
                 new MapWriteScene(mwp, mapChipSize);
             mapShowArea = new MapShowArea(mapWriteScene, mapData);
-            mapShowArea.UpdateShowMapImage();
+            
             editMapChip = new EditMapChip(mapData, sif, mapWriteScene, layerComboBox);
             mapWriteScroll = new MapWriteScroll(hScroll, vScroll, mapWriteScene, mapData, mapShowArea);
+            mapShowArea.UpdateShowMapImage();
             DXEX.DirectorForForm.AddSubScene(mapWriteScene);
         }
 
@@ -35,10 +34,16 @@ namespace MapEdit
         {
             mapData.LoadProject(mift);
         }
+        public MapEdit LoadProject(MapInfoFromText mift, Panel mwp, MapChipResourceManager mcrm, SelectImageForm sif, ComboBox layerComboBox, HScrollBar hScroll, VScrollBar vScroll)
+        {
+            this.Dispose();
+            return new MapEdit(mift, mwp, mcrm, sif, layerComboBox, hScroll, vScroll);
+        }
 
         public void Dispose()
         {
             DXEX.DirectorForForm.RemoveSubScene(mapWriteScene);
+            mapWriteScroll.Dispose();
             mapWriteScene.Dispose();
         }
         //マップの右回転
@@ -75,11 +80,6 @@ namespace MapEdit
             mapShowArea.UpdateShowMapImage();
         }
 
-        public void UpdateScrollValue()
-        {
-            mapWriteScroll.UpdateValue();
-        }
-
         //キーによるスクロール
         public void KeyScroll(KeyEventArgs e)
         {
@@ -103,16 +103,7 @@ namespace MapEdit
 
         public void gridOnOff()
         {
-            if (mapWriteScene.MapGrid.DrawFlag)
-            {
-                sif.mps.MapGrid.DrawDisable();
-                mapWriteScene.MapGrid.DrawDisable();
-            }
-            else
-            {
-                sif.mps.MapGrid.DrawEnable();
-                mapWriteScene.MapGrid.DrawEnable();
-            }
+            MapGrid.GridOnOf();
         }
 
         public Bitmap GetBitmap()

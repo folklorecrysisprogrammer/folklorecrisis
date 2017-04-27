@@ -10,15 +10,41 @@ namespace MapEdit
     //マップに線を引く
    public class MapGrid:DXEX.Node
     {
+        private static List<MapGrid> mapGridList=new List<MapGrid>();
         private readonly MapSceneBase msb;
         private readonly uint color=DX.GetColor(0,0,0);
         private readonly int mapChipSize;
+        //グリッドを描画するかをオンオフする
+        public static void GridOnOf()
+        {
+            if (mapGridList[0].DrawFlag)
+            {
+                mapGridList.ForEach((x) => { x.DrawDisable(); });
+            }
+            else
+            {
+                mapGridList.ForEach((x) => { x.DrawEnable(); });
+            }
+        }
+        //コンストラクタ
         public MapGrid(MapSceneBase msb,int mapChipSize)
         {
             this.msb = msb;
             this.mapChipSize = mapChipSize;
+            
+        }
+        
+        protected override void Attach()
+        {
+            mapGridList.Add(this);
         }
 
+        protected override void Detach()
+        {
+            mapGridList.Remove(this);
+        }
+
+        //グリッド描画
         public override void Draw()
         {
             int fixX = (int)msb.LocalPosX % mapChipSize;

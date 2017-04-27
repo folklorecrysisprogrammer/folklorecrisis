@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace MapEdit
 {
     //MapWriteSceneをスクロールするためのクラス
-    public class MapWriteScroll
+    public class MapWriteScroll:IDisposable
     {
         private readonly HScrollBar hScroll;
         private readonly VScrollBar vScroll;
@@ -23,13 +23,20 @@ namespace MapEdit
             this.vScroll = vScroll;
             this.mws = mws;
             this.mapData = mapData;
-
             SetScrollDelta();
             SetScrollMaximum();
+            //スクロールバーの値が更新されたら、mwsの位置を更新する処理を呼ぶ
+            hScroll.ValueChanged += UpdateValue;
+            vScroll.ValueChanged += UpdateValue;
+        }
+        public void Dispose()
+        {
+            hScroll.ValueChanged -= UpdateValue;
+            vScroll.ValueChanged -= UpdateValue;
         }
 
         //スクロールバーの値を元に、mwsの位置を更新する
-        public void UpdateValue()
+        public void UpdateValue( object o,EventArgs e)
         {
             mws.LocalPosX = -hScroll.Value;
             mws.LocalPosY = -vScroll.Value;

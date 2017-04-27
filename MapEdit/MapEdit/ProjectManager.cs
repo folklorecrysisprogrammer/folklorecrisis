@@ -23,28 +23,28 @@ namespace MapEdit
         }
 
         //プロジェクトをロードする（引数のパスはプロジェクト名を含むとこまで）
-        public bool LoadProject(string path)
+        public MapInfoFromText LoadProject(string path)
         {
-            if (Directory.Exists(path) == false) return false;
-            if (File.Exists(path + @"\MapChip.png") == false) return false;
-            if (File.Exists(path + @"\MapChip.txt") == false) return false;
+            if (Directory.Exists(path) == false) throw new Exception("notExists");
+            if (File.Exists(path + @"\MapChip.png") == false) throw new Exception("notExists");
+            if (File.Exists(path + @"\MapChip.txt") == false) throw new Exception("notExists");
             currentProjectPath = path;
             //MapChip.txt読み込み
-            StreamReader sr=new StreamReader(
+            StreamReader sr = new StreamReader(
                     path + @"\MapChip.txt",
                     Encoding.GetEncoding("shift_jis")
                 );
-            int lastId=int.Parse(sr.ReadLine());
+            int lastId = int.Parse(sr.ReadLine());
             sr.Close();
             //MapData.txt読み込み
-            sr= new StreamReader(
-                    path + @"\MapData.txt",
-                    Encoding.GetEncoding("shift_jis"));
-            var mapInfoFromText = new MapInfoFromText(sr,lastId);
-            sr.Close();
-            meForm.LoadProject(mapInfoFromText,path);
-            meForm.sif.SelectMapChipScene.resetMapChip();
-            return true;
+            using (sr = new StreamReader(
+                   path + @"\MapData.txt",
+                   Encoding.GetEncoding("shift_jis"))
+                   )
+            {
+
+                return new MapInfoFromText(sr, lastId);
+            }
         }
 
         //プロジェクトを新しく保存する

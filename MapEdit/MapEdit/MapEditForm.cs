@@ -18,15 +18,12 @@ namespace MapEdit
         //layerの数
         public const int maxLayer = 3;
         //マップチップパレットフォーム
-        public SelectImageForm sif { get; private set;}
+        private SelectImageForm sif;
         //プロジェクトデータを保存,上書き,開く機能をするクラス
         private ProjectManager pm;
         //マップチップリソース管理
         public MapChipResourceManager mcrm { get; private set;}
         public MapEdit mapEdit;
-
-        //マップを表示するパネル
-        public Panel mwp { get { return mapWritePanel; } }
 
        // public int MapChipSize { get; private set; } 
 
@@ -51,7 +48,7 @@ namespace MapEdit
             
             mcrm = new MapChipResourceManager(mapChipSize);
             sif = new SelectImageForm(this);
-            mapEdit = new MapEdit(mwp,mcrm, sif, layerComboBox, hScrollBar1, vScrollBar1, new Size(20, 20), mapChipSize);
+            mapEdit = new MapEdit(mapWritePanel,mcrm, sif, layerComboBox, hScrollBar1, vScrollBar1, new Size(20, 20), mapChipSize);
             pm = new ProjectManager(this);
             //メインウインドウのロードが終わったら、
             //パレッドウインドウを表示する。
@@ -64,16 +61,6 @@ namespace MapEdit
             FormClosing += (o, e) =>
             {
                 sif.Dispose();
-            };
-
-            //スクロールバーの値が更新されたら、mwsの位置を更新する処理を呼ぶ
-            hScrollBar1.ValueChanged += (o, e) =>
-            {
-                mapEdit.UpdateScrollValue();
-            };
-            vScrollBar1.ValueChanged += (o, e) =>
-            {
-                mapEdit.UpdateScrollValue();
             };
 
             //スクロールバーがスクロールされたら、
@@ -99,13 +86,10 @@ namespace MapEdit
         }
 
         public void LoadProject(MapInfoFromText mift,string path) {
-            hScrollBar1.Value = 0;
-            vScrollBar1.Value = 0;
-            mapEdit.Dispose();
             mcrm = new MapChipResourceManager(mift.MapChipSize);
             mcrm.LoadBitmapSheet(mift.LastId, path + @"\MapChip.png");
-            sif.mps.LoadProject();
-            mapEdit = new MapEdit(mift,mwp,mcrm,sif,layerComboBox,hScrollBar1,vScrollBar1);
+            sif.LoadProject();
+            mapEdit = mapEdit.LoadProject(mift,mapWritePanel,mcrm,sif,layerComboBox,hScrollBar1,vScrollBar1);
         }
 
 
@@ -137,10 +121,17 @@ namespace MapEdit
             //ダイアログを表示する
             if (fbd.ShowDialog(this) == DialogResult.OK)
             {
-                if (pm.LoadProject(fbd.SelectedPath) == false)
+                MapInfoFromText mift;
+                try
+                {
+                     mift= pm.LoadProject(fbd.SelectedPath);
+                }
+                catch
                 {
                     MessageBox.Show("エラー", "プロジェクトが存在しません", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+                LoadProject(mift, fbd.SelectedPath);
             }
         }
 

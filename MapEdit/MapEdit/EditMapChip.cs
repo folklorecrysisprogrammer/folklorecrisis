@@ -15,7 +15,7 @@ namespace MapEdit
         private readonly SelectImageForm sif;
         private readonly MapWriteScene mws;
         //現在のレイヤー
-        public ComboBox layerComboBox;
+        private readonly ComboBox layerComboBox;
         private int CurrentLayer { get { return layerComboBox.SelectedIndex; } }
         public EditMapChip(MapData mapData,SelectImageForm sif,MapWriteScene mws,ComboBox layerComboBox)
         {

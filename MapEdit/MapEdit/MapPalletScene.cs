@@ -12,17 +12,17 @@ namespace MapEdit
     {
         private readonly MapPalletData mapPalletData;
         private readonly MapEditForm meForm;
-        public MapGrid MapGrid { get; }
+        private readonly MapGrid mapGrid;
         private SelectMapChipScene sms;
-        public MapPalletScene(Panel panel,MapEditForm meForm,SelectImageForm sif) : base(panel)
+        public MapPalletScene(Panel panel,MapEditForm meForm,SelectMapChipScene sms) : base(panel)
         {
             this.meForm = meForm;
             panel.MouseDown += MouseAction;
-            this.sms = sif.SelectMapChipScene;
+            this.sms = sms;
             mapPalletData = new MapPalletData();
             localPos.SetVect(0, 0);
-            MapGrid = new MapGrid(this, 40);
-            AddChild(MapGrid, 1);
+            mapGrid = new MapGrid(this, 40);
+            AddChild(mapGrid, 1);
         }
 
         //ファイルから新しいマップチップを生成し登録する

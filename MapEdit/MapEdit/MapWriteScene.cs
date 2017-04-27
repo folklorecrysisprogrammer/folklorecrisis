@@ -13,16 +13,14 @@ namespace MapEdit
     //マップを表示するシーン
     public class MapWriteScene : MapSceneBase
     {
-
-
         //マップのグリッド
-        public MapGrid MapGrid { get; }
+        private readonly MapGrid mapGrid;
 
         //初期化                                 //描画先をmwpにする
         public MapWriteScene(Control control,int mapChipSize) : base(control)
         {
-            MapGrid = new MapGrid(this,mapChipSize);
-            AddChild(MapGrid,1);;
+            mapGrid = new MapGrid(this,mapChipSize);
+            AddChild(mapGrid,1);;
             localPos.SetVect(0, 0);
         }
 
