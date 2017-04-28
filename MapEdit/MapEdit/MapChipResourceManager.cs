@@ -23,7 +23,7 @@ namespace MapEdit
 
         //新しいマップチップの画像を登録する
         //返り値はId
-        public int pushImageFile(string fileName)
+        public int PushImageFile(string fileName)
         {
             //Bitmapを用意
             var bitmap = new Bitmap(mapChipSize, mapChipSize);
@@ -37,6 +37,20 @@ namespace MapEdit
             //Textureをリストに登録登録
             textureList.Add(DXEX.TextureCache.GetTexture(fileName));
             return bitmapList.Count - 1;
+        }
+
+        //idから画像リソースを破棄
+        public void PopImageFile(int id)
+        {
+            textureList[id].Dispose();
+            int end = bitmapList.Count - 1;
+            if (bitmapList.Count != id+1 && bitmapList.Count > 1)
+            {
+                bitmapList[id] = bitmapList[end];
+                textureList[id] = textureList[end];
+            }
+            bitmapList.RemoveAt(end);
+            textureList.RemoveAt(end);
         }
 
         //IDから画像リソースを得る

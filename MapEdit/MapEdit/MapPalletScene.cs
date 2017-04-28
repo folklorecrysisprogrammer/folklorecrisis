@@ -32,7 +32,7 @@ namespace MapEdit
             try
             {
                 mapChip.SetTexture(fileName);
-                mapChip.Id=meForm.mcrm.pushImageFile(fileName);
+                mapChip.Id=meForm.mcrm.PushImageFile(fileName);
             }
             catch (Exception)
             {
@@ -47,10 +47,10 @@ namespace MapEdit
         {
             Point point=LocationToMap(e.Location,40);
             if (mapPalletData[point.X, point.Y] == null) return;
-            sms.setMapChip(
-                mapPalletData[point.X, point.Y].GetTexture(),
-                mapPalletData[point.X, point.Y].Id    
-            );
+              sms.setMapChip(
+                  mapPalletData[point.X, point.Y].GetTexture(),
+                  mapPalletData[point.X, point.Y].Id    
+              );
         }
 
         //プロジェクトからマップチップパレットをロードする
