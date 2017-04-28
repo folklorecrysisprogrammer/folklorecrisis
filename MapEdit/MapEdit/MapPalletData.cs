@@ -35,6 +35,21 @@ namespace MapEdit
             index++;
         }
 
+        //マップpalletに新しいマップチップを登録する
+        public void RemoveMapChip(int x,int y)
+        {
+            int lastx = (index-1) % 6;
+            int lasty = (index-1) / 6;
+            if(x!=lastx || y != lasty)
+            {
+                mapChips[lastx, lasty].LocalPos = mapChips[x, y].LocalPos;
+                mapChips[lastx, lasty].Id = mapChips[x, y].Id;
+                mapChips[x, y] = mapChips[lastx, lasty];
+            }
+            mapChips[lastx, lasty] = null;
+            index--;
+        }
+
         public void ClearMapChip()
         {
             if (index == 0) return;

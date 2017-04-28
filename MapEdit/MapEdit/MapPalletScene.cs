@@ -43,14 +43,32 @@ namespace MapEdit
         }
 
         //クリックされた場所にあるマップチップを選択する
-        private void MouseAction(object o,MouseEventArgs e)
+        private void MouseAction(object o, MouseEventArgs e)
         {
-            Point point=LocationToMap(e.Location,40);
+            Point point = LocationToMap(e.Location, 40);
             if (mapPalletData[point.X, point.Y] == null) return;
-              sms.setMapChip(
-                  mapPalletData[point.X, point.Y].GetTexture(),
-                  mapPalletData[point.X, point.Y].Id    
-              );
+
+            //左クリックの処理
+            if ((Control.MouseButtons & MouseButtons.Left)
+                == MouseButtons.Left)
+            {
+                sms.setMapChip(
+                    mapPalletData[point.X, point.Y].GetTexture(),
+                    mapPalletData[point.X, point.Y].Id
+                );return;
+            }
+
+            //右クリックの処理
+            if ((Control.MouseButtons & MouseButtons.Right)
+                == MouseButtons.Right)
+            {
+                meForm.RemoveId(mapPalletData[point.X, point.Y].Id,meForm.mcrm.LastID());
+                meForm.mcrm.PopImageFile(mapPalletData[point.X, point.Y].Id);
+                
+                mapPalletData[point.X, point.Y].Dispose();
+                mapPalletData.RemoveMapChip(point.X, point.Y);
+                
+            }
         }
 
         //プロジェクトからマップチップパレットをロードする

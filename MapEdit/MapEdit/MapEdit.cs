@@ -121,5 +121,10 @@ namespace MapEdit
         {
             return new ConfigForm(mapWriteScene, mapData, mapWriteScroll, mapShowArea);
         }
+
+        public void RemoveId(int id,int lastid)
+        {
+            mapData.RemoveId(id, lastid);
+        }
     }
 }

@@ -107,6 +107,11 @@ namespace MapEdit
                 return;
             }
         }
+        //画像リソースをIDで指定して破棄する(削除するIdと削除したidに新たに割り当てるid)
+        public void RemoveId(int id,int lastid)
+        {
+            mapEdit.RemoveId(id, lastid);
+        }
 
         //設定ボタンが押された時の処理
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)

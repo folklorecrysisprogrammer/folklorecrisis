@@ -75,6 +75,28 @@ namespace MapEdit
             }
         }
 
+        public void RemoveId(int id,int lastid)
+        {
+            if (id == lastid) lastid = -999;
+           foreach ( var item in mapOneMass)
+            {
+                foreach(var mapChip in item.mapChips)
+                {
+                    if (mapChip.Id == id)
+                    {
+                        mapChip.ClearTexture();
+                        mapChip.Id = -1;
+                    }
+                    else if (mapChip.Id == lastid)
+                    {
+                        mapChip.Id = id;
+                    }
+                }
+            }
+        }
+
+
+
         //マップ全体をBitmapに変換する
         public Bitmap GetBitmap()
         {
