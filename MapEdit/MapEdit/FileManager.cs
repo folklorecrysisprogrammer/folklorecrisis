@@ -12,7 +12,7 @@ namespace MapEdit
     //ファイル操作に関係するクラス
     static public class FileManager
     {
-        //Bitmapを画像ファイルとして出力する
+        //Bitmapを任意のフォーマットの画像ファイルとして出力する
         static public void BitmapOutPut(Bitmap bitmap)
         {
             SaveFileDialog sfd = new SaveFileDialog();

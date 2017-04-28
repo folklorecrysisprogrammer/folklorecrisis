@@ -10,13 +10,13 @@ namespace DXEX
     /*ゲームで使用するオブジェクトの基底クラス
      * 毎フレーム行う処理を追加したいならUpdate（）をオーバーライド
     */
-    public partial class GameObject:Coroutine,IDisposable
+    public partial class GameObject:Colision,IDisposable
     {
         //コンポーネントリスト
         List<Coroutine> components = new List<Coroutine>();
 
         //コンポーネント追加
-       public void AddComponent(Coroutine component)
+       internal void AddComponent(Coroutine component)
         {
             components.Add(component);
         }
@@ -68,6 +68,16 @@ namespace DXEX
         {
             get { return scale; }
             set { scale = value; UpdateScale(); }
+        }
+        public double ScaleX
+        {
+            get { return scale.x; }
+            set { scale.x = value; UpdateScale(); }
+        }
+        public double ScaleY
+        {
+            get { return scale.y; }
+            set { scale.y = value; UpdateScale(); }
         }
 
         //不透明度（0～255）

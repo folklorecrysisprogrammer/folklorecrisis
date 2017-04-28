@@ -5,13 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 namespace MapEdit
 {
-    //マップチップ画像をBMPとして保持するクラス
+    //マップチップ画像をBMP&Textureとして保持し、IDで紐づけして管理するクラス
     public class MapChipResourceManager
     {
         private List<Bitmap> bitmapList=new List<Bitmap>();
+        private List<DXEX.Texture> textureList = new List<DXEX.Texture>();
         private readonly int mapChipSize;
 
         public MapChipResourceManager(int mapChipSize)
@@ -19,22 +21,46 @@ namespace MapEdit
             this.mapChipSize = mapChipSize;
         }
 
-        public int pushImageFile(string fileName)
+        //新しいマップチップの画像を登録する
+        //返り値はId
+        public int PushImageFile(string fileName)
         {
+            //Bitmapを用意
             var bitmap = new Bitmap(mapChipSize, mapChipSize);
             Graphics g = Graphics.FromImage(bitmap);
             //画像を扱うアルゴリズムを設定する
             g.PixelOffsetMode = PixelOffsetMode.Half;
             g.InterpolationMode = InterpolationMode.NearestNeighbor;
+            //MapChipSizeの大きさにリサイズしてリストに登録
             g.DrawImage((Bitmap)Bitmap.FromFile(fileName), 0, 0, mapChipSize, mapChipSize);
             bitmapList.Add(bitmap);
+            //Textureをリストに登録登録
+            textureList.Add(DXEX.TextureCache.GetTexture(fileName));
             return bitmapList.Count - 1;
         }
 
+        //idから画像リソースを破棄
+        public void PopImageFile(int id)
+        {
+            textureList[id].Dispose();
+            int end = bitmapList.Count - 1;
+            if (bitmapList.Count != id+1 && bitmapList.Count > 1)
+            {
+                bitmapList[id] = bitmapList[end];
+                textureList[id] = textureList[end];
+            }
+            bitmapList.RemoveAt(end);
+            textureList.RemoveAt(end);
+        }
+
+        //IDから画像リソースを得る
         public Bitmap GetBitmap(int id)
         {
-            if (id == -1) return null;
             return (Bitmap)bitmapList[id].Clone();
+        }
+        public DXEX.Texture GetTexture(int id)
+        {
+            return textureList[id];
         }
 
         /*マップチップを一枚にまとめて返す
@@ -64,26 +90,50 @@ namespace MapEdit
             return null;
         }
 
+        public MapChipResourceManager LoadProject(MapInfoFromText mift,string filePath)
+        {
+            var newMcrm = new MapChipResourceManager(mift.MapChipSize);
+            newMcrm.LoadBitmapSheet(mift.LastId, filePath);
+            return newMcrm;
+        } 
+
         //ビットマップを読み込み
         //マップチップ画像データを
-        public void LoadBitmapSheet(int lastId,Bitmap bitmap)
+        private void LoadBitmapSheet(int lastId,string filePath)
         {
+            var bitmap = (Bitmap)Bitmap.FromFile(filePath);
             bitmapList.Clear();
-            for (int y = 0; y < bitmap.Height/mapChipSize; y++)
+            textureList.Clear();
+            int yCount= bitmap.Height / mapChipSize;
+            int allNum = 6 * yCount;
+            DXEX.Texture[] textures =
+            DXEX.TextureCache.GetTextureAtlas(filePath, allNum, 6, yCount, mapChipSize, mapChipSize);
+            for (int id = 0; id <= lastId; id++)
+            {
+                textureList.Add(textures[id]);
+            }
+            for (int y = 0; y < yCount; y++)
             {
                 for (int x = 0; x < 6; x++)
                 {
-                    Bitmap resultBitmap=new Bitmap(mapChipSize,mapChipSize);
-                    Graphics g = Graphics.FromImage(resultBitmap);
-                    g.DrawImage(bitmap, x * mapChipSize, y * mapChipSize);
+                    Bitmap resultBitmap = bitmap.Clone(
+                        new Rectangle
+                        (
+                            x * mapChipSize, y * mapChipSize,
+                            mapChipSize, mapChipSize
+                        )
+                        ,bitmap.PixelFormat
+                    );
                     bitmapList.Add(resultBitmap);
-                    if (bitmapList.Count - 1 == lastId) return;
+                    if (bitmapList.Count - 1 == lastId)
+                        return;
                 }
             }
             
 
         }
 
+        //最後のID
         public int LastID()
         {
             return bitmapList.Count - 1;

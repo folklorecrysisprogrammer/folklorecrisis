@@ -137,7 +137,11 @@ namespace DXEX
         public sealed override void LoopDo()
         {
             base.LoopDo();
-            if(DrawFlag==true)Draw();
+            if (DrawFlag == true)
+            {
+                Draw();
+                DebugDraw();
+            }
             childList.ChildLoopDo();
         }
 

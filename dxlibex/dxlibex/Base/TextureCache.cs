@@ -28,6 +28,7 @@ namespace DXEX
         //Textureを返す
         static public Texture GetTexture(string filePath)
         {
+            //キャッシュされていたらそれを使う
             if (textureList.ContainsKey(filePath) == true)
             {
                 return new Texture(textureList[filePath]);
@@ -42,6 +43,9 @@ namespace DXEX
         }
 
         //画像を分割してTexture配列を返す
+        //この関数は一回読み込んだことのある画像でも、再読み込みしてしまう
+        //いつか直す。
+        //(filePath,分割した数,Xの分割数,Yの分割数,分割した画像のXsize,分割した画像のYsize)
         static public Texture[] GetTextureAtlas(string filePath ,int AllNum,int XNum, int YNum,
                                               int XSize, int YSize)
         {

@@ -14,12 +14,12 @@ namespace MapEdit
     //プロジェクト保存ウインドウ
     public partial class SaveNewProjectForm : Form
     {
-        private readonly ProjectManager pm;
+        private readonly MapEditForm meForm;
 
-        public SaveNewProjectForm(ProjectManager pm)
+        public SaveNewProjectForm(MapEditForm meForm)
         {
             InitializeComponent();
-            this.pm = pm;
+            this.meForm = meForm ;
         }
 
         private void folderSelectButton_Click(object sender, EventArgs e)
@@ -36,12 +36,8 @@ namespace MapEdit
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if(pm.SaveNewProject(folderPathTextBox.Text, newProjectNameTextBox.Text) == false)
-            {
-                MessageBox.Show("パスが存在しません", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            Dispose();
+           meForm.SaveNewProject(folderPathTextBox.Text, newProjectNameTextBox.Text);
+           Dispose();
         }
     }
 }

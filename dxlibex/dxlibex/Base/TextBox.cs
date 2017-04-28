@@ -7,7 +7,7 @@ using DxLibDLL;
 
 namespace DXEX
 {
-    class TextBox : Colision
+    class TextBox : Node
     {
         //文字のカラー
         private uint color = DX.GetColor(50, 50, 50);

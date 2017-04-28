@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.palletPanel = new System.Windows.Forms.Panel();
             this.selectPicture = new System.Windows.Forms.PictureBox();
             this.rotateLeftButton = new System.Windows.Forms.Button();
@@ -35,6 +36,7 @@
             this.turnVerticalButton = new System.Windows.Forms.Button();
             this.turnHorizontalButton = new System.Windows.Forms.Button();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.selectPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,6 +110,7 @@
             this.vScrollBar1.Size = new System.Drawing.Size(17, 400);
             this.vScrollBar1.TabIndex = 14;
             // 
+            // 
             // SelectImageForm
             // 
             this.AllowDrop = true;
@@ -139,5 +142,6 @@
         private System.Windows.Forms.Button turnVerticalButton;
         private System.Windows.Forms.Button turnHorizontalButton;
         private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

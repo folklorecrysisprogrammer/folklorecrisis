@@ -9,7 +9,7 @@ using DxLibDLL;
 namespace DXEX
 {
     //ボタンコンポーネント
-    class Button : Component<Colision>
+    class Button : Component<GameObject>
     {
         public delegate void Handler();
         private Point point = new Point(new Node());

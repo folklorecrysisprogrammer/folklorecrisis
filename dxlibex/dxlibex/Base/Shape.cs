@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DxLibDLL;
 
+
+//まるで未完成
 namespace DXEX
 {
     //物の形を表す基底クラス
@@ -12,6 +14,7 @@ namespace DXEX
     {
         public Node node;
         public Shape(Node _node) { node = _node; }
+        [System.Diagnostics.Conditional("DEBUG")]
         public abstract void DebugDraw();
         public abstract bool CheckHit(Shape shape);
         public abstract bool CheckHit(Rect shape);

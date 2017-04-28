@@ -11,7 +11,7 @@ namespace MapEdit
     //マップの1マスを管理するクラス
     public class MapOneMass:DXEX.Node
     {
-        //画像を表示するスプライト
+        //画像を表示するスプライトを
         //レイヤーの数だけ保持
         public MapChip[] mapChips { get; private set; }
         private readonly int mapChipSize;
@@ -19,11 +19,11 @@ namespace MapEdit
         private readonly MapChipResourceManager mcrm;
 
         //初期化
-        public MapOneMass(MapEditForm meForm)
+        public MapOneMass(MapChipResourceManager mcrm,int mapChipSize)
         {
             mapChips = new MapChip[MapEditForm.maxLayer];
-            mapChipSize = meForm.MapChipSize;
-            mcrm = meForm.mcrm;
+            this.mapChipSize = mapChipSize;
+            this.mcrm = mcrm;
             anchor.SetVect(0, 0);           
 
             //レイヤーの数だけ画像表示用スプライトを生成する

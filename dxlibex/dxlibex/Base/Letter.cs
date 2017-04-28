@@ -8,7 +8,7 @@ using DxLibDLL;
 namespace DXEX
 {
     //画面に文字を表示するオブジェクト
-   public class Letter:Colision
+   public class Letter:Node
     {
         //文字のカラー
         private uint color=DX.GetColor(255,255,255);

@@ -18,67 +18,21 @@ namespace MapEdit
         //layerの数
         public const int maxLayer = 3;
         //マップチップパレットフォーム
-        private SelectImageForm sif;
+        private readonly SelectImageForm sif;
         //プロジェクトデータを保存,上書き,開く機能をするクラス
         private ProjectManager pm;
-        //実際にマップを描画するシーン
-        public MapWriteScene mws;
         //マップチップリソース管理
         public MapChipResourceManager mcrm { get; private set;}
+        private MapEdit mapEdit;
 
-        public int MapChipSize { get; private set; } 
+       // public int MapChipSize { get; private set; } 
 
         //初期化
         public MapEditForm(int mapChipSize)
         {
             InitializeComponent();
-            pm = new ProjectManager(this);
-            MapChipSize = mapChipSize;
-            mcrm = new MapChipResourceManager(mapChipSize);
-            sif = new SelectImageForm(this);
-            //メインウインドウのロードが終わったら、
-            //パレッドウインドウを表示する。
-            Load += (o, e) => {
-                sif.Show();
-            };
-
-            //メインウインドウに終了命令が出たら
-            //パレッドウインドウを速やかに閉じる
-            FormClosing += (o, e) =>
-            {
-                sif.Dispose();
-            };
-            
-            //キーが押された時の処理
-            KeyDown += (o, e) =>
-            {
-                mapWritePanel.Focus();
-
-                //WASDキーが押されていたら、スクロールバーをスクロール
-                if (e.KeyData == Keys.D )
-                {
-                    ScrollBarAddValue(hScrollBar1, hScrollBar1.LargeChange);
-                    hScrollBar1.Focus();
-                }
-                if (e.KeyData == Keys.A)
-                {
-                    ScrollBarAddValue(hScrollBar1, -hScrollBar1.LargeChange);
-                    hScrollBar1.Focus();
-                }
-                if (e.KeyData == Keys.S)
-                {
-                    ScrollBarAddValue(vScrollBar1, vScrollBar1.LargeChange);
-                    vScrollBar1.Focus();
-                }
-                if (e.KeyData == Keys.W)
-                {
-                    ScrollBarAddValue(vScrollBar1, -vScrollBar1.LargeChange);
-                    vScrollBar1.Focus();
-                }
-            };
-
             //DXEX初期化
-            DXEX.Director.init(this);
+            DXEX.DirectorForForm.init(this);
             DX.SetAlwaysRunFlag(DX.TRUE);
 
             //描画領域をセット
@@ -91,11 +45,35 @@ namespace MapEdit
 
             //DXライブラリの描画先の背景色を設定する
             DxLibDLL.DX.SetBackgroundColor(100, 240, 130);
+            
+            mcrm = new MapChipResourceManager(mapChipSize);
+            sif = new SelectImageForm(this);
+            mapEdit = new MapEdit(mapWritePanel,mcrm, sif, layerComboBox, hScrollBar1, vScrollBar1, new Size(20, 20), mapChipSize);
+            pm = new ProjectManager();
+            //メインウインドウのロードが終わったら、
+            //パレッドウインドウを表示する。
+            Load += (o, e) => {
+                sif.Show();
+            };
 
-            //mapWriteScene初期化
-            //mapWritePanelをDXライブラリの描画先に設定
-            mws = 
-                new MapWriteScene(sif,mapWritePanel,hScrollBar1,vScrollBar1,this);
+            //メインウインドウに終了命令が出たら
+            //パレッドウインドウを速やかに閉じる
+            FormClosing += (o, e) =>
+            {
+                sif.Dispose();
+            };
+
+            //スクロールバーがスクロールされたら、
+            //フォーカスを当てるようにしてmouseホイールしやすくする
+            hScrollBar1.Scroll += (o, e) =>
+            {
+                hScrollBar1.Focus();
+            };
+            vScrollBar1.Scroll += (o, e) =>
+            {
+                vScrollBar1.Focus();
+            };
+
 
             //comboボックスのデフォルト値設定
             layerComboBox.SelectedIndex = 0;
@@ -104,51 +82,88 @@ namespace MapEdit
             //メインウインドウ表示
             Show();
             //DXライブラリループ開始
-            DXEX.Director.StartLoop(this,mws);
+            DXEX.DirectorForForm.StartLoop(this);
         }
 
-        //スクロールバーの値を範囲内に収めながら加算する
-        static public void ScrollBarAddValue(ScrollBar scrollBar, int plus)
+        //プロジェクトを読み込みしたときの処理
+        private void LoadProject(MapInfoFromText mift,string path) {
+            mcrm = mcrm.LoadProject(mift, path + @"\MapChip.png");
+            sif.LoadProject();
+            mapEdit = mapEdit.LoadProject(mift,mapWritePanel,mcrm,sif,layerComboBox,hScrollBar1,vScrollBar1);
+        }
+
+        //ProjectInfoの生成
+        private ProjectInfo GetProjectInfo()
         {
-            if (scrollBar.Value + plus > scrollBar.Maximum)
+            return new ProjectInfo(mcrm.GetBitmapSheet(),mcrm.LastID(),mapEdit.GetMapDataText());
+        }
+
+        //プロジェクトの保存
+        public void SaveNewProject(string folderPath,string projectName)
+        {
+            if (pm.SaveNewProject(folderPath, projectName,GetProjectInfo()) == false)
             {
-                scrollBar.Value = scrollBar.Maximum;
+                MessageBox.Show("パスが存在しません", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else if (scrollBar.Value + plus < scrollBar.Minimum)
-            {
-                scrollBar.Value = scrollBar.Minimum;
-            }
-            else
-            {
-                scrollBar.Value += plus;
-            }
+        }
+        //画像リソースをIDで指定して破棄する(削除するIdと削除したidに新たに割り当てるid)
+        public void RemoveId(int id,int lastid)
+        {
+            mapEdit.RemoveId(id, lastid);
         }
 
         //設定ボタンが押された時の処理
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var configForm = new ConfigForm(mws);
+            var configForm = mapEdit.CreateConfigForm();
             configForm.ShowDialog(this);
         }
 
         //画像出力メニューが選択されたときの処理
         private void 画像出力ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileManager.BitmapOutPut(mws.GetMapData().GetBitmap());
+            FileManager.BitmapOutPut(mapEdit.GetBitmap());
         }
 
         //保存メニューが選択された時の処理
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var snpf=new SaveNewProjectForm(pm);
+            var snpf=new SaveNewProjectForm(this);
             snpf.ShowDialog(this);
         }
 
-        //layerが変更された時の処理
-        private void layerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        //開くメニューが選択された時の処理
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mws.CurrentLayer = layerComboBox.SelectedIndex;
+            var fbd = new FolderBrowserDialog();
+
+            //ダイアログを表示する
+            if (fbd.ShowDialog(this) == DialogResult.OK)
+            {
+                MapInfoFromText mift;
+                try
+                {
+                     mift= pm.LoadProject(fbd.SelectedPath);
+                }
+                catch
+                {
+                    MessageBox.Show("エラー", "プロジェクトが存在しません", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                LoadProject(mift, fbd.SelectedPath);
+            }
         }
+
+        //上書きメニューが選択された時の処理
+        private void 上書きToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pm.OverwriteProject(GetProjectInfo()) == false)
+            {
+                MessageBox.Show("エラー", "プロジェクトが存在しません", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         //描画方法変更された時の処理
         private void drawModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -168,33 +183,55 @@ namespace MapEdit
         //右回転ボタンを押したときの処理
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
-            mws.GetMapData().RotateRight();
-            //スクロールバーの調整
-            mws.GetScroll().SetScrollMaximum();
-            //表示するスプライトの設定
-            mws.UpdateShowMapImage();
+            mapEdit.MapRotateRight();
         }
 
         //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
-            mws.GetMapData().RotateLeft();
-            //スクロールバーの調整
-            mws.GetScroll().SetScrollMaximum();
-            //表示するスプライトの設定
-            mws.UpdateShowMapImage();
+            mapEdit.MapRotateLeft();
         }
 
         //上下反転ボタンを押したときの処理
         private void turnVerticalButton_Click(object sender, EventArgs e)
         {
-            mws.GetMapData().turnVertical();
+            mapEdit.MapTurnVertical();
         }
 
         //左右反転ボタンを押したときの処理
         private void turnHorizontalButton_Click(object sender, EventArgs e)
         {
-            mws.GetMapData().turnHorizontal();
+            mapEdit.MapTurnHorizontal();
+
+        }
+
+        //キーが押された時の処理
+        private void MapEditForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            mapEdit.KeyScroll(e);
+        }
+
+        //マップ描画のパネルのサイズが変更されたら、
+        //マップに表示するスプライトの調整や
+        //スクロールバーの調整を行う
+        private void mapWritePanel_SizeChanged(object sender, EventArgs e)
+        {
+            mapEdit.mapWritePanel_SizeChanged();
+        }
+
+        //パネル上でマウスが操作された時の処理をする
+        private void mapWritePanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            mapEdit.MapMouseAction( e);
+        }
+        private void mapWritePanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            mapEdit.MapMouseAction(e);
+        }
+
+        private void gridButton_Click(object sender, EventArgs e)
+        {
+            mapEdit.gridOnOff();
         }
     }
 }
