@@ -13,7 +13,6 @@ namespace MapEdit
     //設定ウインドウ
     public partial class ConfigForm : Form
     {
-        private readonly MapWriteScene mws;
         private readonly MapData mapData;
         private readonly MapWriteScroll mapWriteScroll;
         private readonly MapShowArea mapShowArea;
@@ -27,7 +26,6 @@ namespace MapEdit
             this.mapShowArea = mapShowArea;
             this.mapWriteScroll = mapWriteScroll;
             this.mapData = mapData;
-            this.mws = mapWriteScene;
             var myAssembly=System.Reflection.Assembly.GetExecutingAssembly();
             chara.Image =new Bitmap(myAssembly.GetManifestResourceStream("MapEdit.Resources.プルヌ.png"));
             var rnd=new System.Random();

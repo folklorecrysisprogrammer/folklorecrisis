@@ -18,12 +18,12 @@ namespace MapEdit
         //layerの数
         public const int maxLayer = 3;
         //マップチップパレットフォーム
-        private SelectImageForm sif;
+        private readonly SelectImageForm sif;
         //プロジェクトデータを保存,上書き,開く機能をするクラス
         private ProjectManager pm;
         //マップチップリソース管理
         public MapChipResourceManager mcrm { get; private set;}
-        public MapEdit mapEdit;
+        private MapEdit mapEdit;
 
        // public int MapChipSize { get; private set; } 
 
@@ -49,7 +49,7 @@ namespace MapEdit
             mcrm = new MapChipResourceManager(mapChipSize);
             sif = new SelectImageForm(this);
             mapEdit = new MapEdit(mapWritePanel,mcrm, sif, layerComboBox, hScrollBar1, vScrollBar1, new Size(20, 20), mapChipSize);
-            pm = new ProjectManager(this);
+            pm = new ProjectManager();
             //メインウインドウのロードが終わったら、
             //パレッドウインドウを表示する。
             Load += (o, e) => {
@@ -86,12 +86,27 @@ namespace MapEdit
         }
 
         //プロジェクトを読み込みしたときの処理
-        public void LoadProject(MapInfoFromText mift,string path) {
+        private void LoadProject(MapInfoFromText mift,string path) {
             mcrm = mcrm.LoadProject(mift, path + @"\MapChip.png");
             sif.LoadProject();
             mapEdit = mapEdit.LoadProject(mift,mapWritePanel,mcrm,sif,layerComboBox,hScrollBar1,vScrollBar1);
         }
 
+        //ProjectInfoの生成
+        private ProjectInfo GetProjectInfo()
+        {
+            return new ProjectInfo(mcrm.GetBitmapSheet(),mcrm.LastID(),mapEdit.GetMapDataText());
+        }
+
+        //プロジェクトの保存
+        public void SaveNewProject(string folderPath,string projectName)
+        {
+            if (pm.SaveNewProject(folderPath, projectName,GetProjectInfo()) == false)
+            {
+                MessageBox.Show("パスが存在しません", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
 
         //設定ボタンが押された時の処理
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,7 +124,7 @@ namespace MapEdit
         //保存メニューが選択された時の処理
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var snpf=new SaveNewProjectForm(pm);
+            var snpf=new SaveNewProjectForm(this);
             snpf.ShowDialog(this);
         }
 
@@ -138,7 +153,7 @@ namespace MapEdit
         //上書きメニューが選択された時の処理
         private void 上書きToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (pm.OverwriteProject() == false)
+            if (pm.OverwriteProject(GetProjectInfo()) == false)
             {
                 MessageBox.Show("エラー", "プロジェクトが存在しません", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

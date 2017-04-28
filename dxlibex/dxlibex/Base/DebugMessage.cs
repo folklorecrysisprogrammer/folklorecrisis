@@ -12,6 +12,7 @@ namespace DXEX
  * Debugモードでのみコンパイルされる
  *flagで受け取ったデリゲートがtrueならエラーメッセージ表示 */
  //将来的には廃止
+ //だってすごい使いずらいもん！！
     static class DebugMessage
     {
         [System.Diagnostics.Conditional("DEBUG")]

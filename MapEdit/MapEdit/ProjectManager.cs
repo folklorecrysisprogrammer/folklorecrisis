@@ -12,15 +12,9 @@ namespace MapEdit
     //プロジェクトデータを保存,上書き,開く機能をするクラス
     public class ProjectManager
     {
-        private readonly MapEditForm meForm;
+      //  private readonly MapEditForm meForm;
         //開いているプロジェクトのパス
-        private string currentProjectPath;
-
-        public ProjectManager(MapEditForm meForm)
-        {
-            this.meForm = meForm;
-            currentProjectPath = "";
-        }
+        private string currentProjectPath="";
 
         //プロジェクトをロードする（引数のパスはプロジェクト名を含むとこまで）
         public MapInfoFromText LoadProject(string path)
@@ -48,42 +42,27 @@ namespace MapEdit
         }
 
         //プロジェクトを新しく保存する
-        public bool SaveNewProject(string path,string projectName)
+        public bool SaveNewProject(string path,string projectName,ProjectInfo pinfo)
         {
             currentProjectPath = path+ @"\"+projectName;
             if (Directory.Exists(path) == false) return false;
             Directory.CreateDirectory(currentProjectPath);
-            var bitmap = meForm.mcrm.GetBitmapSheet();
-            if (bitmap != null)
-            {
-                // 画像生成
-                bitmap.Save(currentProjectPath + @"\MapChip.png", ImageFormat.Png);
-                // テキストファイル生成
-                StreamWriter sw = new StreamWriter(
-                    currentProjectPath + @"\MapChip.txt",
-                    false,
-                    Encoding.GetEncoding("shift_jis"));
-                sw.Write(""+meForm.mcrm.LastID());
-                sw.Close();
-                // マップの中身を書き出す
-                StringBuilder mapDataText = meForm.mapEdit.GetMapDataText();
-                // テキストファイル生成(マップデータ)
-                sw = new System.IO.StreamWriter(
-                currentProjectPath + @"\MapData.txt",
-                false,
-                System.Text.Encoding.GetEncoding("shift_jis"));
-                sw.Write(mapDataText.ToString());
-                sw.Close();
-            }
+            WriteTxtFile(pinfo);
             return true;
         }
         //プロジェクトの上書き
-        public bool OverwriteProject()
+        public bool OverwriteProject(ProjectInfo pinfo)
         {
             if (currentProjectPath == "") return false;
             if (Directory.Exists(currentProjectPath) == false) return false;
             Directory.CreateDirectory(currentProjectPath);
-            var bitmap = meForm.mcrm.GetBitmapSheet();
+            WriteTxtFile(pinfo);
+            return true;
+        }
+
+        //txtを書く
+        private void WriteTxtFile(ProjectInfo pinfo) {
+            var bitmap = pinfo.BitmapSheet;
             if (bitmap != null)
             {
                 // 画像生成
@@ -93,10 +72,10 @@ namespace MapEdit
                     currentProjectPath + @"\MapChip.txt",
                     false,
                     Encoding.GetEncoding("shift_jis"));
-                sw.Write("" + meForm.mcrm.LastID());
+                sw.Write("" + pinfo.LastId);
                 sw.Close();
                 // マップの中身を書き出す
-                StringBuilder mapDataText = meForm.mapEdit.GetMapDataText();
+                StringBuilder mapDataText = pinfo.MapDataText;
                 // テキストファイル生成(マップデータ)
                 sw = new System.IO.StreamWriter(
                 currentProjectPath + @"\MapData.txt",
@@ -105,7 +84,6 @@ namespace MapEdit
                 sw.Write(mapDataText.ToString());
                 sw.Close();
             }
-            return true;
         }
 
     }
