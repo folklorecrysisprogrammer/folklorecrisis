@@ -52,7 +52,6 @@ namespace DXEX.User
             DX.DrawRotaString((int)(GlobalPos.x), (int)(GlobalPos.y),
                               scale.x, scale.y, anchor.x*rect.Width, anchor.y * 16,
                               Utility.DegToRad(GlobalAngle), color,color, DX.FALSE,text);
-            base.Draw();
         }
     }
 }

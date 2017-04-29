@@ -78,7 +78,6 @@ namespace DXEX.User
             DX.DrawRotaGraph3((int)(GlobalPos.x), (int)(GlobalPos.y),
                               (int)(rect.Width*anchor.x), (int)(rect.Height * anchor.y),
                               scale.x, scale.y,Utility.DegToRad(GlobalAngle), gh,DX.TRUE, turnFlag) ;
-            base.Draw();
         }
 
         //終了処理

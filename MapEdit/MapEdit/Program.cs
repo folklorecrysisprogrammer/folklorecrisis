@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace MapEdit
 {
+
     static class Program
     {
         /// <summary>
@@ -14,7 +15,6 @@ namespace MapEdit
         [STAThread]
         static void Main()
         {
-           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var form = new StartForm();
