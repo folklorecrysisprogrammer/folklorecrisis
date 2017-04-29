@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DxLibDLL;
 
-namespace DXEX {
+namespace DXEX.Base {
     //キーコード定義
    public enum KeyCode
     {

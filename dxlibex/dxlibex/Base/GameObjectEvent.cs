@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DXEX
+namespace DXEX.Base
 {
 
     //GameObjectの各種イベント
     //ユーザーは任意にオーバーライドしてください。
-    public partial class GameObject : Coroutine, IDisposable
+    public partial class GameObject : Colision, IDisposable
     {
         //Angleが変更されたら呼ばれる関数
         protected virtual void UpdateAngle() { }

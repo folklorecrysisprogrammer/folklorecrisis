@@ -12,42 +12,90 @@ namespace MapEdit
     public class MapData
     {
         //マップのマスごとの情報を保持
-        private MapOneMass[,] mapImage;
+        private MapOneMass[,] mapOneMass;
 
         //マップチップサイズ
         public int MapChipSize { get; }
         //マップチップの横の数と縦の数
-        private int numberX=20;
-        private int numberY=20;
+        private int numberX;
+        private int numberY;
         public Size MapSize
         {
             get { return new Size(numberX, numberY); }
-            set { ChangeMapSize(value.Width,value.Height); }
+            set { ChangeMapSize(value.Width, value.Height); }
         }
+        public int MapSizeX { get { return numberX; } }
+        public int MapSizeY { get { return numberY; }}
 
-        private readonly MapEditForm meForm;
+        private readonly MapChipResourceManager mcrm;
 
         //配列ぽく振るまう
         public MapOneMass this[int x,int y]
         {
-            get { return mapImage[x, y]; }
+            get { return mapOneMass[x, y]; }
         }
 
         //初期化
-        public MapData(MapEditForm meForm)
+        public MapData(MapChipResourceManager mcrm, Size mapSize,int mapChipSize)
         {
-            this.meForm = meForm;
-            MapChipSize = meForm.MapChipSize;
-            mapImage = new MapOneMass[numberX, numberY];
+            numberX = mapSize.Width;
+            numberY = mapSize.Height;
+            this.mcrm = mcrm;
+            MapChipSize = mapChipSize;
+            mapOneMass = new MapOneMass[numberX, numberY];
             for (int x = 0; x < numberX; x++)
             {
-                for (int y = 0; y <numberY; y++)
+                for (int y = 0; y < numberY; y++)
                 {
-                    mapImage[x, y] = new MapOneMass(meForm);
-                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
+                    mapOneMass[x, y] = new MapOneMass(mcrm,mapChipSize);
+                    mapOneMass[x, y].LocalPos = new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }
         }
+        //
+        public void LoadProject(MapInfoFromText mift)
+        {
+            int count=0;
+            for(int y = 0; y < numberY; y++)
+            {
+                for(int x = 0; x < numberX; x++)
+                {
+                    for (int layer = 0; layer < MapEditForm.maxLayer; layer++)
+                    {
+                        if (mift.Id[count] != -1)
+                        {
+                            mapOneMass[x, y].mapChips[layer].SetTexture(mcrm.GetTexture(mift.Id[count]));
+                            mapOneMass[x, y].mapChips[layer].Id = mift.Id[count];
+                            mapOneMass[x, y].mapChips[layer].Angle = mift.Angle[count];
+                            mapOneMass[x, y].mapChips[layer].turnFlag = mift.Turn[count];
+                        }
+                        count++;
+                    }
+                }
+            }
+        }
+
+        public void RemoveId(int id,int lastid)
+        {
+            if (id == lastid) lastid = -999;
+           foreach ( var item in mapOneMass)
+            {
+                foreach(var mapChip in item.mapChips)
+                {
+                    if (mapChip.Id == id)
+                    {
+                        mapChip.ClearTexture();
+                        mapChip.Id = -1;
+                    }
+                    else if (mapChip.Id == lastid)
+                    {
+                        mapChip.Id = id;
+                    }
+                }
+            }
+        }
+
+
 
         //マップ全体をBitmapに変換する
         public Bitmap GetBitmap()
@@ -58,19 +106,43 @@ namespace MapEdit
             {
                 for (int countX = 0; countX < numberX; ++countX)
                 {
-                    Bitmap bitmap = mapImage[countX, countY].GetBitmap();
+                    Bitmap bitmap = mapOneMass[countX, countY].GetBitmap();
                     g.DrawImage(bitmap, MapChipSize * countX, MapChipSize * countY);
                 }
             }
             return unitedImg;
         }
 
+        public StringBuilder GetMapDataText()
+        {
+            // マップの中身を書き出す
+            StringBuilder mapDataText = new StringBuilder();
+            mapDataText.Append(MapChipSize + "," + MapSizeX + "," + MapSizeY);
+            for (int y = 0; y < MapSizeY; y++)
+            {
+                mapDataText.Append(Environment.NewLine);
+                for (int x = 0; x < MapSizeX; x++)
+                {
+                    MapOneMass mom = mapOneMass[x, y];
+                    MapChip[] ChipId = mom.mapChips;
+                    for (int i = 0; i < ChipId.Length; i++)
+                    {
+                        int Id = ChipId[i].Id;
+                        int Angle = (int)(ChipId[i].Angle / 90.0);
+                        int turnFlag = ChipId[i].turnFlag;
+                        mapDataText.Append(Id + "," + Angle + "," + turnFlag + ",");
+                    }
+                }
+            }
+            return mapDataText;
+        }
+
         //MapSize変更処理
         private void ChangeMapSize(int newNumberX,int newNumberY)
         {
 
-            var tMapImage = mapImage;
-            mapImage = new MapOneMass[newNumberX, newNumberY];
+            var tMapImage = mapOneMass;
+            mapOneMass = new MapOneMass[newNumberX, newNumberY];
 
             //前のMapImageから、はみ出した部分があれば削除する
             for (int x = newNumberX; x < numberX; x++)
@@ -97,7 +169,7 @@ namespace MapEdit
                     y < numberY && y < newNumberY;
                     y++)
                 {
-                    mapImage[x, y] = tMapImage[x, y];
+                    mapOneMass[x, y] = tMapImage[x, y];
                 }
             }
 
@@ -106,16 +178,16 @@ namespace MapEdit
             {
                 for (int y = 0; y < newNumberY; y++)
                 {
-                    mapImage[x, y] = new MapOneMass(meForm);
-                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
+                    mapOneMass[x, y] = new MapOneMass(mcrm,MapChipSize);
+                    mapOneMass[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }
             for (int x = 0; x < numberX; x++)
             {
                 for (int y =numberY; y < newNumberY; y++)
                 {
-                    mapImage[x, y] = new MapOneMass(meForm);
-                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
+                    mapOneMass[x, y] = new MapOneMass(mcrm,MapChipSize);
+                    mapOneMass[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }
             numberX = newNumberX;
@@ -126,51 +198,51 @@ namespace MapEdit
         //マップを右回転
         public void RotateRight()
         {
-            var tMapImage = mapImage;
-            mapImage = new MapOneMass[numberY, numberX];
-            for (int x = 0; x < mapImage.GetLength(0); x++)
+            var tMapImage = mapOneMass;
+            mapOneMass = new MapOneMass[numberY, numberX];
+            for (int x = 0; x < mapOneMass.GetLength(0); x++)
             {
-                for (int y = 0; y < mapImage.GetLength(1); y++)
+                for (int y = 0; y < mapOneMass.GetLength(1); y++)
                 {
-                    mapImage[x, y] = tMapImage[y, tMapImage.GetLength(1) - x - 1];
-                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
-                    mapImage[x, y].RotateRight();
+                    mapOneMass[x, y] = tMapImage[y, tMapImage.GetLength(1) - x - 1];
+                    mapOneMass[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
+                    mapOneMass[x, y].RotateRight();
                 }
             }
-            numberX = mapImage.GetLength(0);
-            numberY = mapImage.GetLength(1);
+            numberX = mapOneMass.GetLength(0);
+            numberY = mapOneMass.GetLength(1);
         }
 
         //マップを左回転
         public void RotateLeft()
         {
-            var tMapImage = mapImage;
-            mapImage = new MapOneMass[numberY, numberX];
-            for (int x = 0; x < mapImage.GetLength(0); x++)
+            var tMapImage = mapOneMass;
+            mapOneMass = new MapOneMass[numberY, numberX];
+            for (int x = 0; x < mapOneMass.GetLength(0); x++)
             {
-                for (int y = 0; y < mapImage.GetLength(1); y++)
+                for (int y = 0; y < mapOneMass.GetLength(1); y++)
                 {
-                    mapImage[x, y] = tMapImage[tMapImage.GetLength(0) - y - 1, x];
-                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
-                    mapImage[x, y].RotateLeft();
+                    mapOneMass[x, y] = tMapImage[tMapImage.GetLength(0) - y - 1, x];
+                    mapOneMass[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
+                    mapOneMass[x, y].RotateLeft();
                 }
             }
-            numberX = mapImage.GetLength(0);
-            numberY = mapImage.GetLength(1);
+            numberX = mapOneMass.GetLength(0);
+            numberY = mapOneMass.GetLength(1);
         }
 
         //マップを左右反転
         public void turnHorizontal()
         {
-            var tMapImage = mapImage;
-            mapImage = new MapOneMass[numberX, numberY];
-            for (int x = 0; x < mapImage.GetLength(0); x++)
+            var tMapImage = mapOneMass;
+            mapOneMass = new MapOneMass[numberX, numberY];
+            for (int x = 0; x < mapOneMass.GetLength(0); x++)
             {
-                for (int y = 0; y < mapImage.GetLength(1); y++)
+                for (int y = 0; y < mapOneMass.GetLength(1); y++)
                 {
-                    mapImage[x, y] = tMapImage[tMapImage.GetLength(0) - x - 1, y];
-                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
-                    mapImage[x, y].TurnHorizontal();
+                    mapOneMass[x, y] = tMapImage[tMapImage.GetLength(0) - x - 1, y];
+                    mapOneMass[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
+                    mapOneMass[x, y].TurnHorizontal();
                 }
             }
         }
@@ -178,15 +250,15 @@ namespace MapEdit
         //マップを上下反転
         public void turnVertical()
         {
-            var tMapImage = mapImage;
-            mapImage = new MapOneMass[numberX, numberY];
-            for (int x = 0; x < mapImage.GetLength(0); x++)
+            var tMapImage = mapOneMass;
+            mapOneMass = new MapOneMass[numberX, numberY];
+            for (int x = 0; x < mapOneMass.GetLength(0); x++)
             {
-                for (int y = 0; y < mapImage.GetLength(1); y++)
+                for (int y = 0; y < mapOneMass.GetLength(1); y++)
                 {
-                    mapImage[x, y] = tMapImage[x, tMapImage.GetLength(1) - y - 1];
-                    mapImage[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
-                    mapImage[x, y].TurnVertical();
+                    mapOneMass[x, y] = tMapImage[x, tMapImage.GetLength(1) - y - 1];
+                    mapOneMass[x, y].LocalPos=new DXEX.Vect(x * MapChipSize, y * MapChipSize);
+                    mapOneMass[x, y].TurnVertical();
                 }
             }
         }

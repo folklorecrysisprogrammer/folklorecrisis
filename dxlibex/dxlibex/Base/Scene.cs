@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DxLibDLL;
 
-namespace DXEX
+namespace DXEX.Base
 {
     public class Scene : Node
     {
@@ -59,7 +59,7 @@ namespace DXEX
             //Controlの中心に座標をセット
             localPos.SetVect(WindowX / 2.0, WindowY / 2.0);
             //Controlが破棄されたら、sceneを削除する
-            this.control.Disposed += (object o, EventArgs e) => { Director.RemoveSubScene(this); };
+            this.control.Disposed += (object o, EventArgs e) => { DirectorForForm.RemoveSubScene(this); };
         }
 
         //描画処理

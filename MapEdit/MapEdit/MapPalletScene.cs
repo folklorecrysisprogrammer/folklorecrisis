@@ -11,17 +11,19 @@ namespace MapEdit
    public class MapPalletScene:MapSceneBase
     {
         private readonly MapPalletData mapPalletData;
-
         private readonly MapEditForm meForm;
-
         private SelectMapChipScene sms;
-        public MapPalletScene(Panel panel,SelectImageForm sif) : base(panel)
+        private Point tempPoint;
+        private Point tempPoint2;
+        public MapPalletScene(Panel panel,MapEditForm meForm,SelectMapChipScene sms) : base(panel)
         {
+            this.meForm = meForm;
             panel.MouseDown += MouseAction;
-            this.sms = sif.SelectMapChipScene;
-            meForm = sif.MeForm;
+            panel.MouseMove += MouseDrag;
+            this.sms = sms;
             mapPalletData = new MapPalletData();
             localPos.SetVect(0, 0);
+            AddChild(new MapGrid(this, 40), 1);
         }
 
         //ファイルから新しいマップチップを生成し登録する
@@ -31,7 +33,7 @@ namespace MapEdit
             try
             {
                 mapChip.SetTexture(fileName);
-                mapChip.Id=meForm.mcrm.pushImageFile(fileName);
+                mapChip.Id=meForm.mcrm.PushImageFile(fileName);
             }
             catch (Exception)
             {
@@ -41,28 +43,82 @@ namespace MapEdit
             AddChild(mapChip);
         }
 
-        //クリックされた場所にあるマップチップを選択する
-        private void MouseAction(object o,MouseEventArgs e)
+        //クリックされた場所にあるマップチップを選択OR削除する
+        private void MouseAction(object o, MouseEventArgs e)
         {
-            Point point=LocationToMap(e.Location,40);
+            Point point = LocationToMap(e.Location, 40);
             if (mapPalletData[point.X, point.Y] == null) return;
-            sms.setMapChip(
-                mapPalletData[point.X, point.Y].GetTexture(),
-                mapPalletData[point.X, point.Y].Id    
-            );
+
+            //左クリックの処理（選択）
+            if ((Control.MouseButtons & MouseButtons.Left)
+                == MouseButtons.Left)
+            {
+                tempPoint = point;
+                tempPoint2 = point;
+                sms.setMapChip(
+                    mapPalletData[point.X, point.Y].GetTexture(),
+                    mapPalletData[point.X, point.Y].Id
+                );return;
+            }
+
+            //右クリックの処理（削除）
+            if ((Control.MouseButtons & MouseButtons.Right)
+                == MouseButtons.Right)
+            {
+                RemoveMapChip(point.X, point.Y);
+            }
+        }
+        //クリックされた場所にあるマップチップを選択する
+        private void MouseDrag(object o,MouseEventArgs e)
+        {
+            if ((Control.MouseButtons & MouseButtons.Left)
+     != MouseButtons.Left) return;
+                Point point = LocationToMap(e.Location, 40);
+            if (point.X < 0 || point.Y < 0 || point.X >= 6 || point.Y >= 50) return;
+            if (mapPalletData[point.X, point.Y] == null) return;
+            if (tempPoint2 == point) return;
+            if (tempPoint == point)
+            {
+                
+                SwapMapChip(tempPoint2.X, tempPoint2.Y, tempPoint.X, tempPoint.Y);
+                mapPalletData.SwapMapChip(tempPoint2.X, tempPoint2.Y, tempPoint.X, tempPoint.Y);
+                tempPoint2 = point;
+                return;
+            }
+            SwapMapChip(point.X, point.Y, tempPoint2.X, tempPoint2.Y);
+            mapPalletData.SwapMapChip(point.X, point.Y, tempPoint2.X, tempPoint2.Y);
+            SwapMapChip(tempPoint2.X, tempPoint2.Y, tempPoint.X, tempPoint.Y);
+            mapPalletData.SwapMapChip(tempPoint2.X, tempPoint2.Y, tempPoint.X, tempPoint.Y);
+            tempPoint2 = point;
+        }
+
+        //指定座標のマップチップを削除する
+        private void RemoveMapChip(int x,int y)
+        {
+            int removeId = mapPalletData[x,y].Id;
+            sms.RemoveId(removeId, meForm.mcrm.LastID());
+            meForm.RemoveId(removeId);
+            mapPalletData[x, y].Dispose();
+            mapPalletData.RemoveMapChip(x, y);
+        }
+
+        //指定座標のマップチップを入れ替える
+        private void SwapMapChip(int x1, int y1, int x2, int y2)
+        {
+            var temp = mapPalletData[x1, y1].LocalPos;
+            mapPalletData[x1, y1].LocalPos = mapPalletData[x2, y2].LocalPos;
+            mapPalletData[x2, y2].LocalPos = temp;
+
         }
 
         //プロジェクトからマップチップパレットをロードする
-        public void LoadProject(string filePath,int yCount)
+        public void LoadProject()
         {
             mapPalletData.ClearMapChip();
-            int allNum = 6 * yCount;
-            DXEX.Texture[] textures =
-            DXEX.TextureCache.GetTextureAtlas(filePath, allNum, 6, yCount, meForm.MapChipSize, meForm.MapChipSize);
-            for(int id = 0; id <= meForm.mcrm.LastID(); id++)
+            for(int id = 0; id <=meForm. mcrm.LastID(); id++)
             {
                 MapChip mapChip = new MapChip(40);
-                mapChip.SetTexture(textures[id]);
+                mapChip.SetTexture(meForm.mcrm.GetTexture(id));
                 mapChip.Id = id;
                 mapPalletData.AddMapChip(mapChip);
                 AddChild(mapChip);

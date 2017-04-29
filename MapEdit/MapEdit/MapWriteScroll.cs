@@ -8,54 +8,49 @@ using System.Windows.Forms;
 namespace MapEdit
 {
     //MapWriteSceneをスクロールするためのクラス
-   public class MapWriteScroll
+    public class MapWriteScroll:IDisposable
     {
-        private HScrollBar hScroll;
-        private VScrollBar vScroll;
-        private MapWriteScene mws;
+        private readonly HScrollBar hScroll;
+        private readonly VScrollBar vScroll;
+        private readonly MapWriteScene mws;
+        private readonly MapShowArea mapShowArea;
+        private readonly MapData mapData;
 
-        public MapWriteScroll(HScrollBar hScroll,VScrollBar vScroll,MapWriteScene mws)
+        public MapWriteScroll(HScrollBar hScroll, VScrollBar vScroll, MapWriteScene mws,MapData mapData,MapShowArea mapShowArea)
         {
+            this.mapShowArea = mapShowArea;
             this.hScroll = hScroll;
             this.vScroll = vScroll;
             this.mws = mws;
-
-            //スクロールバーがスクロールされたら、
-            //フォーカスを当てるようにしてmouseホイールしやすくする
-            hScroll.Scroll += (o, e) =>
-            {
-                hScroll.Focus();
-            };
-            vScroll.Scroll += (o, e) =>
-            {
-                vScroll.Focus();
-            };
-
-            //スクロールバーの値が更新されたら
-            //MapWriteSceneの位置を変更する
-            hScroll.ValueChanged += (o, e) =>
-            {
-                mws.LocalPosX=-hScroll.Value;
-                mws.UpdateShowMapImage();
-            };
-            vScroll.ValueChanged += (o, e) =>
-            {
-                mws.LocalPosY = -vScroll.Value;
-                mws.UpdateShowMapImage();
-            };
-
+            this.mapData = mapData;
             SetScrollDelta();
             SetScrollMaximum();
+            //スクロールバーの値が更新されたら、mwsの位置を更新する処理を呼ぶ
+            hScroll.ValueChanged += UpdateValue;
+            vScroll.ValueChanged += UpdateValue;
+        }
+        public void Dispose()
+        {
+            hScroll.ValueChanged -= UpdateValue;
+            vScroll.ValueChanged -= UpdateValue;
+        }
+
+        //スクロールバーの値を元に、mwsの位置を更新する
+        public void UpdateValue( object o,EventArgs e)
+        {
+            mws.LocalPosX = -hScroll.Value;
+            mws.LocalPosY = -vScroll.Value;
+            mapShowArea.UpdateShowMapImage();
         }
 
         //スクロールバーの変化量を設定
         //一回スクロールで一マス移動するようにする
         public void SetScrollDelta()
         {
-            vScroll.SmallChange = mws.GetMapData().MapChipSize;
-            vScroll.LargeChange = mws.GetMapData().MapChipSize;
-            hScroll.SmallChange = mws.GetMapData().MapChipSize;
-            hScroll.LargeChange = mws.GetMapData().MapChipSize;
+            vScroll.SmallChange = mapData.MapChipSize;
+            vScroll.LargeChange = mapData.MapChipSize;
+            hScroll.SmallChange = mapData.MapChipSize;
+            hScroll.LargeChange = mapData.MapChipSize;
         }
 
         //スクロールバーの最大値を設定
@@ -63,11 +58,11 @@ namespace MapEdit
         {
             hScroll.Value = 0;
             vScroll.Value = 0;
-            mws.LocalPos=new DXEX.Vect(0, 0);
-            int temp = mws.GetMapData().MapSize.Width * mws.GetMapData().MapChipSize - mws.GetControl.Size.Width;
+            mws.LocalPos = new DXEX.Vect(0, 0);
+            int temp = mapData.MapSizeX * mapData.MapChipSize - mws.GetControl.Size.Width;
             if (temp < 0) hScroll.Maximum = 0;
             else hScroll.Maximum = temp;
-            temp = mws.GetMapData().MapSize.Height * mws.GetMapData().MapChipSize - mws.GetControl.Size.Height;
+            temp = mapData.MapSizeY * mapData.MapChipSize - mws.GetControl.Size.Height;
             if (temp < 0) vScroll.Maximum = 0;
             else vScroll.Maximum = temp;
         }

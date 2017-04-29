@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DXEX
+namespace DXEX.Base
 {
-   public class Colision : Node
+    public class Colision : Coroutine
     {
         Shape cShape;
         public Shape CShape
@@ -20,11 +20,11 @@ namespace DXEX
                 cShape = value;
             }
         }
-        //描画処理
-        public override void Draw()
+        //当たり判定の描画処理
+        public void DebugDraw()
         {
             if (cShape == null) return;
-          //  cShape.DebugDraw();
+            cShape.DebugDraw();
         }
     }
 }

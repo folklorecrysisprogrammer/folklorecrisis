@@ -35,18 +35,38 @@ namespace MapEdit
             index++;
         }
 
+        public void SwapMapChip(int x1,int y1,int x2,int y2)
+        {
+            var temp=mapChips[x1, y1];
+            mapChips[x1, y1] = mapChips[x2, y2];
+            mapChips[x2, y2] = temp;
+        }
+
+        //マップpalletに新しいマップチップを登録する
+        public void RemoveMapChip(int x,int y)
+        {
+            int lastx = (index-1) % 6;
+            int lasty = (index-1) / 6;
+            if(x!=lastx || y != lasty)
+            {
+                mapChips[lastx, lasty].LocalPos = mapChips[x, y].LocalPos;
+                mapChips[lastx, lasty].Id = mapChips[x, y].Id;
+                mapChips[x, y] = mapChips[lastx, lasty];
+            }
+            mapChips[lastx, lasty] = null;
+            index--;
+        }
+
         public void ClearMapChip()
         {
             if (index == 0) return;
-            for (int x = 0; x < mapChips.GetLength(0); x++)
+            foreach (var item in mapChips)
             {
-                for (int y = 0; y < mapChips.GetLength(1); y++)
+                if (item != null)
                 {
-                    if (mapChips[x,y] != null)
-                    {
-                        mapChips[x, y].Dispose();
-                    }
+                    item.Dispose();
                 }
+
             }
             index = 0;
             mapChips = new MapChip[6, 50];
