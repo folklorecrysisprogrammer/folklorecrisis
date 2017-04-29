@@ -62,9 +62,7 @@ namespace MapEdit
             if ((Control.MouseButtons & MouseButtons.Right)
                 == MouseButtons.Right)
             {
-                meForm.RemoveId(mapPalletData[point.X, point.Y].Id,meForm.mcrm.LastID());
-                meForm.mcrm.PopImageFile(mapPalletData[point.X, point.Y].Id);
-                
+                meForm.RemoveId(mapPalletData[point.X, point.Y].Id);
                 mapPalletData[point.X, point.Y].Dispose();
                 mapPalletData.RemoveMapChip(point.X, point.Y);
                 

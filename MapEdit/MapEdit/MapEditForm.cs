@@ -107,10 +107,11 @@ namespace MapEdit
                 return;
             }
         }
-        //画像リソースをIDで指定して破棄する(削除するIdと削除したidに新たに割り当てるid)
-        public void RemoveId(int id,int lastid)
+        //画像リソースをIDで指定して破棄する(削除するId)
+        public void RemoveId(int id)
         {
-            mapEdit.RemoveId(id, lastid);
+            mapEdit.RemoveId(id, mcrm.LastID());
+            mcrm.PopImageFile(id);
         }
 
         //設定ボタンが押された時の処理
