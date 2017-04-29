@@ -43,11 +43,13 @@ namespace DXEX
             UpdateTexture();
         }
 
+        //テクスチャーゲット
         public Texture GetTexture()
         {
             return texture;
         }
 
+        //テクスチャーをクリア
         public void ClearTexture()
         {
             texture = null;
@@ -86,7 +88,7 @@ namespace DXEX
             base.Dispose(isFinalize);
         }
 
-        //Textureが変更された時の処理
+        //Textureが変更された時に呼ばれる処理ユーザーが好きにオーバーライドしてください
         protected virtual void UpdateTexture(){}
 
 

@@ -60,17 +60,16 @@ namespace MapEdit
             if ((Control.MouseButtons & MouseButtons.Right)
                 == MouseButtons.Right)
             {
-
-                if (sms.MapChip.Id == mapPalletData[point.X, point.Y].Id)
+                int removeId = mapPalletData[point.X, point.Y].Id;
+                if (sms.MapChip.Id == removeId)
                 {
                     sms.resetMapChip();
                 }
                 if (sms.MapChip.Id == meForm.mcrm.LastID())
                 {
-                    sms.MapChip.Id = mapPalletData[point.X, point.Y].Id;
+                    sms.MapChip.Id = removeId;
                 }
-                meForm.RemoveId(mapPalletData[point.X, point.Y].Id);
-                
+                meForm.RemoveId(removeId);
                 mapPalletData[point.X, point.Y].Dispose();
                 mapPalletData.RemoveMapChip(point.X, point.Y);
                 
