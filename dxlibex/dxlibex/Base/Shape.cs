@@ -31,7 +31,7 @@ namespace DXEX.Base
         public Rect(Node _node,Size _size) : base(_node) { size = _size; }
         //四角形の四隅の座標
         private Vect[] corner = new Vect[4];
-        public override void DebugDraw()
+        public sealed override void DebugDraw()
         {
             DX.SetDrawBlendMode(DX.DX_BLENDMODE_ALPHA, 200);
             SetCorner();
@@ -58,9 +58,9 @@ namespace DXEX.Base
             corner[2] = corner[2].RotationTo(node.GlobalPos, node.GlobalAngle);
             corner[3]=corner[3].RotationTo(node.GlobalPos, node.GlobalAngle);
         }
-        public override bool CheckHit(Rect rect) { return false; }
-        public override bool CheckHit(Shape shape) {return shape.CheckHit(this); }
-        public override bool CheckHit(Point point) {
+        public sealed override bool CheckHit(Rect rect) { return false; }
+        public sealed override bool CheckHit(Shape shape) {return shape.CheckHit(this); }
+        public sealed override bool CheckHit(Point point) {
             SetCorner();
             for(int i = 0; i < 4; i++)
             {
@@ -80,11 +80,11 @@ namespace DXEX.Base
     {
         public Point(Node _node) : base(_node) { }
         public Vect Position { get { return node.GlobalPos; } }
-        public override void DebugDraw()
+        public sealed override void DebugDraw()
         { }
-        public override bool CheckHit(Point point) { return false; }
-        public override bool CheckHit(Shape shape) { return shape.CheckHit(this); }
-        public override bool CheckHit(Rect rect)
+        public sealed override bool CheckHit(Point point) { return false; }
+        public sealed override bool CheckHit(Shape shape) { return shape.CheckHit(this); }
+        public sealed override bool CheckHit(Rect rect)
         {
             return rect.CheckHit(this);
         }

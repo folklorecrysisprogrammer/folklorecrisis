@@ -136,7 +136,6 @@ namespace DXEX.User
 
             }
             DX.SetDrawAreaFull();
-            base.Draw();
         }
     }
 }
