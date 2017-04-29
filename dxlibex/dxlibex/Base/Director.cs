@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DxLibDLL;
 using System.Windows.Forms;
 
-namespace DXEX
+namespace DXEX.Base
 {
     /*ゲームのシーン管理をするクラス*/
    public static class Director
@@ -52,6 +52,7 @@ namespace DXEX
                 DX.SetDrawBlendMode(DX.DX_BLENDMODE_ALPHA,255);
 
                 FpsControl.Fps();
+                FpsControl.FpsShow();
                 //キー判定の更新
                 KeyControl.Getkey();
             }

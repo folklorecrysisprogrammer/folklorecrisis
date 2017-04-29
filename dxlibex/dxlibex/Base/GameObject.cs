@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DxLibDLL;
 
-namespace DXEX
+namespace DXEX.Base
 {
     /*ゲームで使用するオブジェクトの基底クラス
      * 毎フレーム行う処理を追加したいならUpdate（）をオーバーライド

@@ -4,8 +4,8 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace DXEX
+using DXEX.Base;
+namespace DXEX.User
 {
     //アニメーションコンポーネント
     class Anime:Component<Sprite>

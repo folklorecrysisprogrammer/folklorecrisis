@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DXEX
+namespace DXEX.Base
 {
     //何かと役立つ関数特集
    static class Utility

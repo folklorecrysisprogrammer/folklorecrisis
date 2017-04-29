@@ -26,5 +26,17 @@ namespace MapEdit
         {
             MapChip.ClearTexture();
         }
+
+        public void RemoveId(int removeId,int lastid)
+        {
+            if (MapChip.Id == removeId)
+            {
+                resetMapChip();
+            }
+            if (MapChip.Id == lastid)
+            {
+                MapChip.Id = removeId;
+            }
+        }
     }
 }

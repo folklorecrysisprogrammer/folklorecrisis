@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DxLibDLL;
+using DXEX.Base;
 
-namespace DXEX
+namespace DXEX.User
 {
     class TextBox : Node
     {

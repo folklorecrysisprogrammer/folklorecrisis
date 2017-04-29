@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DXEX
+namespace DXEX.Base
 {
     /*GameObjectクラスを親子関係を設定できるように拡張したクラス
      * 毎フレームの処理は親ノードから先に呼ばれる

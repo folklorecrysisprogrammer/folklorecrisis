@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DXEX
+namespace DXEX.Base
 {
     //コルーチンクラス
     public abstract class Coroutine

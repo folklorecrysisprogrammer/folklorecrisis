@@ -35,6 +35,13 @@ namespace MapEdit
             index++;
         }
 
+        public void SwapMapChip(int x1,int y1,int x2,int y2)
+        {
+            var temp=mapChips[x1, y1];
+            mapChips[x1, y1] = mapChips[x2, y2];
+            mapChips[x2, y2] = temp;
+        }
+
         //マップpalletに新しいマップチップを登録する
         public void RemoveMapChip(int x,int y)
         {

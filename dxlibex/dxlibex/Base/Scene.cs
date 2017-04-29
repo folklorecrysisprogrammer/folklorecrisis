@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DxLibDLL;
 
-namespace DXEX
+namespace DXEX.Base
 {
     public class Scene : Node
     {

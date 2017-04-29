@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DxLibDLL;
+using DXEX.Base;
 
-namespace DXEX
+namespace DXEX.User
 {
    
     //画面に画像を表示するオブジェクト
@@ -43,11 +44,13 @@ namespace DXEX
             UpdateTexture();
         }
 
+        //テクスチャーゲット
         public Texture GetTexture()
         {
             return texture;
         }
 
+        //テクスチャーをクリア
         public void ClearTexture()
         {
             texture = null;
@@ -86,7 +89,7 @@ namespace DXEX
             base.Dispose(isFinalize);
         }
 
-        //Textureが変更された時の処理
+        //Textureが変更された時に呼ばれる処理ユーザーが好きにオーバーライドしてください
         protected virtual void UpdateTexture(){}
 
 

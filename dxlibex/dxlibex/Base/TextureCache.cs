@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DxLibDLL;
 
-namespace DXEX
+namespace DXEX.Base
 {
     /*画像のメモリ管理クラス
      * 

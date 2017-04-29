@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DXEX
+namespace DXEX.Base
 {
     //コンポーネントクラス
     //GameObjectを継承したクラスに取り付けて機能拡張する。
