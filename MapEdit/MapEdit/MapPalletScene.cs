@@ -12,7 +12,6 @@ namespace MapEdit
     {
         private readonly MapPalletData mapPalletData;
         private readonly MapEditForm meForm;
-        private readonly MapGrid mapGrid;
         private SelectMapChipScene sms;
         public MapPalletScene(Panel panel,MapEditForm meForm,SelectMapChipScene sms) : base(panel)
         {
@@ -21,8 +20,7 @@ namespace MapEdit
             this.sms = sms;
             mapPalletData = new MapPalletData();
             localPos.SetVect(0, 0);
-            mapGrid = new MapGrid(this, 40);
-            AddChild(mapGrid, 1);
+            AddChild(new MapGrid(this, 40), 1);
         }
 
         //ファイルから新しいマップチップを生成し登録する
@@ -62,7 +60,17 @@ namespace MapEdit
             if ((Control.MouseButtons & MouseButtons.Right)
                 == MouseButtons.Right)
             {
+
+                if (sms.MapChip.Id == mapPalletData[point.X, point.Y].Id)
+                {
+                    sms.resetMapChip();
+                }
+                if (sms.MapChip.Id == meForm.mcrm.LastID())
+                {
+                    sms.MapChip.Id = mapPalletData[point.X, point.Y].Id;
+                }
                 meForm.RemoveId(mapPalletData[point.X, point.Y].Id);
+                
                 mapPalletData[point.X, point.Y].Dispose();
                 mapPalletData.RemoveMapChip(point.X, point.Y);
                 
