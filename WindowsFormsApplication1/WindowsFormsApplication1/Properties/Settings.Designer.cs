@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BattleSample.Properties
+namespace WindowsFormsApplication1.Properties
 {
 
 

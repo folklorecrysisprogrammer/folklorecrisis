@@ -11,7 +11,6 @@ namespace DXEX.Base
     /*ゲームのシーン管理をするクラス*/
    public static class Director
     {
-
         //現在のScene
         static private Scene mainScene;
         static public Scene GetScene() { return mainScene; }
