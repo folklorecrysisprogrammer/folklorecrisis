@@ -52,6 +52,7 @@ namespace DXEX.Base
                 DX.SetDrawBlendMode(DX.DX_BLENDMODE_ALPHA,255);
 
                 FpsControl.Fps();
+                FpsControl.FpsShow();
                 //キー判定の更新
                 KeyControl.Getkey();
             }
