@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DxLibDLL;
 
-namespace DXEX
+namespace DXEX.Base
 {
     //フレームレート計測クラス
    public  static class FpsControl

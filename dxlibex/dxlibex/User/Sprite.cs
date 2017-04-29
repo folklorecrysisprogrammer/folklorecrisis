@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DxLibDLL;
+using DXEX.Base;
 
-namespace DXEX
+namespace DXEX.User
 {
    
     //画面に画像を表示するオブジェクト

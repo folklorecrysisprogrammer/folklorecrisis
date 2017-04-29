@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DxLibDLL;
 
-namespace DXEX
+namespace DXEX.Base
 {
     //ゲームのシーン管理をするクラス
     //Formと連携したいときにはDirectorではなくこちらをお使いください

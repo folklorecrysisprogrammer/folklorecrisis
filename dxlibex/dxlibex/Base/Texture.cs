@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DxLibDLL;
 
-namespace DXEX
+namespace DXEX.Base
 {
     //グラフィックハンドルを持ち、それの参照数を管理するクラス
    public class TextureCore:IDisposable

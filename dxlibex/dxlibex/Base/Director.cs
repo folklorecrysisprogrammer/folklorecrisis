@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DxLibDLL;
 using System.Windows.Forms;
 
-namespace DXEX
+namespace DXEX.Base
 {
     /*ゲームのシーン管理をするクラス*/
    public static class Director

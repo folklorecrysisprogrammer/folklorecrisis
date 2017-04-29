@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DXEX
+namespace DXEX.Base
 {
     //排他制御可能なList
     abstract class ExclusiveList<ListType, ItemType>

@@ -7,7 +7,7 @@ using DxLibDLL;
 
 
 //まるで未完成
-namespace DXEX
+namespace DXEX.Base
 {
     //物の形を表す基底クラス
     public abstract class Shape

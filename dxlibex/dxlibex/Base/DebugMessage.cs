@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DxLibDLL;
 
-namespace DXEX
+namespace DXEX.Base
 {
 /*簡易エラー出力
  * Debugモードでのみコンパイルされる
