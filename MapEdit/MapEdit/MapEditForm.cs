@@ -18,7 +18,7 @@ namespace MapEdit
         //layerの数
         public const int maxLayer = 3;
         //マップチップパレットフォーム
-        private SelectImageForm sif;
+        public SelectImageForm sif { get; private set;}
         //プロジェクトデータを保存,上書き,開く機能をするクラス
         private ProjectManager pm;
         //実際にマップを描画するシーン
@@ -48,35 +48,7 @@ namespace MapEdit
             {
                 sif.Dispose();
             };
-            
-            //キーが押された時の処理
-            KeyDown += (o, e) =>
-            {
-                mapWritePanel.Focus();
-
-                //WASDキーが押されていたら、スクロールバーをスクロール
-                if (e.KeyData == Keys.D )
-                {
-                    ScrollBarAddValue(hScrollBar1, hScrollBar1.LargeChange);
-                    hScrollBar1.Focus();
-                }
-                if (e.KeyData == Keys.A)
-                {
-                    ScrollBarAddValue(hScrollBar1, -hScrollBar1.LargeChange);
-                    hScrollBar1.Focus();
-                }
-                if (e.KeyData == Keys.S)
-                {
-                    ScrollBarAddValue(vScrollBar1, vScrollBar1.LargeChange);
-                    vScrollBar1.Focus();
-                }
-                if (e.KeyData == Keys.W)
-                {
-                    ScrollBarAddValue(vScrollBar1, -vScrollBar1.LargeChange);
-                    vScrollBar1.Focus();
-                }
-            };
-
+           
             //DXEX初期化
             DXEX.Director.init(this);
             DX.SetAlwaysRunFlag(DX.TRUE);
@@ -107,22 +79,6 @@ namespace MapEdit
             DXEX.Director.StartLoop(this,mws);
         }
 
-        //スクロールバーの値を範囲内に収めながら加算する
-        static public void ScrollBarAddValue(ScrollBar scrollBar, int plus)
-        {
-            if (scrollBar.Value + plus > scrollBar.Maximum)
-            {
-                scrollBar.Value = scrollBar.Maximum;
-            }
-            else if (scrollBar.Value + plus < scrollBar.Minimum)
-            {
-                scrollBar.Value = scrollBar.Minimum;
-            }
-            else
-            {
-                scrollBar.Value += plus;
-            }
-        }
 
         //設定ボタンが押された時の処理
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -142,6 +98,21 @@ namespace MapEdit
         {
             var snpf=new SaveNewProjectForm(pm);
             snpf.ShowDialog(this);
+        }
+
+        //開くメニューが選択された時の処理
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fbd = new FolderBrowserDialog();
+
+            //ダイアログを表示する
+            if (fbd.ShowDialog(this) == DialogResult.OK)
+            {
+                if (pm.LoadProject(fbd.SelectedPath) == false)
+                {
+                    MessageBox.Show("エラー", "プロジェクトが存在しません", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         //layerが変更された時の処理
@@ -196,5 +167,12 @@ namespace MapEdit
         {
             mws.GetMapData().turnHorizontal();
         }
+
+        //キーが押された時の処理
+        private void MapEditForm_KeyDown(object sender, KeyEventArgs e)
+        {
+                mws.GetScroll().KeyScroll(e);
+        }
+
     }
 }

@@ -7,6 +7,7 @@ using DxLibDLL;
 
 namespace MapEdit
 {
+    //マップチップを表示、マップチップデータを保持するクラス
     public class MapChip:DXEX.Sprite
     {
 

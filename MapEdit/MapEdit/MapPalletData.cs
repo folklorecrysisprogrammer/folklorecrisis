@@ -18,11 +18,13 @@ namespace MapEdit
             get { return mapChips[x, y]; }
         }
 
+        //初期化
         public MapPalletData()
         {
             mapChips = new MapChip[6, 50];
         }
 
+        //マップpalletに新しいマップチップを登録する
         public void AddMapChip(MapChip mapChip)
         {
             int x = index % 6;
@@ -31,6 +33,24 @@ namespace MapEdit
             mapChip.LocalPos = new DXEX.Vect(x*40,y*40);
             mapChips[x,y]=mapChip;
             index++;
+        }
+
+        public void ClearMapChip()
+        {
+            if (index == 0) return;
+            for (int x = 0; x < mapChips.GetLength(0); x++)
+            {
+                for (int y = 0; y < mapChips.GetLength(1); y++)
+                {
+                    if (mapChips[x,y] != null)
+                    {
+                        mapChips[x, y].Dispose();
+                    }
+                }
+            }
+            index = 0;
+            mapChips = new MapChip[6, 50];
+
         }
 
     }

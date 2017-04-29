@@ -26,13 +26,16 @@ namespace MapEdit
         public bool LoadProject(string path)
         {
             if (Directory.Exists(path) == false) return false;
-            Bitmap bitmap = (Bitmap)Image.FromFile(path + @"MapChip.png");
+            if (Directory.Exists(path + @"\MapChip.png") == false) return false;
+            if (Directory.Exists(path + @"\MapChip.txt") == false) return false;
+            Bitmap bitmap = (Bitmap)Image.FromFile(path + @"\MapChip.png");
             StreamReader sr=new StreamReader(
                     path + @"\MapChip.txt",
                     Encoding.GetEncoding("shift_jis"));
             int lastId=int.Parse(sr.ReadLine());
             sr.Close();
             meForm.mcrm.LoadBitmapSheet(lastId, bitmap);
+            meForm.sif.MapPalletScene.LoadProject(path + @"\MapChip.png", bitmap.Height / meForm.MapChipSize);
             return true;
         }
 
