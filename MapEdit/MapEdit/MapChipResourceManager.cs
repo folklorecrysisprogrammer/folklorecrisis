@@ -53,6 +53,16 @@ namespace MapEdit
             textureList.RemoveAt(end);
         }
 
+        public void SwapImageFile(int id1,int id2)
+        {
+            var tempb = bitmapList[id1];
+            var tempt = textureList[id1];
+            bitmapList[id1] = bitmapList[id2];
+            textureList[id1] = textureList[id2];
+            bitmapList[id2] = tempb;
+            textureList[id2] = tempt;
+        }
+
         //IDから画像リソースを得る
         public Bitmap GetBitmap(int id)
         {

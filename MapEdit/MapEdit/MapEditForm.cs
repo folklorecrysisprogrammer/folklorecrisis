@@ -114,6 +114,12 @@ namespace MapEdit
             mcrm.PopImageFile(id);
         }
 
+        public void SwapId(int id1,int id2)
+        {
+            mapEdit.SwapId(id1, id2);
+            mcrm.SwapImageFile(id1, id2);
+        }
+
         //設定ボタンが押された時の処理
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
         {

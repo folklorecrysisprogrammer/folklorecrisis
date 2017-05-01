@@ -72,23 +72,19 @@ namespace MapEdit
         private void MouseDrag(object o,MouseEventArgs e)
         {
             if ((Control.MouseButtons & MouseButtons.Left)
-     != MouseButtons.Left) return;
+                != MouseButtons.Left) return;
                 Point point = LocationToMap(e.Location, 40);
             if (point.X < 0 || point.Y < 0 || point.X >= 6 || point.Y >= 50) return;
             if (mapPalletData[point.X, point.Y] == null) return;
             if (tempPoint2 == point) return;
             if (tempPoint == point)
             {
-                
                 SwapMapChip(tempPoint2.X, tempPoint2.Y, tempPoint.X, tempPoint.Y);
-                mapPalletData.SwapMapChip(tempPoint2.X, tempPoint2.Y, tempPoint.X, tempPoint.Y);
                 tempPoint2 = point;
                 return;
             }
             SwapMapChip(point.X, point.Y, tempPoint2.X, tempPoint2.Y);
-            mapPalletData.SwapMapChip(point.X, point.Y, tempPoint2.X, tempPoint2.Y);
             SwapMapChip(tempPoint2.X, tempPoint2.Y, tempPoint.X, tempPoint.Y);
-            mapPalletData.SwapMapChip(tempPoint2.X, tempPoint2.Y, tempPoint.X, tempPoint.Y);
             tempPoint2 = point;
         }
 
@@ -105,9 +101,14 @@ namespace MapEdit
         //指定座標のマップチップを入れ替える
         private void SwapMapChip(int x1, int y1, int x2, int y2)
         {
+            meForm.SwapId(mapPalletData[x1, y1].Id, mapPalletData[x2, y2].Id);
             var temp = mapPalletData[x1, y1].LocalPos;
             mapPalletData[x1, y1].LocalPos = mapPalletData[x2, y2].LocalPos;
             mapPalletData[x2, y2].LocalPos = temp;
+            var tempId = mapPalletData[x1, y1].Id;
+            mapPalletData[x1, y1].Id= mapPalletData[x2, y2].Id; ;
+            mapPalletData[x2, y2].Id = tempId;
+            mapPalletData.SwapMapChip(x1, y1, x2, y2);
 
         }
 

@@ -126,5 +126,10 @@ namespace MapEdit
         {
             mapData.RemoveId(id, lastid);
         }
+
+        public void SwapId(int id1, int id2)
+        {
+            mapData.SwapId(id1, id2);
+        }
     }
 }

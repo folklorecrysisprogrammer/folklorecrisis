@@ -95,6 +95,24 @@ namespace MapEdit
             }
         }
 
+        public void SwapId(int id1, int id2)
+        {
+            foreach (var item in mapOneMass)
+            {
+                foreach (var mapChip in item.mapChips)
+                {
+                    if (mapChip.Id == id1)
+                    {
+                        mapChip.Id = id2;
+                    }
+                    else if (mapChip.Id == id2)
+                    {
+                        mapChip.Id = id1;
+                    }
+                }
+            }
+        }
+
 
 
         //マップ全体をBitmapに変換する
