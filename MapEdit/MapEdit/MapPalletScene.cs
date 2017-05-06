@@ -94,7 +94,6 @@ namespace MapEdit
             int removeId = mapPalletData[x,y].Id;
             sms.RemoveId(removeId, meForm.mcrm.LastID());
             meForm.RemoveId(removeId);
-            mapPalletData[x, y].Dispose();
             mapPalletData.RemoveMapChip(x, y);
         }
 
@@ -102,12 +101,6 @@ namespace MapEdit
         private void SwapMapChip(int x1, int y1, int x2, int y2)
         {
             meForm.SwapId(mapPalletData[x1, y1].Id, mapPalletData[x2, y2].Id);
-            var temp = mapPalletData[x1, y1].LocalPos;
-            mapPalletData[x1, y1].LocalPos = mapPalletData[x2, y2].LocalPos;
-            mapPalletData[x2, y2].LocalPos = temp;
-            var tempId = mapPalletData[x1, y1].Id;
-            mapPalletData[x1, y1].Id= mapPalletData[x2, y2].Id; ;
-            mapPalletData[x2, y2].Id = tempId;
             mapPalletData.SwapMapChip(x1, y1, x2, y2);
 
         }

@@ -35,16 +35,24 @@ namespace MapEdit
             index++;
         }
 
+        //指定座標のマップチップを入れ替える
         public void SwapMapChip(int x1,int y1,int x2,int y2)
         {
-            var temp=mapChips[x1, y1];
+            var temp = mapChips[x1, y1].LocalPos;
+            mapChips[x1, y1].LocalPos = mapChips[x2, y2].LocalPos;
+            mapChips[x2, y2].LocalPos = temp;
+            var tempId = mapChips[x1, y1].Id;
+            mapChips[x1, y1].Id = mapChips[x2, y2].Id; ;
+            mapChips[x2, y2].Id = tempId;
+            var tempChips=mapChips[x1, y1];
             mapChips[x1, y1] = mapChips[x2, y2];
-            mapChips[x2, y2] = temp;
+            mapChips[x2, y2] = tempChips;
         }
 
-        //マップpalletに新しいマップチップを登録する
+        //マップpalletにからマップチップを削除する
         public void RemoveMapChip(int x,int y)
         {
+            mapChips[x, y].Dispose();
             int lastx = (index-1) % 6;
             int lasty = (index-1) / 6;
             if(x!=lastx || y != lasty)

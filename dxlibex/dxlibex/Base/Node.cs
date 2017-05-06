@@ -19,7 +19,6 @@ namespace DXEX.Base
   //親子関係が設定可能なクラス
   public partial class Node : GameObject
     {
-
         //レイヤー
         private int layer;
         public int Layer
