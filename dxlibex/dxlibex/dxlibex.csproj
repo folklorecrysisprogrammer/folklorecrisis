@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\IDelete.cs" />
     <Compile Include="User\Anime.cs" />
     <Compile Include="User\Button.cs" />
     <Compile Include="Base\ChildList.cs" />

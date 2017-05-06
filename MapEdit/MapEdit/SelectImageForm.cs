@@ -23,24 +23,28 @@ namespace MapEdit
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
             sms.MapChip.Angle+=90;
+            vScrollBar1.Focus();
         }
 
         //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
             sms.MapChip.Angle += 270;
+            vScrollBar1.Focus();
         }
 
         //上下反転ボタンを押したときの処理
         private void turnVerticalButton_Click(object sender, EventArgs e)
         {
             sms.MapChip.TurnVertical();
+            vScrollBar1.Focus();
         }
 
         //左右反転ボタンを押したときの処理
         private void turnHorizontalButton_Click(object sender, EventArgs e)
         {
             sms.MapChip.TurnHorizontal();
+            vScrollBar1.Focus();
         }
 
         public void LoadProject()
@@ -96,6 +100,12 @@ namespace MapEdit
             {
                 mps.LocalPosY = -vScrollBar1.Value;
             };
+        }
+
+        //アクティブになったら、スクロールバーをスクロールできるようにする
+        private void SelectImageForm_Activated(object sender, EventArgs e)
+        {
+            vScrollBar1.Focus();
         }
     }
 }
