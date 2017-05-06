@@ -10,7 +10,7 @@ namespace DXEX.Base
     //GameObjectを継承したクラスに取り付けて機能拡張する。
     //動的な性質なのでプログラムの柔軟性が上がるメリットがある
     //OwnerTypeを指定することで取り付け対象の型をある程度制限できる
-    class Component<OwnerType>:Coroutine
+    public class Component<OwnerType>:Coroutine
         where OwnerType: GameObject
     {
         //取り付け対象

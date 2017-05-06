@@ -49,11 +49,11 @@ namespace MapEdit
         {
             int fixX = (int)msb.LocalPosX % mapChipSize;
             int fixY = (int)msb.LocalPosY % mapChipSize;
-            for(int x = 0; x < msb.control.Size.Width; x+= mapChipSize)
+            for(int x = 0; x < msb.control.Size.Width + mapChipSize; x+= mapChipSize)
             {
                 DX.DrawLine(x+fixX, 0, x+fixX, msb.control.Size.Height,color);
             }
-            for (int y = 0; y < msb.control.Size.Height; y += mapChipSize)
+            for (int y = 0; y < msb.control.Size.Height+mapChipSize; y += mapChipSize)
             {
                 DX.DrawLine(0,y+fixY, msb.control.Size.Width,y+fixY, color);
             }

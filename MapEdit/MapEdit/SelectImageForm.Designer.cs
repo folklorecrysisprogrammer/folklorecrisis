@@ -110,6 +110,10 @@
             this.vScrollBar1.Size = new System.Drawing.Size(17, 400);
             this.vScrollBar1.TabIndex = 14;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // SelectImageForm
             // 
@@ -128,6 +132,7 @@
             this.Name = "SelectImageForm";
             this.Text = "マップチップパレット";
             this.TopMost = true;
+            this.Activated += new System.EventHandler(this.SelectImageForm_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.selectPicture)).EndInit();
             this.ResumeLayout(false);
 

@@ -8,36 +8,56 @@ using DXEX.Base;
 namespace DXEX.User
 {
     //アニメーションコンポーネント
-    class Anime:Component<Sprite>
+    public class Anime:Component<Sprite>
     {
         //画像List
-        List<Texture> textures = new List<Texture>();
+        Dictionary<string,Texture[]> textures = new Dictionary<string,Texture[]>();
         //Listの読み込み位置
         private int index = 0;
+        //再生止めるフラグ
+        private bool StopFlag = false;
+        //止める
+        public void Stop() { StopFlag = true; }
+        //再生
+        public void Play() { StopFlag = false;index = 0; }
+        //途中再開
+        public void Resume() { StopFlag = false;}
+
         //コマ送り速さ（フレーム単位）
         private uint speed = 0;
         public uint Speed { get { return speed; } set { speed = value; } }
+        //現在再生中のアニメーション
+        private Texture[] CurrentAnimeTex;
         //アニメーションする
         public override IEnumerator Update()
         {
-            if (speed == 0) yield break;
-            yield return (int)speed;
-            if (index < textures.Count)
+            while (true)
             {
-                owner.SetTexture(textures[index]);
-                index++;
+                if (speed == 0|| StopFlag==true) yield break;
+                index %= CurrentAnimeTex.Length;
+                if (index < CurrentAnimeTex.Length)
+                {
+                    owner.SetTexture(CurrentAnimeTex[index]);
+                    index++;
+                    
+                }
+                yield return (int)speed;
             }
-            else index = 0;
-
+        }
+        //アニメーション選択
+        public void SetAnime(string animekey)
+        {
+            CurrentAnimeTex = textures[animekey];
+            if (owner != null)
+            {
+                index = 1;
+                owner.SetTexture(CurrentAnimeTex[0]);
+            }
         }
         //アニメーション画像追加
-        public void AddTexture(string path)
+        public void AddTextureList(string animeKey,Texture[] textureList)
         {
-            textures.Add(TextureCache.GetTexture(path));
-        }
-        public void AddTexture(Texture texture)
-        {
-            textures.Add(texture);
+            textures[animeKey]=textureList;
         }
         
         //ここにアニメーション画像の削除関数が入る予定

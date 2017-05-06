@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace DXEX.Base
 {
+    
     /*GameObjectクラスを親子関係を設定できるように拡張したクラス
      * 毎フレームの処理は親ノードから先に呼ばれる
      * そのあと子ノードはレイヤーが低い順から呼ばれる
@@ -15,10 +15,10 @@ namespace DXEX.Base
      * 親は複数の子を持てる
      * 子の管理はChildListクラスに任せる*/
 
-    //親子関係が設定可能なクラス
+
+  //親子関係が設定可能なクラス
   public partial class Node : GameObject
     {
-
         //レイヤー
         private int layer;
         public int Layer
