@@ -87,6 +87,7 @@ namespace MapEdit
 
         //プロジェクトを読み込みしたときの処理
         private void LoadProject(MapInfoFromText mift,string path) {
+            DXEX.TextureCache.AllTextureDelete();
             mcrm = mcrm.LoadProject(mift, path + @"\MapChip.png");
             sif.LoadProject();
             mapEdit = mapEdit.LoadProject(mift,mapWritePanel,mcrm,sif,layerComboBox,hScrollBar1,vScrollBar1);

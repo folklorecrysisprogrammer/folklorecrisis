@@ -20,6 +20,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -47,6 +49,8 @@
   <ItemGroup>
     <Compile Include="Base\IDelete.cs" />
     <Compile Include="User\Anime.cs" />
+    <Compile Include="User\AnimeData.cs" />
+    <Compile Include="User\AnimeTrigger.cs" />
     <Compile Include="User\Button.cs" />
     <Compile Include="Base\ChildList.cs" />
     <Compile Include="Base\Colision.cs" />
