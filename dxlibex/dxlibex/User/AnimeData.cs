@@ -51,7 +51,7 @@ namespace DXEX.User
                 }
             }
         }
-        //ステートが変更された時にTriggerの発火状態と一致するかcheck
+        //ステートが変更された時にTriggerの遷移条件と一致するかcheck
         private void StateCheck()
         {
             foreach(var trigger in triggers)
