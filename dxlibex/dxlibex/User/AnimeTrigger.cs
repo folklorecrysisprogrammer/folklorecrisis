@@ -10,9 +10,9 @@ namespace DXEX.User
     {
         //発火条件
         public readonly int invokeState;
-        //遷移するアニメデータ名を指定
+        //遷移するアニメキー名を指定
         public readonly string animeKey;
-        //発火の遅延（フレーム単為）
+        //発火の遅延（フレーム単位）
         public readonly int lazyTime;
         public AnimeTrigger(int invokeState,string animeKey,int lazyTime=0)
         {

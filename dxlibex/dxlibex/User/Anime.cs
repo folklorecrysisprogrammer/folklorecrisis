@@ -53,8 +53,7 @@ namespace DXEX.User
         //アニメーション選択
         public void SetAnime(string animekey)
         {
-            nowAnimeData?.Reset();
-            nowAnimeData = animeDataList[animekey];
+            nowAnimeData = animeDataList[animekey].Reset();
             if (owner != null)
             {
                 index = 1;
