@@ -46,9 +46,10 @@ namespace DXEX.User
                 yield return (int)speed;
             }
         }
+        //遅延カウントする
         public override void Update()
         {
-            nowAnimeData.Update();
+            nowAnimeData.LazyCount();
         }
         //アニメーション選択
         public void SetAnime(string animekey)

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DXEX.Base;
 namespace DXEX.User
 {
+    //アニメーションのデータを持ち、遷移を管理するクラス
     class AnimeData
     {
         //現在遅延中のTrigger
@@ -16,8 +17,8 @@ namespace DXEX.User
         readonly AnimeTrigger[] triggers;
         //アニメーションを切り替えさせるAnime
         readonly Anime anime;
-        //Trigger遅延をカウント
-        int lazyCount=0;
+        //Trigger遅延をカウントする用
+        int lazyCounter=0;
         //現在の状態
         int state=0;
         public int State {
@@ -34,18 +35,18 @@ namespace DXEX.User
         public AnimeData Reset()
         {
             state = 0;
-            lazyCount = 0;
+            lazyCounter = 0;
             CurrentTrigger = null;
             StateCheck();
             return this;
         }
         //遅延カウント
-        public void Update()
+        public void LazyCount()
         {
             if (CurrentTrigger != null)
             {
-                lazyCount++;
-                if (CurrentTrigger.lazyTime <= lazyCount)
+                lazyCounter++;
+                if (CurrentTrigger.lazyTime <= lazyCounter)
                 {
                     anime.SetAnime(CurrentTrigger.animeKey);
                 }
@@ -65,7 +66,7 @@ namespace DXEX.User
                     }
                     else
                     {
-                        lazyCount = 0;
+                        lazyCounter = 0;
                         CurrentTrigger = trigger;
                         return;
                     }
