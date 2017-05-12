@@ -21,9 +21,9 @@ namespace DXEX.Base
     public static class TextureCache
     {
         //画像キャッシュdata
-        static public Dictionary<string, TextureCore> textureList = new Dictionary<string, TextureCore>();
+        static private Dictionary<string, TextureCore> textureList = new Dictionary<string, TextureCore>();
         //分割画像キャッシュdata
-        static public List<TextureCore> textureAtlasList = new List<TextureCore>();
+        static private List<TextureCore> textureAtlasList = new List<TextureCore>();
 
         //Textureを返す
         static public Texture GetTexture(string filePath)
