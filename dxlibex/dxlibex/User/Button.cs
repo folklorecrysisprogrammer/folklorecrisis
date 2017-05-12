@@ -16,7 +16,7 @@ namespace DXEX.User
         private Point point = new Point(new Node());
         //イベント
         public event Handler MouseDown;
-        public override IEnumerator Update()
+        public override IEnumerator IeUpdate()
         {
             if ((DX.GetMouseInput() & DX.MOUSE_INPUT_LEFT) == 1)
             {

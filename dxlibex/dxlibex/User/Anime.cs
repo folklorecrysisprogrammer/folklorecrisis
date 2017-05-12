@@ -10,8 +10,8 @@ namespace DXEX.User
     //アニメーションコンポーネント
     public class Anime:Component<Sprite>
     {
-        //画像List
-        Dictionary<string,Texture[]> textures = new Dictionary<string,Texture[]>();
+        //AnimeDataList
+        Dictionary<string,AnimeData> animeDataList = new Dictionary<string,AnimeData>();
         //Listの読み込み位置
         private int index = 0;
         //再生止めるフラグ
@@ -26,38 +26,45 @@ namespace DXEX.User
         //コマ送り速さ（フレーム単位）
         private uint speed = 0;
         public uint Speed { get { return speed; } set { speed = value; } }
+        //状態
+        public int State { get { return nowAnimeData.State; } set { nowAnimeData.State = value; } }
         //現在再生中のアニメーション
-        private Texture[] CurrentAnimeTex;
+        private AnimeData nowAnimeData;
         //アニメーションする
-        public override IEnumerator Update()
+        public override IEnumerator IeUpdate()
         {
             while (true)
             {
                 if (speed == 0|| StopFlag==true) yield break;
-                index %= CurrentAnimeTex.Length;
-                if (index < CurrentAnimeTex.Length)
+                index %= nowAnimeData.texes.Length;
+                if (index < nowAnimeData.texes.Length)
                 {
-                    owner.SetTexture(CurrentAnimeTex[index]);
+                    owner.SetTexture(nowAnimeData.texes[index]);
                     index++;
                     
                 }
                 yield return (int)speed;
             }
         }
+        //遅延カウントする
+        public override void Update()
+        {
+            nowAnimeData.LazyCount();
+        }
         //アニメーション選択
         public void SetAnime(string animekey)
         {
-            CurrentAnimeTex = textures[animekey];
+            nowAnimeData = animeDataList[animekey].Reset();
             if (owner != null)
             {
                 index = 1;
-                owner.SetTexture(CurrentAnimeTex[0]);
+                owner.SetTexture(nowAnimeData.texes[0]);
             }
         }
         //アニメーション画像追加
-        public void AddTextureList(string animeKey,Texture[] textureList)
+        public void AddAnime(string animeKey,Texture[] textureList,AnimeTrigger[] triggers=null)
         {
-            textures[animeKey]=textureList;
+            animeDataList[animeKey]=new AnimeData(this,textureList,triggers);
         }
         
         //ここにアニメーション画像の削除関数が入る予定
