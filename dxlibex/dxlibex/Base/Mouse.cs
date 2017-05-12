@@ -7,18 +7,16 @@ using DxLibDLL;
 
 namespace DXEX.Base
 {
-    //キーのイベントを制御するクラス
-    class Key : KeyBase
+    class Mouse:KeyBase
     {
-        public Key(int keycode) : base(keycode)
+        public Mouse(int keycode) : base(keycode)
         {
 
         }
-
-        //特定のキーが押されてたらtrueを返す関数
+        //特定のマウスボタンが押されてたらtrueを返す関数
         protected override bool ButtonCheck()
         {
-            return DX.CheckHitKey(keycode) == 1 ? true : false;
+            return (DX.GetMouseInput() & keycode) != 0 ? true : false;
         }
     }
 }

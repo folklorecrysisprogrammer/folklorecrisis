@@ -8,7 +8,7 @@ namespace DXEX.Base
 {
     //ボタンのイベントのインターフェイスを提供するクラス
     //派生クラスには、キーやマウスのボタンイベントを取れるクラス
-    //KeyクラスとClickクラスがある
+    //KeyクラスとMouseクラスがある
     abstract class KeyBase
     {
         //押された瞬間に呼ばれるイベント
@@ -20,7 +20,7 @@ namespace DXEX.Base
         //押し続けてる時に呼ばれるイベント
         private ButtonEvent buttonKeepDown;
         //何フレーム押したかカウントする
-        public int Count { get; protected set; }
+        public int Count { get; private set; }
         //ボタンの識別コード
         public readonly int keycode;
 
@@ -76,6 +76,26 @@ namespace DXEX.Base
         public void InvokeButtonKeepUp() { buttonKeepUp.EventDo(); }
 
         //ボタンの状態を監視し、更新し,イベントを呼ぶ関数
-        public abstract void Update();
+        public void Update()
+        {
+            if (ButtonCheck())
+            {
+                Count++;
+                if (Count == 1) InvokeButtonDown();
+                InvokeButtonKeepDown();
+            }
+            else
+            {
+                if (Count == 0) InvokeButtonKeepUp();
+                else
+                {
+                    Count = 0;
+                    InvokeButtonKeepUp();
+                    InvokeButtonUp();
+                }
+            }
+        }
+        //ボタンが押されてたらtrueを返す関数
+        protected abstract bool ButtonCheck();
     }
 }

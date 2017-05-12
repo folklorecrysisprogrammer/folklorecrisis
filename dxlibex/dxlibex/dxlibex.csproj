@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Mouse.cs" />
     <Compile Include="Base\IDelete.cs" />
     <Compile Include="Base\Key.cs" />
     <Compile Include="Base\KeyBase.cs" />
