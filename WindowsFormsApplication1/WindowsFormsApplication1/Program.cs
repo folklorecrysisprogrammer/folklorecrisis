@@ -23,10 +23,8 @@ namespace WindowsFormsApplication1
             DX.SetGraphMode(800, 500, 32);
             Director.init();
 
-            Sprite sp = new Sprite("yyk.jpg");            
             Scene sc = new Scene();
             sc.LocalPos = new Vect(0, 0);
-            sc.AddChild( sp );
 
             ShowSound ss = new ShowSound();
             sc.AddChild(ss);
