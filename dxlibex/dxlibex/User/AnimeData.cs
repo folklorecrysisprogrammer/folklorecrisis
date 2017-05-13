@@ -20,7 +20,7 @@ namespace DXEX.User
         //Trigger遅延をカウントする用
         int lazyCounter=0;
         //現在の状態
-        int state=0;
+        int state=-1;
         public int State {
             get { return state; }
             set { if (state == value) return;state=value ;StateCheck(); }
@@ -34,10 +34,9 @@ namespace DXEX.User
         //再利用できるように初期化
         public AnimeData Reset()
         {
-            state = 0;
+            state = -1;
             lazyCounter = 0;
             CurrentTrigger = null;
-            StateCheck();
             return this;
         }
         //遅延カウント
@@ -72,6 +71,7 @@ namespace DXEX.User
                     }
                 }
             }
+            CurrentTrigger = null;
         }
     }
 }
