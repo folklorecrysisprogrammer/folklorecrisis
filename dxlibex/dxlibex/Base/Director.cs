@@ -53,7 +53,7 @@ namespace DXEX.Base
                 FpsControl.Fps();
                 FpsControl.FpsShow();
                 //キー判定の更新
-                KeyControl.Getkey();
+                KeyControl.UpdateKey();
             }
         }
        

@@ -62,7 +62,7 @@ namespace DXEX.Base
                 );
                 subSceneList.UnLock();
                 DX.SetDrawBlendMode(DX.DX_BLENDMODE_ALPHA, 255);
-                KeyControl.Getkey();
+                KeyControl.UpdateKey();
                 Application.DoEvents();
             }
         }
