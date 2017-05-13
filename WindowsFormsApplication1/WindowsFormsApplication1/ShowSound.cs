@@ -30,7 +30,7 @@ class ShowSound : Node
     public ShowSound()
     {
         // ソフトウェアサウンドで読み込み
-        SoftSoundHandle = DX.LoadSoftSound("gj.mp3");
+        SoftSoundHandle = DX.LoadSoftSound("ori_bt1.mp3");
         SoftSoundPlayerHandle = DX.MakeSoftSoundPlayer(SoftSoundHandle);
         SoftSoundSampleNum = DX.GetSoftSoundSampleNum(SoftSoundHandle);
 
