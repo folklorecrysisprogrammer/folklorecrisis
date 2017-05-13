@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
         {
             // 画面解像度をセット
             DX.ChangeWindowMode(DX.TRUE);
-            DX.SetGraphMode(800, 600, 32);
+            DX.SetGraphMode(800, 500, 32);
             Director.init();
 
             Sprite sp = new Sprite("yyk.jpg");            
