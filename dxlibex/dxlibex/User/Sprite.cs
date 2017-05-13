@@ -18,8 +18,8 @@ namespace DXEX.User
         //グラフィックハンドル（テクスチャークラスから読み出す。ぶっちゃけいらないかも。直接テクスチャークラスから毎回取ればいいだけだし）
         private int gh;
         //テクスチャーの縦幅横幅
-        private Size rect;
-        public Size Rect{ get{ return rect; } }
+        private Vect rect;
+        public Vect Rect{ get{ return rect; } }
 
         //グラフィックハンドルをセット
         public void SetTexture(Texture _texture)
@@ -28,8 +28,8 @@ namespace DXEX.User
             gh = _texture.Gh;
             int width,height;
             DX.GetGraphSize(gh, out width, out height);
-            rect.Width = width;
-            rect.Height = height;
+            rect.x = width;
+            rect.y = height;
             UpdateTexture();
         }
         public void SetTexture(string filePath)
@@ -39,8 +39,8 @@ namespace DXEX.User
             gh = texture.Gh;
             int width, height;
             DX.GetGraphSize(gh, out width, out height);
-            rect.Width = width;
-            rect.Height = height;
+            rect.x = width;
+            rect.y = height;
             UpdateTexture();
         }
 
@@ -76,7 +76,7 @@ namespace DXEX.User
             
             DX.SetDrawBlendMode(DX.DX_BLENDMODE_ALPHA,GlobalOpacity);
             DX.DrawRotaGraph3((int)(GlobalPos.x), (int)(GlobalPos.y),
-                              (int)(rect.Width*anchor.x), (int)(rect.Height * anchor.y),
+                              (int)(rect.x*anchor.x), (int)(rect.y * anchor.y),
                               scale.x, scale.y,Utility.DegToRad(GlobalAngle), gh,DX.TRUE, turnFlag) ;
         }
 

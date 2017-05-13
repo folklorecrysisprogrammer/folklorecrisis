@@ -42,7 +42,7 @@ namespace DXEX.User
         private uint imeColor = DX.GetColor(200, 20, 200);
 
         //文字列の縦幅横幅
-        private Size rect;
+        private Vect rect;
         //描画幅
         public double DrawWidth;
         public const double DrawHeight = 16;
@@ -65,7 +65,7 @@ namespace DXEX.User
             set
             {
                 text = value;
-                rect.Width = DX.GetDrawStringWidth(text, text.Length);
+                rect.x = DX.GetDrawStringWidth(text, text.Length);
             }
         }
 

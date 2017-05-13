@@ -25,10 +25,10 @@ namespace DXEX.Base
    public class Rect:Shape
     {
         //四角形の縦幅横幅
-        public Size size;
+        public Vect size;
         //四角形の縦幅横幅一時保存用
-        private Size tsize;
-        public Rect(Node _node,Size _size) : base(_node) { size = _size; }
+        private Vect tsize;
+        public Rect(Node _node,Vect _size) : base(_node) { size = _size; }
         //四角形の四隅の座標
         private Vect[] corner = new Vect[4];
         public sealed override void DebugDraw()
@@ -44,14 +44,14 @@ namespace DXEX.Base
         //cornerを計算で求める
         private void SetCorner()
         {
-            tsize.Width = size.Width * node.Scale.x;
-            tsize.Height = size.Height * node.Scale.y;
+            tsize.x = size.x * node.Scale.x;
+            tsize.y = size.y * node.Scale.y;
             corner[0].SetVect(
-                node.GlobalPos.x - (tsize.Width * node.anchor.x), 
-                node.GlobalPos.y - (tsize.Height * node.anchor.y)
+                node.GlobalPos.x - (tsize.x * node.anchor.x), 
+                node.GlobalPos.y - (tsize.y * node.anchor.y)
             );
-            corner[1].SetVect(corner[0].x + tsize.Width, corner[0].y);
-            corner[2].SetVect(corner[1].x, corner[1].y + tsize.Height);
+            corner[1].SetVect(corner[0].x + tsize.x, corner[0].y);
+            corner[2].SetVect(corner[1].x, corner[1].y + tsize.y);
             corner[3].SetVect(corner[0].x , corner[2].y);
             corner[0] = corner[0].RotationTo(node.GlobalPos, node.GlobalAngle);
             corner[1] = corner[1].RotationTo(node.GlobalPos, node.GlobalAngle);
@@ -87,42 +87,6 @@ namespace DXEX.Base
         public sealed override bool CheckHit(Rect rect)
         {
             return rect.CheckHit(this);
-        }
-    }
-
-
-    //縦横のサイズを保存するクラス
-    public struct Size
-    {
-        private Vect size;
-        public Size(double x,double y)
-        {
-            size=new Vect(x, y);
-        }
-        public Size(Vect _size)
-        {
-            size = _size;
-        }
-        //横幅ゲッターセッター
-        public double Width { get { return size.x; } set { size.x = value; } }
-        //縦幅ゲッターセッター
-        public double Height { get { return size.y; } set { size.y = value; } }
-        //演算子オーバーロード
-        public static Size operator +(Size left, Size right)
-        {
-            return new Size(left.size+right.size);
-        }
-        public static Size operator -(Size left, Size right)
-        {
-            return new Size(left.size - right.size);
-        }
-        public static Size operator *(double scale, Size v)
-        {
-            return new Size(v.size * scale);
-        }
-        public static Size operator *(Size v, double scale)
-        {
-            return new Size(v.size * scale);
         }
     }
 }

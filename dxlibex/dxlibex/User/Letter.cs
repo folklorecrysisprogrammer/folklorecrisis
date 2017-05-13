@@ -14,7 +14,7 @@ namespace DXEX.User
         //文字のカラー
         private uint color=DX.GetColor(255,255,255);
         //文字列の縦幅横幅
-        private Size rect;
+        private Vect rect;
         public uint Color
         {
             get { return color; }
@@ -29,7 +29,7 @@ namespace DXEX.User
             set
             {
                 text = value;
-                rect.Width = DX.GetDrawStringWidth(text, text.Length);
+                rect.x = DX.GetDrawStringWidth(text, text.Length);
             }
         }
 
@@ -50,7 +50,7 @@ namespace DXEX.User
             
             DX.SetDrawBlendMode(DX.DX_BLENDMODE_ALPHA, GlobalOpacity);
             DX.DrawRotaString((int)(GlobalPos.x), (int)(GlobalPos.y),
-                              scale.x, scale.y, anchor.x*rect.Width, anchor.y * 16,
+                              scale.x, scale.y, anchor.x*rect.x, anchor.y * 16,
                               Utility.DegToRad(GlobalAngle), color,color, DX.FALSE,text);
         }
     }
