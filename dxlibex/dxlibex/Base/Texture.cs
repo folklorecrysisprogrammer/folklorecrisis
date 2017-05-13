@@ -8,7 +8,7 @@ using DxLibDLL;
 namespace DXEX.Base
 {
     //グラフィックハンドルを持ち、それの参照数を管理するクラス
-   public class TextureCore:IDisposable
+   class TextureCore:IDisposable
     {
         //グラフィックハンドル
         public int Gh { get; private set; }
@@ -47,7 +47,7 @@ namespace DXEX.Base
         private TextureCore textureCore=null;
 
         //TextureCoreの参照数を1増やす
-        public Texture(TextureCore _textureCore)
+       internal Texture(TextureCore _textureCore)
         {
             textureCore = _textureCore;
             textureCore.Retain();

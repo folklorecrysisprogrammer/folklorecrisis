@@ -23,8 +23,7 @@ namespace DXEX.Base
         //当たり判定の描画処理
         public void DebugDraw()
         {
-            if (cShape == null) return;
-            cShape.DebugDraw();
+            cShape?.DebugDraw();
         }
     }
 }
