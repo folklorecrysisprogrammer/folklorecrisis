@@ -27,7 +27,7 @@ namespace DXEX.User
         private uint speed = 0;
         public uint Speed { get { return speed; } set { speed = value; } }
         //状態
-        public int State { get { return nowAnimeData.State; } set { nowAnimeData.State = value; } }
+        public int? State { get { return nowAnimeData.State; } set { nowAnimeData.State = value; } }
         //現在再生中のアニメーション
         private AnimeData nowAnimeData;
         //アニメーションする
@@ -62,9 +62,9 @@ namespace DXEX.User
             }
         }
         //アニメーション画像追加
-        public void AddAnime(string animeKey,Texture[] textureList,AnimeTrigger[] triggers=null)
+        public void AddAnime(string animeKey, Texture[] textureList, AnimeTrigger[] triggers = null, int? defaultState = null)
         {
-            animeDataList[animeKey]=new AnimeData(this,textureList,triggers);
+            animeDataList[animeKey]=new AnimeData(this,textureList,triggers,defaultState);
         }
         
         //ここにアニメーション画像の削除関数が入る予定

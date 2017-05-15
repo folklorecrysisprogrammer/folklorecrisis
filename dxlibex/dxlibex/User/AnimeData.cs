@@ -15,28 +15,36 @@ namespace DXEX.User
         public readonly Texture[] texes;
         //遷移Triggerの配列
         readonly AnimeTrigger[] triggers;
+        readonly AnimeTrigger defaultTrigger=null;
         //アニメーションを切り替えさせるAnime
         readonly Anime anime;
         //Trigger遅延をカウントする用
         int lazyCounter=0;
         //現在の状態
-        int state=-1;
-        public int State {
+        int? state;
+        public int? State {
             get { return state; }
             set { if (state == value) return;state=value ;StateCheck(); }
         }
-        public AnimeData(Anime anime,Texture[] texes,AnimeTrigger[] triggers=null)
+        public AnimeData(Anime anime,Texture[] texes
+            ,AnimeTrigger[] triggers=null,int? defaultState = null)
         {
             this.texes = texes;
             this.triggers = triggers;
             this.anime = anime;
+            if (defaultState != null)
+            {
+                defaultTrigger=triggers.First(x=>x.invokeState==defaultState);
+                state=defaultTrigger.invokeState;
+            }
         }
         //再利用できるように初期化
         public AnimeData Reset()
         {
-            state = -1;
+            state = defaultTrigger?.invokeState;
             lazyCounter = 0;
             CurrentTrigger = null;
+            StateCheck();
             return this;
         }
         //遅延カウント
@@ -63,13 +71,22 @@ namespace DXEX.User
                         anime.SetAnime(trigger.animeKey);
                         return;
                     }
-                    else
-                    {
-                        lazyCounter = 0;
-                        CurrentTrigger = trigger;
-                        return;
-                    }
+                    lazyCounter = 0;
+                    CurrentTrigger = trigger;
+                    return;
                 }
+            }
+            if (defaultTrigger != null)
+            {
+                state = defaultTrigger.invokeState;
+                if (defaultTrigger.lazyTime == 0)
+                {
+                    anime.SetAnime(defaultTrigger.animeKey);
+                    return;
+                }
+                lazyCounter = 0;
+                CurrentTrigger = defaultTrigger;
+                return;
             }
             CurrentTrigger = null;
         }

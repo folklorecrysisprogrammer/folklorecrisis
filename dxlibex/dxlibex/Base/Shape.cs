@@ -81,7 +81,7 @@ namespace DXEX.Base
         public Point(Node _node) : base(_node) { }
         public Vect Position { get { return node.GlobalPos; } }
         public sealed override void DebugDraw()
-        { }
+     { }
         public sealed override bool CheckHit(Point point) { return false; }
         public sealed override bool CheckHit(Shape shape) { return shape.CheckHit(this); }
         public sealed override bool CheckHit(Rect rect)
