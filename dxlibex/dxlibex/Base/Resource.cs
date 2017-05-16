@@ -70,7 +70,7 @@ namespace DXEX.Base
         //参照を1減らす
         internal void Release()
         {
-            if (refCount == 0) return;
+            if (refCount == 0) throw new Exception("ふつうここは呼ばれないはずなんだが");
             refCount--;
         }
         //コンストラクタ
