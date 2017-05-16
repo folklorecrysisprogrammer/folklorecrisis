@@ -51,6 +51,7 @@
     <Compile Include="Base\IDelete.cs" />
     <Compile Include="Base\Key.cs" />
     <Compile Include="Base\KeyBase.cs" />
+    <Compile Include="Base\Resource.cs" />
     <Compile Include="User\Anime.cs" />
     <Compile Include="User\AnimeData.cs" />
     <Compile Include="User\AnimeTrigger.cs" />

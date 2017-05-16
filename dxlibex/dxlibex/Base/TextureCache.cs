@@ -69,25 +69,23 @@ namespace DXEX.Base
             var removeKeys=new List<string>(); 
             foreach(var key in textureList.Keys)
             {
-                if (textureList[key].NotUsing())
+                if (textureList[key].NotUsingFree())
                 {
                     removeKeys.Add(key);
                 }
             }
             foreach (var key in removeKeys)
             {
-                textureList[key].Dispose();
                 textureList.Remove(key);
             }
             var removeList = new List<TextureCore>();
             textureAtlasList.ForEach((textureCore) => {
-                if (textureCore.NotUsing())
+                if (textureCore.NotUsingFree())
                 {
                     removeList.Add(textureCore);
                 }
             });
             removeList.ForEach((textureCore) =>{
-                textureCore.Dispose();
                 textureAtlasList.Remove(textureCore);
             }
                 );
@@ -99,10 +97,10 @@ namespace DXEX.Base
         {
             foreach (var key in textureList.Keys)
             {
-                textureList[key].Dispose();
+                textureList[key].ResourceFree();
             }
             textureAtlasList.ForEach((textureCache) =>{
-                textureCache.Dispose();
+                textureCache.ResourceFree();
             });
             textureAtlasList.Clear();
             textureList.Clear();

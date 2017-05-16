@@ -8,82 +8,36 @@ using DxLibDLL;
 namespace DXEX.Base
 {
     //グラフィックハンドルを持ち、それの参照数を管理するクラス
-   class TextureCore:IDisposable
+    public class TextureCore:ResourceCore<int>
     {
-        //グラフィックハンドル
-        public int Gh { get; private set; }
-        //参照カウンタ
-        private int refCount=0;
-        //誰にも参照されてないならtrueを返す
-        public bool NotUsing() { return refCount == 0; }
-        //参照を1増やす
-        public void Retain()
-        {
-            refCount++;
-        }
-        //参照を1減らす
-        public void Release()
-        {
-            if (refCount == 0) return;
-            refCount--;
-        }
         //コンストラクタ
-        public TextureCore(int _gh)
+        internal TextureCore(int gh):base(gh)
         {
-            Gh = _gh;
         }
-
         //画像リソース開放
-        public void Dispose()
+        internal override void ResourceFree()
         {
-            DX.DeleteGraph(Gh);
+            DX.DeleteGraph(resourceData);
         }
 
     }
 
     //TextureCoreを保存するクラス
-   public class Texture:IDisposable
+   public class Texture:ResourceProvider<TextureCore,int,Texture>
     {
-        private TextureCore textureCore=null;
 
         //TextureCoreの参照数を1増やす
-       internal Texture(TextureCore _textureCore)
+       internal Texture(TextureCore textureCore):base(textureCore)
         {
-            textureCore = _textureCore;
-            textureCore.Retain();
         }
 
         //複製
-        public Texture Clone()
+        public override Texture Clone()
         {
-            return new Texture(textureCore);
+            return new Texture(resourceCore);
         }
 
         //グラフィックハンドルを返す
-        public int Gh{ get { return textureCore.Gh; } }
-        //TextureCoreの参照数を1減らす
-        public void Dispose()
-        {
-            Dispose(false);
-
-        }
-
-        private void Dispose(bool isFinalize)
-        {
-            DebugMessage.Mes(
-                "Texture.Dispose():すでにDisposeされています",
-                textureCore == null
-            );
-            textureCore.Release();
-            textureCore = null;
-            //デストラクタを呼ばないようにする
-            if (!isFinalize) GC.SuppressFinalize(this);
-        }
-
-        //デストラクタ
-        ~Texture()
-        {
-            Dispose(true);
-        }
+        public int Gh{ get { return resourceCore.resourceData; } }
     }
 }
