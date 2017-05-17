@@ -18,6 +18,7 @@ namespace DXEX.Base
         //取り付ける
         public void Attach(OwnerType _owner)
         {
+            if (owner != null) throw new Exception("既にAttachされています");
             owner = _owner;
             owner.AddComponent(this);
         }

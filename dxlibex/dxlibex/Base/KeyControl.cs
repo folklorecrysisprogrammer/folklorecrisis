@@ -77,7 +77,7 @@ namespace DXEX.Base {
             return MouseList[keycode].Count;
         }
         //各種ボタンの状態を監視し、更新し、イベントを呼ぶ
-        static public void Getkey()
+        static internal void UpdateKey()
         {
             foreach(var value in keyList.Values)
             {
