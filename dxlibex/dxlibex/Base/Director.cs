@@ -14,6 +14,16 @@ namespace DXEX.Base
         //現在のScene
         static private Scene mainScene;
         static public Scene GetScene() { return mainScene; }
+        static public TextureAtlasCache TextureAtlasCache { get; }
+        static public TextureCache TextureCache { get; }
+
+        //静的コンストラクタ
+        static Director()
+        {
+            TextureAtlasCache = new TextureAtlasCache();
+            TextureCache = new TextureCache();
+            
+        }
 
         //次に切り替えるScene
         static private Scene nextScene;

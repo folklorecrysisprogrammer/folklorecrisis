@@ -18,35 +18,36 @@ namespace DXEX.Base
      * Spriteクラス等に使用されています。
     */
 
-    public static class TextureCache
+    public class TextureCache:ResourceCache<TextureCore,int>
     {
         //画像キャッシュdata
-        static private Dictionary<string, TextureCore> textureList = new Dictionary<string, TextureCore>();
+       /* static private Dictionary<string, TextureCore> textureList = new Dictionary<string, TextureCore>();
         //分割画像キャッシュdata
-        static private List<TextureCore> textureAtlasList = new List<TextureCore>();
+        static private List<TextureCore> textureAtlasList = new List<TextureCore>();*/
 
         //Textureを返す
-        static public Texture GetTexture(string filePath)
+        public Texture GetTexture(string filePath)
         {
             //キャッシュされていたらそれを使う
-            if (textureList.ContainsKey(filePath) == true)
+            if (isKey(filePath) == true)
             {
-                return new Texture(textureList[filePath]);
+                return new Texture(GetResourceCore(filePath));
             }
             int gh = DX.LoadGraph(filePath);
             if (gh == -1)
             {
                 throw new Exception("画像の読み込みに失敗しました");
             }
-            textureList.Add(filePath, new TextureCore(gh));
-            return new Texture(textureList.Last().Value);
+            var newCore = new TextureCore(gh);
+            AddNewResourceCore(filePath, newCore);
+            return new Texture(newCore);
         }
 
         //画像を分割してTexture配列を返す
         //この関数は一回読み込んだことのある画像でも、再読み込みしてしまう
         //いつか直す。
         //(filePath,分割した数,Xの分割数,Yの分割数,分割した画像のXsize,分割した画像のYsize)
-        static public Texture[] GetTextureAtlas(string filePath ,int AllNum,int XNum, int YNum,
+        /*static public Texture[] GetTextureAtlas(string filePath ,int AllNum,int XNum, int YNum,
                                               int XSize, int YSize)
         {
             int[] gh = new int[AllNum];
@@ -62,10 +63,10 @@ namespace DXEX.Base
                 textures[i] = new Texture(textureAtlasList.Last());
             }
             return textures;
-        }
+        }*/
 
         //使用していない画像リソースを解放
-        static public void NotUsingTextureDelete() {
+        /*static public void NotUsingTextureDelete() {
             var removeKeys=new List<string>(); 
             foreach(var key in textureList.Keys)
             {
@@ -104,6 +105,6 @@ namespace DXEX.Base
             });
             textureAtlasList.Clear();
             textureList.Clear();
-        }
+        }*/
     }
 }

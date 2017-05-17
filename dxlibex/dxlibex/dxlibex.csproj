@@ -47,12 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Resource\ITexture.cs" />
     <Compile Include="Base\Mouse.cs" />
     <Compile Include="Base\IDelete.cs" />
     <Compile Include="Base\Key.cs" />
     <Compile Include="Base\KeyBase.cs" />
-    <Compile Include="Base\Resource.cs" />
-    <Compile Include="Base\ResourceCache.cs" />
+    <Compile Include="Base\Resource\Resource.cs" />
+    <Compile Include="Base\Resource\ResourceCache.cs" />
+    <Compile Include="Base\Resource\TextureAtlas.cs" />
+    <Compile Include="Base\Resource\TextureAtlasCache.cs" />
     <Compile Include="User\Anime.cs" />
     <Compile Include="User\AnimeData.cs" />
     <Compile Include="User\AnimeTrigger.cs" />
@@ -77,8 +80,8 @@
     <Compile Include="User\Sprite.cs" />
     <Compile Include="Base\SubSceneList.cs" />
     <Compile Include="User\TextBox.cs" />
-    <Compile Include="Base\Texture.cs" />
-    <Compile Include="Base\TextureCache.cs" />
+    <Compile Include="Base\Resource\Texture.cs" />
+    <Compile Include="Base\Resource\TextureCache.cs" />
     <Compile Include="Base\Utility.cs" />
     <Compile Include="Base\Vect.cs" />
     <Compile Include="DxDLL.cs" />

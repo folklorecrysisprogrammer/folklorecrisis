@@ -12,7 +12,7 @@ namespace DXEX.User
         //現在遅延中のTrigger
         AnimeTrigger CurrentTrigger=null;
         //アニメーションに使うテクスチャー
-        public readonly Texture[] texes;
+        public readonly ITexture[] texes;
         //遷移Triggerの配列
         readonly AnimeTrigger[] triggers;
         readonly AnimeTrigger defaultTrigger=null;
@@ -26,7 +26,7 @@ namespace DXEX.User
             get { return state; }
             set { if (state == value) return;state=value ;StateCheck(); }
         }
-        public AnimeData(Anime anime,Texture[] texes
+        public AnimeData(Anime anime,ITexture[] texes
             ,AnimeTrigger[] triggers=null,int? defaultState = null)
         {
             this.texes = texes;

@@ -62,7 +62,7 @@ namespace DXEX.User
             }
         }
         //アニメーション画像追加
-        public void AddAnime(string animeKey, Texture[] textureList, AnimeTrigger[] triggers = null, int? defaultState = null)
+        public void AddAnime(string animeKey, ITexture[] textureList, AnimeTrigger[] triggers = null, int? defaultState = null)
         {
             animeDataList[animeKey]=new AnimeData(this,textureList,triggers,defaultState);
         }

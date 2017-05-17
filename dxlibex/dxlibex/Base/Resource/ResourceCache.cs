@@ -10,29 +10,29 @@ namespace DXEX.Base
         where ResourceCoreT:ResourceCore<ResourceDataT>
     {
         //ResourceCoreキャッシュList
-        static private Dictionary<string, ResourceCoreT> ResourceCoreList
+        private Dictionary<string, ResourceCoreT> ResourceCoreList
             = new Dictionary<string, ResourceCoreT>();
 
         //新しいリソースコアを登録
-        static protected void AddNewResourceCore(string key,ResourceCoreT resourceCore)
+        protected void AddNewResourceCore(string key,ResourceCoreT resourceCore)
         {
             ResourceCoreList.Add(key, resourceCore);
         }
 
-        //リソースを返す
-        static protected ResourceDataT GetResourceData(string key)
+        //リソースコアを返す
+        protected ResourceCoreT GetResourceCore(string key)
         {
             if (!ResourceCoreList.ContainsKey(key)) throw new Exception("登録されてないキーダゾ");
-            return ResourceCoreList[key].resourceData;
+            return ResourceCoreList[key];
         }
         //キーが存在するかcheck
-        static protected bool isKey(string key) {
+        protected bool isKey(string key) {
             return ResourceCoreList.ContainsKey(key);
         } 
 
 
         //使用していないリソースを解放
-        static public void NotUsingResourceDelete()
+        public void NotUsingResourceDelete()
         {
             var removeKeys = new List<string>();
             foreach (var key in ResourceCoreList.Keys)
@@ -50,7 +50,7 @@ namespace DXEX.Base
         }
 
         //全てのリソースを解放
-        static public void AllResourceDelete()
+        public void AllResourceDelete()
         {
             foreach (var key in ResourceCoreList.Keys)
             {

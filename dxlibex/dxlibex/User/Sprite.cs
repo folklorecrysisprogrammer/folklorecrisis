@@ -14,7 +14,7 @@ namespace DXEX.User
     public class Sprite:Node
     {
         //テクスチャークラス参照
-        private Texture texture=null;
+        private ITexture texture=null;
         //グラフィックハンドル（テクスチャークラスから読み出す。ぶっちゃけいらないかも。直接テクスチャークラスから毎回取ればいいだけだし）
         private int gh;
         //テクスチャーの縦幅横幅
@@ -22,10 +22,10 @@ namespace DXEX.User
         public Vect Rect{ get{ return rect; } }
 
         //グラフィックハンドルをセット
-        public void SetTexture(Texture _texture)
+        public void SetTexture(ITexture iTexture)
         {
-            texture = _texture;
-            gh = _texture.Gh;
+            texture = iTexture;
+            gh = iTexture.Gh;
             int width,height;
             DX.GetGraphSize(gh, out width, out height);
             rect.x = width;
@@ -34,8 +34,7 @@ namespace DXEX.User
         }
         public void SetTexture(string filePath)
         {
-           // if (texture != null) texture.Dispose();
-            texture = TextureCache.GetTexture(filePath);
+            texture = Director.TextureCache.GetTexture(filePath).GetITexture();
             gh = texture.Gh;
             int width, height;
             DX.GetGraphSize(gh, out width, out height);
@@ -45,7 +44,7 @@ namespace DXEX.User
         }
 
         //テクスチャーゲット
-        public Texture GetTexture()
+        public ITexture GetTexture()
         {
             return texture;
         }
@@ -65,7 +64,7 @@ namespace DXEX.User
             SetTexture(filePath);
             
         }
-        public Sprite(Texture tex)
+        public Sprite(ITexture tex)
         {
             SetTexture(tex);
         }

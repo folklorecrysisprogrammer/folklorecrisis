@@ -37,6 +37,11 @@ namespace DXEX.Base
             return new Texture(resourceCore);
         }
 
+        public ITexture GetITexture()
+        {
+            return new _Texture(this);
+        }
+
         //グラフィックハンドルを返す
         public int Gh{ get { return resourceCore.resourceData; } }
     }
