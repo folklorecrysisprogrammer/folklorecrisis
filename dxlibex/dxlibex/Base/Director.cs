@@ -14,15 +14,18 @@ namespace DXEX.Base
         //現在のScene
         static private Scene mainScene;
         static public Scene GetScene() { return mainScene; }
+
+        //各種リソースキャッシュクラス
         static public TextureAtlasCache TextureAtlasCache { get; }
         static public TextureCache TextureCache { get; }
+        static public SoundCache SoundCache { get;}
 
         //静的コンストラクタ
         static Director()
         {
             TextureAtlasCache = new TextureAtlasCache();
             TextureCache = new TextureCache();
-            
+            SoundCache = new SoundCache();
         }
 
         //次に切り替えるScene

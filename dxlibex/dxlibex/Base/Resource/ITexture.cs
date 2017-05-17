@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 namespace DXEX.Base
 {
     //画像のハンドルを一つ返すインターフェイス
+    //これは,TextureとTextureAtlasの持つハンドルを
+    //同じインターフェイスで扱えることを目的としたものです。
     public interface ITexture : IDisposable
     {
         ITexture Clone();
         int Gh { get; }
     }
 
-    //TextureクラスをITextureとして扱える
+    //TextureクラスをITextureにラップして扱える
    public class _Texture : ITexture
     {
         public void Dispose()
@@ -44,7 +46,7 @@ namespace DXEX.Base
         public int Gh { get { return texture.Gh; }}
     }
 
-    //TextureAtlasクラスをITextureとして扱える
+    //TextureAtlasクラスをITextureにラップして扱える
     public class _TextureAtlas : ITexture
     {
         public void Dispose()

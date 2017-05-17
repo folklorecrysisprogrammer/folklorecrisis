@@ -20,11 +20,6 @@ namespace DXEX.Base
 
     public class TextureCache:ResourceCache<TextureCore,int>
     {
-        //画像キャッシュdata
-       /* static private Dictionary<string, TextureCore> textureList = new Dictionary<string, TextureCore>();
-        //分割画像キャッシュdata
-        static private List<TextureCore> textureAtlasList = new List<TextureCore>();*/
-
         //Textureを返す
         public Texture GetTexture(string filePath)
         {
@@ -42,69 +37,5 @@ namespace DXEX.Base
             AddNewResourceCore(filePath, newCore);
             return new Texture(newCore);
         }
-
-        //画像を分割してTexture配列を返す
-        //この関数は一回読み込んだことのある画像でも、再読み込みしてしまう
-        //いつか直す。
-        //(filePath,分割した数,Xの分割数,Yの分割数,分割した画像のXsize,分割した画像のYsize)
-        /*static public Texture[] GetTextureAtlas(string filePath ,int AllNum,int XNum, int YNum,
-                                              int XSize, int YSize)
-        {
-            int[] gh = new int[AllNum];
-            Texture[] textures = new Texture[AllNum]; 
-            int flag=DX.LoadDivGraph(filePath, AllNum, XNum, YNum,XSize,YSize, out gh[0]);
-            if (flag == -1)
-            {
-                throw new Exception("画像の読み込みに失敗しました");
-            }
-            for (int i = 0; i < AllNum; i++)
-            {
-                textureAtlasList.Add(new TextureCore(gh[i]));
-                textures[i] = new Texture(textureAtlasList.Last());
-            }
-            return textures;
-        }*/
-
-        //使用していない画像リソースを解放
-        /*static public void NotUsingTextureDelete() {
-            var removeKeys=new List<string>(); 
-            foreach(var key in textureList.Keys)
-            {
-                if (textureList[key].NotUsingFree())
-                {
-                    removeKeys.Add(key);
-                }
-            }
-            foreach (var key in removeKeys)
-            {
-                textureList.Remove(key);
-            }
-            var removeList = new List<TextureCore>();
-            textureAtlasList.ForEach((textureCore) => {
-                if (textureCore.NotUsingFree())
-                {
-                    removeList.Add(textureCore);
-                }
-            });
-            removeList.ForEach((textureCore) =>{
-                textureAtlasList.Remove(textureCore);
-            }
-                );
-
-        }
-
-        //全ての画像リソースを解放
-        static public void AllTextureDelete()
-        {
-            foreach (var key in textureList.Keys)
-            {
-                textureList[key].ResourceFree();
-            }
-            textureAtlasList.ForEach((textureCache) =>{
-                textureCache.ResourceFree();
-            });
-            textureAtlasList.Clear();
-            textureList.Clear();
-        }*/
     }
 }

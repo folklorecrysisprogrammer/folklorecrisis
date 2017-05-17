@@ -12,7 +12,7 @@ namespace DXEX.Base
         where SubClassT:ResourceProvider<ResourceCoreT,ResourceDataT,SubClassT>
     {
         internal protected ResourceCoreT resourceCore;
-        //TextureCoreの参照数を1増やす
+        //resourceCoreの参照数を1増やす
         internal protected ResourceProvider(ResourceCoreT resourceCore)
         {
             this.resourceCore = resourceCore;
