@@ -7,6 +7,10 @@
 *.userosscache
 *.sln.docstates
 
+#ƒAƒgƒn‚³‚ñ‚Ìhoge
+Sound/WindowsFormsApplication1/hoge/Debug/Log.txt
+Sound/WindowsFormsApplication1/hoge/Debug/*.exe
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
