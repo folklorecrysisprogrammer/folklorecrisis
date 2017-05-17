@@ -7,9 +7,11 @@
 *.userosscache
 *.sln.docstates
 
-#アトハさんのhoge
+#アトハさんのhogeの規制
 Sound/WindowsFormsApplication1/hoge/Debug/Log.txt
 Sound/WindowsFormsApplication1/hoge/Debug/*.exe
+Sound/WindowsFormsApplication1/hoge/Debug/*.config
+Sound/WindowsFormsApplication1/hoge/Debug/*.manifest
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
