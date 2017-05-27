@@ -79,6 +79,7 @@
     <Compile Include="Base\NodeEvent.cs" />
     <Compile Include="Base\Scene.cs" />
     <Compile Include="Base\Shape.cs" />
+    <Compile Include="User\SoundPlayer.cs" />
     <Compile Include="User\Sprite.cs" />
     <Compile Include="Base\SubSceneList.cs" />
     <Compile Include="User\TextBox.cs" />
