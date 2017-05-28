@@ -47,14 +47,20 @@ namespace DXEX.Base
             if (parent == null) return localPos + offsetPos;
             return
                 parent.GlobalPos +
-                (localPos.x + offsetPos.x) * XAxes +
-                (localPos.y + offsetPos.y) * YAxes;
+                (localPos.x + offsetPos.x) * parent.XAxes +
+                (localPos.y + offsetPos.y) * parent.YAxes;
         }
         //グローバル座標をローカル座標に変換
         public Vect ChangeLocalPos(Vect globalPos)
         {
-            Vect localPos= globalPos - GlobalPos;
-            return localPos.x*XAxes+localPos.y * YAxes;
+            //相対ベクトル作成
+            Vect localPos = globalPos - GlobalPos;
+            //角度を補正
+            localPos.SetVect(
+                localPos.x * parent.XAxes.x + localPos.y * parent.XAxes.y,
+                localPos.y * parent.XAxes.x - localPos.x * parent.XAxes.y
+                );
+            return localPos;
         }
 
         //グローバル角度取得
