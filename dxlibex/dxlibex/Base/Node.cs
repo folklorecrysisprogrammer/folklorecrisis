@@ -37,12 +37,30 @@ namespace DXEX.Base
         public Vect GlobalPos{
             get
             {
-                if (parent == null) return localPos+offsetPos;
-                return 
-                    parent.GlobalPos+
-                    (localPos.x+offsetPos.x)*parent.XAxes+
-                    (localPos.y+offsetPos.y)*parent.YAxes;
+                return ChangeGlobalPos(localPos);
             }
+        }
+
+        //ローカル座標をグローバル座標に変換
+        public Vect ChangeGlobalPos(Vect localPos)
+        {
+            if (parent == null) return localPos + offsetPos;
+            return
+                parent.GlobalPos +
+                (localPos.x + offsetPos.x) * parent.XAxes +
+                (localPos.y + offsetPos.y) * parent.YAxes;
+        }
+        //グローバル座標をローカル座標に変換
+        public Vect ChangeLocalPos(Vect globalPos)
+        {
+            //相対ベクトル作成
+            Vect localPos = globalPos - GlobalPos;
+            //角度を補正
+            localPos.SetVect(
+                localPos.x * parent.XAxes.x + localPos.y * parent.XAxes.y,
+                localPos.y * parent.XAxes.x - localPos.x * parent.XAxes.y
+                );
+            return localPos;
         }
 
         //グローバル角度取得
@@ -98,6 +116,7 @@ namespace DXEX.Base
             DebugMessage.Mes("Base.Node.SetParent:DisposeされたNodeです", DisposedFlag == true);
             DebugMessage.Mes("Base.Node.SetParent:既に親Nodeが存在しています！", parent != null);
                 parent = _parent;
+            UpdateXAxes();
         }
         
         //子を追加する

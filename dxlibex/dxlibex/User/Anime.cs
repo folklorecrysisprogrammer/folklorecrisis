@@ -24,6 +24,7 @@ namespace DXEX.User
         public void Resume() { StopFlag = false;}
 
         //コマ送り速さ（フレーム単位）
+        //AnimeDataで持つようにする
         private uint speed = 0;
         public uint Speed { get { return speed; } set { speed = value; } }
         //状態

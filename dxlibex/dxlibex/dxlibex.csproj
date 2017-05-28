@@ -48,10 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Resource\ITexture.cs" />
-    <Compile Include="Base\Mouse.cs" />
+    <Compile Include="Base\Key\Mouse.cs" />
     <Compile Include="Base\IDelete.cs" />
-    <Compile Include="Base\Key.cs" />
-    <Compile Include="Base\KeyBase.cs" />
+    <Compile Include="Base\Key\Key.cs" />
+    <Compile Include="Base\Key\KeyBase.cs" />
     <Compile Include="Base\Resource\Resource.cs" />
     <Compile Include="Base\Resource\ResourceCache.cs" />
     <Compile Include="Base\Resource\Sound.cs" />
@@ -73,12 +73,13 @@
     <Compile Include="Base\Fps.cs" />
     <Compile Include="Base\GameObject.cs" />
     <Compile Include="Base\GameObjectEvent.cs" />
-    <Compile Include="Base\KeyControl.cs" />
+    <Compile Include="Base\Key\KeyControl.cs" />
     <Compile Include="User\Letter.cs" />
     <Compile Include="Base\Node.cs" />
     <Compile Include="Base\NodeEvent.cs" />
     <Compile Include="Base\Scene.cs" />
     <Compile Include="Base\Shape.cs" />
+    <Compile Include="User\SoundPlayer.cs" />
     <Compile Include="User\Sprite.cs" />
     <Compile Include="Base\SubSceneList.cs" />
     <Compile Include="User\TextBox.cs" />

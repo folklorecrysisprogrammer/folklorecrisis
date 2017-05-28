@@ -10,10 +10,7 @@ namespace DXEX.Base
     //キーのイベントを制御するクラス
     class Key : KeyBase
     {
-        public Key(int keycode) : base(keycode)
-        {
-
-        }
+        public Key(int keycode) : base(keycode){}
 
         //特定のキーが押されてたらtrueを返す関数
         protected override bool ButtonCheck()

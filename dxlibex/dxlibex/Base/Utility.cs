@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DXEX.Base
 {
     //何かと役立つ関数特集
-   static class Utility
+   static public class Utility
     {
         //度数法を弧度法に変換
         static public double DegToRad(double deg)

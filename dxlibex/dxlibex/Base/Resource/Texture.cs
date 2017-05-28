@@ -22,7 +22,7 @@ namespace DXEX.Base
 
     }
 
-    //TextureCoreを保存するクラス
+   //TextureCoreを保存するクラス
    public class Texture:ResourceProvider<TextureCore,int,Texture>
     {
 
