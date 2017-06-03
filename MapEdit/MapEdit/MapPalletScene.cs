@@ -30,10 +30,11 @@ namespace MapEdit
         public void AddMapChip(string fileName)
         {
             MapChip mapChip = new MapChip(40);
+            // : MapChipがSpriteを所持ではなく継承しちゃってる
             try
             {
                 mapChip.SetTexture(fileName);
-                mapChip.Id=meForm.mcrm.PushImageFile(fileName);
+                mapChip.Id = meForm.mcrm.PushImageFile(fileName);
             }
             catch (Exception)
             {
@@ -53,12 +54,24 @@ namespace MapEdit
             if ((Control.MouseButtons & MouseButtons.Left)
                 == MouseButtons.Left)
             {
-                tempPoint = point;
-                tempPoint2 = point;
-                sms.setMapChip(
-                    mapPalletData[point.X, point.Y].GetTexture(),
-                    mapPalletData[point.X, point.Y].Id
-                );return;
+                if (MapChipConfig.isPassEditMode == DxLibDLL.DX.TRUE)
+                {
+                    // マップチップの通行判定編集
+                    // ドラッグ系の処理どなってるんだ…
+                    bool temp = mapPalletData[point.X, point.Y].mcc.IsEnablePass;
+                    mapPalletData[point.X, point.Y].mcc.ChangeIsEnablePass(!temp);
+                }
+                else
+                {
+                    // 選択中マップチップの変更
+                    tempPoint = point;
+                    tempPoint2 = point;
+                    sms.setMapChip(
+                        mapPalletData[point.X, point.Y].GetTexture(),
+                        mapPalletData[point.X, point.Y].Id
+                    );
+                }
+                return;
             }
 
             //右クリックの処理（削除）
@@ -71,7 +84,9 @@ namespace MapEdit
         //クリックされた場所にあるマップチップを選択する
         private void MouseDrag(object o,MouseEventArgs e)
         {
-            if ((Control.MouseButtons & MouseButtons.Left)
+            if (MapChipConfig.isPassEditMode == DxLibDLL.DX.TRUE) return;
+
+                if ((Control.MouseButtons & MouseButtons.Left)
                 != MouseButtons.Left) return;
                 Point point = LocationToMap(e.Location, 40);
             if (point.X < 0 || point.Y < 0 || point.X >= 6 || point.Y >= 50) return;
@@ -119,5 +134,9 @@ namespace MapEdit
             }
         }
 
+        // 通行設定情報の表示の有無を設定
+        public void SetDrawMapChipInfo( bool value )
+        {
+        }
     }
 }

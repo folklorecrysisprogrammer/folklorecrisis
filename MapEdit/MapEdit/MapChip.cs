@@ -19,10 +19,15 @@ namespace MapEdit
 
         public int Id { get; set; }
 
+        public MapChipConfig mcc;
+
+        /* サイズを指定しIDを初期化するコンストラクタ */
         public MapChip(int mapChipSize)
         {
             MapChipSize = mapChipSize;
             Id = -1;
+            mcc = new MapChipConfig();
+            AddChild(mcc);
         }
 
         protected override void UpdateAngle()

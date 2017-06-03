@@ -25,6 +25,7 @@ namespace MapEdit
         private void folderSelectButton_Click(object sender, EventArgs e)
         {
             var fbd =new FolderBrowserDialog();
+            fbd.SelectedPath = Directory.GetCurrentDirectory();
 
             //ダイアログを表示する
             if (fbd.ShowDialog(this) == DialogResult.OK)

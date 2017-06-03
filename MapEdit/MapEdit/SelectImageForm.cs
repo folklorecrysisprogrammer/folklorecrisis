@@ -19,6 +19,7 @@ namespace MapEdit
 
         public MapChip GetSelectMapChip() { return sms.MapChip; }
 
+
         //右回転ボタンを押したときの処理
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
@@ -52,6 +53,10 @@ namespace MapEdit
             mps.LoadProject();
             sms.resetMapChip();
         }
+
+        /* コンストラクタ */
+        //  :イベントの設定(ドラッグ時とか)
+        //  :マップのパレットと，選択中マップチップのやつ
         public SelectImageForm(MapEditForm meform)
         {
             
@@ -106,6 +111,25 @@ namespace MapEdit
         private void SelectImageForm_Activated(object sender, EventArgs e)
         {
             vScrollBar1.Focus();
+        }
+
+        // 通行判定編集モード
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MapChipConfig.isPassEditMode++;
+            MapChipConfig.isPassEditMode %= 2;
+
+            string str = "編集中";
+            if(MapChipConfig.isPassEditMode == 0)
+            {
+                str = "通行判定"; // 編集中でない = FALSE
+                MapChip mc = mps.SetDrawMapChipInfo(true);
+            }
+            else if (MapChipConfig.isPassEditMode == 1)
+            {
+
+            }
+            PassEditMode.Text = str;
         }
     }
 }
