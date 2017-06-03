@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// 選択中のマップチップを表示するクラス
 namespace MapEdit
 {
     public class SelectMapChipScene : DXEX.Scene
@@ -13,6 +14,7 @@ namespace MapEdit
         public SelectMapChipScene(Control control) : base(control)
         {
             localPos.SetVect(0, 0);
+            // コンストラクタ: マップチップのサイズ
             MapChip = new MapChip(40);
             AddChild(MapChip);
         }

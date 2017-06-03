@@ -8,8 +8,7 @@ using DxLibDLL;
 using DXEX.Base;
 
 namespace DXEX.User
-{
-   
+{  
     //画面に画像を表示するオブジェクト
     public class Sprite:Node
     {
@@ -61,8 +60,7 @@ namespace DXEX.User
         public Sprite(string filePath)
         {
 
-            SetTexture(filePath);
-            
+            SetTexture(filePath);            
         }
         public Sprite(ITexture tex)
         {
@@ -89,7 +87,5 @@ namespace DXEX.User
 
         //Textureが変更された時に呼ばれる処理ユーザーが好きにオーバーライドしてください
         protected virtual void UpdateTexture(){}
-
-
     }
 }

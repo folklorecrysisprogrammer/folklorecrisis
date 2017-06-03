@@ -37,6 +37,7 @@
             this.turnHorizontalButton = new System.Windows.Forms.Button();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.PassEditMode = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.selectPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,6 +116,16 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // PassEditMode
+            // 
+            this.PassEditMode.Location = new System.Drawing.Point(265, 148);
+            this.PassEditMode.Name = "PassEditMode";
+            this.PassEditMode.Size = new System.Drawing.Size(53, 24);
+            this.PassEditMode.TabIndex = 16;
+            this.PassEditMode.Text = "通行設定";
+            this.PassEditMode.UseVisualStyleBackColor = true;
+            this.PassEditMode.Click += new System.EventHandler(this.button2_Click);
+            // 
             // SelectImageForm
             // 
             this.AllowDrop = true;
@@ -122,6 +133,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GreenYellow;
             this.ClientSize = new System.Drawing.Size(322, 409);
+            this.Controls.Add(this.PassEditMode);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.turnHorizontalButton);
             this.Controls.Add(this.turnVerticalButton);
@@ -148,5 +160,6 @@
         private System.Windows.Forms.Button turnHorizontalButton;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button PassEditMode;
     }
 }

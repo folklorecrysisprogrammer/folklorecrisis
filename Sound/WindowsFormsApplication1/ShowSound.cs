@@ -42,7 +42,7 @@ class ShowSound : Node
         DX.StartSoftSoundPlayer(SoftSoundPlayerHandle);
     }
 
-    public override IEnumerator Update()
+    public override IEnumerator IeUpdate()
     {
         // http://dxlib.o.oo7.jp/cgi/patiobbs/patio.cgi?mode=past&no=1800        
         int OutputSampleNum = 0;
@@ -63,7 +63,7 @@ class ShowSound : Node
                     ZeroWave[i] = 0;
 
                 // エンターキーを押している間だけ，音データを加工する
-                if (KeyControl.GiveKey(KeyCode.ENTER) > 0)
+                if (KeyControl.GiveKey(DX.KEY_INPUT_SPACE) > 0)
                 {
                     // 本当はここにフィルターの処理を入れる
                     for (int i = 0; i < StackLength; i++)
