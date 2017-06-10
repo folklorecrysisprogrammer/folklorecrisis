@@ -9,7 +9,6 @@ using System.Drawing.Imaging;
 
 namespace MapEdit
 {
-
     //マップを表示するシーン
     public class MapWriteScene : MapSceneBase
     {
