@@ -26,11 +26,20 @@ namespace WindowsFormsApplication1
             Scene sc = new Scene();
             sc.LocalPos = new Vect(0, 0);
 
-            ShowSound ss = new ShowSound();
-            sc.AddChild(ss);
+            // 使用するキーは手動で登録…？
+            // (なにか登録しておかないとぬるぽｶﾞｯ)
+            KeyControl.ResistKey(DX.KEY_INPUT_0);
+            KeyControl.ResistKey(DX.KEY_INPUT_1);
+            KeyControl.ResistKey(DX.KEY_INPUT_2);
+            KeyControl.ResistKey(DX.KEY_INPUT_3);
+            KeyControl.ResistKey(DX.KEY_INPUT_4);
+            KeyControl.ResistKey(DX.KEY_INPUT_5);
+
+            SoundTest st = new SoundTest("bgm1.mp3","bgm2.mp3","se.mp3");
+            sc.AddChild(st);
 
             // ループを抜けたらENDも呼ばれる
-            Director.StartLoop( sc );
+            Director.StartLoop(sc);
         }
     }
 }
