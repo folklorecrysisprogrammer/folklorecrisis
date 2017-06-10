@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Automaton\SemanticAction.cs" />
+    <Compile Include="Base\Automaton\Rule.cs" />
     <Compile Include="Base\Resource\ITexture.cs" />
     <Compile Include="Base\Key\Mouse.cs" />
     <Compile Include="Base\IDelete.cs" />
