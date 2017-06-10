@@ -117,7 +117,6 @@ namespace MapEdit
         {
             meForm.SwapId(mapPalletData[x1, y1].Id, mapPalletData[x2, y2].Id);
             mapPalletData.SwapMapChip(x1, y1, x2, y2);
-
         }
 
         //プロジェクトからマップチップパレットをロードする

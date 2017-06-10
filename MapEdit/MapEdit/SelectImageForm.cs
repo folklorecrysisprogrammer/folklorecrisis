@@ -120,15 +120,16 @@ namespace MapEdit
             MapChipConfig.isPassEditMode %= 2;
 
             string str = "編集中";
-            if(MapChipConfig.isPassEditMode == 0)
+            if (MapChipConfig.isPassEditMode == 0)
             {
                 str = "通行判定"; // 編集中でない = FALSE
-                MapChip mc = mps.SetDrawMapChipInfo(true);
+                mps.SetDrawMapChipInfo(true); // 通行判定チップ表示する
             }
             else if (MapChipConfig.isPassEditMode == 1)
             {
-
+                mps.SetDrawMapChipInfo(true); // 通行判定チップ表示しない
             }
+
             PassEditMode.Text = str;
         }
     }
