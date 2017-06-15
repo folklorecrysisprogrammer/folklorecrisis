@@ -7,18 +7,11 @@ using System.Drawing;
 
 namespace MapEdit
 {
-    //マップを描画するところだけ表示するようにするクラス
-    public class MapShowArea
+    //画面に見えてるマップチップだけをAddChildするクラス
+    public static class MapShowArea
     {
-        private readonly MapWriteScene mapWriteScene;
-        private readonly MapData mapData;
-        public MapShowArea(MapWriteScene mapWriteScene,MapData mapData)
-        {
-            this.mapWriteScene = mapWriteScene;
-            this.mapData = mapData;
-        }
         //画面に表示されているマップチップをRemoveChildする
-        private void ClearShowMapImage()
+        private static void ClearShowMapImage(MapDataControl mapData)
         {
             for (int x = 0; x < mapData.MapSizeX; x++)
             {
@@ -33,11 +26,11 @@ namespace MapEdit
         }
 
         //画面に表示するマップチップをAddChildする
-        private void AddShowMapImage()
+        private static void AddShowMapImage(MapWriteScene mws,MapDataControl mapData)
         {
-            var panel = mapWriteScene.control;
+            var panel = mws.control;
             //新たにlUpIndexを計算する
-            Point newLUpIndex = mapWriteScene.LocationToMap(new Point(0, 0), mapData.MapChipSize);
+            Point newLUpIndex = mws.LocationToMap(new Point(0, 0), mapData.MapChipSize);
             //新たにrDownIndexを計算する
             Point newRDownIndex =
                 new Point(
@@ -49,16 +42,16 @@ namespace MapEdit
             {
                 for (int y = newLUpIndex.Y; y < newRDownIndex.Y && y < mapData.MapSizeY; y++)
                 {
-                    mapWriteScene.AddChild(mapData[x, y]);
+                    mws.AddChild(mapData[x, y]);
                 }
             }
         }
 
         //表示するMapImageをAddChildして、表示されなくなったMapImageをRemoveChildする
-        public void UpdateShowMapImage()
+        public static void UpdateShowMapImage(MapWriteScene mws,MapDataControl mapData)
         {
-            ClearShowMapImage();
-            AddShowMapImage();
+            ClearShowMapImage(mapData);
+            AddShowMapImage(mws,mapData);
         }
 
 

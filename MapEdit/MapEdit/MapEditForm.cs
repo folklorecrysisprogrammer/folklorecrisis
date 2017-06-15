@@ -240,7 +240,7 @@ namespace MapEdit
 
         private void gridButton_Click(object sender, EventArgs e)
         {
-            mapEdit.gridOnOff();
+            MapGrid.GridOnOf();
         }
     }
 }

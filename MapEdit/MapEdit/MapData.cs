@@ -8,8 +8,8 @@ using System.Drawing;
 namespace MapEdit
 {
 
-    //マップ全体の画像情報を保持するクラス
-    public class MapData
+    //MapWriteSceneに配置するマップチップを統合的に管理するクラス
+    public class MapDataControl
     {
         //マップのマスごとの情報を保持
         private MapOneMass[,] mapOneMass;
@@ -30,13 +30,14 @@ namespace MapEdit
         private readonly MapChipResourceManager mcrm;
 
         //配列ぽく振るまう
+        //（こいつは闇、消すべき）
         public MapOneMass this[int x,int y]
         {
             get { return mapOneMass[x, y]; }
         }
 
         //初期化
-        public MapData(MapChipResourceManager mcrm, Size mapSize,int mapChipSize)
+        public MapDataControl(MapChipResourceManager mcrm, Size mapSize,int mapChipSize)
         {
             numberX = mapSize.Width;
             numberY = mapSize.Height;
@@ -52,7 +53,8 @@ namespace MapEdit
                 }
             }
         }
-        //
+
+        //既存のプロジェクトからマップをロードする
         public void LoadProject(MapInfoFromText mift)
         {
             int count=0;

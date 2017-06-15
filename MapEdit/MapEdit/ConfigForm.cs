@@ -13,17 +13,15 @@ namespace MapEdit
     //設定ウインドウ
     public partial class ConfigForm : Form
     {
-        private readonly MapData mapData;
+        private readonly MapDataControl mapData;
         private readonly MapWriteScroll mapWriteScroll;
-        private readonly MapShowArea mapShowArea;
         private Timer timer=new Timer();
         private bool runFlag=false;
 
         //初期化
-        public ConfigForm(MapWriteScene mapWriteScene,MapData mapData,MapWriteScroll mapWriteScroll,MapShowArea mapShowArea)
+        public ConfigForm(MapDataControl mapData,MapWriteScroll mapWriteScroll)
         {
             InitializeComponent();
-            this.mapShowArea = mapShowArea;
             this.mapWriteScroll = mapWriteScroll;
             this.mapData = mapData;
             var myAssembly=System.Reflection.Assembly.GetExecutingAssembly();
@@ -70,9 +68,7 @@ namespace MapEdit
                         int.Parse(mapSizeYtextBox.Text)
                     );
                 //スクロールバーの調整
-                mapWriteScroll.SetScrollMaximum();
-                //表示するスプライトの設定
-                mapShowArea.UpdateShowMapImage();
+                mapWriteScroll.SetScrollMaximum(mapData.MapSize,mapData.MapChipSize);
             }
 
             //設定ウインドウを閉じる。

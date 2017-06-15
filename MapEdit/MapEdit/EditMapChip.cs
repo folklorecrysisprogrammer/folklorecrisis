@@ -11,13 +11,13 @@ namespace MapEdit
     //マップチップをマウスクリックで書き換えるクラス
     class EditMapChip
     {
-        private readonly MapData mapData;
+        private readonly MapDataControl mapData;
         private readonly SelectImageForm sif;
         private readonly MapWriteScene mws;
         //現在のレイヤー
         private readonly ComboBox layerComboBox;
         private int CurrentLayer { get { return layerComboBox.SelectedIndex; } }
-        public EditMapChip(MapData mapData,SelectImageForm sif,MapWriteScene mws,ComboBox layerComboBox)
+        public EditMapChip(MapDataControl mapData,SelectImageForm sif,MapWriteScene mws,ComboBox layerComboBox)
         {
             this.mws = mws;
             this.layerComboBox = layerComboBox;
