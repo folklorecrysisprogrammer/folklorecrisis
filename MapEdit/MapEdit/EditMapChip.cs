@@ -13,21 +13,18 @@ namespace MapEdit
     {
         private readonly MapDataControl mapData;
         private readonly SelectImageForm sif;
-        private readonly MapWriteScene mws;
         //現在のレイヤー
         private readonly ComboBox layerComboBox;
         private int CurrentLayer { get { return layerComboBox.SelectedIndex; } }
-        public EditMapChip(MapDataControl mapData,SelectImageForm sif,MapWriteScene mws,ComboBox layerComboBox)
+        public EditMapChip(MapDataControl mapData,SelectImageForm sif,ComboBox layerComboBox)
         {
-            this.mws = mws;
             this.layerComboBox = layerComboBox;
             this.sif = sif;
             this.mapData = mapData;
         }
         //マウスでマップを書く処理
-        public void MouseAction(MouseEventArgs e)
+        public void MouseAction(Point point)
         {
-            Point point = mws.LocationToMap(e.Location, mapData.MapChipSize);
             //マップサイズ範囲外なら終了
             if (point.X >= mapData.MapSizeX || point.Y >= mapData.MapSizeY ||
                 point.X < 0 || point.Y < 0) return;

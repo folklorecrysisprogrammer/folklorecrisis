@@ -25,7 +25,6 @@ namespace MapEdit
         public MapChipResourceManager mcrm { get; private set;}
         private MapEdit mapEdit;
 
-       // public int MapChipSize { get; private set; } 
 
         //初期化
         public MapEditForm(int mapChipSize)
@@ -73,7 +72,6 @@ namespace MapEdit
             {
                 vScrollBar1.Focus();
             };
-
 
             //comboボックスのデフォルト値設定
             layerComboBox.SelectedIndex = 0;

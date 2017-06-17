@@ -98,7 +98,7 @@
     </Compile>
     <Compile Include="MapGrid.cs" />
     <Compile Include="MapOneMass.cs" />
-    <Compile Include="MapData.cs" />
+    <Compile Include="MapDataControl.cs" />
     <Compile Include="MapPalletData.cs" />
     <Compile Include="MapPalletScene.cs" />
     <Compile Include="MapshowArea.cs" />
