@@ -18,6 +18,21 @@ namespace MapEdit
 
         private readonly MapChipResourceManager mcrm;
 
+        //MapOneMassが持つmapChip配列を交換する
+        public void SwapMapChips(MapOneMass mapOneMass)
+        {
+            for(int i=0; i < MapEditForm.maxLayer; i++)
+            {
+                mapChips[i].RemoveFromParent();
+                mapOneMass.mapChips[i].RemoveFromParent();
+                AddChild(mapOneMass.mapChips[i]);
+                mapOneMass.AddChild(mapChips[i]);
+            }
+            var tempMapChips=mapChips;
+            mapChips = mapOneMass.mapChips;
+            mapOneMass.mapChips = tempMapChips;
+        }
+
         //初期化
         public MapOneMass(MapChipResourceManager mcrm,int mapChipSize)
         {

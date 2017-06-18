@@ -58,14 +58,12 @@ namespace MapEdit
         public void MapTurnVertical()
         {
             mapDataControl.Turn.turnVertical();
-            mapDataControl.MapShowArea.UpdateShowMapImage(this);
         }
 
         //マップの左右反転
         public void MapTurnHorizontal()
         {
             mapDataControl.Turn.turnHorizontal();
-            mapDataControl.MapShowArea.UpdateShowMapImage(this);
         }
 
         //キーによるスクロール
