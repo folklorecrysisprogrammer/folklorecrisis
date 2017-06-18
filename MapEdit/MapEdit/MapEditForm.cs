@@ -47,7 +47,7 @@ namespace MapEdit
             
             mcrm = new MapChipResourceManager(mapChipSize);
             sif = new SelectImageForm(this);
-            mapEdit = new MapEdit(mapWritePanel,mcrm, sif, layerComboBox, hScrollBar1, vScrollBar1, new Size(20, 20), mapChipSize);
+            mapEdit = new MapEdit(mapWritePanel,mcrm, sif, hScrollBar1, vScrollBar1, new Size(20, 20), mapChipSize);
             pm = new ProjectManager();
             //メインウインドウのロードが終わったら、
             //パレッドウインドウを表示する。
@@ -88,7 +88,7 @@ namespace MapEdit
             DXEX.TextureCache.AllTextureDelete();
             mcrm = mcrm.LoadProject(mift, path + @"\MapChip.png");
             sif.LoadProject();
-            mapEdit = mapEdit.LoadProject(mift,mapWritePanel,mcrm,sif,layerComboBox,hScrollBar1,vScrollBar1);
+            mapEdit = mapEdit.LoadProject(mift,mapWritePanel,mcrm,sif,hScrollBar1,vScrollBar1);
         }
 
         //ProjectInfoの生成
@@ -229,11 +229,11 @@ namespace MapEdit
         //パネル上でマウスが操作された時の処理をする
         private void mapWritePanel_MouseDown(object sender, MouseEventArgs e)
         {
-            mapEdit.MapMouseAction( e);
+            mapEdit.MapMouseAction(e,layerComboBox.SelectedIndex);
         }
         private void mapWritePanel_MouseMove(object sender, MouseEventArgs e)
         {
-            mapEdit.MapMouseAction(e);
+            mapEdit.MapMouseAction(e, layerComboBox.SelectedIndex);
         }
 
         private void gridButton_Click(object sender, EventArgs e)

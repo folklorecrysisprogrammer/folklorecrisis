@@ -84,7 +84,14 @@
     <Compile Include="ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditMapChip.cs" />
+    <Compile Include="MadData\MapDataControllers\ChangeMapSizeController.cs" />
+    <Compile Include="MadData\MapDataControllers\ConvertDataController.cs" />
+    <Compile Include="MadData\MapDataControllers\EditMapChipController.cs" />
+    <Compile Include="MadData\MapData.cs" />
+    <Compile Include="MadData\MapDataController.cs" />
+    <Compile Include="MadData\MapDataControllers\LoadMapDataListController.cs" />
+    <Compile Include="MadData\MapDataControllers\MapChipIdController.cs" />
+    <Compile Include="MadData\MapDataControllers\TurnController.cs" />
     <Compile Include="MapChip.cs" />
     <Compile Include="MapChipConfig.cs" />
     <Compile Include="MapChipResourceManager.cs" />
@@ -98,10 +105,10 @@
     </Compile>
     <Compile Include="MapGrid.cs" />
     <Compile Include="MapOneMass.cs" />
-    <Compile Include="MapDataControl.cs" />
+    <Compile Include="MadData\MapDataControl.cs" />
     <Compile Include="MapPalletData.cs" />
     <Compile Include="MapPalletScene.cs" />
-    <Compile Include="MapshowArea.cs" />
+    <Compile Include="MadData\MapDataControllers\MapshowAreaController.cs" />
     <Compile Include="MapWriteScene.cs" />
     <Compile Include="MapWriteScroll.cs" />
     <Compile Include="Program.cs" />

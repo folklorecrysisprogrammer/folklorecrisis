@@ -26,6 +26,7 @@ namespace MapEdit
             hScroll.ValueChanged += UpdateValue;
             vScroll.ValueChanged += UpdateValue;
         }
+
         public void Dispose()
         {
             hScroll.ValueChanged -= UpdateValue;

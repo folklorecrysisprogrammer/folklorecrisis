@@ -8,25 +8,29 @@ using System.Drawing;
 namespace MapEdit
 {
     //画面に見えてるマップチップだけをAddChildするクラス
-    public static class MapShowArea
+    public class MapShowAreaController:MapDataController
     {
+
+        public MapShowAreaController(MapData mapData) 
+            :base(mapData){ }
+
         //画面に表示されているマップチップをRemoveChildする
-        private static void ClearShowMapImage(MapOneMass[,] mapDatas)
+        private void ClearShowMapImage()
         {
-            for (int x = 0; x < mapDatas.GetLength(0); x++)
+            for (int x = 0; x < mapData.list.GetLength(0); x++)
             {
-                for (int y = 0; y < mapDatas.GetLength(1); y++)
+                for (int y = 0; y < mapData.list.GetLength(1); y++)
                 {
-                    if (mapDatas[x, y].Parent != null)
+                    if (mapData.list[x, y].Parent != null)
                     {
-                        mapDatas[x, y].RemoveFromParent();
+                        mapData.list[x, y].RemoveFromParent();
                     }
                 }
             }
         }
 
         //画面に表示するマップチップをAddChildする
-        private static void AddShowMapImage(MapWriteScene mws,MapOneMass[,] mapDatas,int mapChipSize)
+        private void AddShowMapImage(MapWriteScene mws,int mapChipSize)
         {
             var panel = mws.control;
             //新たにlUpIndexを計算する
@@ -38,20 +42,20 @@ namespace MapEdit
                     panel.Size.Height / mapChipSize + newLUpIndex.Y + 1
                 );
             //画面に表示されるMapImageだけAddChild
-            for (int x = newLUpIndex.X; x < newRDownIndex.X && x < mapDatas.GetLength(0); x++)
+            for (int x = newLUpIndex.X; x < newRDownIndex.X && x < mapData.list.GetLength(0); x++)
             {
-                for (int y = newLUpIndex.Y; y < newRDownIndex.Y && y < mapDatas.GetLength(1); y++)
+                for (int y = newLUpIndex.Y; y < newRDownIndex.Y && y < mapData.list.GetLength(1); y++)
                 {
-                    mws.AddChild(mapDatas[x, y]);
+                    mws.AddChild(mapData.list[x, y]);
                 }
             }
         }
 
         //表示するMapImageをAddChildして、表示されなくなったMapImageをRemoveChildする
-        public static void UpdateShowMapImage(MapWriteScene mws,MapOneMass[,] mapDatas)
+        public void UpdateShowMapImage(MapWriteScene mws)
         {
-            ClearShowMapImage(mapDatas);
-            AddShowMapImage(mws,mapDatas,mapDatas[0,0].mapChips[0].MapChipSize);
+            ClearShowMapImage();
+            AddShowMapImage(mws, mapData.list[0,0].mapChips[0].MapChipSize);
         }
 
 

@@ -9,35 +9,39 @@ namespace MapEdit
     {
         //マップに配置するマップチップを管理するクラス
         private readonly MapDataControl mapDataControl;
+
         //シーンをスクロールするクラス
         private readonly MapWriteScroll mapWriteScroll;
-        //マップをマウスで書き込むクラス
-        private readonly EditMapChip editMapChip;
+
+        private readonly SelectImageForm sif;
+
         //初期化                                 //描画先をmwpにする
-        public MapWriteScene(Control control,int mapChipSize, MapChipResourceManager mcrm, HScrollBar hScroll, VScrollBar vScroll, Size MapSize, SelectImageForm sif, ComboBox layerComboBox) : base(control)
+        public MapWriteScene(Control control,MapDataControl mapDataControl, HScrollBar hScroll, VScrollBar vScroll, SelectImageForm sif) : base(control)
         {
-            this.mapDataControl = new MapDataControl(mcrm, MapSize, mapChipSize);
+            this.sif = sif;
+            this.mapDataControl = mapDataControl;
             mapWriteScroll = new MapWriteScroll(hScroll, vScroll, this, mapDataControl.MapSize,mapDataControl.MapChipSize);
-            editMapChip = new EditMapChip(mapDataControl, sif, layerComboBox);
-            AddChild(new MapGrid(this,mapChipSize),1);
+            AddChild(new MapGrid(this,mapDataControl.MapChipSize),1);
             LocalPos=new DXEX.Vect(0, 0);
             DXEX.DirectorForForm.AddSubScene(this);
         }
 
         protected override void UpdateLocalPos()
         {
-            mapDataControl.UpdateShowMapImage(this);
+            mapDataControl.MapShowArea.UpdateShowMapImage(this);
         }
+
         protected override void Dispose(bool isFinalize)
         {
             DXEX.DirectorForForm.RemoveSubScene(this);
             mapWriteScroll.Dispose();
             base.Dispose(isFinalize);
         }
+
         //マップの右回転
         public void MapRotateRight()
         {
-            mapDataControl.RotateRight();
+            mapDataControl.Turn.RotateRight();
             //スクロールバーの調整
             mapWriteScroll.SetScrollMaximum(mapDataControl.MapSize,mapDataControl.MapChipSize);
         }
@@ -45,7 +49,7 @@ namespace MapEdit
         //マップの左回転
         public void MapRotateLeft()
         {
-            mapDataControl.RotateLeft();
+            mapDataControl.Turn.RotateLeft();
             //スクロールバーの調整
             mapWriteScroll.SetScrollMaximum(mapDataControl.MapSize, mapDataControl.MapChipSize);
         }
@@ -53,15 +57,15 @@ namespace MapEdit
         //マップの上下反転
         public void MapTurnVertical()
         {
-            mapDataControl.turnVertical();
-            mapDataControl.UpdateShowMapImage(this);
+            mapDataControl.Turn.turnVertical();
+            mapDataControl.MapShowArea.UpdateShowMapImage(this);
         }
 
         //マップの左右反転
         public void MapTurnHorizontal()
         {
-            mapDataControl.turnHorizontal();
-            mapDataControl.UpdateShowMapImage(this);
+            mapDataControl.Turn.turnHorizontal();
+            mapDataControl.MapShowArea.UpdateShowMapImage(this);
         }
 
         //キーによるスクロール
@@ -78,20 +82,35 @@ namespace MapEdit
             mapWriteScroll.SetScrollMaximum(mapDataControl.MapSize, mapDataControl.MapChipSize);
         }
 
-        //パネル上でマウスが操作された時の処理をする
-        public void MapMouseAction(MouseEventArgs e)
+        //パネル上でマウスクリックされた時、マップチップを編集する
+        public void MapMouseAction(MouseEventArgs e,int currentLayer)
         {
-            editMapChip.MouseAction(LocationToMap(e.Location, mapDataControl.MapChipSize));
+            //左クリックされている時の処理
+            if ((Control.MouseButtons & MouseButtons.Left)
+                == MouseButtons.Left)
+            {
+                //マップを書く
+                mapDataControl.EditMapChip.EditWrite(LocationToMap(e.Location, mapDataControl.MapChipSize),sif.GetSelectMapChip(),currentLayer);
+            }
+
+            //右クリックされている時の処理
+            if ((Control.MouseButtons & MouseButtons.Right)
+                == MouseButtons.Right)
+            {
+                //マップをクリアします
+                mapDataControl.EditMapChip.EditErase(LocationToMap(e.Location, mapDataControl.MapChipSize), currentLayer);
+            }
         }
+
         //マップをbitmapで得る
         public Bitmap GetBitmap()
         {
-            return mapDataControl.GetBitmap();
+            return mapDataControl.ConvertData.GetBitmap();
         }
 
         public StringBuilder GetMapDataText()
         {
-            return mapDataControl.GetMapDataText();
+            return mapDataControl.ConvertData.GetMapDataText();
         }
 
         public ConfigForm CreateConfigForm()
@@ -101,18 +120,18 @@ namespace MapEdit
 
         public void RemoveId(int id, int lastid)
         {
-            mapDataControl.RemoveId(id, lastid);
+            mapDataControl.MapChipId.RemoveId(id, lastid);
         }
 
         public void SwapId(int id1, int id2)
         {
-            mapDataControl.SwapId(id1, id2);
+            mapDataControl.MapChipId.SwapId(id1, id2);
         }
 
         //既存のプロジェクトからマップをロードする
-        public void LoadProject(MapInfoFromText mift)
+        public void LoadProject(MapInfoFromText mift,MapChipResourceManager mcrm)
         {
-            mapDataControl.LoadProject(mift);
+            mapDataControl.LoadMapDataList.LoadFromText(mift,mcrm);
         }
 
     }
