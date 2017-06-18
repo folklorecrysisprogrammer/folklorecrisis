@@ -14,7 +14,7 @@ namespace MapEdit
             : base(mapData) { }
 
         //マップ全体をBitmapに変換する
-        public Bitmap GetBitmap()
+        public Bitmap GetBitmap(MapChipResourceManager mcrm)
         {
             Bitmap unitedImg = new Bitmap(mapData.MapChipSize * mapData.MapSizeX, mapData.MapChipSize * mapData.MapSizeY);
             Graphics g = Graphics.FromImage(unitedImg);
@@ -22,7 +22,7 @@ namespace MapEdit
             {
                 for (int countX = 0; countX < mapData.MapSizeX; ++countX)
                 {
-                    Bitmap bitmap = mapData.list[countX, countY].GetBitmap();
+                    Bitmap bitmap = mapData.list[countX, countY].GetBitmap(mcrm);
                     g.DrawImage(bitmap, mapData.MapChipSize * countX, mapData.MapChipSize * countY);
                 }
             }

@@ -13,12 +13,10 @@ namespace MapEdit
         //シーンをスクロールするクラス
         private readonly MapWriteScroll mapWriteScroll;
 
-        private readonly SelectImageForm sif;
 
         //初期化                                 //描画先をmwpにする
-        public MapWriteScene(Control control,MapDataControl mapDataControl, HScrollBar hScroll, VScrollBar vScroll, SelectImageForm sif) : base(control)
+        public MapWriteScene(Control control,MapDataControl mapDataControl, HScrollBar hScroll, VScrollBar vScroll) : base(control)
         {
-            this.sif = sif;
             this.mapDataControl = mapDataControl;
             mapWriteScroll = new MapWriteScroll(hScroll, vScroll, this, mapDataControl.MapSize,mapDataControl.MapChipSize);
             AddChild(new MapGrid(this,mapDataControl.MapChipSize),1);
@@ -81,14 +79,15 @@ namespace MapEdit
         }
 
         //パネル上でマウスクリックされた時、マップチップを編集する
-        public void MapMouseAction(MouseEventArgs e,int currentLayer)
+        public void MapMouseAction(MouseEventArgs e,int currentLayer,MapChip mapChip)
         {
             //左クリックされている時の処理
             if ((Control.MouseButtons & MouseButtons.Left)
                 == MouseButtons.Left)
             {
                 //マップを書く
-                mapDataControl.EditMapChip.EditWrite(LocationToMap(e.Location, mapDataControl.MapChipSize),sif.GetSelectMapChip(),currentLayer);
+                mapDataControl.EditMapChip.
+                    EditWrite(LocationToMap(e.Location, mapDataControl.MapChipSize),mapChip,currentLayer);
             }
 
             //右クリックされている時の処理
@@ -101,9 +100,9 @@ namespace MapEdit
         }
 
         //マップをbitmapで得る
-        public Bitmap GetBitmap()
+        public Bitmap GetBitmap(MapChipResourceManager mcrm)
         {
-            return mapDataControl.ConvertData.GetBitmap();
+            return mapDataControl.ConvertData.GetBitmap(mcrm);
         }
 
         public StringBuilder GetMapDataText()
@@ -113,7 +112,11 @@ namespace MapEdit
 
         public ConfigForm CreateConfigForm()
         {
-            return new ConfigForm( mapDataControl, mapWriteScroll);
+            //ConfigFormを作成（第二引数は、MapSizeがConfigFormによって変更されるときの処理）
+            return new ConfigForm(mapDataControl, (mapSize)=> {
+                mapDataControl.MapSize = mapSize;
+                mapWriteScroll.SetScrollMaximum(mapDataControl.MapSize, mapDataControl.MapChipSize);
+            });
         }
 
         public void RemoveId(int id, int lastid)

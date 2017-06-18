@@ -13,7 +13,7 @@ namespace MapEdit
         :base(mapData){ }
 
         //サイズ変更処理
-        public void Change(int newNumberX, int newNumberY,MapChipResourceManager mcrm)
+        public void Change(int newNumberX, int newNumberY)
         {
             var newMapOneMassList = new MapOneMass[newNumberX, newNumberY];
 
@@ -51,7 +51,7 @@ namespace MapEdit
             {
                 for (int y = 0; y < newNumberY; y++)
                 {
-                    newMapOneMassList[x, y] = new MapOneMass(mcrm, mapData.MapChipSize);
+                    newMapOneMassList[x, y] = new MapOneMass(mapData.MapChipSize);
                     newMapOneMassList[x, y].LocalPos = new DXEX.Vect(x * mapData.MapChipSize, y * mapData.MapChipSize);
                 }
             }
@@ -59,7 +59,7 @@ namespace MapEdit
             {
                 for (int y = mapData.MapSizeY; y < newNumberY; y++)
                 {
-                    newMapOneMassList[x, y] = new MapOneMass(mcrm, mapData.MapChipSize);
+                    newMapOneMassList[x, y] = new MapOneMass(mapData.MapChipSize);
                     newMapOneMassList[x, y].LocalPos = new DXEX.Vect(x * mapData.MapChipSize, y * mapData.MapChipSize);
                 }
             }

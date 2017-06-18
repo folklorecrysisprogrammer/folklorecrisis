@@ -18,12 +18,10 @@ namespace MapEdit
         public Size MapSize
         {
             get { return new Size(MapSizeX,MapSizeY); }
-            set { ChangeMapSize.Change(value.Width, value.Height,mcrm); }
+            set { ChangeMapSize.Change(value.Width, value.Height); }
         }
         public int MapSizeX { get { return mapData.MapSizeX; } }
         public int MapSizeY { get { return mapData.MapSizeY; }}
-
-        private readonly MapChipResourceManager mcrm;
 
         //mapData.listを操作する各種コントローラ
         public MapShowAreaController MapShowArea { get; }
@@ -35,17 +33,16 @@ namespace MapEdit
         public LoadMapDataListController LoadMapDataList { get; } 
 
         //コンストラクタ
-        public MapDataControl(MapChipResourceManager mcrm, Size mapSize,int mapChipSize)
+        public MapDataControl(Size mapSize,int mapChipSize)
         {
             //mapData.list初期化
             mapData = new MapData(mapChipSize);
-            this.mcrm = mcrm;
             mapData.list = new MapOneMass[mapSize.Width, mapSize.Height];
             for (int x = 0; x < MapSizeX; x++)
             {
                 for (int y = 0; y < MapSizeY; y++)
                 {
-                    mapData.list[x, y] = new MapOneMass(mcrm,mapChipSize);
+                    mapData.list[x, y] = new MapOneMass(mapChipSize);
                     mapData.list[x, y].LocalPos = new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }

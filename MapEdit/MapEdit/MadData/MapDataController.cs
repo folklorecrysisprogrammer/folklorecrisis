@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MapEdit
 {
-    //マップデータをコントロールするインターフェイス
+    //MapDataをコントロールするインターフェイス
     public abstract class MapDataController
     {
         protected readonly MapData mapData;
