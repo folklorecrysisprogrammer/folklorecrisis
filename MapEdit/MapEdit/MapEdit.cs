@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace MapEdit
 {
-    //
+    //こいつの名前は速く変えるか殺すべきだ。
     public class MapEdit
     {
         

@@ -106,6 +106,7 @@ namespace MapEdit
                 return;
             }
         }
+
         //画像リソースをIDで指定して破棄する(削除するId)
         public void RemoveId(int id)
         {
