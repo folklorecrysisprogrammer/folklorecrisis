@@ -19,5 +19,12 @@ namespace DXEX.Base
         {
             return rad * 180 / Math.PI;
         }
+
+        //Rule生成関数
+        public static Rule<Key>Input<Key>(Key key)
+        {
+            return new Rule<Key>(key);
+        }
+
     }
 }

@@ -16,14 +16,26 @@ namespace MapEdit
         public MapChip[] mapChips { get; private set; }
         private readonly int mapChipSize;
 
-        private readonly MapChipResourceManager mcrm;
+        //MapOneMassが持つmapChip配列を交換する
+        public void SwapMapChips(MapOneMass mapOneMass)
+        {
+            for(int i=0; i < MapEditForm.maxLayer; i++)
+            {
+                mapChips[i].RemoveFromParent();
+                mapOneMass.mapChips[i].RemoveFromParent();
+                AddChild(mapOneMass.mapChips[i]);
+                mapOneMass.AddChild(mapChips[i]);
+            }
+            var tempMapChips=mapChips;
+            mapChips = mapOneMass.mapChips;
+            mapOneMass.mapChips = tempMapChips;
+        }
 
         //初期化
-        public MapOneMass(MapChipResourceManager mcrm,int mapChipSize)
+        public MapOneMass(int mapChipSize)
         {
             mapChips = new MapChip[MapEditForm.maxLayer];
             this.mapChipSize = mapChipSize;
-            this.mcrm = mcrm;
             anchor.SetVect(0, 0);           
 
             //レイヤーの数だけ画像表示用スプライトを生成する
@@ -36,7 +48,7 @@ namespace MapEdit
         }
 
         //Bitmapとして得る
-        public Bitmap GetBitmap()
+        public Bitmap GetBitmap(MapChipResourceManager mcrm)
         {
             //返す用のBitmap
             Bitmap resultBitmap = new Bitmap(mapChipSize, mapChipSize);

@@ -84,7 +84,14 @@
     <Compile Include="ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditMapChip.cs" />
+    <Compile Include="MapWriteScene\MadData\MapDataControllers\ChangeMapSizeController.cs" />
+    <Compile Include="MapWriteScene\MadData\MapDataControllers\ConvertDataController.cs" />
+    <Compile Include="MapWriteScene\MadData\MapDataControllers\EditMapChipController.cs" />
+    <Compile Include="MapWriteScene\MadData\MapData.cs" />
+    <Compile Include="MapWriteScene\MadData\MapDataController.cs" />
+    <Compile Include="MapWriteScene\MadData\MapDataControllers\LoadMapDataListController.cs" />
+    <Compile Include="MapWriteScene\MadData\MapDataControllers\MapChipIdController.cs" />
+    <Compile Include="MapWriteScene\MadData\MapDataControllers\TurnController.cs" />
     <Compile Include="MapChip.cs" />
     <Compile Include="MapChipConfig.cs" />
     <Compile Include="MapChipResourceManager.cs" />
@@ -98,12 +105,12 @@
     </Compile>
     <Compile Include="MapGrid.cs" />
     <Compile Include="MapOneMass.cs" />
-    <Compile Include="MapData.cs" />
+    <Compile Include="MapWriteScene\MadData\MapDataControl.cs" />
     <Compile Include="MapPalletData.cs" />
     <Compile Include="MapPalletScene.cs" />
-    <Compile Include="MapshowArea.cs" />
-    <Compile Include="MapWriteScene.cs" />
-    <Compile Include="MapWriteScroll.cs" />
+    <Compile Include="MapWriteScene\MadData\MapDataControllers\MapshowAreaController.cs" />
+    <Compile Include="MapWriteScene\MapWriteScene.cs" />
+    <Compile Include="MapWriteScene\MapWriteScroll.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="ProjectInfo.cs" />

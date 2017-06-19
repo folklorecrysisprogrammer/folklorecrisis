@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace MapEdit
 {
+    //小っちゃい方のフォーム
     public partial class SelectImageForm : Form
     {
 

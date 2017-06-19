@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace MapEdit
 {
@@ -13,22 +14,19 @@ namespace MapEdit
         private readonly HScrollBar hScroll;
         private readonly VScrollBar vScroll;
         private readonly MapWriteScene mws;
-        private readonly MapShowArea mapShowArea;
-        private readonly MapData mapData;
 
-        public MapWriteScroll(HScrollBar hScroll, VScrollBar vScroll, MapWriteScene mws,MapData mapData,MapShowArea mapShowArea)
+        public MapWriteScroll(HScrollBar hScroll, VScrollBar vScroll, MapWriteScene mws,Size mapSize,int mapChipSize)
         {
-            this.mapShowArea = mapShowArea;
             this.hScroll = hScroll;
             this.vScroll = vScroll;
             this.mws = mws;
-            this.mapData = mapData;
-            SetScrollDelta();
-            SetScrollMaximum();
+            SetScrollDelta(mapChipSize);
+            SetScrollMaximum(mapSize,mapChipSize);
             //スクロールバーの値が更新されたら、mwsの位置を更新する処理を呼ぶ
             hScroll.ValueChanged += UpdateValue;
             vScroll.ValueChanged += UpdateValue;
         }
+
         public void Dispose()
         {
             hScroll.ValueChanged -= UpdateValue;
@@ -40,29 +38,28 @@ namespace MapEdit
         {
             mws.LocalPosX = -hScroll.Value;
             mws.LocalPosY = -vScroll.Value;
-            mapShowArea.UpdateShowMapImage();
         }
 
         //スクロールバーの変化量を設定
         //一回スクロールで一マス移動するようにする
-        public void SetScrollDelta()
+        public void SetScrollDelta(int mapChipSize)
         {
-            vScroll.SmallChange = mapData.MapChipSize;
-            vScroll.LargeChange = mapData.MapChipSize;
-            hScroll.SmallChange = mapData.MapChipSize;
-            hScroll.LargeChange = mapData.MapChipSize;
+            vScroll.SmallChange = mapChipSize;
+            vScroll.LargeChange = mapChipSize;
+            hScroll.SmallChange = mapChipSize;
+            hScroll.LargeChange = mapChipSize;
         }
 
         //スクロールバーの最大値を設定
-        public void SetScrollMaximum()
+        public void SetScrollMaximum(Size mapSize,int mapChipSize)
         {
             hScroll.Value = 0;
             vScroll.Value = 0;
             mws.LocalPos = new DXEX.Vect(0, 0);
-            int temp = mapData.MapSizeX * mapData.MapChipSize - mws.GetControl.Size.Width;
+            int temp = mapSize.Width * mapChipSize - mws.GetControl.Size.Width;
             if (temp < 0) hScroll.Maximum = 0;
             else hScroll.Maximum = temp;
-            temp = mapData.MapSizeY * mapData.MapChipSize - mws.GetControl.Size.Height;
+            temp = mapSize.Height * mapChipSize - mws.GetControl.Size.Height;
             if (temp < 0) vScroll.Maximum = 0;
             else vScroll.Maximum = temp;
         }
