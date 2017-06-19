@@ -17,13 +17,13 @@ namespace MapEdit
         //画面に表示されているマップチップをRemoveChildする
         private void ClearShowMapImage()
         {
-            for (int x = 0; x < mapData.list.GetLength(0); x++)
+            for (int x = 0; x < mapData.MapSizeX; x++)
             {
-                for (int y = 0; y < mapData.list.GetLength(1); y++)
+                for (int y = 0; y < mapData.MapSizeY; y++)
                 {
-                    if (mapData.list[x, y].Parent != null)
+                    if (mapData.List[x, y].Parent != null)
                     {
-                        mapData.list[x, y].RemoveFromParent();
+                        mapData.List[x, y].RemoveFromParent();
                     }
                 }
             }
@@ -42,11 +42,11 @@ namespace MapEdit
                     panel.Size.Height / mapChipSize + newLUpIndex.Y + 1
                 );
             //画面に表示されるMapImageだけAddChild
-            for (int x = newLUpIndex.X; x < newRDownIndex.X && x < mapData.list.GetLength(0); x++)
+            for (int x = newLUpIndex.X; x < newRDownIndex.X && x < mapData.MapSizeX; x++)
             {
-                for (int y = newLUpIndex.Y; y < newRDownIndex.Y && y < mapData.list.GetLength(1); y++)
+                for (int y = newLUpIndex.Y; y < newRDownIndex.Y && y < mapData.MapSizeY; y++)
                 {
-                    mws.AddChild(mapData.list[x, y]);
+                    mws.AddChild(mapData.List[x, y]);
                 }
             }
         }
@@ -55,7 +55,7 @@ namespace MapEdit
         public void UpdateShowMapImage(MapWriteScene mws)
         {
             ClearShowMapImage();
-            AddShowMapImage(mws, mapData.list[0,0].mapChips[0].MapChipSize);
+            AddShowMapImage(mws, mapData.List[0,0].mapChips[0].MapChipSize);
         }
 
 

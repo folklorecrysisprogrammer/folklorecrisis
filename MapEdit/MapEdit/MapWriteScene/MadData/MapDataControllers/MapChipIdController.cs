@@ -16,7 +16,7 @@ namespace MapEdit
         public void RemoveId(int id, int lastid)
         {
             if (id == lastid) lastid = -999;
-            foreach (var item in mapData.list)
+            foreach (var item in mapData.List)
             {
                 foreach (var mapChip in item.mapChips)
                 {
@@ -36,7 +36,7 @@ namespace MapEdit
         //マップデータリストで特定のIDの交換を行う
         public void SwapId(int id1, int id2)
         {
-            foreach (var item in mapData.list)
+            foreach (var item in mapData.List)
             {
                 foreach (var mapChip in item.mapChips)
                 {

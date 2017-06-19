@@ -18,20 +18,20 @@ namespace MapEdit
         public void EditWrite(Point point,MapChip writeMapChip,int currentLayer)
         {
             //マップサイズ範囲外なら終了
-            if (point.X >= mapData.list.GetLength(0) || point.Y >= mapData.list.GetLength(1) ||
+            if (point.X >= mapData.MapSizeX || point.Y >= mapData.MapSizeY ||
                 point.X < 0 || point.Y < 0) return;
             //マップチップ置き換え
-            mapData.list[point.X, point.Y].PutImage(writeMapChip, currentLayer);
+            mapData.List[point.X, point.Y].PutImage(writeMapChip, currentLayer);
         }
 
         //指定のマスのマップチップを空にする
         public void EditErase(Point point,int currentLayer)
         {
             //マップサイズ範囲外なら終了
-            if (point.X >= mapData.list.GetLength(0) || point.Y >= mapData.list.GetLength(1) ||
+            if (point.X >= mapData.MapSizeX || point.Y >= mapData.MapSizeY ||
                 point.X < 0 || point.Y < 0) return;
             //マップチップを空にします
-            mapData.list[point.X, point.Y].ClearImage(currentLayer);
+            mapData.List[point.X, point.Y].ClearImage(currentLayer);
         }
     }
 }

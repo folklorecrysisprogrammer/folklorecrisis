@@ -94,7 +94,7 @@ namespace MapEdit
         //ProjectInfoの生成
         private ProjectInfo GetProjectInfo()
         {
-            return new ProjectInfo(mcrm.GetBitmapSheet(),mcrm.LastID(),mapEdit.mws.GetMapDataText());
+            return new ProjectInfo(mcrm.GetBitmapSheet(),mcrm.LastID(),mapEdit.mws.MapDataControl.ConvertData.GetMapDataText());
         }
 
         //プロジェクトの保存
@@ -110,13 +110,13 @@ namespace MapEdit
         //画像リソースをIDで指定して破棄する(削除するId)
         public void RemoveId(int id)
         {
-            mapEdit.mws.RemoveId(id, mcrm.LastID());
+            mapEdit.mws.MapDataControl.MapChipId.RemoveId(id, mcrm.LastID());
             mcrm.PopImageFile(id);
         }
 
         public void SwapId(int id1,int id2)
         {
-            mapEdit.mws.SwapId(id1, id2);
+            mapEdit.mws.MapDataControl.MapChipId.SwapId(id1, id2);
             mcrm.SwapImageFile(id1, id2);
         }
 
@@ -130,7 +130,7 @@ namespace MapEdit
         //画像出力メニューが選択されたときの処理
         private void 画像出力ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileManager.BitmapOutPut(mapEdit.mws.GetBitmap(mcrm));
+            FileManager.BitmapOutPut(mapEdit.mws.MapDataControl.ConvertData.GetBitmap(mcrm));
         }
 
         //保存メニューが選択された時の処理
@@ -191,25 +191,25 @@ namespace MapEdit
         //右回転ボタンを押したときの処理
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
-            mapEdit.mws.MapRotateRight();
+            mapEdit.mws.MapDataControl.Turn.RotateRight();
         }
 
         //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
-            mapEdit.mws.MapRotateLeft();
+            mapEdit.mws.MapDataControl.Turn.RotateLeft();
         }
 
         //上下反転ボタンを押したときの処理
         private void turnVerticalButton_Click(object sender, EventArgs e)
         {
-            mapEdit.mws.MapTurnVertical();
+            mapEdit.mws.MapDataControl.Turn.TurnVertical();
         }
 
         //左右反転ボタンを押したときの処理
         private void turnHorizontalButton_Click(object sender, EventArgs e)
         {
-            mapEdit.mws.MapTurnHorizontal();
+            mapEdit.mws.MapDataControl.Turn.TurnHorizontal();
 
         }
 

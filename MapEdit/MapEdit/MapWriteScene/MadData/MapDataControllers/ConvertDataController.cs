@@ -22,7 +22,7 @@ namespace MapEdit
             {
                 for (int countX = 0; countX < mapData.MapSizeX; ++countX)
                 {
-                    Bitmap bitmap = mapData.list[countX, countY].GetBitmap(mcrm);
+                    Bitmap bitmap = mapData.List[countX, countY].GetBitmap(mcrm);
                     g.DrawImage(bitmap, mapData.MapChipSize * countX, mapData.MapChipSize * countY);
                 }
             }
@@ -39,7 +39,7 @@ namespace MapEdit
                 mapDataText.Append(Environment.NewLine);
                 for (int x = 0; x < mapData.MapSizeX; x++)
                 {
-                    MapOneMass mom = mapData.list[x, y];
+                    MapOneMass mom = mapData.List[x, y];
                     MapChip[] ChipId = mom.mapChips;
                     for (int i = 0; i < ChipId.Length; i++)
                     {

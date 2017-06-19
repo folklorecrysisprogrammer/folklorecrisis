@@ -22,14 +22,14 @@ namespace MapEdit
             {
                 for (int y = 0; y < mapData.MapSizeY; y++)
                 {
-                    mapData.list[x, y].Dispose();
+                    mapData.List[x, y].Dispose();
                 }
             }
             for (int x = 0; x < newNumberX; x++)
             {
                 for (int y = newNumberY; y < mapData.MapSizeY; y++)
                 {
-                    mapData.list[x, y].Dispose();
+                    mapData.List[x, y].Dispose();
                 }
             }
 
@@ -42,7 +42,7 @@ namespace MapEdit
                     y < mapData.MapSizeY && y < newNumberY;
                     y++)
                 {
-                    newMapOneMassList[x, y] = mapData.list[x, y];
+                    newMapOneMassList[x, y] = mapData.List[x, y];
                 }
             }
 
@@ -64,7 +64,7 @@ namespace MapEdit
                 }
             }
             //新しいMadDataリストの方のポインタを保存
-            mapData.list = newMapOneMassList;
+            mapData.List = newMapOneMassList;
 
         }
     }

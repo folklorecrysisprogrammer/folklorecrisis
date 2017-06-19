@@ -27,7 +27,7 @@ namespace MapEdit
         private MapEdit(MapInfoFromText mift,Panel mwp, MapChipResourceManager mcrm, HScrollBar hScroll, VScrollBar vScroll):
             this(mwp,hScroll,vScroll, mift.MapSize, mift.MapChipSize)
         {
-            mws.LoadProject(mift,mcrm);
+            mws.MapDataControl.LoadMapDataList.LoadFromText(mift,mcrm);
         }
 
         //自殺してからprivateの方のコンストラクタ呼んで再び復活するだけのクソコード

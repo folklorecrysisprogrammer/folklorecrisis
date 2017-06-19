@@ -23,6 +23,8 @@ namespace MapEdit
         public int MapSizeX { get { return mapData.MapSizeX; } }
         public int MapSizeY { get { return mapData.MapSizeY; }}
 
+        public void setChangeListEvent(Action func) { mapData.ChangeList += func; }
+
         //mapData.listを操作する各種コントローラ
         public MapShowAreaController MapShowArea { get; }
         public EditMapChipController EditMapChip { get; }
@@ -36,14 +38,14 @@ namespace MapEdit
         public MapDataControl(Size mapSize,int mapChipSize)
         {
             //mapData.list初期化
-            mapData = new MapData(mapChipSize);
-            mapData.list = new MapOneMass[mapSize.Width, mapSize.Height];
+            mapData = new MapData(mapChipSize,new MapOneMass[mapSize.Width, mapSize.Height]);
+
             for (int x = 0; x < MapSizeX; x++)
             {
                 for (int y = 0; y < MapSizeY; y++)
                 {
-                    mapData.list[x, y] = new MapOneMass(mapChipSize);
-                    mapData.list[x, y].LocalPos = new DXEX.Vect(x * MapChipSize, y * MapChipSize);
+                    mapData.List[x, y] = new MapOneMass(mapChipSize);
+                    mapData.List[x, y].LocalPos = new DXEX.Vect(x * MapChipSize, y * MapChipSize);
                 }
             }
 
