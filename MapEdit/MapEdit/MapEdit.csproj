@@ -96,7 +96,7 @@
     <Compile Include="MapChipConfig.cs" />
     <Compile Include="MapChipResourceManager.cs" />
     <Compile Include="MapInfoFromText.cs" />
-    <Compile Include="MapEdit.cs" />
+    <Compile Include="MapEditControl.cs" />
     <Compile Include="MapEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +111,7 @@
     <Compile Include="MapWriteScene\MadData\MapDataControllers\MapshowAreaController.cs" />
     <Compile Include="MapWriteScene\MapWriteScene.cs" />
     <Compile Include="MapWriteScene\MapWriteScroll.cs" />
+    <Compile Include="MapWriteScene\HVScrollBar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="ProjectInfo.cs" />

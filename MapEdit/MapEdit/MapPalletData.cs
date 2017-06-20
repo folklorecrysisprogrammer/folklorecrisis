@@ -15,7 +15,7 @@ namespace MapEdit
         //配列ぽく振るまう
         public MapChip this[int x, int y]
         {
-            get { return mapChips[x, y]; }
+            get { return mapChips[x, y];}
         }
 
         //初期化

@@ -10,9 +10,7 @@ namespace MapEdit
 {
     public class MapSceneBase:DXEX.Scene
     { 
-        public MapSceneBase(Control control) : base(control)
-        {
-        }
+        public MapSceneBase(Control control) : base(control){}
 
         //C#のコントロールの座標をSceneのMapChip配列やMapOneMass配列などの
         //インデックスに変換

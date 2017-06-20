@@ -12,7 +12,7 @@ namespace MapEdit
     {
 
         public MapShowAreaController(MapData mapData) 
-            :base(mapData){ }
+            :base(mapData){}
 
         //画面に表示されているマップチップをRemoveChildする
         private void ClearShowMapImage()

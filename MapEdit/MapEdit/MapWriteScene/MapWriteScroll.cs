@@ -9,45 +9,30 @@ using System.Drawing;
 namespace MapEdit
 {
     //MapWriteSceneをスクロールするためのクラス
-    public class MapWriteScroll:IDisposable
+    public class MapWriteScroll:HVScrollBar,IDisposable
     {
-        private readonly HScrollBar hScroll;
-        private readonly VScrollBar vScroll;
         private readonly MapWriteScene mws;
 
         public MapWriteScroll(HScrollBar hScroll, VScrollBar vScroll, MapWriteScene mws,Size mapSize,int mapChipSize)
+            :base(hScroll,vScroll)
         {
-            this.hScroll = hScroll;
-            this.vScroll = vScroll;
             this.mws = mws;
             SetScrollDelta(mapChipSize);
             SetScrollMaximum(mapSize,mapChipSize);
             //スクロールバーの値が更新されたら、mwsの位置を更新する処理を呼ぶ
-            hScroll.ValueChanged += UpdateValue;
-            vScroll.ValueChanged += UpdateValue;
+            ValueChenged += UpdateValue;
         }
 
         public void Dispose()
         {
-            hScroll.ValueChanged -= UpdateValue;
-            vScroll.ValueChanged -= UpdateValue;
+            base.Dispose();
         }
 
         //スクロールバーの値を元に、mwsの位置を更新する
-        public void UpdateValue( object o,EventArgs e)
+        public void UpdateValue()
         {
             mws.LocalPosX = -hScroll.Value;
             mws.LocalPosY = -vScroll.Value;
-        }
-
-        //スクロールバーの変化量を設定
-        //一回スクロールで一マス移動するようにする
-        public void SetScrollDelta(int mapChipSize)
-        {
-            vScroll.SmallChange = mapChipSize;
-            vScroll.LargeChange = mapChipSize;
-            hScroll.SmallChange = mapChipSize;
-            hScroll.LargeChange = mapChipSize;
         }
 
         //スクロールバーの最大値を設定

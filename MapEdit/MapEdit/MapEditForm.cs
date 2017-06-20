@@ -23,7 +23,7 @@ namespace MapEdit
         private ProjectManager pm;
         //マップチップリソース管理
         public MapChipResourceManager mcrm { get; private set;}
-        private MapEdit mapEdit;
+        private MapEditControl mapEdit;
 
 
         //初期化
@@ -47,7 +47,7 @@ namespace MapEdit
             
             mcrm = new MapChipResourceManager(mapChipSize);
             sif = new SelectImageForm(this);
-            mapEdit = new MapEdit(mapWritePanel, hScrollBar1, vScrollBar1, new Size(20, 20), mapChipSize);
+            mapEdit = new MapEditControl(mapWritePanel, hScrollBar1, vScrollBar1, new Size(20, 20), mapChipSize);
             pm = new ProjectManager();
             //メインウインドウのロードが終わったら、
             //パレッドウインドウを表示する。
@@ -94,7 +94,7 @@ namespace MapEdit
         //ProjectInfoの生成
         private ProjectInfo GetProjectInfo()
         {
-            return new ProjectInfo(mcrm.GetBitmapSheet(),mcrm.LastID(),mapEdit.mws.MapDataControl.ConvertData.GetMapDataText());
+            return new ProjectInfo(mcrm.GetBitmapSheet(),mcrm.LastID(),mapEdit.MapDataControl.ConvertData.GetMapDataText());
         }
 
         //プロジェクトの保存
@@ -110,27 +110,27 @@ namespace MapEdit
         //画像リソースをIDで指定して破棄する(削除するId)
         public void RemoveId(int id)
         {
-            mapEdit.mws.MapDataControl.MapChipId.RemoveId(id, mcrm.LastID());
+            mapEdit.MapDataControl.MapChipId.RemoveId(id, mcrm.LastID());
             mcrm.PopImageFile(id);
         }
 
         public void SwapId(int id1,int id2)
         {
-            mapEdit.mws.MapDataControl.MapChipId.SwapId(id1, id2);
+            mapEdit.MapDataControl.MapChipId.SwapId(id1, id2);
             mcrm.SwapImageFile(id1, id2);
         }
 
         //設定ボタンが押された時の処理
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var configForm = mapEdit.mws.CreateConfigForm();
+            var configForm = mapEdit.CreateConfigForm();
             configForm.ShowDialog(this);
         }
 
         //画像出力メニューが選択されたときの処理
         private void 画像出力ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileManager.BitmapOutPut(mapEdit.mws.MapDataControl.ConvertData.GetBitmap(mcrm));
+            FileManager.BitmapOutPut(mapEdit.MapDataControl.ConvertData.GetBitmap(mcrm));
         }
 
         //保存メニューが選択された時の処理
@@ -191,32 +191,32 @@ namespace MapEdit
         //右回転ボタンを押したときの処理
         private void rotateRightButton_Click(object sender, EventArgs e)
         {
-            mapEdit.mws.MapDataControl.Turn.RotateRight();
+            mapEdit.MapDataControl.Turn.RotateRight();
         }
 
         //左回転ボタンを押したときの処理
         private void rotateLeftButton_Click(object sender, EventArgs e)
         {
-            mapEdit.mws.MapDataControl.Turn.RotateLeft();
+            mapEdit.MapDataControl.Turn.RotateLeft();
         }
 
         //上下反転ボタンを押したときの処理
         private void turnVerticalButton_Click(object sender, EventArgs e)
         {
-            mapEdit.mws.MapDataControl.Turn.TurnVertical();
+            mapEdit.MapDataControl.Turn.TurnVertical();
         }
 
         //左右反転ボタンを押したときの処理
         private void turnHorizontalButton_Click(object sender, EventArgs e)
         {
-            mapEdit.mws.MapDataControl.Turn.TurnHorizontal();
+            mapEdit.MapDataControl.Turn.TurnHorizontal();
 
         }
 
         //キーが押された時の処理
         private void MapEditForm_KeyDown(object sender, KeyEventArgs e)
         {
-            mapEdit.mws.KeyScroll(e);
+            mapEdit.MapWriteScroll.KeyScroll(e);
         }
 
         //マップ描画のパネルのサイズが変更されたら、
@@ -224,17 +224,19 @@ namespace MapEdit
         //スクロールバーの調整を行う
         private void mapWritePanel_SizeChanged(object sender, EventArgs e)
         {
-            mapEdit.mws.mapWritePanel_SizeChanged();
+            mapEdit.
+                MapWriteScroll.
+                SetScrollMaximum(mapEdit.MapDataControl.MapSize, mapEdit.MapDataControl.MapChipSize);
         }
 
         //パネル上でマウスが操作された時の処理をする
         private void mapWritePanel_MouseDown(object sender, MouseEventArgs e)
         {
-            mapEdit.mws.MapMouseAction(e,layerComboBox.SelectedIndex,sif.GetSelectMapChip());
+            mapEdit.MapMouseAction(e,layerComboBox.SelectedIndex,sif.GetSelectMapChip());
         }
         private void mapWritePanel_MouseMove(object sender, MouseEventArgs e)
         {
-            mapEdit.mws.MapMouseAction(e, layerComboBox.SelectedIndex, sif.GetSelectMapChip());
+            mapEdit.MapMouseAction(e, layerComboBox.SelectedIndex, sif.GetSelectMapChip());
         }
 
         private void gridButton_Click(object sender, EventArgs e)
