@@ -49,21 +49,21 @@ namespace MapEdit
             vScrollBar1.Focus();
         }
 
-        public void LoadProject()
+        public void LoadProject(MapChipResourceManager mcrm)
         {
-            mps.LoadProject();
+            mps.LoadProject(mcrm);
             sms.resetMapChip();
         }
 
         /* コンストラクタ */
         //  :イベントの設定(ドラッグ時とか)
         //  :マップのパレットと，選択中マップチップのやつ
-        public SelectImageForm(MapEditForm meform)
+        public SelectImageForm(MapChipResourceManager mcrm)
         {
             
             InitializeComponent();
             sms = new SelectMapChipScene(selectPicture);
-            mps = new MapPalletScene(palletPanel,meform,sms);
+            mps = new MapPalletScene(palletPanel,mcrm,sms);
             
             DXEX.DirectorForForm.AddSubScene(mps);
             DXEX.DirectorForForm.AddSubScene(sms);

@@ -53,7 +53,6 @@ namespace MapEdit
         {
             MapWriteScroll.Dispose();
             mws.Dispose();
-
         }
 
         public ConfigForm CreateConfigForm()
@@ -61,7 +60,7 @@ namespace MapEdit
             //ConfigFormを作成（第二引数は、MapSizeがConfigFormによって変更されるときの処理）
             return new 
                 ConfigForm(
-                    MapDataControl,
+                    MapDataControl.MapSize,
                     (mapSize) =>
                     {
                         MapDataControl.MapSize = mapSize;
@@ -71,24 +70,20 @@ namespace MapEdit
         }
 
         //パネル上でマウスクリックされた時、マップチップを編集する
-        public void MapMouseAction(MouseEventArgs e, int currentLayer, MapChip mapChip)
+        public void MapMouseAction(Point point, int currentLayer, MapChip mapChip)
         {
             //左クリックされている時の処理
             if ((Control.MouseButtons & MouseButtons.Left)
                 == MouseButtons.Left)
-            {
                 //マップを書く
                 MapDataControl.EditMapChip.
-                    EditWrite(mws.LocationToMap(e.Location, MapDataControl.MapChipSize), mapChip, currentLayer);
-            }
+                    EditWrite(mws.LocationToMap(point, MapDataControl.MapChipSize), mapChip, currentLayer);
 
             //右クリックされている時の処理
-            if ((Control.MouseButtons & MouseButtons.Right)
+           else if ((Control.MouseButtons & MouseButtons.Right)
                 == MouseButtons.Right)
-            {
                 //マップをクリアします
-                MapDataControl.EditMapChip.EditErase(mws.LocationToMap(e.Location, MapDataControl.MapChipSize), currentLayer);
-            }
+                MapDataControl.EditMapChip.EditErase(mws.LocationToMap(point, MapDataControl.MapChipSize), currentLayer);
         }
     }
 }

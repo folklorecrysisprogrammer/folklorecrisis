@@ -57,13 +57,13 @@ namespace MapEdit
             Bitmap[] bitmap = new Bitmap[MapEditForm.maxLayer];
             for(int i=0; i < MapEditForm.maxLayer; i++)
             {
-                if (mapChips[i].Id == -1)
+                if (mapChips[i].Id == null)
                 {   
                     bitmap[i] = new Bitmap(mapChipSize, mapChipSize);
                 }
                 else
                 {
-                    bitmap[i] = mcrm.GetBitmap(mapChips[i].Id);
+                    bitmap[i] = mcrm.GetBitmap(mapChips[i].Id.value);
                 }
             }
 
@@ -90,7 +90,7 @@ namespace MapEdit
         public void PutImage(MapChip mapChip, int layer)
         {
             if(mapChip.GetTexture() == null)return;
-            mapChips[layer].Id = mapChip.Id;
+            mapChips[layer].SetId(mapChip.Id);
             mapChips[layer].SetTexture(mapChip.GetTexture());
             mapChips[layer].Angle = mapChip.Angle;
             mapChips[layer].turnFlag = mapChip.turnFlag;
@@ -99,8 +99,7 @@ namespace MapEdit
         //画像をクリア
         public void ClearImage(int layer)
         {
-            mapChips[layer].ClearTexture();
-            mapChips[layer].Id = -1;
+            mapChips[layer].ClearImage();
         }
 
         //PixelSizeが変更された時の処理

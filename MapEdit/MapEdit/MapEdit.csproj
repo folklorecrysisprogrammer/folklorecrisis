@@ -84,19 +84,20 @@
     <Compile Include="ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Id.cs" />
+    <Compile Include="IdManager.cs" />
     <Compile Include="MapWriteScene\MadData\MapDataControllers\ChangeMapSizeController.cs" />
     <Compile Include="MapWriteScene\MadData\MapDataControllers\ConvertDataController.cs" />
     <Compile Include="MapWriteScene\MadData\MapDataControllers\EditMapChipController.cs" />
     <Compile Include="MapWriteScene\MadData\MapData.cs" />
     <Compile Include="MapWriteScene\MadData\MapDataController.cs" />
     <Compile Include="MapWriteScene\MadData\MapDataControllers\LoadMapDataListController.cs" />
-    <Compile Include="MapWriteScene\MadData\MapDataControllers\MapChipIdController.cs" />
     <Compile Include="MapWriteScene\MadData\MapDataControllers\TurnController.cs" />
     <Compile Include="MapChip.cs" />
     <Compile Include="MapChipConfig.cs" />
     <Compile Include="MapChipResourceManager.cs" />
     <Compile Include="MapInfoFromText.cs" />
-    <Compile Include="MapEditControl.cs" />
+    <Compile Include="MapWriteScene\MapEditControl.cs" />
     <Compile Include="MapEditForm.cs">
       <SubType>Form</SubType>
     </Compile>

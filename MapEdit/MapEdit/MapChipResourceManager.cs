@@ -14,6 +14,7 @@ namespace MapEdit
     {
         private List<Bitmap> bitmapList=new List<Bitmap>();
         private List<DXEX.Texture> textureList = new List<DXEX.Texture>();
+        private IdManager idManager = new IdManager();
         private readonly int mapChipSize;
 
         public MapChipResourceManager(int mapChipSize)
@@ -21,9 +22,14 @@ namespace MapEdit
             this.mapChipSize = mapChipSize;
         }
 
+        public Id GetId(int id)
+        {
+           return idManager.GetId(id);
+        }
+
         //新しいマップチップの画像を登録する
         //返り値はId
-        public int PushImageFile(string fileName)
+        public Id PushImageFile(string fileName)
         {
             //Bitmapを用意
             var bitmap = new Bitmap(mapChipSize, mapChipSize);
@@ -36,7 +42,7 @@ namespace MapEdit
             bitmapList.Add(bitmap);
             //Textureをリストに登録登録
             textureList.Add(DXEX.TextureCache.GetTexture(fileName));
-            return bitmapList.Count - 1;
+            return idManager.AddId();
         }
 
         //idから画像リソースを破棄
@@ -51,6 +57,7 @@ namespace MapEdit
             }
             bitmapList.RemoveAt(end);
             textureList.RemoveAt(end);
+            idManager.RemoveId(id);
         }
 
         public void SwapImageFile(int id1,int id2)
@@ -61,6 +68,7 @@ namespace MapEdit
             textureList[id1] = textureList[id2];
             bitmapList[id2] = tempb;
             textureList[id2] = tempt;
+            idManager.SwapId(id1, id2);
         }
 
         //IDから画像リソースを得る
@@ -112,8 +120,8 @@ namespace MapEdit
         private void LoadBitmapSheet(int lastId,string filePath)
         {
             var bitmap = (Bitmap)Bitmap.FromFile(filePath);
-            bitmapList.Clear();
-            textureList.Clear();
+           // bitmapList.Clear();
+           // textureList.Clear();
             int yCount= bitmap.Height / mapChipSize;
             int allNum = 6 * yCount;
             DXEX.Texture[] textures =
@@ -121,6 +129,7 @@ namespace MapEdit
             for (int id = 0; id <= lastId; id++)
             {
                 textureList.Add(textures[id]);
+                idManager.AddId();
             }
             for (int y = 0; y < yCount; y++)
             {
