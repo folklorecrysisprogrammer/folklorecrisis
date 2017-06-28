@@ -43,7 +43,7 @@ namespace MapEdit
                     MapChip[] ChipId = mom.mapChips;
                     for (int i = 0; i < ChipId.Length; i++)
                     {
-                        int Id = ChipId[i].Id;
+                        int Id = ChipId[i].Id?.value??-1;
                         int Angle = (int)(ChipId[i].Angle / 90.0);
                         int turnFlag = ChipId[i].turnFlag;
                         mapDataText.Append(Id + "," + Angle + "," + turnFlag + ",");

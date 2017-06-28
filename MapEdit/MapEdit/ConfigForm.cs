@@ -14,16 +14,16 @@ namespace MapEdit
     public partial class ConfigForm : Form
     {
         private readonly Action<Size> changeMapSize;
-        private readonly MapDataControl mapData;
+        private readonly Size mapSize;
         private Timer timer=new Timer();
         private bool runFlag=false;
 
         //初期化
-        public ConfigForm(MapDataControl mapData,Action<Size> changeMapSize)
+        public ConfigForm(Size mapSize,Action<Size> changeMapSize)
         {
             InitializeComponent();
+            this.mapSize = mapSize;
             this.changeMapSize = changeMapSize;
-            this.mapData = mapData;
             var myAssembly=System.Reflection.Assembly.GetExecutingAssembly();
             chara.Image =new Bitmap(myAssembly.GetManifestResourceStream("MapEdit.Resources.プルヌ.png"));
             var rnd=new System.Random();
@@ -42,8 +42,8 @@ namespace MapEdit
                 }
             };
             //マップサイズの値をテキストボックスにセットする
-            mapSizeXtextBox.Text = mapData.MapSizeX.ToString();
-            mapSizeYtextBox.Text = mapData.MapSizeY.ToString();
+            mapSizeXtextBox.Text = mapSize.Width.ToString();
+            mapSizeYtextBox.Text = mapSize.Height.ToString();
         }
 
         //更新ボタンが押された時,マップチップ、マップサイズの値が変更されてたら、
@@ -57,9 +57,9 @@ namespace MapEdit
             //MapSizeの変更処理判定
             if (
                     TryParse(mapSizeXtextBox.Text, out result) && 
-                    mapData.MapSizeX != result||
+                    mapSize.Width != result||
                     TryParse(mapSizeYtextBox.Text, out result) &&
-                    mapData.MapSizeY != result 
+                    mapSize.Height != result 
                 )
             {
                     changeMapSize(new Size(

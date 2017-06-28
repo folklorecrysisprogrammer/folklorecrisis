@@ -30,7 +30,6 @@ namespace MapEdit
         public EditMapChipController EditMapChip { get; }
         public TurnController Turn { get; }
         public ChangeMapSizeController ChangeMapSize { get; }
-        public MapChipIdController MapChipId { get; }
         public ConvertDataController ConvertData { get; }
         public LoadMapDataListController LoadMapDataList { get; } 
 
@@ -54,7 +53,6 @@ namespace MapEdit
             EditMapChip = new EditMapChipController(mapData);
             Turn = new TurnController(mapData);
             ChangeMapSize = new ChangeMapSizeController(mapData);
-            MapChipId = new MapChipIdController(mapData);
             ConvertData = new ConvertDataController(mapData);
             LoadMapDataList = new LoadMapDataListController(mapData);
         }

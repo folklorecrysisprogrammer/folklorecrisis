@@ -25,7 +25,7 @@ namespace MapEdit
                         if (mift.Id[count] != -1)
                         {
                             mapData.List[x, y].mapChips[layer].SetTexture(mcrm.GetTexture(mift.Id[count]));
-                            mapData.List[x, y].mapChips[layer].Id = mift.Id[count];
+                            mapData.List[x, y].mapChips[layer].SetId(mcrm.GetId(mift.Id[count]));
                             mapData.List[x, y].mapChips[layer].Angle = mift.Angle[count];
                             mapData.List[x, y].mapChips[layer].turnFlag = mift.Turn[count];
                         }

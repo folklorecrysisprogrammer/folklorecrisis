@@ -18,27 +18,23 @@ namespace MapEdit
             MapChip = new MapChip(40);
             AddChild(MapChip);
         }
-        public void setMapChip(DXEX.Texture texture, int id)
+        public void setMapChip(DXEX.Texture texture, Id id)
         {
             MapChip.SetTexture(texture);
-            MapChip.Id = id;
+            MapChip.SetId(id);
         }
 
         public void resetMapChip()
         {
-            MapChip.ClearTexture();
+            MapChip.ClearImage();
         }
-
+        /*
         public void RemoveId(int removeId,int lastid)
         {
-            if (MapChip.Id == removeId)
+            if (MapChip.Id.value == removeId)
             {
                 resetMapChip();
             }
-            if (MapChip.Id == lastid)
-            {
-                MapChip.Id = removeId;
-            }
-        }
+        }*/
     }
 }

@@ -12,7 +12,7 @@ namespace MapEdit
         public ChangeMapSizeController(MapData mapData)
         :base(mapData){ }
 
-        //サイズ変更処理
+        //配列サイズ変更処理
         public void Change(int newNumberX, int newNumberY)
         {
             var newMapOneMassList = new MapOneMass[newNumberX, newNumberY];

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DXEX;
 
 namespace MapEdit
 {
@@ -12,10 +13,26 @@ namespace MapEdit
         private MapChip[,] mapChips;
         private int index = 0;
 
-        //配列ぽく振るまう
-        public MapChip this[int x, int y]
+        public bool ExsitMapChip(int x,int y)
         {
-            get { return mapChips[x, y]; }
+            return mapChips[x, y] == null ? false : true;
+        }
+
+        //mccのEnablePassFlagを反転する
+        public void ReverseEnablePassFlag(int x,int y)
+        {
+            bool temp = mapChips[x, y].mcc.IsEnablePass;
+            mapChips[x, y].mcc.ChangeIsEnablePass(!temp);
+        }
+
+        public Id GetId(int x,int y)
+        {
+            return mapChips[x, y].Id;
+        }
+
+        public Texture GetTexture(int x,int y)
+        {
+            return mapChips[x, y].GetTexture();
         }
 
         //初期化
@@ -36,29 +53,27 @@ namespace MapEdit
         }
 
         //指定座標のマップチップを入れ替える
-        public void SwapMapChip(int x1,int y1,int x2,int y2)
+        public void SwapMapChip(int x1,int y1,int x2,int y2,MapChipResourceManager mcrm)
         {
+            mcrm.SwapImageFile(mapChips[x1, y1].Id.value, mapChips[x2, y2].Id.value);
             var temp = mapChips[x1, y1].LocalPos;
             mapChips[x1, y1].LocalPos = mapChips[x2, y2].LocalPos;
             mapChips[x2, y2].LocalPos = temp;
-            var tempId = mapChips[x1, y1].Id;
-            mapChips[x1, y1].Id = mapChips[x2, y2].Id; ;
-            mapChips[x2, y2].Id = tempId;
             var tempChips=mapChips[x1, y1];
             mapChips[x1, y1] = mapChips[x2, y2];
             mapChips[x2, y2] = tempChips;
         }
 
         //マップpalletにからマップチップを削除する
-        public void RemoveMapChip(int x,int y)
+        public void RemoveMapChip(int x,int y,MapChipResourceManager mcrm)
         {
+            mcrm.PopImageFile(mapChips[x,y].Id.value);
             mapChips[x, y].Dispose();
             int lastx = (index-1) % 6;
             int lasty = (index-1) / 6;
             if(x!=lastx || y != lasty)
             {
                 mapChips[lastx, lasty].LocalPos = mapChips[x, y].LocalPos;
-                mapChips[lastx, lasty].Id = mapChips[x, y].Id;
                 mapChips[x, y] = mapChips[lastx, lasty];
             }
             mapChips[lastx, lasty] = null;

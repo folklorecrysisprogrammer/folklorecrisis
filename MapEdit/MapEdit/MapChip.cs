@@ -17,15 +17,29 @@ namespace MapEdit
         }
         private int mapChipSize;
 
-        public int Id { get; set; }
+        public Id Id { get; private set; }
 
         public MapChipConfig mcc;
+
+        public void ClearImage()
+        {
+            ClearTexture();
+            if (Id == null) return;
+            Id.Disposed -= ClearImage;
+            Id = null;
+        }
+
+        public void SetId(Id id)
+        {
+            if (this.Id != null) this.Id.Disposed -= ClearImage;
+            this.Id = id;
+            id.Disposed += ClearImage;
+        }
 
         /* サイズを指定しIDを初期化するコンストラクタ */
         public MapChip(int mapChipSize)
         {
             MapChipSize = mapChipSize;
-            Id = -1;
             mcc = new MapChipConfig();
             AddChild(mcc);
         }
