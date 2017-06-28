@@ -13,10 +13,10 @@ namespace MapEdit
         private readonly MapPalletData mapPalletData;
         private MapChipResourceManager mcrm;
         private SelectMapChipScene sms;
-        private Point tempPoint;
-        private Point tempPoint2;
+        private MouseSwap mouseSwap;
         public MapPalletScene(Panel panel,MapChipResourceManager mcrm,SelectMapChipScene sms) : base(panel)
         {
+            mouseSwap = new MouseSwap();
             this.mcrm = mcrm;
             panel.MouseDown += MouseAction;
             panel.MouseMove += MouseDrag;
@@ -62,13 +62,11 @@ namespace MapEdit
                 }
                 else
                 {
-                    // 選択中マップチップの変更
-                    tempPoint = point;
-                    tempPoint2 = point;
                     sms.setMapChip(
-                        mapPalletData.GetTexture(point.X,point.Y),
+                        mapPalletData.GetTexture(point.X, point.Y),
                         mapPalletData.GetId(point.X, point.Y)
                     );
+                    mouseSwap.Start(point);
                 }
                 return;
             }
@@ -90,16 +88,7 @@ namespace MapEdit
                 Point point = LocationToMap(e.Location, 40);
             if (point.X < 0 || point.Y < 0 || point.X >= 6 || point.Y >= 50) return;
             if (mapPalletData.ExsitMapChip(point.X, point.Y) == false) return;
-            if (tempPoint2 == point) return;
-            if (tempPoint == point)
-            {
-                mapPalletData.SwapMapChip(tempPoint2.X, tempPoint2.Y, tempPoint.X, tempPoint.Y,mcrm);
-                tempPoint2 = point;
-                return;
-            }
-            mapPalletData.SwapMapChip(point.X, point.Y, tempPoint2.X, tempPoint2.Y,mcrm);
-            mapPalletData.SwapMapChip(tempPoint2.X, tempPoint2.Y, tempPoint.X, tempPoint.Y,mcrm);
-            tempPoint2 = point;
+            mouseSwap.Move(point, mapPalletData, mcrm);
         }
 
         //プロジェクトからマップチップパレットをロードする

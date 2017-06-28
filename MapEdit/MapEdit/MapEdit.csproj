@@ -113,6 +113,7 @@
     <Compile Include="MapWriteScene\MapWriteScene.cs" />
     <Compile Include="MapWriteScene\MapWriteScroll.cs" />
     <Compile Include="MapWriteScene\HVScrollBar.cs" />
+    <Compile Include="MouseSwap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="ProjectInfo.cs" />

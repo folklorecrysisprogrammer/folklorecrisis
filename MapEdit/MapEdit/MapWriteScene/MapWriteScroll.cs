@@ -23,7 +23,7 @@ namespace MapEdit
             ValueChenged += UpdateValue;
         }
 
-        public void Dispose()
+        public new void Dispose()
         {
             base.Dispose();
         }

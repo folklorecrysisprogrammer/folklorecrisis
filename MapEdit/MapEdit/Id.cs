@@ -28,18 +28,12 @@ namespace MapEdit
     class WriteId: Id,IDisposable
     {
         public void SetId(int id)
-        {
-            this.id = id;
-        }
+            =>this.id = id;
 
         //Disposeイベント発火
         public void Dispose()
-        {
-            DoDisposed();
-        }
+            =>DoDisposed();
 
-        public WriteId(int id):base(id)
-        {
-        }
+        public WriteId(int id) : base(id) { }
     }
 }

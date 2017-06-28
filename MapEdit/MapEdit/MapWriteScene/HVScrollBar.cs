@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 namespace MapEdit
 {
+    //縦と横のスクロールバーを持ち、制御するクラス
     public class HVScrollBar
     {
         protected readonly ScrollBar hScroll;
@@ -17,10 +18,14 @@ namespace MapEdit
         {
             this.hScroll = hScroll;
             this.vScroll = vScroll;
+
+            //スクロールバーがスクロールされたら、
+            //OnValueChenged関数が呼ばれるようにしておく
             hScroll.ValueChanged += OnValueChenged;
             vScroll.ValueChanged += OnValueChenged;
         }
 
+        //ValueChengedイベントを発火する
         public void OnValueChenged(object o,EventArgs e)
         {
             ValueChenged?.Invoke();
@@ -36,6 +41,7 @@ namespace MapEdit
             hScroll.LargeChange = delta;
         }
 
+        //終了処理
         protected void Dispose()
         {
             hScroll.ValueChanged -= OnValueChenged;

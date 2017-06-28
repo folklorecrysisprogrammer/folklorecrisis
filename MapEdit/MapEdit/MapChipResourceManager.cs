@@ -120,12 +120,10 @@ namespace MapEdit
         private void LoadBitmapSheet(int lastId,string filePath)
         {
             var bitmap = (Bitmap)Bitmap.FromFile(filePath);
-           // bitmapList.Clear();
-           // textureList.Clear();
             int yCount= bitmap.Height / mapChipSize;
             int allNum = 6 * yCount;
             DXEX.Texture[] textures =
-            DXEX.TextureCache.GetTextureAtlas(filePath, allNum, 6, yCount, mapChipSize, mapChipSize);
+                DXEX.TextureCache.GetTextureAtlas(filePath, allNum, 6, yCount, mapChipSize, mapChipSize);
             for (int id = 0; id <= lastId; id++)
             {
                 textureList.Add(textures[id]);
