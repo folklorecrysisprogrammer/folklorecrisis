@@ -21,6 +21,11 @@ namespace MapEdit
             SetScrollMaximum(mapSize,mapChipSize);
             //スクロールバーの値が更新されたら、mwsの位置を更新する処理を呼ぶ
             ValueChenged += UpdateValue;
+
+            //スクロールバーがスクロールされたら、
+            //フォーカスを当てるようにしてmouseホイールしやすくする
+            hScroll.Scroll += (o, e) => hScroll.Focus();
+            vScroll.Scroll += (o, e) => vScroll.Focus();
         }
 
         public new void Dispose()

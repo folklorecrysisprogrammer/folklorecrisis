@@ -56,11 +56,6 @@ namespace MapEdit
             //メインウインドウに終了命令が出たら
             //パレッドウインドウを速やかに閉じる
             FormClosing += (o, e) =>sif.Dispose();
-
-            //スクロールバーがスクロールされたら、
-            //フォーカスを当てるようにしてmouseホイールしやすくする
-            hScrollBar1.Scroll += (o, e) =>hScrollBar1.Focus();
-            vScrollBar1.Scroll += (o, e) =>vScrollBar1.Focus();
             
 
             //comboボックスのデフォルト値設定

@@ -124,7 +124,7 @@
             this.PassEditMode.TabIndex = 16;
             this.PassEditMode.Text = "通行設定";
             this.PassEditMode.UseVisualStyleBackColor = true;
-            this.PassEditMode.Click += new System.EventHandler(this.button2_Click);
+            this.PassEditMode.Click += new System.EventHandler(this.PassEditMode_Click);
             // 
             // SelectImageForm
             // 

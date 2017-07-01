@@ -18,7 +18,7 @@ namespace MapEdit
         {
             mouseSwap = new MouseSwap();
             this.mcrm = mcrm;
-            panel.MouseDown += MouseAction;
+            panel.MouseDown += MouseClickAction;
             panel.MouseMove += MouseDrag;
             this.sms = sms;
             mapPalletData = new MapPalletData();
@@ -45,7 +45,7 @@ namespace MapEdit
         }
 
         //クリックされた場所にあるマップチップを選択OR削除する
-        private void MouseAction(object o, MouseEventArgs e)
+        private void MouseClickAction(object o, MouseEventArgs e)
         {
             Point point = LocationToMap(e.Location, 40);
             if (mapPalletData.ExsitMapChip(point.X, point.Y) == false) return;
@@ -54,7 +54,7 @@ namespace MapEdit
             if ((Control.MouseButtons & MouseButtons.Left)
                 == MouseButtons.Left)
             {
-                if (MapChipConfig.isPassEditMode == DxLibDLL.DX.TRUE)
+                if (MapChipConfig.passEditMode ==MapChipConfig.PassEditModeKind.編集中)
                 {
                     // マップチップの通行判定編集
                     // ドラッグ系の処理どなってるんだ…
@@ -81,7 +81,7 @@ namespace MapEdit
         //クリックされた場所にあるマップチップを選択する
         private void MouseDrag(object o,MouseEventArgs e)
         {
-            if (MapChipConfig.isPassEditMode == DxLibDLL.DX.TRUE) return;
+            if (MapChipConfig.passEditMode == MapChipConfig.PassEditModeKind.編集中) return;
 
                 if ((Control.MouseButtons & MouseButtons.Left)
                 != MouseButtons.Left) return;

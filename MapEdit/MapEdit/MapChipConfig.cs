@@ -6,46 +6,61 @@ using System.Threading.Tasks;
 
 namespace MapEdit
 {
-    public class MapChipConfig: DXEX.Node
+    public class MapChipConfig
     {
-        public static int isPassEditMode = DxLibDLL.DX.FALSE;
+        //エディットモードの種類
+        public enum PassEditModeKind
+        {
+            通行判定,
+            編集中
+        }
+        //エディットモードを保持する変数
+        public static PassEditModeKind passEditMode = PassEditModeKind.通行判定;
 
-        public bool IsEnablePass { get; set; }
-        DXEX.Sprite chipStateSprite;
+        //エディットモード変更
+        public static void ChangePassEditMode()
+        {
+            if (passEditMode == PassEditModeKind.通行判定)
+                passEditMode = PassEditModeKind.編集中;
+            else 
+                passEditMode = PassEditModeKind.通行判定;
+        }
+
+        public bool EnablePass { get; set; }
+        // DXEX.Sprite chipStateSprite;
 
         /* マップチップの情報を初期化する */
         public MapChipConfig()
         {
-            IsEnablePass = true;
+            EnablePass = true;
 
+            /*
             chipStateSprite = new DXEX.Sprite();
+            chipStateSprite.anchor.SetVect(0.5, 0.5);
             AddChild(chipStateSprite);
 
             SetChipStateSprite();
+            */
         }
 
         public void ChangeIsEnablePass(bool value)
         {
-            IsEnablePass = value;
-            SetChipStateSprite();
+            EnablePass = value;
         }
-
+        public void ChangeIsEnablePass()
+        {
+            EnablePass = !EnablePass;
+        }
 
         private void SetChipStateSprite()
         {
             // 情報をもとに表示する内容を決定する
             string cp = System.IO.Directory.GetCurrentDirectory();
-            if (IsEnablePass)
+            if (EnablePass)
                 cp += "\\Image\\ChipInfo1.png";
             else
                 cp += "\\Image\\ChipInfo2.png";
-            DXEX.Sprite temp = new DXEX.Sprite(cp);
-
-            // テクスチャを一時スプライトからコピー
-            chipStateSprite.SetTexture( temp.GetTexture() );
-
-            // テクスチャは明示的に破棄する
-            temp.ClearTexture();
+            // chipStateSprite.SetTexture(cp);
         }
     }
 }
