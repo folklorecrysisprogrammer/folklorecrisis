@@ -17,8 +17,8 @@ namespace MapEdit
         public MapChipConfig()
         {
             IsEnablePass = true;
-
             chipStateSprite = new DXEX.Sprite();
+            chipStateSprite.anchor.SetVect(0.5, 0.5);
             AddChild(chipStateSprite);
 
             SetChipStateSprite();
@@ -39,13 +39,7 @@ namespace MapEdit
                 cp += "\\Image\\ChipInfo1.png";
             else
                 cp += "\\Image\\ChipInfo2.png";
-            DXEX.Sprite temp = new DXEX.Sprite(cp);
-
-            // テクスチャを一時スプライトからコピー
-            chipStateSprite.SetTexture( temp.GetTexture() );
-
-            // テクスチャは明示的に破棄する
-            temp.ClearTexture();
+            chipStateSprite.SetTexture(cp);
         }
     }
 }

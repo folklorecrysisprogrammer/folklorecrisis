@@ -18,7 +18,7 @@ namespace MapEdit
         {
             mouseSwap = new MouseSwap();
             this.mcrm = mcrm;
-            panel.MouseDown += MouseAction;
+            panel.MouseDown += MouseClickAction;
             panel.MouseMove += MouseDrag;
             this.sms = sms;
             mapPalletData = new MapPalletData();
@@ -45,7 +45,7 @@ namespace MapEdit
         }
 
         //クリックされた場所にあるマップチップを選択OR削除する
-        private void MouseAction(object o, MouseEventArgs e)
+        private void MouseClickAction(object o, MouseEventArgs e)
         {
             Point point = LocationToMap(e.Location, 40);
             if (mapPalletData.ExsitMapChip(point.X, point.Y) == false) return;

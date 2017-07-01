@@ -41,6 +41,7 @@ namespace MapEdit
         {
             MapChipSize = mapChipSize;
             mcc = new MapChipConfig();
+            mcc.LocalPos = new DXEX.Vect(mapChipSize / 2, mapChipSize / 2);
             AddChild(mcc);
         }
 

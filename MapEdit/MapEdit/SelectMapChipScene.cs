@@ -28,13 +28,33 @@ namespace MapEdit
         {
             MapChip.ClearImage();
         }
-        /*
-        public void RemoveId(int removeId,int lastid)
+        //各種アクションの種類定義
+        public enum ActionKind
         {
-            if (MapChip.Id.value == removeId)
+            rotateRight,
+            rotateLeft,
+            TurnVertical,
+            TurnHorizontal
+        }
+
+        //各種アクションを実行
+        public void DoAction(ActionKind actionKind)
+        {
+            switch (actionKind)
             {
-                resetMapChip();
+                case ActionKind.rotateRight:
+                    MapChip.Angle += 90;
+                    break;
+                case ActionKind.rotateLeft:
+                    MapChip.Angle += 270;
+                    break;
+                case ActionKind.TurnVertical:
+                    MapChip.TurnVertical();
+                    break;
+                case ActionKind.TurnHorizontal:
+                    MapChip.TurnHorizontal();
+                    break;
             }
-        }*/
+        }
     }
 }
