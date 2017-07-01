@@ -8,7 +8,23 @@ namespace MapEdit
 {
     public class MapChipConfig: DXEX.Node
     {
-        public static int isPassEditMode = DxLibDLL.DX.FALSE;
+        //エディットモードの種類
+        public enum PassEditModeKind
+        {
+            通行判定,
+            編集中
+        }
+        //エディットモードを保持する変数
+        public static PassEditModeKind passEditMode = PassEditModeKind.通行判定;
+
+        //エディットモード変更
+        public static void ChangePassEditMode()
+        {
+            if (passEditMode == PassEditModeKind.通行判定)
+                passEditMode =PassEditModeKind.編集中;
+            else 
+                passEditMode =PassEditModeKind.通行判定;
+        }
 
         public bool IsEnablePass { get; set; }
         DXEX.Sprite chipStateSprite;

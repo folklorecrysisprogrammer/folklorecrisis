@@ -113,18 +113,17 @@ namespace MapEdit
         private void SelectImageForm_Activated(object sender, EventArgs e)
             =>vScrollBar1.Focus();
 
-        // 通行判定編集モード
+        // 通行判定編集モード変更
         private void PassEditMode_Click(object sender, EventArgs e)
         {
-            MapChipConfig.isPassEditMode++;
-            MapChipConfig.isPassEditMode %= 2;
 
-            if (MapChipConfig.isPassEditMode == 0)
+            MapChipConfig.ChangePassEditMode();
+            if (MapChipConfig.passEditMode == MapChipConfig.PassEditModeKind.通行判定)
             {
-                PassEditMode.Text = "通行判定"; // 編集中でない = FALSE
+                PassEditMode.Text = "通行判定"; 
                 mps.SetDrawMapChipInfo(true); // 通行判定チップ表示する
             }
-            else if (MapChipConfig.isPassEditMode == 1)
+            else if (MapChipConfig.passEditMode == MapChipConfig.PassEditModeKind.編集中)
             {
                 PassEditMode.Text = "編集中";
                 mps.SetDrawMapChipInfo(false); // 通行判定チップ表示しない

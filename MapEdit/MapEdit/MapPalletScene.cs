@@ -54,7 +54,7 @@ namespace MapEdit
             if ((Control.MouseButtons & MouseButtons.Left)
                 == MouseButtons.Left)
             {
-                if (MapChipConfig.isPassEditMode == DxLibDLL.DX.TRUE)
+                if (MapChipConfig.passEditMode ==MapChipConfig.PassEditModeKind.編集中)
                 {
                     // マップチップの通行判定編集
                     // ドラッグ系の処理どなってるんだ…
@@ -81,7 +81,7 @@ namespace MapEdit
         //クリックされた場所にあるマップチップを選択する
         private void MouseDrag(object o,MouseEventArgs e)
         {
-            if (MapChipConfig.isPassEditMode == DxLibDLL.DX.TRUE) return;
+            if (MapChipConfig.passEditMode == MapChipConfig.PassEditModeKind.編集中) return;
 
                 if ((Control.MouseButtons & MouseButtons.Left)
                 != MouseButtons.Left) return;
