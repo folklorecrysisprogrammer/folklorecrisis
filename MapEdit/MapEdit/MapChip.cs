@@ -19,7 +19,7 @@ namespace MapEdit
 
         public Id Id { get; private set; }
 
-        public MapChipConfig mcc;
+        private MapChipConfig mcc;
 
         public void ClearImage()
         {
@@ -41,8 +41,11 @@ namespace MapEdit
         {
             MapChipSize = mapChipSize;
             mcc = new MapChipConfig();
-            mcc.LocalPos = new DXEX.Vect(mapChipSize / 2, mapChipSize / 2);
-            AddChild(mcc);
+        }
+
+        public void ReverseEnablePassFlag()
+        {
+            mcc.ChangeIsEnablePass();
         }
 
         protected override void UpdateAngle()

@@ -21,8 +21,7 @@ namespace MapEdit
         //mccのEnablePassFlagを反転する
         public void ReverseEnablePassFlag(int x,int y)
         {
-            bool temp = mapChips[x, y].mcc.IsEnablePass;
-            mapChips[x, y].mcc.ChangeIsEnablePass(!temp);
+            mapChips[x, y].ReverseEnablePassFlag();
         }
 
         public Id GetId(int x,int y)
