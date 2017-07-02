@@ -15,32 +15,19 @@ namespace MapEdit
     {
         private readonly Action<Size> changeMapSize;
         private readonly Size mapSize;
-        private Timer timer=new Timer();
-        private bool runFlag=false;
+        //プルヌ
+        private readonly Purunu purunu;
 
         //初期化
         public ConfigForm(Size mapSize,Action<Size> changeMapSize)
         {
+            
             InitializeComponent();
             this.mapSize = mapSize;
             this.changeMapSize = changeMapSize;
-            var myAssembly=System.Reflection.Assembly.GetExecutingAssembly();
-            chara.Image =new Bitmap(myAssembly.GetManifestResourceStream("MapEdit.Resources.プルヌ.png"));
             var rnd=new System.Random();
-            if (rnd.Next(10) != 0) chara.Visible = false;
-            chara.MouseEnter += (o, e) =>
-            {
-                runFlag = true;
-            };
-            timer.Interval = 1;
-            timer.Start();
-            timer.Tick += (o, e) =>
-            {
-                if (runFlag)
-                {
-                    chara.Location=new Point(chara.Location.X+3,chara.Location.Y);
-                }
-            };
+            if (rnd.Next(10) == 0) purunu=new Purunu(chara);
+
             //マップサイズの値をテキストボックスにセットする
             mapSizeXtextBox.Text = mapSize.Width.ToString();
             mapSizeYtextBox.Text = mapSize.Height.ToString();
