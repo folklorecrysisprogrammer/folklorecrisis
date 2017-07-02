@@ -21,9 +21,10 @@ namespace DXEX.Base
         }
 
         //Rule生成関数
-        public static Rule<Key>Input<Key>(Key key)
+        public static Rule<InputType>Input<InputType>(InputType inputData)
+            where InputType : IComparable
         {
-            return new Rule<Key>(key);
+            return new Rule<InputType>(inputData);
         }
 
     }
