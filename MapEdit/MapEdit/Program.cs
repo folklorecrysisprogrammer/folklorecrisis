@@ -8,6 +8,13 @@ namespace MapEdit
 {
     static class Program
     {
+       
+
+
+
+
+
+
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
