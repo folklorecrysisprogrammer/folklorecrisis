@@ -1,0 +1,911 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="AddId メソッド" Url="html/4afc8b19-50dd-8815-8b88-f8cddd785565.htm" />
+  <HelpKINode Title="AddMapChip メソッド">
+    <HelpKINode Title="MapPalletData.AddMapChip メソッド " Url="html/c6287016-bd17-9588-12ef-cc7d86ccf9c3.htm" />
+    <HelpKINode Title="MapPalletScene.AddMapChip メソッド " Url="html/ccf4ff78-a45f-80c5-080e-45b52ac7ab79.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AddShowMapImage メソッド" Url="html/129d67e2-2197-b254-9806-6ad944e459fc.htm" />
+  <HelpKINode Title="Angle プロパティ" Url="html/550ba3d6-e831-0011-497c-e583a046c31c.htm" />
+  <HelpKINode Title="Attach メソッド" Url="html/7e1391c4-ddc6-b4f5-5efc-1dfe4bcda64e.htm" />
+  <HelpKINode Title="bitmapList フィールド" Url="html/e9ae3a5c-a565-cb24-26c6-70cdfbca5173.htm" />
+  <HelpKINode Title="BitmapOutPut メソッド" Url="html/dcc5fab3-505a-d43f-0655-e2f82a20be09.htm" />
+  <HelpKINode Title="BitmapSheet プロパティ" Url="html/9b24187d-8f80-c561-dbc6-0a8f310ea489.htm" />
+  <HelpKINode Title="button1 フィールド" Url="html/bf8af932-1871-9f3f-1ada-7602c4bf2562.htm" />
+  <HelpKINode Title="button2 フィールド" Url="html/594163e6-3b95-43f7-6490-faa14db5cbcb.htm" />
+  <HelpKINode Title="Change メソッド" Url="html/eb9315b9-35a9-3aea-b010-6a2488282533.htm" />
+  <HelpKINode Title="ChangeIsEnablePass メソッド" Url="html/dbc30a65-d728-a384-a151-413d3177755b.htm" />
+  <HelpKINode Title="ChangeList イベント" Url="html/b3be5c7a-a1fd-851f-1d14-f59ed3ce0f2f.htm" />
+  <HelpKINode Title="changeMapSize フィールド" Url="html/4d548bc9-1a27-2bb6-9578-9983a57b29ea.htm" />
+  <HelpKINode Title="ChangeMapSize プロパティ" Url="html/a388571a-deb3-2266-cfb1-67a8959d9623.htm" />
+  <HelpKINode Title="ChangeMapSizeController クラス" Url="html/ff115086-a7e1-1b68-06a9-ab62905446ee.htm" />
+  <HelpKINode Title="ChangeMapSizeController クラス、ChangeMapSizeController クラスについて" Url="html/ff115086-a7e1-1b68-06a9-ab62905446ee.htm" />
+  <HelpKINode Title="ChangeMapSizeController クラス、コンストラクター" Url="html/0284d263-f58a-bbd2-ca31-6d15a5d23f9b.htm" />
+  <HelpKINode Title="ChangeMapSizeController クラス、フィールド" Url="html/7eb168a0-b1ed-e66a-0e21-7b4f652588f4.htm" />
+  <HelpKINode Title="ChangeMapSizeController クラス、メソッド" Url="html/4d76c775-f86d-aeeb-3962-ef07ec75929b.htm" />
+  <HelpKINode Title="ChangeMapSizeController.Change メソッド" Url="html/eb9315b9-35a9-3aea-b010-6a2488282533.htm" />
+  <HelpKINode Title="ChangeMapSizeController.ChangeMapSizeController コンストラクター" Url="html/0284d263-f58a-bbd2-ca31-6d15a5d23f9b.htm" />
+  <HelpKINode Title="ChangePassEditMode メソッド" Url="html/472f7bdb-1608-2579-b4ab-a17b55510702.htm" />
+  <HelpKINode Title="ChangePixelSize メソッド" Url="html/2554b27d-4699-87d1-495e-9dc856b858a8.htm" />
+  <HelpKINode Title="chara フィールド" Url="html/d2c76c00-d267-4477-9678-ad9dfb99958c.htm" />
+  <HelpKINode Title="ClearImage メソッド">
+    <HelpKINode Title="MapChip.ClearImage メソッド " Url="html/5df07f9d-50c0-ea2c-8a90-790261b691b7.htm" />
+    <HelpKINode Title="MapOneMass.ClearImage メソッド " Url="html/92ab3054-ab53-e0bf-cc07-01d2779a1f6a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ClearMapChip メソッド" Url="html/9b9db0ef-5ea0-2036-970d-f72e3876f5c1.htm" />
+  <HelpKINode Title="ClearShowMapImage メソッド" Url="html/d64e2dac-4003-e4bf-9031-bb95ce0302e2.htm" />
+  <HelpKINode Title="color フィールド" Url="html/f83988c8-f3ff-646e-576b-5f9ab1279bc4.htm" />
+  <HelpKINode Title="components フィールド">
+    <HelpKINode Title="ConfigForm.components フィールド" Url="html/8e4f8d03-75f9-72b4-97c7-6fbeb79fd1f4.htm" />
+    <HelpKINode Title="MapEditForm.components フィールド" Url="html/ccff57d4-1050-6547-cc20-69e71f3cc874.htm" />
+    <HelpKINode Title="SaveNewProjectForm.components フィールド" Url="html/0ab8db60-aa40-e454-97f1-f73d900572fb.htm" />
+    <HelpKINode Title="SelectImageForm.components フィールド" Url="html/54d3b1d0-fe4d-82d5-40a4-718fe126a102.htm" />
+    <HelpKINode Title="StartForm.components フィールド" Url="html/c197c37c-9129-d360-8ec1-8f19163c99fa.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConfigForm クラス" Url="html/87939a89-a733-966c-07a6-2d61d2d68d28.htm" />
+  <HelpKINode Title="ConfigForm クラス、ConfigForm クラスについて" Url="html/87939a89-a733-966c-07a6-2d61d2d68d28.htm" />
+  <HelpKINode Title="ConfigForm クラス、コンストラクター" Url="html/8ae11709-426b-0ac6-83cd-53e0c6727bfa.htm" />
+  <HelpKINode Title="ConfigForm クラス、フィールド" Url="html/86c1e7ea-c8e1-bf50-b117-8fb3197e91ec.htm" />
+  <HelpKINode Title="ConfigForm クラス、メソッド" Url="html/98c1dfa7-eb2c-d835-9353-eecee368a509.htm" />
+  <HelpKINode Title="ConfigForm.changeMapSize フィールド" Url="html/4d548bc9-1a27-2bb6-9578-9983a57b29ea.htm" />
+  <HelpKINode Title="ConfigForm.chara フィールド" Url="html/d2c76c00-d267-4477-9678-ad9dfb99958c.htm" />
+  <HelpKINode Title="ConfigForm.components フィールド" Url="html/8e4f8d03-75f9-72b4-97c7-6fbeb79fd1f4.htm" />
+  <HelpKINode Title="ConfigForm.ConfigForm コンストラクター" Url="html/8ae11709-426b-0ac6-83cd-53e0c6727bfa.htm" />
+  <HelpKINode Title="ConfigForm.Dispose メソッド" Url="html/157de1c3-77b9-f056-90c7-1c2f48d419b0.htm" />
+  <HelpKINode Title="ConfigForm.InitializeComponent メソッド" Url="html/735040a1-aa3b-941c-da38-46a5ae145c50.htm" />
+  <HelpKINode Title="ConfigForm.label2 フィールド" Url="html/fb4c2b5f-224d-31f0-630e-0aeb6b29731a.htm" />
+  <HelpKINode Title="ConfigForm.label3 フィールド" Url="html/2d182c1c-3378-34a1-dc8c-8313222598d2.htm" />
+  <HelpKINode Title="ConfigForm.label4 フィールド" Url="html/267fb4fa-e38f-b3c9-5a91-de26ddbfffca.htm" />
+  <HelpKINode Title="ConfigForm.mapSize フィールド" Url="html/9d450f7c-3ef7-16c5-1a1e-753892e41211.htm" />
+  <HelpKINode Title="ConfigForm.mapSizeXtextBox フィールド" Url="html/6ff4ed9e-f1fd-7d57-6621-aa1e19b3d128.htm" />
+  <HelpKINode Title="ConfigForm.mapSizeYtextBox フィールド" Url="html/d5354836-8394-dca1-d55f-f34f2d2a8462.htm" />
+  <HelpKINode Title="ConfigForm.purunu フィールド" Url="html/b992c6a1-8cc1-c8d9-1349-7378fdb3a094.htm" />
+  <HelpKINode Title="ConfigForm.TryParse メソッド" Url="html/480e65b5-c25c-d9f9-54c0-dbe0a75eae0b.htm" />
+  <HelpKINode Title="ConfigForm.updateButton フィールド" Url="html/ae9aaffa-e1ae-eee4-c3c2-5fcb26657a55.htm" />
+  <HelpKINode Title="ConfigForm.updateButton_Click メソッド" Url="html/b8d7b21a-c057-306f-48bf-a07074a0c923.htm" />
+  <HelpKINode Title="contextMenuStrip1 フィールド" Url="html/74461597-559e-7f28-e7f1-1c0846cca0b0.htm" />
+  <HelpKINode Title="ConvertData プロパティ" Url="html/ed484f59-7f60-29f0-1005-ea065a57bef8.htm" />
+  <HelpKINode Title="ConvertDataController クラス" Url="html/9c79fe98-80c1-3001-f566-03d4cf565e22.htm" />
+  <HelpKINode Title="ConvertDataController クラス、ConvertDataController クラスについて" Url="html/9c79fe98-80c1-3001-f566-03d4cf565e22.htm" />
+  <HelpKINode Title="ConvertDataController クラス、コンストラクター" Url="html/995fc16a-3bd0-3440-7095-b14c01880816.htm" />
+  <HelpKINode Title="ConvertDataController クラス、フィールド" Url="html/215aa06c-c71a-f473-ae2a-762a38ac2092.htm" />
+  <HelpKINode Title="ConvertDataController クラス、メソッド" Url="html/9bf96f41-4961-4ee0-40a5-374cd677b870.htm" />
+  <HelpKINode Title="ConvertDataController.ConvertDataController コンストラクター" Url="html/995fc16a-3bd0-3440-7095-b14c01880816.htm" />
+  <HelpKINode Title="ConvertDataController.GetBitmap メソッド" Url="html/27da6f6b-80a7-4a37-d9b5-218714fb20ba.htm" />
+  <HelpKINode Title="ConvertDataController.GetMapDataText メソッド" Url="html/73924406-9e95-5133-2043-f6b4cc55e322.htm" />
+  <HelpKINode Title="CreateConfigForm メソッド" Url="html/6723f75d-6798-77d9-001c-65b8dc153791.htm" />
+  <HelpKINode Title="currentProjectPath フィールド" Url="html/79223dad-793f-f406-a9b9-3b70cfc3466c.htm" />
+  <HelpKINode Title="Detach メソッド" Url="html/80de1386-5ebc-2987-31ac-c6d8ee41fb59.htm" />
+  <HelpKINode Title="Dispose メソッド">
+    <HelpKINode Title="ConfigForm.Dispose メソッド " Url="html/157de1c3-77b9-f056-90c7-1c2f48d419b0.htm" />
+    <HelpKINode Title="HVScrollBar.Dispose メソッド " Url="html/152814e1-156f-d2dd-460f-62a4eb8750ad.htm" />
+    <HelpKINode Title="MapEditControl.Dispose メソッド " Url="html/0ce8559e-35a7-8358-9992-a89bb2777841.htm" />
+    <HelpKINode Title="MapEditForm.Dispose メソッド " Url="html/dc2a7c3a-05f0-c778-4bb4-ae11b2a4d924.htm" />
+    <HelpKINode Title="MapWriteScene.Dispose メソッド " Url="html/85d4301f-4347-810d-ada6-60bdf4e37d37.htm" />
+    <HelpKINode Title="MapWriteScroll.Dispose メソッド " Url="html/89e5c5ba-81e0-d7f6-bc2c-21c5bcff1216.htm" />
+    <HelpKINode Title="SaveNewProjectForm.Dispose メソッド " Url="html/99a0e2e8-edde-1526-95a8-fb6f8cb528fd.htm" />
+    <HelpKINode Title="SelectImageForm.Dispose メソッド " Url="html/d9c1a7d8-e8dd-cfc2-9c9a-30d1a61a0ca2.htm" />
+    <HelpKINode Title="StartForm.Dispose メソッド " Url="html/ff2ea508-54af-0c48-24ed-425ee150a37d.htm" />
+    <HelpKINode Title="WriteId.Dispose メソッド " Url="html/209f80dc-6e7d-4fc3-4806-130cbd3e12f6.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Disposed イベント" Url="html/f6b8752f-e98c-c4cd-38b1-1217cdfc67f6.htm" />
+  <HelpKINode Title="DoAction メソッド" Url="html/82b7b3af-79d1-26da-6ccf-07eed596535e.htm" />
+  <HelpKINode Title="DoDisposed メソッド" Url="html/b0396d4a-f232-001d-3e63-6209508568d3.htm" />
+  <HelpKINode Title="Draw メソッド" Url="html/cf0d2e89-ce24-94bb-f676-3de8c435e906.htm" />
+  <HelpKINode Title="drawModeComboBox フィールド" Url="html/34edcd2d-7d60-22fc-d490-d092a780b264.htm" />
+  <HelpKINode Title="drawModeComboBox_SelectedIndexChanged メソッド" Url="html/d923d312-0fa0-256b-a530-c6081b3085e8.htm" />
+  <HelpKINode Title="EditErase メソッド" Url="html/30118992-4085-8ef3-e7d0-136c89eb8c17.htm" />
+  <HelpKINode Title="EditMapChip プロパティ" Url="html/089b25b5-f134-94d8-15f8-26864d0d8c01.htm" />
+  <HelpKINode Title="EditMapChipController クラス" Url="html/eb34ff8c-ac2c-c2eb-c7e1-2b1f7dd1472a.htm" />
+  <HelpKINode Title="EditMapChipController クラス、EditMapChipController クラスについて" Url="html/eb34ff8c-ac2c-c2eb-c7e1-2b1f7dd1472a.htm" />
+  <HelpKINode Title="EditMapChipController クラス、コンストラクター" Url="html/02e1cb97-6b04-e7b5-43f8-280b90f994af.htm" />
+  <HelpKINode Title="EditMapChipController クラス、フィールド" Url="html/900b24f2-65e4-2460-7f3c-44fe37227822.htm" />
+  <HelpKINode Title="EditMapChipController クラス、メソッド" Url="html/db6add81-49b8-7b45-8c71-c9611494d920.htm" />
+  <HelpKINode Title="EditMapChipController.EditErase メソッド" Url="html/30118992-4085-8ef3-e7d0-136c89eb8c17.htm" />
+  <HelpKINode Title="EditMapChipController.EditMapChipController コンストラクター" Url="html/02e1cb97-6b04-e7b5-43f8-280b90f994af.htm" />
+  <HelpKINode Title="EditMapChipController.EditWrite メソッド" Url="html/4fc13779-1000-0fac-ae81-82070958abe4.htm" />
+  <HelpKINode Title="EditWrite メソッド" Url="html/4fc13779-1000-0fac-ae81-82070958abe4.htm" />
+  <HelpKINode Title="EnablePass プロパティ" Url="html/1f660c96-5f33-d059-28ae-6afd169d341a.htm" />
+  <HelpKINode Title="ExsitMapChip メソッド" Url="html/3c6b5512-014a-734b-4562-d48c6d73ff76.htm" />
+  <HelpKINode Title="FileManager クラス" Url="html/769c9842-0819-9006-1659-233f9de77606.htm" />
+  <HelpKINode Title="FileManager クラス、FileManager クラスについて" Url="html/769c9842-0819-9006-1659-233f9de77606.htm" />
+  <HelpKINode Title="FileManager クラス、メソッド" Url="html/5fea47d3-f84b-5d0e-5b94-97dd4c94e836.htm" />
+  <HelpKINode Title="FileManager.BitmapOutPut メソッド" Url="html/dcc5fab3-505a-d43f-0655-e2f82a20be09.htm" />
+  <HelpKINode Title="folderPathTextBox フィールド" Url="html/62215728-3636-f354-6bd6-abaa36498feb.htm" />
+  <HelpKINode Title="folderSelectButton フィールド" Url="html/9d40fad4-a7da-1cf1-8c82-453975c7b674.htm" />
+  <HelpKINode Title="folderSelectButton_Click メソッド" Url="html/8cb233cf-03ee-3af1-124a-0a4c193280d2.htm" />
+  <HelpKINode Title="GetBitmap メソッド">
+    <HelpKINode Title="ConvertDataController.GetBitmap メソッド " Url="html/27da6f6b-80a7-4a37-d9b5-218714fb20ba.htm" />
+    <HelpKINode Title="MapChipResourceManager.GetBitmap メソッド " Url="html/e3bdbece-f30b-1c56-58c4-cbe4b3ec9f35.htm" />
+    <HelpKINode Title="MapOneMass.GetBitmap メソッド " Url="html/b6f680ad-fe91-4e2b-38fc-1bb3dd2a42f9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetBitmapSheet メソッド" Url="html/89979881-0ca1-4f33-1f3b-f3e860e6f9d0.htm" />
+  <HelpKINode Title="GetId メソッド">
+    <HelpKINode Title="IdManager.GetId メソッド " Url="html/6e81604f-fd45-db98-5d92-403cef262770.htm" />
+    <HelpKINode Title="MapChipResourceManager.GetId メソッド " Url="html/7e1db524-09bb-ccfb-107e-ee89c7ddab62.htm" />
+    <HelpKINode Title="MapPalletData.GetId メソッド " Url="html/7fbd30bd-f25e-5f31-d0f5-a705045b3750.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetMapDataText メソッド" Url="html/73924406-9e95-5133-2043-f6b4cc55e322.htm" />
+  <HelpKINode Title="GetProjectInfo メソッド" Url="html/2a3de6e9-676f-328e-6630-de9d3dc15fd2.htm" />
+  <HelpKINode Title="GetSelectMapChip メソッド" Url="html/2c85214e-c905-84ef-f875-5b54724eaea1.htm" />
+  <HelpKINode Title="GetTexture メソッド">
+    <HelpKINode Title="MapChipResourceManager.GetTexture メソッド " Url="html/c1c83339-194e-f230-c9bb-b9132c93d4a2.htm" />
+    <HelpKINode Title="MapPalletData.GetTexture メソッド " Url="html/be50fc0a-18a1-fad1-1007-844466e4b8af.htm" />
+  </HelpKINode>
+  <HelpKINode Title="gridButton フィールド" Url="html/2f3d49c3-ca23-b2cb-f393-63f8700b8231.htm" />
+  <HelpKINode Title="gridButton_Click メソッド" Url="html/696e018f-2274-7db0-0d01-c39a60d2792f.htm" />
+  <HelpKINode Title="GridOnOf メソッド" Url="html/1575e3e7-2ed6-f6cb-9312-d596a0f7c315.htm" />
+  <HelpKINode Title="hScroll フィールド" Url="html/2f22b278-e4bd-a74d-40f7-811c278fb3a1.htm" />
+  <HelpKINode Title="hScrollBar1 フィールド" Url="html/d8253c25-d73e-d3b9-249f-b3ba401583d0.htm" />
+  <HelpKINode Title="HVScrollBar クラス" Url="html/dcf371c6-6140-2d23-11f2-e7cd88b12b66.htm" />
+  <HelpKINode Title="HVScrollBar クラス、HVScrollBar クラスについて" Url="html/dcf371c6-6140-2d23-11f2-e7cd88b12b66.htm" />
+  <HelpKINode Title="HVScrollBar クラス、イベント" Url="html/580525fe-a22e-7c1d-bc3d-24ce0e48ec6a.htm" />
+  <HelpKINode Title="HVScrollBar クラス、コンストラクター" Url="html/39455c47-8ef9-c182-e8ff-f4fe6a60d6e3.htm" />
+  <HelpKINode Title="HVScrollBar クラス、フィールド" Url="html/fe13ec0a-fa15-df60-f1f0-0d7f7fc0306e.htm" />
+  <HelpKINode Title="HVScrollBar クラス、メソッド" Url="html/21e35ac2-1a3e-249d-a12d-d96f40d2a9b9.htm" />
+  <HelpKINode Title="HVScrollBar.Dispose メソッド" Url="html/152814e1-156f-d2dd-460f-62a4eb8750ad.htm" />
+  <HelpKINode Title="HVScrollBar.hScroll フィールド" Url="html/2f22b278-e4bd-a74d-40f7-811c278fb3a1.htm" />
+  <HelpKINode Title="HVScrollBar.HVScrollBar コンストラクター" Url="html/39455c47-8ef9-c182-e8ff-f4fe6a60d6e3.htm" />
+  <HelpKINode Title="HVScrollBar.OnValueChenged メソッド" Url="html/a785e4b5-2c0e-e164-1c89-79a32ce9e73b.htm" />
+  <HelpKINode Title="HVScrollBar.SetScrollDelta メソッド" Url="html/84eb58ae-9364-a775-df71-c5a9af0b5791.htm" />
+  <HelpKINode Title="HVScrollBar.ValueChenged イベント" Url="html/0b83e720-66a2-b79f-7d72-0dc78a1e7d19.htm" />
+  <HelpKINode Title="HVScrollBar.vScroll フィールド" Url="html/26a69998-748f-294a-8acc-2d5969642541.htm" />
+  <HelpKINode Title="Id クラス" Url="html/0b86255e-db1d-3edb-3e39-06a88e40b13f.htm" />
+  <HelpKINode Title="Id クラス、Id クラスについて" Url="html/0b86255e-db1d-3edb-3e39-06a88e40b13f.htm" />
+  <HelpKINode Title="Id クラス、イベント" Url="html/c4851e4c-1f1b-46be-801e-88234b13bc70.htm" />
+  <HelpKINode Title="Id クラス、コンストラクター" Url="html/216e3ed4-6f1a-93b2-d6b1-8c8446eacc0f.htm" />
+  <HelpKINode Title="Id クラス、フィールド" Url="html/b6061cf8-6745-8556-033d-1f3c7e846b99.htm" />
+  <HelpKINode Title="Id クラス、プロパティ" Url="html/b54e9abb-2795-412b-3f4a-55f029f05fc7.htm" />
+  <HelpKINode Title="Id クラス、メソッド" Url="html/72405e1d-3207-24cf-66df-47880a8c0da5.htm" />
+  <HelpKINode Title="id フィールド" Url="html/563eee35-bc0e-6090-8d68-30b3c112f73c.htm" />
+  <HelpKINode Title="Id プロパティ">
+    <HelpKINode Title="MapChip.Id プロパティ " Url="html/4b4a8a65-43e3-241f-33e9-d344dab457c3.htm" />
+    <HelpKINode Title="MapInfoFromText.Id プロパティ " Url="html/d34282d9-e2b1-a64f-f875-7295f65e5149.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Id.Disposed イベント" Url="html/f6b8752f-e98c-c4cd-38b1-1217cdfc67f6.htm" />
+  <HelpKINode Title="Id.DoDisposed メソッド" Url="html/b0396d4a-f232-001d-3e63-6209508568d3.htm" />
+  <HelpKINode Title="Id.Id コンストラクター" Url="html/216e3ed4-6f1a-93b2-d6b1-8c8446eacc0f.htm" />
+  <HelpKINode Title="Id.id フィールド" Url="html/563eee35-bc0e-6090-8d68-30b3c112f73c.htm" />
+  <HelpKINode Title="Id.value プロパティ" Url="html/1ce19cd7-107f-2a29-702b-626c43766b5a.htm" />
+  <HelpKINode Title="idList フィールド" Url="html/9c058580-0ac3-6692-bd17-87456b6ef4c0.htm" />
+  <HelpKINode Title="IdManager クラス" Url="html/c9157493-5c29-6874-69b1-3da7c4b68b5f.htm" />
+  <HelpKINode Title="IdManager クラス、IdManager クラスについて" Url="html/c9157493-5c29-6874-69b1-3da7c4b68b5f.htm" />
+  <HelpKINode Title="IdManager クラス、コンストラクター" Url="html/cfdd2edb-3b5a-b3ab-8ace-50fe68235445.htm" />
+  <HelpKINode Title="IdManager クラス、フィールド" Url="html/c8646243-80f8-1175-64a8-2849d42c5e22.htm" />
+  <HelpKINode Title="IdManager クラス、メソッド" Url="html/eaca6370-58a1-141a-1886-7f0576be51e2.htm" />
+  <HelpKINode Title="idManager フィールド" Url="html/c350759c-32ac-1a43-6345-bc0a0dd0125a.htm" />
+  <HelpKINode Title="IdManager.AddId メソッド" Url="html/4afc8b19-50dd-8815-8b88-f8cddd785565.htm" />
+  <HelpKINode Title="IdManager.GetId メソッド" Url="html/6e81604f-fd45-db98-5d92-403cef262770.htm" />
+  <HelpKINode Title="IdManager.idList フィールド" Url="html/9c058580-0ac3-6692-bd17-87456b6ef4c0.htm" />
+  <HelpKINode Title="IdManager.IdManager コンストラクター" Url="html/cfdd2edb-3b5a-b3ab-8ace-50fe68235445.htm" />
+  <HelpKINode Title="IdManager.RemoveId メソッド" Url="html/db93502a-3262-b7fa-496b-2b76c66917a2.htm" />
+  <HelpKINode Title="IdManager.SwapId メソッド" Url="html/9ff63012-b48c-3dfe-d075-00e1df52b787.htm" />
+  <HelpKINode Title="index フィールド" Url="html/50021528-f893-27b3-cd9c-c763b6ea5b0d.htm" />
+  <HelpKINode Title="InitializeComponent メソッド">
+    <HelpKINode Title="ConfigForm.InitializeComponent メソッド " Url="html/735040a1-aa3b-941c-da38-46a5ae145c50.htm" />
+    <HelpKINode Title="MapEditForm.InitializeComponent メソッド " Url="html/e6615332-4fed-5949-2d75-203d699fe19d.htm" />
+    <HelpKINode Title="SaveNewProjectForm.InitializeComponent メソッド " Url="html/3c142d9f-8a58-07d2-efff-ef45a2f7133f.htm" />
+    <HelpKINode Title="SelectImageForm.InitializeComponent メソッド " Url="html/87757e98-7741-9d92-87a3-3bdc66416d9c.htm" />
+    <HelpKINode Title="StartForm.InitializeComponent メソッド " Url="html/195805e6-0bdf-4a00-d445-8bb18c2a5656.htm" />
+  </HelpKINode>
+  <HelpKINode Title="KeyScroll メソッド" Url="html/b9f0a09c-a2f1-bf93-1e74-f9e737662092.htm" />
+  <HelpKINode Title="label1 フィールド">
+    <HelpKINode Title="SaveNewProjectForm.label1 フィールド" Url="html/9433c102-4819-02d0-3d3d-482da9ad0fee.htm" />
+    <HelpKINode Title="StartForm.label1 フィールド" Url="html/6a9219ff-8de4-373d-e8e0-12170702d910.htm" />
+  </HelpKINode>
+  <HelpKINode Title="label2 フィールド">
+    <HelpKINode Title="ConfigForm.label2 フィールド" Url="html/fb4c2b5f-224d-31f0-630e-0aeb6b29731a.htm" />
+    <HelpKINode Title="SaveNewProjectForm.label2 フィールド" Url="html/06a285be-8e2b-77d8-678c-7d626c6de640.htm" />
+  </HelpKINode>
+  <HelpKINode Title="label3 フィールド" Url="html/2d182c1c-3378-34a1-dc8c-8313222598d2.htm" />
+  <HelpKINode Title="label4 フィールド" Url="html/267fb4fa-e38f-b3c9-5a91-de26ddbfffca.htm" />
+  <HelpKINode Title="LastId プロパティ">
+    <HelpKINode Title="MapInfoFromText.LastId プロパティ " Url="html/6d5f593c-6273-de56-ab11-272e69b250c3.htm" />
+    <HelpKINode Title="ProjectInfo.LastId プロパティ " Url="html/20aed619-2c72-583b-1be3-6561a26e091e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LastID メソッド" Url="html/e272fe6d-9983-fdd6-e4aa-30298bcb0693.htm" />
+  <HelpKINode Title="layerComboBox フィールド" Url="html/fd92944e-baa2-2474-eb07-237b994f687a.htm" />
+  <HelpKINode Title="list フィールド" Url="html/ee2e94aa-8765-eeb0-0275-147a09c094c2.htm" />
+  <HelpKINode Title="List プロパティ" Url="html/006cf41e-5536-9eb6-4705-7ecebd3a015e.htm" />
+  <HelpKINode Title="LoadBitmapSheet メソッド" Url="html/e9340189-3c13-fc3a-d506-81c49d32b59a.htm" />
+  <HelpKINode Title="LoadFromText メソッド" Url="html/2f8cc551-4c81-b84d-8f6c-3196d20d1975.htm" />
+  <HelpKINode Title="LoadMapDataList プロパティ" Url="html/0fb9f674-d4f2-5c54-1dd8-ce098539742e.htm" />
+  <HelpKINode Title="LoadMapDataListController クラス" Url="html/56291cdd-4b4b-f386-8b5e-4435dbfa0741.htm" />
+  <HelpKINode Title="LoadMapDataListController クラス、LoadMapDataListController クラスについて" Url="html/56291cdd-4b4b-f386-8b5e-4435dbfa0741.htm" />
+  <HelpKINode Title="LoadMapDataListController クラス、コンストラクター" Url="html/2c8f2a84-f8e0-f62e-55ad-2a387285b7d2.htm" />
+  <HelpKINode Title="LoadMapDataListController クラス、フィールド" Url="html/0426388c-e652-aa9f-cb0e-6c01835b5779.htm" />
+  <HelpKINode Title="LoadMapDataListController クラス、メソッド" Url="html/b9ac7c8b-846c-6c2b-5b35-9676aba6b296.htm" />
+  <HelpKINode Title="LoadMapDataListController.LoadFromText メソッド" Url="html/2f8cc551-4c81-b84d-8f6c-3196d20d1975.htm" />
+  <HelpKINode Title="LoadMapDataListController.LoadMapDataListController コンストラクター" Url="html/2c8f2a84-f8e0-f62e-55ad-2a387285b7d2.htm" />
+  <HelpKINode Title="LoadProject メソッド">
+    <HelpKINode Title="MapChipResourceManager.LoadProject メソッド " Url="html/67066c76-f6ca-f436-4f20-3186e116fe4b.htm" />
+    <HelpKINode Title="MapEditControl.LoadProject メソッド " Url="html/6a0f2fb4-2650-e3d4-9843-3eef9df99927.htm" />
+    <HelpKINode Title="MapEditForm.LoadProject メソッド " Url="html/9d8fe3c7-3979-eecc-18c8-97bcb51c74c6.htm" />
+    <HelpKINode Title="MapPalletScene.LoadProject メソッド " Url="html/d6db67a5-6638-0c5b-1508-9c007a9de174.htm" />
+    <HelpKINode Title="ProjectManager.LoadProject メソッド " Url="html/378921fb-9f18-ce64-58d8-786d1885f4b9.htm" />
+    <HelpKINode Title="SelectImageForm.LoadProject メソッド " Url="html/e47044d9-bfa7-990d-8b51-977900554824.htm" />
+  </HelpKINode>
+  <HelpKINode Title="LocationToMap メソッド" Url="html/03d3ddb6-6c91-ee03-9863-6ece8a3ec203.htm" />
+  <HelpKINode Title="Main メソッド" Url="html/83b90ffd-ff12-13dd-4525-44226f7519a1.htm" />
+  <HelpKINode Title="MapChip クラス" Url="html/13ca6240-4697-a656-d88d-5e060bb6eb49.htm" />
+  <HelpKINode Title="MapChip クラス、MapChip クラスについて" Url="html/13ca6240-4697-a656-d88d-5e060bb6eb49.htm" />
+  <HelpKINode Title="MapChip クラス、コンストラクター" Url="html/6490d8e7-968f-9fb1-1967-b2e910049f42.htm" />
+  <HelpKINode Title="MapChip クラス、フィールド" Url="html/41df1651-e9da-8114-938b-5cf9c6cafd31.htm" />
+  <HelpKINode Title="MapChip クラス、プロパティ" Url="html/5f103f5c-b2f1-b0ac-facc-f1dfb0deb180.htm" />
+  <HelpKINode Title="MapChip クラス、メソッド" Url="html/1dfecea0-d30c-2e1a-0838-522de9547911.htm" />
+  <HelpKINode Title="MapChip プロパティ" Url="html/ecd0ade5-27e9-c62d-4f01-5cf6c79a07ae.htm" />
+  <HelpKINode Title="MapChip.ClearImage メソッド" Url="html/5df07f9d-50c0-ea2c-8a90-790261b691b7.htm" />
+  <HelpKINode Title="MapChip.Id プロパティ" Url="html/4b4a8a65-43e3-241f-33e9-d344dab457c3.htm" />
+  <HelpKINode Title="MapChip.MapChip コンストラクター" Url="html/6490d8e7-968f-9fb1-1967-b2e910049f42.htm" />
+  <HelpKINode Title="MapChip.mapChipSize フィールド" Url="html/8b849acf-faff-0b28-a22a-958fc10a7bba.htm" />
+  <HelpKINode Title="MapChip.MapChipSize プロパティ" Url="html/ea55292f-7ca9-5883-e320-92fe0e7b1fd7.htm" />
+  <HelpKINode Title="MapChip.mcc フィールド" Url="html/4025deb6-1979-0566-18e8-762c7708b37c.htm" />
+  <HelpKINode Title="MapChip.ReverseEnablePassFlag メソッド" Url="html/4f258246-fac2-50f5-f7b1-e71f74c25110.htm" />
+  <HelpKINode Title="MapChip.ScaleFix メソッド" Url="html/b6bcfc23-de29-0681-f056-2bc84c65349c.htm" />
+  <HelpKINode Title="MapChip.SetId メソッド" Url="html/d714b73f-7c34-2a79-5c88-94f65a96604e.htm" />
+  <HelpKINode Title="MapChip.SwitchTurnFlag メソッド" Url="html/3206d1a3-aa92-841b-fe2f-89a1dd17d053.htm" />
+  <HelpKINode Title="MapChip.TurnHorizontal メソッド" Url="html/04ec30cd-b2bb-5837-f25d-f4f672d9d3dd.htm" />
+  <HelpKINode Title="MapChip.TurnVertical メソッド" Url="html/d70aa903-4083-58a7-e1ae-87ad27eb6320.htm" />
+  <HelpKINode Title="MapChip.UpdateAngle メソッド" Url="html/1bfd47bc-042a-1eca-dd4c-c94f8a5193c5.htm" />
+  <HelpKINode Title="MapChip.UpdateTexture メソッド" Url="html/6b5458d2-504e-df53-5558-1ab4fdeac091.htm" />
+  <HelpKINode Title="MapChipConfig クラス" Url="html/3384afa5-c957-af52-d9ff-969bb715038b.htm" />
+  <HelpKINode Title="MapChipConfig クラス、MapChipConfig クラスについて" Url="html/3384afa5-c957-af52-d9ff-969bb715038b.htm" />
+  <HelpKINode Title="MapChipConfig クラス、コンストラクター">
+    <HelpKINode Title="MapChipConfig コンストラクター " Url="html/87ae8265-3f53-c26d-744e-2be20831784e.htm" />
+    <HelpKINode Title="MapChipConfig コンストラクター " Url="html/d5f87f21-18bd-4800-57f6-8be322988cad.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MapChipConfig クラス、フィールド" Url="html/530f1448-6c2d-0581-63c2-eba8f592e03b.htm" />
+  <HelpKINode Title="MapChipConfig クラス、プロパティ" Url="html/1cf3c7f2-93f7-a297-8cdf-e8683fa27f4b.htm" />
+  <HelpKINode Title="MapChipConfig クラス、メソッド" Url="html/3987533b-98db-f1d0-3bde-4f5e8268422c.htm" />
+  <HelpKINode Title="MapChipConfig.ChangeIsEnablePass メソッド" Url="html/dbc30a65-d728-a384-a151-413d3177755b.htm" />
+  <HelpKINode Title="MapChipConfig.ChangePassEditMode メソッド" Url="html/472f7bdb-1608-2579-b4ab-a17b55510702.htm" />
+  <HelpKINode Title="MapChipConfig.EnablePass プロパティ" Url="html/1f660c96-5f33-d059-28ae-6afd169d341a.htm" />
+  <HelpKINode Title="MapChipConfig.MapChipConfig コンストラクター">
+    <HelpKINode Title="MapChipConfig コンストラクター " Url="html/d5f87f21-18bd-4800-57f6-8be322988cad.htm" />
+    <HelpKINode Title="MapChipConfig コンストラクター " Url="html/87ae8265-3f53-c26d-744e-2be20831784e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MapChipConfig.passEditMode フィールド" Url="html/38a8c2a9-bb6f-e0dc-163e-69dc45aa596e.htm" />
+  <HelpKINode Title="MapChipConfig.PassEditModeKind 列挙体" Url="html/3808a8ea-57f1-1c48-af72-7255cbe4fc8a.htm" />
+  <HelpKINode Title="MapChipConfig.SetChipStateSprite メソッド" Url="html/33f397e3-a73e-3103-3d5a-4d8b680452df.htm" />
+  <HelpKINode Title="MapChipResourceManager クラス" Url="html/17234b21-620c-dd8c-c915-0d1bd717f953.htm" />
+  <HelpKINode Title="MapChipResourceManager クラス、MapChipResourceManager クラスについて" Url="html/17234b21-620c-dd8c-c915-0d1bd717f953.htm" />
+  <HelpKINode Title="MapChipResourceManager クラス、コンストラクター" Url="html/ab944315-1e82-ebeb-24a8-9f830fdb853a.htm" />
+  <HelpKINode Title="MapChipResourceManager クラス、フィールド" Url="html/79ac61c3-9f73-a2ab-422d-a5ead7a67530.htm" />
+  <HelpKINode Title="MapChipResourceManager クラス、メソッド" Url="html/e9bf3d03-38f5-15c9-65b1-9ef1dbea0559.htm" />
+  <HelpKINode Title="MapChipResourceManager.bitmapList フィールド" Url="html/e9ae3a5c-a565-cb24-26c6-70cdfbca5173.htm" />
+  <HelpKINode Title="MapChipResourceManager.GetBitmap メソッド" Url="html/e3bdbece-f30b-1c56-58c4-cbe4b3ec9f35.htm" />
+  <HelpKINode Title="MapChipResourceManager.GetBitmapSheet メソッド" Url="html/89979881-0ca1-4f33-1f3b-f3e860e6f9d0.htm" />
+  <HelpKINode Title="MapChipResourceManager.GetId メソッド" Url="html/7e1db524-09bb-ccfb-107e-ee89c7ddab62.htm" />
+  <HelpKINode Title="MapChipResourceManager.GetTexture メソッド" Url="html/c1c83339-194e-f230-c9bb-b9132c93d4a2.htm" />
+  <HelpKINode Title="MapChipResourceManager.idManager フィールド" Url="html/c350759c-32ac-1a43-6345-bc0a0dd0125a.htm" />
+  <HelpKINode Title="MapChipResourceManager.LastID メソッド" Url="html/e272fe6d-9983-fdd6-e4aa-30298bcb0693.htm" />
+  <HelpKINode Title="MapChipResourceManager.LoadBitmapSheet メソッド" Url="html/e9340189-3c13-fc3a-d506-81c49d32b59a.htm" />
+  <HelpKINode Title="MapChipResourceManager.LoadProject メソッド" Url="html/67066c76-f6ca-f436-4f20-3186e116fe4b.htm" />
+  <HelpKINode Title="MapChipResourceManager.MapChipResourceManager コンストラクター" Url="html/ab944315-1e82-ebeb-24a8-9f830fdb853a.htm" />
+  <HelpKINode Title="MapChipResourceManager.mapChipSize フィールド" Url="html/a63be10e-c1c7-9d52-62ba-ba67382b95ba.htm" />
+  <HelpKINode Title="MapChipResourceManager.PopImageFile メソッド" Url="html/0bc17cef-99c7-7007-23d7-490c762bcf6a.htm" />
+  <HelpKINode Title="MapChipResourceManager.PushImageFile メソッド" Url="html/84da9877-950e-0a68-3f66-bdd15bff4d19.htm" />
+  <HelpKINode Title="MapChipResourceManager.SwapImageFile メソッド" Url="html/b3dff79a-0977-906d-8889-7612f44e4e83.htm" />
+  <HelpKINode Title="MapChipResourceManager.textureList フィールド" Url="html/9cef1bf3-dc3f-e75e-ce35-faeb110cfc27.htm" />
+  <HelpKINode Title="mapChips フィールド" Url="html/abfb4812-dd3c-505a-c66f-1d5cd6ce801b.htm" />
+  <HelpKINode Title="mapChips プロパティ" Url="html/29db8d4c-5b9e-a9bc-625f-2343e4ade6ad.htm" />
+  <HelpKINode Title="mapChipSize フィールド">
+    <HelpKINode Title="MapChip.mapChipSize フィールド" Url="html/8b849acf-faff-0b28-a22a-958fc10a7bba.htm" />
+    <HelpKINode Title="MapChipResourceManager.mapChipSize フィールド" Url="html/a63be10e-c1c7-9d52-62ba-ba67382b95ba.htm" />
+    <HelpKINode Title="MapGrid.mapChipSize フィールド" Url="html/cf4a7e3d-eddb-1f52-ed73-41b365dd8d8d.htm" />
+    <HelpKINode Title="MapOneMass.mapChipSize フィールド" Url="html/1fd8b573-d7e7-cfd5-10b8-fe6b0dab99eb.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MapChipSize プロパティ">
+    <HelpKINode Title="MapChip.MapChipSize プロパティ " Url="html/ea55292f-7ca9-5883-e320-92fe0e7b1fd7.htm" />
+    <HelpKINode Title="MapData.MapChipSize プロパティ " Url="html/8c241ce6-3b90-30b7-c24a-d392b469dfb0.htm" />
+    <HelpKINode Title="MapDataControl.MapChipSize プロパティ " Url="html/73d198d3-62bb-9302-9bcc-61bdcdae42a8.htm" />
+    <HelpKINode Title="MapInfoFromText.MapChipSize プロパティ " Url="html/031ac75b-0a95-eabd-7845-c46d8148304c.htm" />
+    <HelpKINode Title="StartForm.MapChipSize プロパティ " Url="html/6bb341e2-41dc-439f-de34-68dabb6c77ae.htm" />
+  </HelpKINode>
+  <HelpKINode Title="mapChipSizeTextBox フィールド" Url="html/0b029da9-2646-33f2-bab3-8ab3fe93a4d3.htm" />
+  <HelpKINode Title="MapData クラス" Url="html/f20fb13a-4c6e-3b36-6de2-f2f77b802375.htm" />
+  <HelpKINode Title="MapData クラス、MapData クラスについて" Url="html/f20fb13a-4c6e-3b36-6de2-f2f77b802375.htm" />
+  <HelpKINode Title="MapData クラス、イベント" Url="html/ae1e15a7-9c71-2d60-829e-9043ec1e45b0.htm" />
+  <HelpKINode Title="MapData クラス、コンストラクター" Url="html/938e60cc-1768-0758-f7bc-07c1291cac5b.htm" />
+  <HelpKINode Title="MapData クラス、フィールド" Url="html/792d7d4d-d7da-0262-301d-25d80f8e4bbc.htm" />
+  <HelpKINode Title="MapData クラス、プロパティ" Url="html/f8e077b5-9f66-3abd-3d13-a5bf6c8e69fd.htm" />
+  <HelpKINode Title="mapData フィールド">
+    <HelpKINode Title="MapDataControl.mapData フィールド" Url="html/802e8d05-a218-0768-92eb-e43d8a3b4ab3.htm" />
+    <HelpKINode Title="MapDataController.mapData フィールド" Url="html/c85a307c-04f5-bed2-0a23-cb79ce6ae83e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MapData.ChangeList イベント" Url="html/b3be5c7a-a1fd-851f-1d14-f59ed3ce0f2f.htm" />
+  <HelpKINode Title="MapData.list フィールド" Url="html/ee2e94aa-8765-eeb0-0275-147a09c094c2.htm" />
+  <HelpKINode Title="MapData.List プロパティ" Url="html/006cf41e-5536-9eb6-4705-7ecebd3a015e.htm" />
+  <HelpKINode Title="MapData.MapChipSize プロパティ" Url="html/8c241ce6-3b90-30b7-c24a-d392b469dfb0.htm" />
+  <HelpKINode Title="MapData.MapData コンストラクター" Url="html/938e60cc-1768-0758-f7bc-07c1291cac5b.htm" />
+  <HelpKINode Title="MapData.MapSizeX プロパティ" Url="html/aed1738d-663a-3d54-1399-e0df3a9deb0c.htm" />
+  <HelpKINode Title="MapData.MapSizeY プロパティ" Url="html/09c51278-b85a-96aa-4815-357d88f07212.htm" />
+  <HelpKINode Title="MapDataControl クラス" Url="html/3d773436-5390-38cd-ab2a-c2223f1d5c85.htm" />
+  <HelpKINode Title="MapDataControl クラス、MapDataControl クラスについて" Url="html/3d773436-5390-38cd-ab2a-c2223f1d5c85.htm" />
+  <HelpKINode Title="MapDataControl クラス、コンストラクター" Url="html/50baf916-101d-ee1c-63c3-866a91f67cb3.htm" />
+  <HelpKINode Title="MapDataControl クラス、フィールド" Url="html/c125a0d6-54df-d332-6fe6-f1003d520953.htm" />
+  <HelpKINode Title="MapDataControl クラス、プロパティ" Url="html/bdec5421-dd7c-e291-4ed8-1ad7d7c6e116.htm" />
+  <HelpKINode Title="MapDataControl クラス、メソッド" Url="html/9998b0fc-ebde-c77e-7e82-8d2eb78e6d99.htm" />
+  <HelpKINode Title="MapDataControl プロパティ" Url="html/ce395d5e-73f1-5c1a-fc19-98c21e440fc3.htm" />
+  <HelpKINode Title="MapDataControl.ChangeMapSize プロパティ" Url="html/a388571a-deb3-2266-cfb1-67a8959d9623.htm" />
+  <HelpKINode Title="MapDataControl.ConvertData プロパティ" Url="html/ed484f59-7f60-29f0-1005-ea065a57bef8.htm" />
+  <HelpKINode Title="MapDataControl.EditMapChip プロパティ" Url="html/089b25b5-f134-94d8-15f8-26864d0d8c01.htm" />
+  <HelpKINode Title="MapDataControl.LoadMapDataList プロパティ" Url="html/0fb9f674-d4f2-5c54-1dd8-ce098539742e.htm" />
+  <HelpKINode Title="MapDataControl.MapChipSize プロパティ" Url="html/73d198d3-62bb-9302-9bcc-61bdcdae42a8.htm" />
+  <HelpKINode Title="MapDataControl.mapData フィールド" Url="html/802e8d05-a218-0768-92eb-e43d8a3b4ab3.htm" />
+  <HelpKINode Title="MapDataControl.MapDataControl コンストラクター" Url="html/50baf916-101d-ee1c-63c3-866a91f67cb3.htm" />
+  <HelpKINode Title="MapDataControl.MapShowArea プロパティ" Url="html/658cd6a0-6665-2de7-b261-c7ff969ab311.htm" />
+  <HelpKINode Title="MapDataControl.MapSize プロパティ" Url="html/b6fea551-9188-ad26-f7a6-2881c0091cb9.htm" />
+  <HelpKINode Title="MapDataControl.MapSizeX プロパティ" Url="html/2fb7c541-838c-376d-9231-ba7613155edb.htm" />
+  <HelpKINode Title="MapDataControl.MapSizeY プロパティ" Url="html/c734e0ba-c2fe-4858-418e-5193cea36b12.htm" />
+  <HelpKINode Title="MapDataControl.setChangeListEvent メソッド" Url="html/e929d70d-986c-1aac-99aa-134b6d7fd200.htm" />
+  <HelpKINode Title="MapDataControl.Turn プロパティ" Url="html/a802e0e6-d204-30fd-435d-85e86f3805af.htm" />
+  <HelpKINode Title="MapDataController クラス" Url="html/a0f619b6-dacf-4e5a-0038-d6dbd6f11a14.htm" />
+  <HelpKINode Title="MapDataController クラス、MapDataController クラスについて" Url="html/a0f619b6-dacf-4e5a-0038-d6dbd6f11a14.htm" />
+  <HelpKINode Title="MapDataController クラス、コンストラクター" Url="html/e7c7866c-e30c-4682-a0cb-2c70dcf6bce7.htm" />
+  <HelpKINode Title="MapDataController クラス、フィールド" Url="html/35ec6db3-75b0-fdb4-384e-1acbbdae6698.htm" />
+  <HelpKINode Title="MapDataController.mapData フィールド" Url="html/c85a307c-04f5-bed2-0a23-cb79ce6ae83e.htm" />
+  <HelpKINode Title="MapDataController.MapDataController コンストラクター" Url="html/e7c7866c-e30c-4682-a0cb-2c70dcf6bce7.htm" />
+  <HelpKINode Title="MapDataText プロパティ" Url="html/8d8cd24a-a527-c928-d170-0bf5792dce55.htm" />
+  <HelpKINode Title="mapEdit フィールド" Url="html/5ce465e6-36d5-2b80-ee38-08e7d0f52297.htm" />
+  <HelpKINode Title="MapEdit 名前空間" Url="html/261807a4-2561-c50b-65eb-bc1e62297d7a.htm" />
+  <HelpKINode Title="MapEdit.ChangeMapSizeController クラス" Url="html/ff115086-a7e1-1b68-06a9-ab62905446ee.htm" />
+  <HelpKINode Title="MapEdit.ConfigForm クラス" Url="html/87939a89-a733-966c-07a6-2d61d2d68d28.htm" />
+  <HelpKINode Title="MapEdit.ConvertDataController クラス" Url="html/9c79fe98-80c1-3001-f566-03d4cf565e22.htm" />
+  <HelpKINode Title="MapEdit.EditMapChipController クラス" Url="html/eb34ff8c-ac2c-c2eb-c7e1-2b1f7dd1472a.htm" />
+  <HelpKINode Title="MapEdit.FileManager クラス" Url="html/769c9842-0819-9006-1659-233f9de77606.htm" />
+  <HelpKINode Title="MapEdit.HVScrollBar クラス" Url="html/dcf371c6-6140-2d23-11f2-e7cd88b12b66.htm" />
+  <HelpKINode Title="MapEdit.Id クラス" Url="html/0b86255e-db1d-3edb-3e39-06a88e40b13f.htm" />
+  <HelpKINode Title="MapEdit.IdManager クラス" Url="html/c9157493-5c29-6874-69b1-3da7c4b68b5f.htm" />
+  <HelpKINode Title="MapEdit.LoadMapDataListController クラス" Url="html/56291cdd-4b4b-f386-8b5e-4435dbfa0741.htm" />
+  <HelpKINode Title="MapEdit.MapChip クラス" Url="html/13ca6240-4697-a656-d88d-5e060bb6eb49.htm" />
+  <HelpKINode Title="MapEdit.MapChipConfig クラス" Url="html/3384afa5-c957-af52-d9ff-969bb715038b.htm" />
+  <HelpKINode Title="MapEdit.MapChipConfig.PassEditModeKind 列挙体" Url="html/3808a8ea-57f1-1c48-af72-7255cbe4fc8a.htm" />
+  <HelpKINode Title="MapEdit.MapChipResourceManager クラス" Url="html/17234b21-620c-dd8c-c915-0d1bd717f953.htm" />
+  <HelpKINode Title="MapEdit.MapData クラス" Url="html/f20fb13a-4c6e-3b36-6de2-f2f77b802375.htm" />
+  <HelpKINode Title="MapEdit.MapDataControl クラス" Url="html/3d773436-5390-38cd-ab2a-c2223f1d5c85.htm" />
+  <HelpKINode Title="MapEdit.MapDataController クラス" Url="html/a0f619b6-dacf-4e5a-0038-d6dbd6f11a14.htm" />
+  <HelpKINode Title="MapEdit.MapEditControl クラス" Url="html/bcf64599-2807-1db6-839b-590b9b2ca04a.htm" />
+  <HelpKINode Title="MapEdit.MapEditForm クラス" Url="html/8441a240-33e3-e9f4-7206-8fcbc0d5d354.htm" />
+  <HelpKINode Title="MapEdit.MapGrid クラス" Url="html/7d38f40f-8fe4-5e84-25c4-c48a969f67a7.htm" />
+  <HelpKINode Title="MapEdit.MapInfoFromText クラス" Url="html/c295287f-27fc-f080-7933-6b3bfaf1b85e.htm" />
+  <HelpKINode Title="MapEdit.MapOneMass クラス" Url="html/ff39d683-21ab-0c5c-7727-0aebd7fba11b.htm" />
+  <HelpKINode Title="MapEdit.MapPalletData クラス" Url="html/f2d13565-89e9-7371-be78-e87688cd28ff.htm" />
+  <HelpKINode Title="MapEdit.MapPalletScene クラス" Url="html/71ace088-2145-ef83-fab7-af4cb07643b6.htm" />
+  <HelpKINode Title="MapEdit.MapSceneBase クラス" Url="html/0063979f-9322-6c65-17bc-1015cb4f1dcd.htm" />
+  <HelpKINode Title="MapEdit.MapShowAreaController クラス" Url="html/51163e71-f081-44c8-11ca-99a4f091bc15.htm" />
+  <HelpKINode Title="MapEdit.MapWriteScene クラス" Url="html/8404432d-1184-ebdb-1049-63f24a0beb6a.htm" />
+  <HelpKINode Title="MapEdit.MapWriteScroll クラス" Url="html/87e35fd0-8c47-4750-10d9-b5a3f6802824.htm" />
+  <HelpKINode Title="MapEdit.MouseSwap クラス" Url="html/3d5766dc-7ac2-84d8-9de9-c8b90aa06880.htm" />
+  <HelpKINode Title="MapEdit.Program クラス" Url="html/7cb31dc3-ac87-b400-6984-91cb58059895.htm" />
+  <HelpKINode Title="MapEdit.ProjectInfo クラス" Url="html/dbb26091-836e-5166-831f-253d406f09ec.htm" />
+  <HelpKINode Title="MapEdit.ProjectManager クラス" Url="html/8ae45cbb-e6ea-48cb-258f-42c41e63990e.htm" />
+  <HelpKINode Title="MapEdit.Purunu クラス" Url="html/d85bc5fc-3eaa-33c4-9845-a7e9e2e81304.htm" />
+  <HelpKINode Title="MapEdit.SaveNewProjectForm クラス" Url="html/92633b7e-931c-53a1-7070-be1977c6504f.htm" />
+  <HelpKINode Title="MapEdit.SelectImageForm クラス" Url="html/fc91fda2-645c-c305-d72e-9078aa14f9bf.htm" />
+  <HelpKINode Title="MapEdit.SelectMapChipScene クラス" Url="html/f2a50c90-9a2c-d567-71e7-350221872230.htm" />
+  <HelpKINode Title="MapEdit.SelectMapChipScene.ActionKind 列挙体" Url="html/6d3f2d0f-dd9a-294a-8272-1e68370edc0f.htm" />
+  <HelpKINode Title="MapEdit.StartForm クラス" Url="html/9f1c835c-9248-7f49-2527-b04e0bbba734.htm" />
+  <HelpKINode Title="MapEdit.TurnController クラス" Url="html/553cdde5-23c0-2e0d-1646-a910cea112ad.htm" />
+  <HelpKINode Title="MapEdit.Utility クラス" Url="html/87920ff0-f9a0-bbcf-8655-77418ca02025.htm" />
+  <HelpKINode Title="MapEdit.WriteId クラス" Url="html/08ee58ef-0ce8-6a9b-ea24-1d19aa2baed0.htm" />
+  <HelpKINode Title="MapEditControl クラス" Url="html/bcf64599-2807-1db6-839b-590b9b2ca04a.htm" />
+  <HelpKINode Title="MapEditControl クラス、MapEditControl クラスについて" Url="html/bcf64599-2807-1db6-839b-590b9b2ca04a.htm" />
+  <HelpKINode Title="MapEditControl クラス、コンストラクター" Url="html/5f9523db-4509-865e-34a8-3e3f50425fb2.htm" />
+  <HelpKINode Title="MapEditControl クラス、フィールド" Url="html/751e63be-420c-67f8-2aef-ad500c0f7744.htm" />
+  <HelpKINode Title="MapEditControl クラス、プロパティ" Url="html/b17b9c3c-8c15-9e7f-11ab-6ef40f81fff0.htm" />
+  <HelpKINode Title="MapEditControl クラス、メソッド" Url="html/a0c0ef1a-6843-6f41-2053-eb84b49dac46.htm" />
+  <HelpKINode Title="MapEditControl.CreateConfigForm メソッド" Url="html/6723f75d-6798-77d9-001c-65b8dc153791.htm" />
+  <HelpKINode Title="MapEditControl.Dispose メソッド" Url="html/0ce8559e-35a7-8358-9992-a89bb2777841.htm" />
+  <HelpKINode Title="MapEditControl.LoadProject メソッド" Url="html/6a0f2fb4-2650-e3d4-9843-3eef9df99927.htm" />
+  <HelpKINode Title="MapEditControl.MapDataControl プロパティ" Url="html/ce395d5e-73f1-5c1a-fc19-98c21e440fc3.htm" />
+  <HelpKINode Title="MapEditControl.MapEditControl コンストラクター" Url="html/5f9523db-4509-865e-34a8-3e3f50425fb2.htm" />
+  <HelpKINode Title="MapEditControl.MapMouseAction メソッド" Url="html/9182570a-9101-24a8-bdab-47f5433a28c4.htm" />
+  <HelpKINode Title="MapEditControl.MapWriteScroll プロパティ" Url="html/89fd32e6-0930-fb72-5424-0552bd22fa3f.htm" />
+  <HelpKINode Title="MapEditControl.mws フィールド" Url="html/8f67bc03-d8fa-fa9d-271e-c550f8caaff6.htm" />
+  <HelpKINode Title="MapEditForm クラス" Url="html/8441a240-33e3-e9f4-7206-8fcbc0d5d354.htm" />
+  <HelpKINode Title="MapEditForm クラス、MapEditForm クラスについて" Url="html/8441a240-33e3-e9f4-7206-8fcbc0d5d354.htm" />
+  <HelpKINode Title="MapEditForm クラス、コンストラクター" Url="html/4088479e-7cea-6dcb-3cf5-4b85f7d73feb.htm" />
+  <HelpKINode Title="MapEditForm クラス、フィールド" Url="html/59862e26-a86c-2420-81c9-207c306960cb.htm" />
+  <HelpKINode Title="MapEditForm クラス、メソッド" Url="html/16031060-c146-867b-13cc-8d8f0e769c85.htm" />
+  <HelpKINode Title="MapEditForm.button1 フィールド" Url="html/bf8af932-1871-9f3f-1ada-7602c4bf2562.htm" />
+  <HelpKINode Title="MapEditForm.button2 フィールド" Url="html/594163e6-3b95-43f7-6490-faa14db5cbcb.htm" />
+  <HelpKINode Title="MapEditForm.components フィールド" Url="html/ccff57d4-1050-6547-cc20-69e71f3cc874.htm" />
+  <HelpKINode Title="MapEditForm.Dispose メソッド" Url="html/dc2a7c3a-05f0-c778-4bb4-ae11b2a4d924.htm" />
+  <HelpKINode Title="MapEditForm.drawModeComboBox フィールド" Url="html/34edcd2d-7d60-22fc-d490-d092a780b264.htm" />
+  <HelpKINode Title="MapEditForm.drawModeComboBox_SelectedIndexChanged メソッド" Url="html/d923d312-0fa0-256b-a530-c6081b3085e8.htm" />
+  <HelpKINode Title="MapEditForm.GetProjectInfo メソッド" Url="html/2a3de6e9-676f-328e-6630-de9d3dc15fd2.htm" />
+  <HelpKINode Title="MapEditForm.gridButton フィールド" Url="html/2f3d49c3-ca23-b2cb-f393-63f8700b8231.htm" />
+  <HelpKINode Title="MapEditForm.gridButton_Click メソッド" Url="html/696e018f-2274-7db0-0d01-c39a60d2792f.htm" />
+  <HelpKINode Title="MapEditForm.hScrollBar1 フィールド" Url="html/d8253c25-d73e-d3b9-249f-b3ba401583d0.htm" />
+  <HelpKINode Title="MapEditForm.InitializeComponent メソッド" Url="html/e6615332-4fed-5949-2d75-203d699fe19d.htm" />
+  <HelpKINode Title="MapEditForm.layerComboBox フィールド" Url="html/fd92944e-baa2-2474-eb07-237b994f687a.htm" />
+  <HelpKINode Title="MapEditForm.LoadProject メソッド" Url="html/9d8fe3c7-3979-eecc-18c8-97bcb51c74c6.htm" />
+  <HelpKINode Title="MapEditForm.mapEdit フィールド" Url="html/5ce465e6-36d5-2b80-ee38-08e7d0f52297.htm" />
+  <HelpKINode Title="MapEditForm.MapEditForm コンストラクター" Url="html/4088479e-7cea-6dcb-3cf5-4b85f7d73feb.htm" />
+  <HelpKINode Title="MapEditForm.MapEditForm_KeyDown メソッド" Url="html/700d003c-6740-e57a-c40d-01ca9543357e.htm" />
+  <HelpKINode Title="MapEditForm.mapWritePanel フィールド" Url="html/749cb46c-ebde-5e82-4680-e89b03878bf9.htm" />
+  <HelpKINode Title="MapEditForm.mapWritePanel_MouseDown メソッド" Url="html/0131b50d-d783-5b68-006f-bf07739b4995.htm" />
+  <HelpKINode Title="MapEditForm.mapWritePanel_MouseMove メソッド" Url="html/3cb07b4a-a191-92a0-4ac2-ec300424b497.htm" />
+  <HelpKINode Title="MapEditForm.mapWritePanel_SizeChanged メソッド" Url="html/5a7b08d8-1d43-cb68-d802-e135d780f388.htm" />
+  <HelpKINode Title="MapEditForm.maxLayer フィールド" Url="html/abda2142-472d-0041-4bf5-e3077a7180f0.htm" />
+  <HelpKINode Title="MapEditForm.mcrm フィールド" Url="html/42a79f04-b323-8766-a7d0-70881bb8ef7d.htm" />
+  <HelpKINode Title="MapEditForm.menuStrip1 フィールド" Url="html/8aa7d6f2-aebc-7ec2-8ac4-269f6916af84.htm" />
+  <HelpKINode Title="MapEditForm.pm フィールド" Url="html/e9eec3be-708a-c937-f393-86ffc65a8d2f.htm" />
+  <HelpKINode Title="MapEditForm.rotateLeftButton フィールド" Url="html/34e14263-6cd4-8de6-3cf7-8e7d05fb5a4a.htm" />
+  <HelpKINode Title="MapEditForm.rotateLeftButton_Click メソッド" Url="html/ea70048a-e838-794f-130b-3436920ecece.htm" />
+  <HelpKINode Title="MapEditForm.rotateRightButton フィールド" Url="html/377d91d6-d793-9370-ec7f-96ab79f44736.htm" />
+  <HelpKINode Title="MapEditForm.rotateRightButton_Click メソッド" Url="html/a2ee8dc0-60f6-6eda-3368-9a7d30b23baa.htm" />
+  <HelpKINode Title="MapEditForm.SaveNewProject メソッド" Url="html/7730777c-6cef-3adb-ee90-929756a840e7.htm" />
+  <HelpKINode Title="MapEditForm.sif フィールド" Url="html/b1213fed-433e-7f7b-ac29-8319da4147f7.htm" />
+  <HelpKINode Title="MapEditForm.turnHorizontalButton フィールド" Url="html/058429b1-724c-dad2-e2c5-a5faa84077ac.htm" />
+  <HelpKINode Title="MapEditForm.turnHorizontalButton_Click メソッド" Url="html/5cc8d6ee-d1f3-cdd4-7277-97dbb1a5687e.htm" />
+  <HelpKINode Title="MapEditForm.turnVerticalButton フィールド" Url="html/4d9d5377-89f5-4e96-b623-f13fbe04adc1.htm" />
+  <HelpKINode Title="MapEditForm.turnVerticalButton_Click メソッド" Url="html/2eb9a5c7-e3d6-4ce6-7f06-4a4a1d0c0b2b.htm" />
+  <HelpKINode Title="MapEditForm.vScrollBar1 フィールド" Url="html/6d226dcc-81d7-d467-551a-f92fbb9b451f.htm" />
+  <HelpKINode Title="MapEditForm.ファイルToolStripMenuItem フィールド" Url="html/7186e3da-95ec-ab08-e1f8-cdedbcfbda8c.htm" />
+  <HelpKINode Title="MapEditForm.上書きToolStripMenuItem フィールド" Url="html/433d020a-a37f-f02d-cc3c-54c84878f259.htm" />
+  <HelpKINode Title="MapEditForm.上書きToolStripMenuItem_Click メソッド" Url="html/df97dca1-64b8-61b3-339d-5c65c3110ad9.htm" />
+  <HelpKINode Title="MapEditForm.保存ToolStripMenuItem フィールド" Url="html/0aa52541-820c-9e7f-b8e0-59fe32e123d7.htm" />
+  <HelpKINode Title="MapEditForm.保存ToolStripMenuItem_Click メソッド" Url="html/aa1f9226-ac0e-bd68-e2b2-1cf8b5698d85.htm" />
+  <HelpKINode Title="MapEditForm.画像出力ToolStripMenuItem1 フィールド" Url="html/d075ac56-695f-e62a-6fb8-9a2a42c35c6f.htm" />
+  <HelpKINode Title="MapEditForm.画像出力ToolStripMenuItem_Click メソッド" Url="html/1b0147ce-0f46-78f6-2a9a-557b735fa09d.htm" />
+  <HelpKINode Title="MapEditForm.設定ToolStripMenuItem フィールド" Url="html/53cb10a1-55dd-9467-4f5a-d70efce1f4e7.htm" />
+  <HelpKINode Title="MapEditForm.設定ToolStripMenuItem_Click メソッド" Url="html/c778ae5c-72a4-9c69-c454-121d4d13bfd5.htm" />
+  <HelpKINode Title="MapEditForm.開くToolStripMenuItem フィールド" Url="html/3c4302a3-8b15-3801-f68d-66533c4a9820.htm" />
+  <HelpKINode Title="MapEditForm.開くToolStripMenuItem_Click メソッド" Url="html/82e92ab4-d520-be3c-27dc-006ee139316c.htm" />
+  <HelpKINode Title="MapEditForm_KeyDown メソッド" Url="html/700d003c-6740-e57a-c40d-01ca9543357e.htm" />
+  <HelpKINode Title="MapGrid クラス" Url="html/7d38f40f-8fe4-5e84-25c4-c48a969f67a7.htm" />
+  <HelpKINode Title="MapGrid クラス、MapGrid クラスについて" Url="html/7d38f40f-8fe4-5e84-25c4-c48a969f67a7.htm" />
+  <HelpKINode Title="MapGrid クラス、コンストラクター">
+    <HelpKINode Title="MapGrid コンストラクター " Url="html/24c3a5f4-e4d0-b1b4-68fa-88500a3f52bb.htm" />
+    <HelpKINode Title="MapGrid コンストラクター " Url="html/f69ce045-4504-e4c4-876e-4e9b6dfde1a7.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MapGrid クラス、フィールド" Url="html/15a5df45-5edd-c91b-5687-a16fff9bfa27.htm" />
+  <HelpKINode Title="MapGrid クラス、プロパティ" Url="html/f5749341-e9a7-32fa-5588-ebea5651f8a6.htm" />
+  <HelpKINode Title="MapGrid クラス、メソッド" Url="html/f2e0638c-0796-7e21-fdf3-47f780dfae68.htm" />
+  <HelpKINode Title="MapGrid.Attach メソッド" Url="html/7e1391c4-ddc6-b4f5-5efc-1dfe4bcda64e.htm" />
+  <HelpKINode Title="MapGrid.color フィールド" Url="html/f83988c8-f3ff-646e-576b-5f9ab1279bc4.htm" />
+  <HelpKINode Title="MapGrid.Detach メソッド" Url="html/80de1386-5ebc-2987-31ac-c6d8ee41fb59.htm" />
+  <HelpKINode Title="MapGrid.Draw メソッド" Url="html/cf0d2e89-ce24-94bb-f676-3de8c435e906.htm" />
+  <HelpKINode Title="MapGrid.GridOnOf メソッド" Url="html/1575e3e7-2ed6-f6cb-9312-d596a0f7c315.htm" />
+  <HelpKINode Title="MapGrid.mapChipSize フィールド" Url="html/cf4a7e3d-eddb-1f52-ed73-41b365dd8d8d.htm" />
+  <HelpKINode Title="MapGrid.MapGrid コンストラクター">
+    <HelpKINode Title="MapGrid コンストラクター " Url="html/24c3a5f4-e4d0-b1b4-68fa-88500a3f52bb.htm" />
+    <HelpKINode Title="MapGrid コンストラクター " Url="html/f69ce045-4504-e4c4-876e-4e9b6dfde1a7.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MapGrid.mapGridList フィールド" Url="html/8775d208-e437-0d59-605f-bba04e9e7c42.htm" />
+  <HelpKINode Title="MapGrid.msb フィールド" Url="html/e4b1f360-570b-4479-e153-3a43b4237749.htm" />
+  <HelpKINode Title="mapGridList フィールド" Url="html/8775d208-e437-0d59-605f-bba04e9e7c42.htm" />
+  <HelpKINode Title="MapInfoFromText クラス" Url="html/c295287f-27fc-f080-7933-6b3bfaf1b85e.htm" />
+  <HelpKINode Title="MapInfoFromText クラス、MapInfoFromText クラスについて" Url="html/c295287f-27fc-f080-7933-6b3bfaf1b85e.htm" />
+  <HelpKINode Title="MapInfoFromText クラス、コンストラクター" Url="html/6108a884-144b-d766-3f4f-3371019d0978.htm" />
+  <HelpKINode Title="MapInfoFromText クラス、プロパティ" Url="html/7951edcb-dc43-ee78-55e5-d986705a29c5.htm" />
+  <HelpKINode Title="MapInfoFromText.Angle プロパティ" Url="html/550ba3d6-e831-0011-497c-e583a046c31c.htm" />
+  <HelpKINode Title="MapInfoFromText.Id プロパティ" Url="html/d34282d9-e2b1-a64f-f875-7295f65e5149.htm" />
+  <HelpKINode Title="MapInfoFromText.LastId プロパティ" Url="html/6d5f593c-6273-de56-ab11-272e69b250c3.htm" />
+  <HelpKINode Title="MapInfoFromText.MapChipSize プロパティ" Url="html/031ac75b-0a95-eabd-7845-c46d8148304c.htm" />
+  <HelpKINode Title="MapInfoFromText.MapInfoFromText コンストラクター" Url="html/6108a884-144b-d766-3f4f-3371019d0978.htm" />
+  <HelpKINode Title="MapInfoFromText.MapSize プロパティ" Url="html/9a3ab3dc-230e-199b-e205-8e660085e002.htm" />
+  <HelpKINode Title="MapInfoFromText.Turn プロパティ" Url="html/dd4ee17f-01b3-baac-e4f0-08c3d05d6de9.htm" />
+  <HelpKINode Title="MapMouseAction メソッド" Url="html/9182570a-9101-24a8-bdab-47f5433a28c4.htm" />
+  <HelpKINode Title="MapOneMass クラス" Url="html/ff39d683-21ab-0c5c-7727-0aebd7fba11b.htm" />
+  <HelpKINode Title="MapOneMass クラス、MapOneMass クラスについて" Url="html/ff39d683-21ab-0c5c-7727-0aebd7fba11b.htm" />
+  <HelpKINode Title="MapOneMass クラス、コンストラクター" Url="html/f8f50f44-13d0-5446-81b4-e132ac165093.htm" />
+  <HelpKINode Title="MapOneMass クラス、フィールド" Url="html/074eef77-09db-153d-9deb-1b1de6e52508.htm" />
+  <HelpKINode Title="MapOneMass クラス、プロパティ" Url="html/d9fe593c-e032-87ad-55bb-2a8ea83c63af.htm" />
+  <HelpKINode Title="MapOneMass クラス、メソッド" Url="html/85c7bed0-50d0-8f5b-adcb-222812c4a226.htm" />
+  <HelpKINode Title="MapOneMass.ChangePixelSize メソッド" Url="html/2554b27d-4699-87d1-495e-9dc856b858a8.htm" />
+  <HelpKINode Title="MapOneMass.ClearImage メソッド" Url="html/92ab3054-ab53-e0bf-cc07-01d2779a1f6a.htm" />
+  <HelpKINode Title="MapOneMass.GetBitmap メソッド" Url="html/b6f680ad-fe91-4e2b-38fc-1bb3dd2a42f9.htm" />
+  <HelpKINode Title="MapOneMass.mapChips プロパティ" Url="html/29db8d4c-5b9e-a9bc-625f-2343e4ade6ad.htm" />
+  <HelpKINode Title="MapOneMass.mapChipSize フィールド" Url="html/1fd8b573-d7e7-cfd5-10b8-fe6b0dab99eb.htm" />
+  <HelpKINode Title="MapOneMass.MapOneMass コンストラクター" Url="html/f8f50f44-13d0-5446-81b4-e132ac165093.htm" />
+  <HelpKINode Title="MapOneMass.PutImage メソッド" Url="html/38677a36-9427-e785-09d0-8e50c544bc84.htm" />
+  <HelpKINode Title="MapOneMass.Rotate メソッド" Url="html/4ac74485-b0a8-5331-7a39-32bce077fbe1.htm" />
+  <HelpKINode Title="MapOneMass.RotateLeft メソッド" Url="html/4de97e5e-0034-8e92-c3f3-447700a638f7.htm" />
+  <HelpKINode Title="MapOneMass.RotateRight メソッド" Url="html/af99a70d-931f-905f-3fcf-f725d9ab756f.htm" />
+  <HelpKINode Title="MapOneMass.SwapMapChips メソッド" Url="html/f62bbe63-ac57-a672-8abf-ff4b6148273a.htm" />
+  <HelpKINode Title="MapOneMass.TurnHorizontal メソッド" Url="html/34fc69fa-7d7b-d244-ba26-15ff16f5d42d.htm" />
+  <HelpKINode Title="MapOneMass.TurnVertical メソッド" Url="html/4daeb243-abfa-2555-b88f-43f8bb028639.htm" />
+  <HelpKINode Title="MapPalletData クラス" Url="html/f2d13565-89e9-7371-be78-e87688cd28ff.htm" />
+  <HelpKINode Title="MapPalletData クラス、MapPalletData クラスについて" Url="html/f2d13565-89e9-7371-be78-e87688cd28ff.htm" />
+  <HelpKINode Title="MapPalletData クラス、コンストラクター" Url="html/55af8b9d-93b0-4ca5-6a3a-0f01372fc6e7.htm" />
+  <HelpKINode Title="MapPalletData クラス、フィールド" Url="html/38a86680-584d-d9f2-b478-b05e738fda56.htm" />
+  <HelpKINode Title="MapPalletData クラス、メソッド" Url="html/daa496a2-eaa1-27b5-1d75-2ab99f77d93e.htm" />
+  <HelpKINode Title="mapPalletData フィールド" Url="html/17f777a4-92a6-2818-93d5-ea3d4671b09a.htm" />
+  <HelpKINode Title="MapPalletData.AddMapChip メソッド" Url="html/c6287016-bd17-9588-12ef-cc7d86ccf9c3.htm" />
+  <HelpKINode Title="MapPalletData.ClearMapChip メソッド" Url="html/9b9db0ef-5ea0-2036-970d-f72e3876f5c1.htm" />
+  <HelpKINode Title="MapPalletData.ExsitMapChip メソッド" Url="html/3c6b5512-014a-734b-4562-d48c6d73ff76.htm" />
+  <HelpKINode Title="MapPalletData.GetId メソッド" Url="html/7fbd30bd-f25e-5f31-d0f5-a705045b3750.htm" />
+  <HelpKINode Title="MapPalletData.GetTexture メソッド" Url="html/be50fc0a-18a1-fad1-1007-844466e4b8af.htm" />
+  <HelpKINode Title="MapPalletData.index フィールド" Url="html/50021528-f893-27b3-cd9c-c763b6ea5b0d.htm" />
+  <HelpKINode Title="MapPalletData.mapChips フィールド" Url="html/abfb4812-dd3c-505a-c66f-1d5cd6ce801b.htm" />
+  <HelpKINode Title="MapPalletData.MapPalletData コンストラクター" Url="html/55af8b9d-93b0-4ca5-6a3a-0f01372fc6e7.htm" />
+  <HelpKINode Title="MapPalletData.RemoveMapChip メソッド" Url="html/c1910263-c474-54e3-0ff0-2ba590dd2a89.htm" />
+  <HelpKINode Title="MapPalletData.ReverseEnablePassFlag メソッド" Url="html/39276050-04f2-4a65-77c1-95870e0c9e36.htm" />
+  <HelpKINode Title="MapPalletData.SwapMapChip メソッド" Url="html/e9e504db-b9f0-747e-2242-42cd6ed5bfb2.htm" />
+  <HelpKINode Title="MapPalletScene クラス" Url="html/71ace088-2145-ef83-fab7-af4cb07643b6.htm" />
+  <HelpKINode Title="MapPalletScene クラス、MapPalletScene クラスについて" Url="html/71ace088-2145-ef83-fab7-af4cb07643b6.htm" />
+  <HelpKINode Title="MapPalletScene クラス、コンストラクター" Url="html/d159ae84-a776-c0c2-d352-974883959a90.htm" />
+  <HelpKINode Title="MapPalletScene クラス、フィールド" Url="html/6fc01e46-e535-f8fc-5169-8724b7ac9b06.htm" />
+  <HelpKINode Title="MapPalletScene クラス、プロパティ" Url="html/254a9079-6a8b-ccf6-3fab-d5172018a6e3.htm" />
+  <HelpKINode Title="MapPalletScene クラス、メソッド" Url="html/125cd50e-186d-bd3b-eaaa-1a2dbfe6db6d.htm" />
+  <HelpKINode Title="MapPalletScene.AddMapChip メソッド" Url="html/ccf4ff78-a45f-80c5-080e-45b52ac7ab79.htm" />
+  <HelpKINode Title="MapPalletScene.LoadProject メソッド" Url="html/d6db67a5-6638-0c5b-1508-9c007a9de174.htm" />
+  <HelpKINode Title="MapPalletScene.mapPalletData フィールド" Url="html/17f777a4-92a6-2818-93d5-ea3d4671b09a.htm" />
+  <HelpKINode Title="MapPalletScene.MapPalletScene コンストラクター" Url="html/d159ae84-a776-c0c2-d352-974883959a90.htm" />
+  <HelpKINode Title="MapPalletScene.mcrm フィールド" Url="html/cab583ae-47a8-ebcf-4d7f-d2e4229a2fde.htm" />
+  <HelpKINode Title="MapPalletScene.MouseClickAction メソッド" Url="html/e3e8b302-974f-9287-a504-4fe92ac8567d.htm" />
+  <HelpKINode Title="MapPalletScene.MouseDrag メソッド" Url="html/64ad0d16-ba0d-6aaa-0623-79ad0a00f4d9.htm" />
+  <HelpKINode Title="MapPalletScene.mouseSwap フィールド" Url="html/8fa370fe-e0a1-5116-59fd-d910b73b981f.htm" />
+  <HelpKINode Title="MapPalletScene.SetDrawMapChipInfo メソッド" Url="html/b2875607-2e98-d92a-356b-712bbd9adc4d.htm" />
+  <HelpKINode Title="MapPalletScene.sms フィールド" Url="html/027f5019-13c2-4d8d-6d3a-88584521ad14.htm" />
+  <HelpKINode Title="MapSceneBase クラス" Url="html/0063979f-9322-6c65-17bc-1015cb4f1dcd.htm" />
+  <HelpKINode Title="MapSceneBase クラス、MapSceneBase クラスについて" Url="html/0063979f-9322-6c65-17bc-1015cb4f1dcd.htm" />
+  <HelpKINode Title="MapSceneBase クラス、コンストラクター" Url="html/97de2281-8dd4-c605-8eee-88dea7b5ba30.htm" />
+  <HelpKINode Title="MapSceneBase クラス、フィールド" Url="html/946ed746-fe0a-84b7-a74d-272c7828a041.htm" />
+  <HelpKINode Title="MapSceneBase クラス、プロパティ" Url="html/c593ad60-7fe7-0dec-0af8-6226a5e41576.htm" />
+  <HelpKINode Title="MapSceneBase クラス、メソッド" Url="html/bfa35bd3-ba45-4fb7-a6c1-b1dbb64b8d8c.htm" />
+  <HelpKINode Title="MapSceneBase.LocationToMap メソッド" Url="html/03d3ddb6-6c91-ee03-9863-6ece8a3ec203.htm" />
+  <HelpKINode Title="MapSceneBase.MapSceneBase コンストラクター" Url="html/97de2281-8dd4-c605-8eee-88dea7b5ba30.htm" />
+  <HelpKINode Title="MapShowArea プロパティ" Url="html/658cd6a0-6665-2de7-b261-c7ff969ab311.htm" />
+  <HelpKINode Title="MapShowAreaController クラス" Url="html/51163e71-f081-44c8-11ca-99a4f091bc15.htm" />
+  <HelpKINode Title="MapShowAreaController クラス、MapShowAreaController クラスについて" Url="html/51163e71-f081-44c8-11ca-99a4f091bc15.htm" />
+  <HelpKINode Title="MapShowAreaController クラス、コンストラクター" Url="html/97f35854-4145-cc97-2f76-e8ca1e19a8d7.htm" />
+  <HelpKINode Title="MapShowAreaController クラス、フィールド" Url="html/9972ce27-5580-5546-b237-105b0382f0a4.htm" />
+  <HelpKINode Title="MapShowAreaController クラス、メソッド" Url="html/c50c6f99-757c-3eb4-3557-497c67953f2e.htm" />
+  <HelpKINode Title="MapShowAreaController.AddShowMapImage メソッド" Url="html/129d67e2-2197-b254-9806-6ad944e459fc.htm" />
+  <HelpKINode Title="MapShowAreaController.ClearShowMapImage メソッド" Url="html/d64e2dac-4003-e4bf-9031-bb95ce0302e2.htm" />
+  <HelpKINode Title="MapShowAreaController.MapShowAreaController コンストラクター" Url="html/97f35854-4145-cc97-2f76-e8ca1e19a8d7.htm" />
+  <HelpKINode Title="MapShowAreaController.UpdateShowMapImage メソッド" Url="html/f5761037-3d83-8657-4140-0ad4733faad5.htm" />
+  <HelpKINode Title="mapSize フィールド" Url="html/9d450f7c-3ef7-16c5-1a1e-753892e41211.htm" />
+  <HelpKINode Title="MapSize プロパティ">
+    <HelpKINode Title="MapDataControl.MapSize プロパティ " Url="html/b6fea551-9188-ad26-f7a6-2881c0091cb9.htm" />
+    <HelpKINode Title="MapInfoFromText.MapSize プロパティ " Url="html/9a3ab3dc-230e-199b-e205-8e660085e002.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MapSizeX プロパティ">
+    <HelpKINode Title="MapData.MapSizeX プロパティ " Url="html/aed1738d-663a-3d54-1399-e0df3a9deb0c.htm" />
+    <HelpKINode Title="MapDataControl.MapSizeX プロパティ " Url="html/2fb7c541-838c-376d-9231-ba7613155edb.htm" />
+  </HelpKINode>
+  <HelpKINode Title="mapSizeXtextBox フィールド" Url="html/6ff4ed9e-f1fd-7d57-6621-aa1e19b3d128.htm" />
+  <HelpKINode Title="MapSizeY プロパティ">
+    <HelpKINode Title="MapData.MapSizeY プロパティ " Url="html/09c51278-b85a-96aa-4815-357d88f07212.htm" />
+    <HelpKINode Title="MapDataControl.MapSizeY プロパティ " Url="html/c734e0ba-c2fe-4858-418e-5193cea36b12.htm" />
+  </HelpKINode>
+  <HelpKINode Title="mapSizeYtextBox フィールド" Url="html/d5354836-8394-dca1-d55f-f34f2d2a8462.htm" />
+  <HelpKINode Title="mapWritePanel フィールド" Url="html/749cb46c-ebde-5e82-4680-e89b03878bf9.htm" />
+  <HelpKINode Title="mapWritePanel_MouseDown メソッド" Url="html/0131b50d-d783-5b68-006f-bf07739b4995.htm" />
+  <HelpKINode Title="mapWritePanel_MouseMove メソッド" Url="html/3cb07b4a-a191-92a0-4ac2-ec300424b497.htm" />
+  <HelpKINode Title="mapWritePanel_SizeChanged メソッド" Url="html/5a7b08d8-1d43-cb68-d802-e135d780f388.htm" />
+  <HelpKINode Title="MapWriteScene クラス" Url="html/8404432d-1184-ebdb-1049-63f24a0beb6a.htm" />
+  <HelpKINode Title="MapWriteScene クラス、MapWriteScene クラスについて" Url="html/8404432d-1184-ebdb-1049-63f24a0beb6a.htm" />
+  <HelpKINode Title="MapWriteScene クラス、イベント" Url="html/00d7ae27-97c0-f90b-b37a-05bfb5bb2e2b.htm" />
+  <HelpKINode Title="MapWriteScene クラス、コンストラクター" Url="html/7cbe4e62-175f-b79d-46d5-eb87243b3969.htm" />
+  <HelpKINode Title="MapWriteScene クラス、フィールド" Url="html/c27d25a8-daed-b7aa-2c2f-80a0c3e0a1f5.htm" />
+  <HelpKINode Title="MapWriteScene クラス、プロパティ" Url="html/af47a9db-13d1-761d-6b8b-a6f497dcc0c0.htm" />
+  <HelpKINode Title="MapWriteScene クラス、メソッド" Url="html/f0d59569-676b-c417-91d7-43d02dd8cc22.htm" />
+  <HelpKINode Title="MapWriteScene.Dispose メソッド" Url="html/85d4301f-4347-810d-ada6-60bdf4e37d37.htm" />
+  <HelpKINode Title="MapWriteScene.MapWriteScene コンストラクター" Url="html/7cbe4e62-175f-b79d-46d5-eb87243b3969.htm" />
+  <HelpKINode Title="MapWriteScene.UpdateLocalPos メソッド" Url="html/c0d90e38-b4f7-11fb-b8cf-7c957a8fafcd.htm" />
+  <HelpKINode Title="MapWriteScene.UpdateLocalPosEvent イベント" Url="html/9b36a308-d4d6-1e01-2c3f-79937a021a9a.htm" />
+  <HelpKINode Title="MapWriteScroll クラス" Url="html/87e35fd0-8c47-4750-10d9-b5a3f6802824.htm" />
+  <HelpKINode Title="MapWriteScroll クラス、MapWriteScroll クラスについて" Url="html/87e35fd0-8c47-4750-10d9-b5a3f6802824.htm" />
+  <HelpKINode Title="MapWriteScroll クラス、イベント" Url="html/49d09a97-074b-3ed2-55c5-0aacfa1b3271.htm" />
+  <HelpKINode Title="MapWriteScroll クラス、コンストラクター" Url="html/cf17dc0f-6d55-ac9e-eabd-ae2e4eb28e9e.htm" />
+  <HelpKINode Title="MapWriteScroll クラス、フィールド" Url="html/addd0074-3785-e828-d4c6-8f15bae13689.htm" />
+  <HelpKINode Title="MapWriteScroll クラス、メソッド" Url="html/908ee893-c8dd-531a-9a15-0ca3de5635d0.htm" />
+  <HelpKINode Title="MapWriteScroll プロパティ" Url="html/89fd32e6-0930-fb72-5424-0552bd22fa3f.htm" />
+  <HelpKINode Title="MapWriteScroll.Dispose メソッド" Url="html/89e5c5ba-81e0-d7f6-bc2c-21c5bcff1216.htm" />
+  <HelpKINode Title="MapWriteScroll.KeyScroll メソッド" Url="html/b9f0a09c-a2f1-bf93-1e74-f9e737662092.htm" />
+  <HelpKINode Title="MapWriteScroll.MapWriteScroll コンストラクター" Url="html/cf17dc0f-6d55-ac9e-eabd-ae2e4eb28e9e.htm" />
+  <HelpKINode Title="MapWriteScroll.mws フィールド" Url="html/36d9ed01-c8ee-01a5-3397-8caab5a2a71a.htm" />
+  <HelpKINode Title="MapWriteScroll.ScrollBarAddValue メソッド" Url="html/19357037-e279-e809-3f30-d967b335cc47.htm" />
+  <HelpKINode Title="MapWriteScroll.SetScrollMaximum メソッド" Url="html/b364b3ba-e9c2-f9b7-a4fb-df2eddfe3a6f.htm" />
+  <HelpKINode Title="MapWriteScroll.UpdateValue メソッド" Url="html/d74e9e19-4a00-b188-3db1-fe27e221bb23.htm" />
+  <HelpKINode Title="maxLayer フィールド" Url="html/abda2142-472d-0041-4bf5-e3077a7180f0.htm" />
+  <HelpKINode Title="mcc フィールド" Url="html/4025deb6-1979-0566-18e8-762c7708b37c.htm" />
+  <HelpKINode Title="mcrm フィールド">
+    <HelpKINode Title="MapEditForm.mcrm フィールド" Url="html/42a79f04-b323-8766-a7d0-70881bb8ef7d.htm" />
+    <HelpKINode Title="MapPalletScene.mcrm フィールド" Url="html/cab583ae-47a8-ebcf-4d7f-d2e4229a2fde.htm" />
+  </HelpKINode>
+  <HelpKINode Title="meForm フィールド" Url="html/20a3de98-03cc-6b38-5c96-37433d6b13cd.htm" />
+  <HelpKINode Title="menuStrip1 フィールド" Url="html/8aa7d6f2-aebc-7ec2-8ac4-269f6916af84.htm" />
+  <HelpKINode Title="MouseClickAction メソッド" Url="html/e3e8b302-974f-9287-a504-4fe92ac8567d.htm" />
+  <HelpKINode Title="MouseDrag メソッド" Url="html/64ad0d16-ba0d-6aaa-0623-79ad0a00f4d9.htm" />
+  <HelpKINode Title="MouseSwap クラス" Url="html/3d5766dc-7ac2-84d8-9de9-c8b90aa06880.htm" />
+  <HelpKINode Title="MouseSwap クラス、MouseSwap クラスについて" Url="html/3d5766dc-7ac2-84d8-9de9-c8b90aa06880.htm" />
+  <HelpKINode Title="MouseSwap クラス、コンストラクター" Url="html/459cc7c5-368a-0060-398f-6489d6e3f68c.htm" />
+  <HelpKINode Title="MouseSwap クラス、フィールド" Url="html/a95db340-02c4-d4cd-e8ed-ff8378ed3867.htm" />
+  <HelpKINode Title="MouseSwap クラス、メソッド" Url="html/d0bb42d9-9398-24d3-4aca-a42415617520.htm" />
+  <HelpKINode Title="mouseSwap フィールド" Url="html/8fa370fe-e0a1-5116-59fd-d910b73b981f.htm" />
+  <HelpKINode Title="MouseSwap.MouseSwap コンストラクター" Url="html/459cc7c5-368a-0060-398f-6489d6e3f68c.htm" />
+  <HelpKINode Title="MouseSwap.Move メソッド" Url="html/2c769b9f-e6c0-9846-22c0-d03d1a41fd3b.htm" />
+  <HelpKINode Title="MouseSwap.Start メソッド" Url="html/9d03f9be-2896-b772-76c7-23f8bc6f8111.htm" />
+  <HelpKINode Title="MouseSwap.tempPoint フィールド" Url="html/de0b3126-6222-ef92-0244-20280a8641cf.htm" />
+  <HelpKINode Title="MouseSwap.tempPoint2 フィールド" Url="html/5563089e-c35a-2957-f5d8-d7547710f360.htm" />
+  <HelpKINode Title="Move メソッド" Url="html/2c769b9f-e6c0-9846-22c0-d03d1a41fd3b.htm" />
+  <HelpKINode Title="mps フィールド" Url="html/d2c8214e-88e5-9a2f-3315-aa5ef07ff2cc.htm" />
+  <HelpKINode Title="msb フィールド" Url="html/e4b1f360-570b-4479-e153-3a43b4237749.htm" />
+  <HelpKINode Title="mws フィールド">
+    <HelpKINode Title="MapEditControl.mws フィールド" Url="html/8f67bc03-d8fa-fa9d-271e-c550f8caaff6.htm" />
+    <HelpKINode Title="MapWriteScroll.mws フィールド" Url="html/36d9ed01-c8ee-01a5-3397-8caab5a2a71a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="newProjectNameTextBox フィールド" Url="html/a3524823-0b30-120b-5bb5-ea05691513b1.htm" />
+  <HelpKINode Title="okButton フィールド" Url="html/4dbd0428-b66c-f2d9-449e-8a7f34bc27fb.htm" />
+  <HelpKINode Title="okButton_Click メソッド" Url="html/f9f30d1f-f122-ab80-d554-2b524e542437.htm" />
+  <HelpKINode Title="OnDragDrop メソッド" Url="html/db180ef9-ec75-2dfd-2f45-087d9a52cb67.htm" />
+  <HelpKINode Title="OnDragEnter メソッド" Url="html/414608a6-5a8f-419a-1dae-674676f66e09.htm" />
+  <HelpKINode Title="OnFormClosing メソッド" Url="html/bed3d8eb-f78a-81af-6c58-6be3b0e720ed.htm" />
+  <HelpKINode Title="OnValueChenged メソッド" Url="html/a785e4b5-2c0e-e164-1c89-79a32ce9e73b.htm" />
+  <HelpKINode Title="OverwriteProject メソッド" Url="html/b5ffd2af-58fb-833b-ed77-79a338f3740e.htm" />
+  <HelpKINode Title="palletPanel フィールド" Url="html/afa6fcc6-e673-c98a-84d9-e8152ffcea4a.htm" />
+  <HelpKINode Title="passEditMode フィールド" Url="html/38a8c2a9-bb6f-e0dc-163e-69dc45aa596e.htm" />
+  <HelpKINode Title="PassEditMode フィールド" Url="html/5aa206e0-8edd-c3dd-bea2-7e16351e6e9c.htm" />
+  <HelpKINode Title="PassEditMode_Click メソッド" Url="html/6a86d7a7-80f2-f4cd-8f15-1ee022ab81b8.htm" />
+  <HelpKINode Title="pm フィールド" Url="html/e9eec3be-708a-c937-f393-86ffc65a8d2f.htm" />
+  <HelpKINode Title="PopImageFile メソッド" Url="html/0bc17cef-99c7-7007-23d7-490c762bcf6a.htm" />
+  <HelpKINode Title="Program クラス" Url="html/7cb31dc3-ac87-b400-6984-91cb58059895.htm" />
+  <HelpKINode Title="Program クラス、Program クラスについて" Url="html/7cb31dc3-ac87-b400-6984-91cb58059895.htm" />
+  <HelpKINode Title="Program クラス、メソッド" Url="html/0d9aeefe-45f4-cd7c-e1bf-d98417419162.htm" />
+  <HelpKINode Title="Program.Main メソッド" Url="html/83b90ffd-ff12-13dd-4525-44226f7519a1.htm" />
+  <HelpKINode Title="ProjectInfo クラス" Url="html/dbb26091-836e-5166-831f-253d406f09ec.htm" />
+  <HelpKINode Title="ProjectInfo クラス、ProjectInfo クラスについて" Url="html/dbb26091-836e-5166-831f-253d406f09ec.htm" />
+  <HelpKINode Title="ProjectInfo クラス、コンストラクター" Url="html/a219cd1e-07da-aed7-8b56-3eb1fec81067.htm" />
+  <HelpKINode Title="ProjectInfo クラス、プロパティ" Url="html/92bb3106-3136-7efa-3c3e-5f1d1e425164.htm" />
+  <HelpKINode Title="ProjectInfo.BitmapSheet プロパティ" Url="html/9b24187d-8f80-c561-dbc6-0a8f310ea489.htm" />
+  <HelpKINode Title="ProjectInfo.LastId プロパティ" Url="html/20aed619-2c72-583b-1be3-6561a26e091e.htm" />
+  <HelpKINode Title="ProjectInfo.MapDataText プロパティ" Url="html/8d8cd24a-a527-c928-d170-0bf5792dce55.htm" />
+  <HelpKINode Title="ProjectInfo.ProjectInfo コンストラクター" Url="html/a219cd1e-07da-aed7-8b56-3eb1fec81067.htm" />
+  <HelpKINode Title="ProjectManager クラス" Url="html/8ae45cbb-e6ea-48cb-258f-42c41e63990e.htm" />
+  <HelpKINode Title="ProjectManager クラス、ProjectManager クラスについて" Url="html/8ae45cbb-e6ea-48cb-258f-42c41e63990e.htm" />
+  <HelpKINode Title="ProjectManager クラス、コンストラクター" Url="html/8f7830c9-0dfd-f9b3-2041-557bc388cc84.htm" />
+  <HelpKINode Title="ProjectManager クラス、フィールド" Url="html/b1f4b8ef-84f5-1661-92aa-0cd6afa24e53.htm" />
+  <HelpKINode Title="ProjectManager クラス、メソッド" Url="html/d9adedf6-1098-7695-979d-44969038a4e9.htm" />
+  <HelpKINode Title="ProjectManager.currentProjectPath フィールド" Url="html/79223dad-793f-f406-a9b9-3b70cfc3466c.htm" />
+  <HelpKINode Title="ProjectManager.LoadProject メソッド" Url="html/378921fb-9f18-ce64-58d8-786d1885f4b9.htm" />
+  <HelpKINode Title="ProjectManager.OverwriteProject メソッド" Url="html/b5ffd2af-58fb-833b-ed77-79a338f3740e.htm" />
+  <HelpKINode Title="ProjectManager.ProjectManager コンストラクター" Url="html/8f7830c9-0dfd-f9b3-2041-557bc388cc84.htm" />
+  <HelpKINode Title="ProjectManager.SaveNewProject メソッド" Url="html/86c2bc16-ca1f-2b0a-7daa-12e72a370a85.htm" />
+  <HelpKINode Title="ProjectManager.WriteTxtFile メソッド" Url="html/38a29e17-d513-9a54-b64e-49a9f7623f62.htm" />
+  <HelpKINode Title="Purunu クラス" Url="html/d85bc5fc-3eaa-33c4-9845-a7e9e2e81304.htm" />
+  <HelpKINode Title="Purunu クラス、Purunu クラスについて" Url="html/d85bc5fc-3eaa-33c4-9845-a7e9e2e81304.htm" />
+  <HelpKINode Title="Purunu クラス、コンストラクター" Url="html/9384c38e-5426-4102-cbb1-7db0cd662c74.htm" />
+  <HelpKINode Title="Purunu クラス、フィールド" Url="html/14069a71-f08f-7145-c726-8a22e1a585ed.htm" />
+  <HelpKINode Title="purunu フィールド" Url="html/b992c6a1-8cc1-c8d9-1349-7378fdb3a094.htm" />
+  <HelpKINode Title="Purunu.Purunu コンストラクター" Url="html/9384c38e-5426-4102-cbb1-7db0cd662c74.htm" />
+  <HelpKINode Title="Purunu.runFlag フィールド" Url="html/bf500c43-3342-104c-eb28-c291e96ea9bf.htm" />
+  <HelpKINode Title="Purunu.timer フィールド" Url="html/95d6194f-0877-cee2-ba9e-7b0e353bd7f4.htm" />
+  <HelpKINode Title="PushImageFile メソッド" Url="html/84da9877-950e-0a68-3f66-bdd15bff4d19.htm" />
+  <HelpKINode Title="PutImage メソッド" Url="html/38677a36-9427-e785-09d0-8e50c544bc84.htm" />
+  <HelpKINode Title="RemoveId メソッド" Url="html/db93502a-3262-b7fa-496b-2b76c66917a2.htm" />
+  <HelpKINode Title="RemoveMapChip メソッド" Url="html/c1910263-c474-54e3-0ff0-2ba590dd2a89.htm" />
+  <HelpKINode Title="resetMapChip メソッド" Url="html/1967f861-fa8f-fb56-fc25-b57bd32f9cad.htm" />
+  <HelpKINode Title="ReverseEnablePassFlag メソッド">
+    <HelpKINode Title="MapChip.ReverseEnablePassFlag メソッド " Url="html/4f258246-fac2-50f5-f7b1-e71f74c25110.htm" />
+    <HelpKINode Title="MapPalletData.ReverseEnablePassFlag メソッド " Url="html/39276050-04f2-4a65-77c1-95870e0c9e36.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Rotate メソッド" Url="html/4ac74485-b0a8-5331-7a39-32bce077fbe1.htm" />
+  <HelpKINode Title="RotateLeft メソッド">
+    <HelpKINode Title="MapOneMass.RotateLeft メソッド " Url="html/4de97e5e-0034-8e92-c3f3-447700a638f7.htm" />
+    <HelpKINode Title="TurnController.RotateLeft メソッド " Url="html/a162d38c-701a-c925-449b-eb4c19014303.htm" />
+  </HelpKINode>
+  <HelpKINode Title="rotateLeft 列挙体メンバー" Url="html/6d3f2d0f-dd9a-294a-8272-1e68370edc0f.htm" />
+  <HelpKINode Title="rotateLeftButton フィールド">
+    <HelpKINode Title="MapEditForm.rotateLeftButton フィールド" Url="html/34e14263-6cd4-8de6-3cf7-8e7d05fb5a4a.htm" />
+    <HelpKINode Title="SelectImageForm.rotateLeftButton フィールド" Url="html/0576f4a5-7133-bf9f-7727-acef97a11b29.htm" />
+  </HelpKINode>
+  <HelpKINode Title="rotateLeftButton_Click メソッド">
+    <HelpKINode Title="MapEditForm.rotateLeftButton_Click メソッド " Url="html/ea70048a-e838-794f-130b-3436920ecece.htm" />
+    <HelpKINode Title="SelectImageForm.rotateLeftButton_Click メソッド " Url="html/ddd91c79-2773-1dc2-35ca-4500ce2bdd9a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RotateRight メソッド">
+    <HelpKINode Title="MapOneMass.RotateRight メソッド " Url="html/af99a70d-931f-905f-3fcf-f725d9ab756f.htm" />
+    <HelpKINode Title="TurnController.RotateRight メソッド " Url="html/6eaf6033-226c-727f-bbed-08a538b40b47.htm" />
+  </HelpKINode>
+  <HelpKINode Title="rotateRight 列挙体メンバー" Url="html/6d3f2d0f-dd9a-294a-8272-1e68370edc0f.htm" />
+  <HelpKINode Title="rotateRightButton フィールド">
+    <HelpKINode Title="MapEditForm.rotateRightButton フィールド" Url="html/377d91d6-d793-9370-ec7f-96ab79f44736.htm" />
+    <HelpKINode Title="SelectImageForm.rotateRightButton フィールド" Url="html/fbf5b28b-b7e3-e3e8-4e79-fc212ae1826a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="rotateRightButton_Click メソッド">
+    <HelpKINode Title="MapEditForm.rotateRightButton_Click メソッド " Url="html/a2ee8dc0-60f6-6eda-3368-9a7d30b23baa.htm" />
+    <HelpKINode Title="SelectImageForm.rotateRightButton_Click メソッド " Url="html/e3c8a505-9330-9f6f-1ddf-fa7b97e3dcd8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="runFlag フィールド" Url="html/bf500c43-3342-104c-eb28-c291e96ea9bf.htm" />
+  <HelpKINode Title="saveButton フィールド" Url="html/7b55d26e-35f1-97fd-b924-aa3788583dca.htm" />
+  <HelpKINode Title="saveButton_Click メソッド" Url="html/960aa645-c399-6db5-31e3-0922bf4c1ff0.htm" />
+  <HelpKINode Title="SaveNewProject メソッド">
+    <HelpKINode Title="MapEditForm.SaveNewProject メソッド " Url="html/7730777c-6cef-3adb-ee90-929756a840e7.htm" />
+    <HelpKINode Title="ProjectManager.SaveNewProject メソッド " Url="html/86c2bc16-ca1f-2b0a-7daa-12e72a370a85.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SaveNewProjectForm クラス" Url="html/92633b7e-931c-53a1-7070-be1977c6504f.htm" />
+  <HelpKINode Title="SaveNewProjectForm クラス、SaveNewProjectForm クラスについて" Url="html/92633b7e-931c-53a1-7070-be1977c6504f.htm" />
+  <HelpKINode Title="SaveNewProjectForm クラス、コンストラクター" Url="html/8e50d5b6-6c53-5e3e-d5d1-45660465cd0c.htm" />
+  <HelpKINode Title="SaveNewProjectForm クラス、フィールド" Url="html/4c360835-5aaa-3815-89ea-8a426a56a954.htm" />
+  <HelpKINode Title="SaveNewProjectForm クラス、メソッド" Url="html/a17501e0-3ba2-2b45-ebc4-7f30d9a4e9d4.htm" />
+  <HelpKINode Title="SaveNewProjectForm.components フィールド" Url="html/0ab8db60-aa40-e454-97f1-f73d900572fb.htm" />
+  <HelpKINode Title="SaveNewProjectForm.Dispose メソッド" Url="html/99a0e2e8-edde-1526-95a8-fb6f8cb528fd.htm" />
+  <HelpKINode Title="SaveNewProjectForm.folderPathTextBox フィールド" Url="html/62215728-3636-f354-6bd6-abaa36498feb.htm" />
+  <HelpKINode Title="SaveNewProjectForm.folderSelectButton フィールド" Url="html/9d40fad4-a7da-1cf1-8c82-453975c7b674.htm" />
+  <HelpKINode Title="SaveNewProjectForm.folderSelectButton_Click メソッド" Url="html/8cb233cf-03ee-3af1-124a-0a4c193280d2.htm" />
+  <HelpKINode Title="SaveNewProjectForm.InitializeComponent メソッド" Url="html/3c142d9f-8a58-07d2-efff-ef45a2f7133f.htm" />
+  <HelpKINode Title="SaveNewProjectForm.label1 フィールド" Url="html/9433c102-4819-02d0-3d3d-482da9ad0fee.htm" />
+  <HelpKINode Title="SaveNewProjectForm.label2 フィールド" Url="html/06a285be-8e2b-77d8-678c-7d626c6de640.htm" />
+  <HelpKINode Title="SaveNewProjectForm.meForm フィールド" Url="html/20a3de98-03cc-6b38-5c96-37433d6b13cd.htm" />
+  <HelpKINode Title="SaveNewProjectForm.newProjectNameTextBox フィールド" Url="html/a3524823-0b30-120b-5bb5-ea05691513b1.htm" />
+  <HelpKINode Title="SaveNewProjectForm.saveButton フィールド" Url="html/7b55d26e-35f1-97fd-b924-aa3788583dca.htm" />
+  <HelpKINode Title="SaveNewProjectForm.saveButton_Click メソッド" Url="html/960aa645-c399-6db5-31e3-0922bf4c1ff0.htm" />
+  <HelpKINode Title="SaveNewProjectForm.SaveNewProjectForm コンストラクター" Url="html/8e50d5b6-6c53-5e3e-d5d1-45660465cd0c.htm" />
+  <HelpKINode Title="ScaleFix メソッド" Url="html/b6bcfc23-de29-0681-f056-2bc84c65349c.htm" />
+  <HelpKINode Title="ScrollBarAddValue メソッド" Url="html/19357037-e279-e809-3f30-d967b335cc47.htm" />
+  <HelpKINode Title="SelectImageForm クラス" Url="html/fc91fda2-645c-c305-d72e-9078aa14f9bf.htm" />
+  <HelpKINode Title="SelectImageForm クラス、SelectImageForm クラスについて" Url="html/fc91fda2-645c-c305-d72e-9078aa14f9bf.htm" />
+  <HelpKINode Title="SelectImageForm クラス、コンストラクター" Url="html/1706d2cf-71db-808c-572c-55da4e2aaec7.htm" />
+  <HelpKINode Title="SelectImageForm クラス、フィールド" Url="html/f3704825-61d8-3a8d-9f9d-ec500537b634.htm" />
+  <HelpKINode Title="SelectImageForm クラス、メソッド" Url="html/2dc253be-1d17-187d-ad9f-01a69cd23409.htm" />
+  <HelpKINode Title="SelectImageForm.components フィールド" Url="html/54d3b1d0-fe4d-82d5-40a4-718fe126a102.htm" />
+  <HelpKINode Title="SelectImageForm.contextMenuStrip1 フィールド" Url="html/74461597-559e-7f28-e7f1-1c0846cca0b0.htm" />
+  <HelpKINode Title="SelectImageForm.Dispose メソッド" Url="html/d9c1a7d8-e8dd-cfc2-9c9a-30d1a61a0ca2.htm" />
+  <HelpKINode Title="SelectImageForm.GetSelectMapChip メソッド" Url="html/2c85214e-c905-84ef-f875-5b54724eaea1.htm" />
+  <HelpKINode Title="SelectImageForm.InitializeComponent メソッド" Url="html/87757e98-7741-9d92-87a3-3bdc66416d9c.htm" />
+  <HelpKINode Title="SelectImageForm.LoadProject メソッド" Url="html/e47044d9-bfa7-990d-8b51-977900554824.htm" />
+  <HelpKINode Title="SelectImageForm.mps フィールド" Url="html/d2c8214e-88e5-9a2f-3315-aa5ef07ff2cc.htm" />
+  <HelpKINode Title="SelectImageForm.OnDragDrop メソッド" Url="html/db180ef9-ec75-2dfd-2f45-087d9a52cb67.htm" />
+  <HelpKINode Title="SelectImageForm.OnDragEnter メソッド" Url="html/414608a6-5a8f-419a-1dae-674676f66e09.htm" />
+  <HelpKINode Title="SelectImageForm.OnFormClosing メソッド" Url="html/bed3d8eb-f78a-81af-6c58-6be3b0e720ed.htm" />
+  <HelpKINode Title="SelectImageForm.palletPanel フィールド" Url="html/afa6fcc6-e673-c98a-84d9-e8152ffcea4a.htm" />
+  <HelpKINode Title="SelectImageForm.PassEditMode フィールド" Url="html/5aa206e0-8edd-c3dd-bea2-7e16351e6e9c.htm" />
+  <HelpKINode Title="SelectImageForm.PassEditMode_Click メソッド" Url="html/6a86d7a7-80f2-f4cd-8f15-1ee022ab81b8.htm" />
+  <HelpKINode Title="SelectImageForm.rotateLeftButton フィールド" Url="html/0576f4a5-7133-bf9f-7727-acef97a11b29.htm" />
+  <HelpKINode Title="SelectImageForm.rotateLeftButton_Click メソッド" Url="html/ddd91c79-2773-1dc2-35ca-4500ce2bdd9a.htm" />
+  <HelpKINode Title="SelectImageForm.rotateRightButton フィールド" Url="html/fbf5b28b-b7e3-e3e8-4e79-fc212ae1826a.htm" />
+  <HelpKINode Title="SelectImageForm.rotateRightButton_Click メソッド" Url="html/e3c8a505-9330-9f6f-1ddf-fa7b97e3dcd8.htm" />
+  <HelpKINode Title="SelectImageForm.SelectImageForm コンストラクター" Url="html/1706d2cf-71db-808c-572c-55da4e2aaec7.htm" />
+  <HelpKINode Title="SelectImageForm.SelectImageForm_Activated メソッド" Url="html/64df1b8c-0cec-a8b0-fb44-8e623466e501.htm" />
+  <HelpKINode Title="SelectImageForm.selectPicture フィールド" Url="html/93287a14-1bf6-b788-c745-37bb9d419445.htm" />
+  <HelpKINode Title="SelectImageForm.sms フィールド" Url="html/9c54e2ec-189c-1219-5da6-0e54fe0d8545.htm" />
+  <HelpKINode Title="SelectImageForm.turnHorizontalButton フィールド" Url="html/801a362a-f534-0d43-2fec-be740107999f.htm" />
+  <HelpKINode Title="SelectImageForm.turnHorizontalButton_Click メソッド" Url="html/ba092966-0580-c4e6-b52a-34b91b25fb95.htm" />
+  <HelpKINode Title="SelectImageForm.turnVerticalButton フィールド" Url="html/d49ad5b5-40b8-f728-eaed-8187af960fae.htm" />
+  <HelpKINode Title="SelectImageForm.turnVerticalButton_Click メソッド" Url="html/353333f8-6fda-2763-9f20-1b013c5f8929.htm" />
+  <HelpKINode Title="SelectImageForm.vScrollBar1 フィールド" Url="html/e3a014f2-3bf6-5f6b-d7cf-ebd73322e48c.htm" />
+  <HelpKINode Title="SelectImageForm_Activated メソッド" Url="html/64df1b8c-0cec-a8b0-fb44-8e623466e501.htm" />
+  <HelpKINode Title="SelectMapChipScene クラス" Url="html/f2a50c90-9a2c-d567-71e7-350221872230.htm" />
+  <HelpKINode Title="SelectMapChipScene クラス、SelectMapChipScene クラスについて" Url="html/f2a50c90-9a2c-d567-71e7-350221872230.htm" />
+  <HelpKINode Title="SelectMapChipScene クラス、コンストラクター" Url="html/7894fc76-33d0-7972-347f-7adc5e6aeb05.htm" />
+  <HelpKINode Title="SelectMapChipScene クラス、フィールド" Url="html/3eda6de2-3dfc-2b6e-9bb6-57244aacac59.htm" />
+  <HelpKINode Title="SelectMapChipScene クラス、プロパティ" Url="html/2e5ec3fe-a1be-1380-2ecf-58b095774f44.htm" />
+  <HelpKINode Title="SelectMapChipScene クラス、メソッド" Url="html/aaec75cb-261c-07b9-4445-aed0f3a29174.htm" />
+  <HelpKINode Title="SelectMapChipScene.ActionKind 列挙体" Url="html/6d3f2d0f-dd9a-294a-8272-1e68370edc0f.htm" />
+  <HelpKINode Title="SelectMapChipScene.DoAction メソッド" Url="html/82b7b3af-79d1-26da-6ccf-07eed596535e.htm" />
+  <HelpKINode Title="SelectMapChipScene.MapChip プロパティ" Url="html/ecd0ade5-27e9-c62d-4f01-5cf6c79a07ae.htm" />
+  <HelpKINode Title="SelectMapChipScene.resetMapChip メソッド" Url="html/1967f861-fa8f-fb56-fc25-b57bd32f9cad.htm" />
+  <HelpKINode Title="SelectMapChipScene.SelectMapChipScene コンストラクター" Url="html/7894fc76-33d0-7972-347f-7adc5e6aeb05.htm" />
+  <HelpKINode Title="SelectMapChipScene.setMapChip メソッド" Url="html/bf314317-f56f-c5ef-d40f-1f949d0b2606.htm" />
+  <HelpKINode Title="selectPicture フィールド" Url="html/93287a14-1bf6-b788-c745-37bb9d419445.htm" />
+  <HelpKINode Title="setChangeListEvent メソッド" Url="html/e929d70d-986c-1aac-99aa-134b6d7fd200.htm" />
+  <HelpKINode Title="SetChipStateSprite メソッド" Url="html/33f397e3-a73e-3103-3d5a-4d8b680452df.htm" />
+  <HelpKINode Title="SetDrawMapChipInfo メソッド" Url="html/b2875607-2e98-d92a-356b-712bbd9adc4d.htm" />
+  <HelpKINode Title="SetId メソッド">
+    <HelpKINode Title="MapChip.SetId メソッド " Url="html/d714b73f-7c34-2a79-5c88-94f65a96604e.htm" />
+    <HelpKINode Title="WriteId.SetId メソッド " Url="html/933efdeb-9811-9a86-6c30-9ee272107d82.htm" />
+  </HelpKINode>
+  <HelpKINode Title="setMapChip メソッド" Url="html/bf314317-f56f-c5ef-d40f-1f949d0b2606.htm" />
+  <HelpKINode Title="SetScrollDelta メソッド" Url="html/84eb58ae-9364-a775-df71-c5a9af0b5791.htm" />
+  <HelpKINode Title="SetScrollMaximum メソッド" Url="html/b364b3ba-e9c2-f9b7-a4fb-df2eddfe3a6f.htm" />
+  <HelpKINode Title="sif フィールド" Url="html/b1213fed-433e-7f7b-ac29-8319da4147f7.htm" />
+  <HelpKINode Title="sms フィールド">
+    <HelpKINode Title="MapPalletScene.sms フィールド" Url="html/027f5019-13c2-4d8d-6d3a-88584521ad14.htm" />
+    <HelpKINode Title="SelectImageForm.sms フィールド" Url="html/9c54e2ec-189c-1219-5da6-0e54fe0d8545.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Start メソッド" Url="html/9d03f9be-2896-b772-76c7-23f8bc6f8111.htm" />
+  <HelpKINode Title="StartForm クラス" Url="html/9f1c835c-9248-7f49-2527-b04e0bbba734.htm" />
+  <HelpKINode Title="StartForm クラス、StartForm クラスについて" Url="html/9f1c835c-9248-7f49-2527-b04e0bbba734.htm" />
+  <HelpKINode Title="StartForm クラス、コンストラクター" Url="html/8c51b929-c037-f9e1-c4a6-1ec54615ee2f.htm" />
+  <HelpKINode Title="StartForm クラス、フィールド" Url="html/e531e274-aeea-a21e-34e4-d8e514ad2a72.htm" />
+  <HelpKINode Title="StartForm クラス、プロパティ" Url="html/015d59ec-4118-8f4f-33aa-9663fa255bac.htm" />
+  <HelpKINode Title="StartForm クラス、メソッド" Url="html/16a97d12-c5d6-95ce-72a7-bc6fcc7921d6.htm" />
+  <HelpKINode Title="StartForm.components フィールド" Url="html/c197c37c-9129-d360-8ec1-8f19163c99fa.htm" />
+  <HelpKINode Title="StartForm.Dispose メソッド" Url="html/ff2ea508-54af-0c48-24ed-425ee150a37d.htm" />
+  <HelpKINode Title="StartForm.InitializeComponent メソッド" Url="html/195805e6-0bdf-4a00-d445-8bb18c2a5656.htm" />
+  <HelpKINode Title="StartForm.label1 フィールド" Url="html/6a9219ff-8de4-373d-e8e0-12170702d910.htm" />
+  <HelpKINode Title="StartForm.MapChipSize プロパティ" Url="html/6bb341e2-41dc-439f-de34-68dabb6c77ae.htm" />
+  <HelpKINode Title="StartForm.mapChipSizeTextBox フィールド" Url="html/0b029da9-2646-33f2-bab3-8ab3fe93a4d3.htm" />
+  <HelpKINode Title="StartForm.okButton フィールド" Url="html/4dbd0428-b66c-f2d9-449e-8a7f34bc27fb.htm" />
+  <HelpKINode Title="StartForm.okButton_Click メソッド" Url="html/f9f30d1f-f122-ab80-d554-2b524e542437.htm" />
+  <HelpKINode Title="StartForm.StartForm コンストラクター" Url="html/8c51b929-c037-f9e1-c4a6-1ec54615ee2f.htm" />
+  <HelpKINode Title="SwapId メソッド" Url="html/9ff63012-b48c-3dfe-d075-00e1df52b787.htm" />
+  <HelpKINode Title="SwapImageFile メソッド" Url="html/b3dff79a-0977-906d-8889-7612f44e4e83.htm" />
+  <HelpKINode Title="SwapMapChip メソッド" Url="html/e9e504db-b9f0-747e-2242-42cd6ed5bfb2.htm" />
+  <HelpKINode Title="SwapMapChips メソッド" Url="html/f62bbe63-ac57-a672-8abf-ff4b6148273a.htm" />
+  <HelpKINode Title="SwitchTurnFlag メソッド" Url="html/3206d1a3-aa92-841b-fe2f-89a1dd17d053.htm" />
+  <HelpKINode Title="tempPoint フィールド" Url="html/de0b3126-6222-ef92-0244-20280a8641cf.htm" />
+  <HelpKINode Title="tempPoint2 フィールド" Url="html/5563089e-c35a-2957-f5d8-d7547710f360.htm" />
+  <HelpKINode Title="textureList フィールド" Url="html/9cef1bf3-dc3f-e75e-ce35-faeb110cfc27.htm" />
+  <HelpKINode Title="timer フィールド" Url="html/95d6194f-0877-cee2-ba9e-7b0e353bd7f4.htm" />
+  <HelpKINode Title="TryParse メソッド" Url="html/480e65b5-c25c-d9f9-54c0-dbe0a75eae0b.htm" />
+  <HelpKINode Title="Turn プロパティ">
+    <HelpKINode Title="MapDataControl.Turn プロパティ " Url="html/a802e0e6-d204-30fd-435d-85e86f3805af.htm" />
+    <HelpKINode Title="MapInfoFromText.Turn プロパティ " Url="html/dd4ee17f-01b3-baac-e4f0-08c3d05d6de9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TurnController クラス" Url="html/553cdde5-23c0-2e0d-1646-a910cea112ad.htm" />
+  <HelpKINode Title="TurnController クラス、TurnController クラスについて" Url="html/553cdde5-23c0-2e0d-1646-a910cea112ad.htm" />
+  <HelpKINode Title="TurnController クラス、コンストラクター" Url="html/1d411413-6096-f222-5ce7-56e77fcf10ad.htm" />
+  <HelpKINode Title="TurnController クラス、フィールド" Url="html/08024416-b1ca-f0e8-c648-a2d6fb4f0ea2.htm" />
+  <HelpKINode Title="TurnController クラス、メソッド" Url="html/8c88f873-bc42-a23b-6593-8935268ce7e9.htm" />
+  <HelpKINode Title="TurnController.RotateLeft メソッド" Url="html/a162d38c-701a-c925-449b-eb4c19014303.htm" />
+  <HelpKINode Title="TurnController.RotateRight メソッド" Url="html/6eaf6033-226c-727f-bbed-08a538b40b47.htm" />
+  <HelpKINode Title="TurnController.TurnController コンストラクター" Url="html/1d411413-6096-f222-5ce7-56e77fcf10ad.htm" />
+  <HelpKINode Title="TurnController.TurnHorizontal メソッド" Url="html/da59125d-9d29-c840-cf75-f507bdcc24df.htm" />
+  <HelpKINode Title="TurnController.TurnVertical メソッド" Url="html/e2d49f6f-c14b-42ed-dc32-e4077d0e904f.htm" />
+  <HelpKINode Title="TurnHorizontal メソッド">
+    <HelpKINode Title="MapChip.TurnHorizontal メソッド " Url="html/04ec30cd-b2bb-5837-f25d-f4f672d9d3dd.htm" />
+    <HelpKINode Title="MapOneMass.TurnHorizontal メソッド " Url="html/34fc69fa-7d7b-d244-ba26-15ff16f5d42d.htm" />
+    <HelpKINode Title="TurnController.TurnHorizontal メソッド " Url="html/da59125d-9d29-c840-cf75-f507bdcc24df.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TurnHorizontal 列挙体メンバー" Url="html/6d3f2d0f-dd9a-294a-8272-1e68370edc0f.htm" />
+  <HelpKINode Title="turnHorizontalButton フィールド">
+    <HelpKINode Title="MapEditForm.turnHorizontalButton フィールド" Url="html/058429b1-724c-dad2-e2c5-a5faa84077ac.htm" />
+    <HelpKINode Title="SelectImageForm.turnHorizontalButton フィールド" Url="html/801a362a-f534-0d43-2fec-be740107999f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="turnHorizontalButton_Click メソッド">
+    <HelpKINode Title="MapEditForm.turnHorizontalButton_Click メソッド " Url="html/5cc8d6ee-d1f3-cdd4-7277-97dbb1a5687e.htm" />
+    <HelpKINode Title="SelectImageForm.turnHorizontalButton_Click メソッド " Url="html/ba092966-0580-c4e6-b52a-34b91b25fb95.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TurnVertical メソッド">
+    <HelpKINode Title="MapChip.TurnVertical メソッド " Url="html/d70aa903-4083-58a7-e1ae-87ad27eb6320.htm" />
+    <HelpKINode Title="MapOneMass.TurnVertical メソッド " Url="html/4daeb243-abfa-2555-b88f-43f8bb028639.htm" />
+    <HelpKINode Title="TurnController.TurnVertical メソッド " Url="html/e2d49f6f-c14b-42ed-dc32-e4077d0e904f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TurnVertical 列挙体メンバー" Url="html/6d3f2d0f-dd9a-294a-8272-1e68370edc0f.htm" />
+  <HelpKINode Title="turnVerticalButton フィールド">
+    <HelpKINode Title="MapEditForm.turnVerticalButton フィールド" Url="html/4d9d5377-89f5-4e96-b623-f13fbe04adc1.htm" />
+    <HelpKINode Title="SelectImageForm.turnVerticalButton フィールド" Url="html/d49ad5b5-40b8-f728-eaed-8187af960fae.htm" />
+  </HelpKINode>
+  <HelpKINode Title="turnVerticalButton_Click メソッド">
+    <HelpKINode Title="MapEditForm.turnVerticalButton_Click メソッド " Url="html/2eb9a5c7-e3d6-4ce6-7f06-4a4a1d0c0b2b.htm" />
+    <HelpKINode Title="SelectImageForm.turnVerticalButton_Click メソッド " Url="html/353333f8-6fda-2763-9f20-1b013c5f8929.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UpdateAngle メソッド" Url="html/1bfd47bc-042a-1eca-dd4c-c94f8a5193c5.htm" />
+  <HelpKINode Title="updateButton フィールド" Url="html/ae9aaffa-e1ae-eee4-c3c2-5fcb26657a55.htm" />
+  <HelpKINode Title="updateButton_Click メソッド" Url="html/b8d7b21a-c057-306f-48bf-a07074a0c923.htm" />
+  <HelpKINode Title="UpdateLocalPos メソッド" Url="html/c0d90e38-b4f7-11fb-b8cf-7c957a8fafcd.htm" />
+  <HelpKINode Title="UpdateLocalPosEvent イベント" Url="html/9b36a308-d4d6-1e01-2c3f-79937a021a9a.htm" />
+  <HelpKINode Title="UpdateShowMapImage メソッド" Url="html/f5761037-3d83-8657-4140-0ad4733faad5.htm" />
+  <HelpKINode Title="UpdateTexture メソッド" Url="html/6b5458d2-504e-df53-5558-1ab4fdeac091.htm" />
+  <HelpKINode Title="UpdateValue メソッド" Url="html/d74e9e19-4a00-b188-3db1-fe27e221bb23.htm" />
+  <HelpKINode Title="Utility クラス" Url="html/87920ff0-f9a0-bbcf-8655-77418ca02025.htm" />
+  <HelpKINode Title="Utility クラス、Utility クラスについて" Url="html/87920ff0-f9a0-bbcf-8655-77418ca02025.htm" />
+  <HelpKINode Title="value プロパティ" Url="html/1ce19cd7-107f-2a29-702b-626c43766b5a.htm" />
+  <HelpKINode Title="ValueChenged イベント" Url="html/0b83e720-66a2-b79f-7d72-0dc78a1e7d19.htm" />
+  <HelpKINode Title="vScroll フィールド" Url="html/26a69998-748f-294a-8acc-2d5969642541.htm" />
+  <HelpKINode Title="vScrollBar1 フィールド">
+    <HelpKINode Title="MapEditForm.vScrollBar1 フィールド" Url="html/6d226dcc-81d7-d467-551a-f92fbb9b451f.htm" />
+    <HelpKINode Title="SelectImageForm.vScrollBar1 フィールド" Url="html/e3a014f2-3bf6-5f6b-d7cf-ebd73322e48c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WriteId クラス" Url="html/08ee58ef-0ce8-6a9b-ea24-1d19aa2baed0.htm" />
+  <HelpKINode Title="WriteId クラス、WriteId クラスについて" Url="html/08ee58ef-0ce8-6a9b-ea24-1d19aa2baed0.htm" />
+  <HelpKINode Title="WriteId クラス、イベント" Url="html/7a9cc491-5f0c-4334-55d3-07701bfc321b.htm" />
+  <HelpKINode Title="WriteId クラス、コンストラクター" Url="html/e0d6023b-cf8d-3774-879d-b5d54552cc99.htm" />
+  <HelpKINode Title="WriteId クラス、フィールド" Url="html/99f71201-4dff-0192-4b63-5b8f3bae6607.htm" />
+  <HelpKINode Title="WriteId クラス、プロパティ" Url="html/487d3426-99f0-6861-05e3-14e75254348f.htm" />
+  <HelpKINode Title="WriteId クラス、メソッド" Url="html/0bff8f05-b723-00df-ea87-e583582d64a5.htm" />
+  <HelpKINode Title="WriteId.Dispose メソッド" Url="html/209f80dc-6e7d-4fc3-4806-130cbd3e12f6.htm" />
+  <HelpKINode Title="WriteId.SetId メソッド" Url="html/933efdeb-9811-9a86-6c30-9ee272107d82.htm" />
+  <HelpKINode Title="WriteId.WriteId コンストラクター" Url="html/e0d6023b-cf8d-3774-879d-b5d54552cc99.htm" />
+  <HelpKINode Title="WriteTxtFile メソッド" Url="html/38a29e17-d513-9a54-b64e-49a9f7623f62.htm" />
+  <HelpKINode Title="ファイルToolStripMenuItem フィールド" Url="html/7186e3da-95ec-ab08-e1f8-cdedbcfbda8c.htm" />
+  <HelpKINode Title="上書きToolStripMenuItem フィールド" Url="html/433d020a-a37f-f02d-cc3c-54c84878f259.htm" />
+  <HelpKINode Title="上書きToolStripMenuItem_Click メソッド" Url="html/df97dca1-64b8-61b3-339d-5c65c3110ad9.htm" />
+  <HelpKINode Title="保存ToolStripMenuItem フィールド" Url="html/0aa52541-820c-9e7f-b8e0-59fe32e123d7.htm" />
+  <HelpKINode Title="保存ToolStripMenuItem_Click メソッド" Url="html/aa1f9226-ac0e-bd68-e2b2-1cf8b5698d85.htm" />
+  <HelpKINode Title="画像出力ToolStripMenuItem1 フィールド" Url="html/d075ac56-695f-e62a-6fb8-9a2a42c35c6f.htm" />
+  <HelpKINode Title="画像出力ToolStripMenuItem_Click メソッド" Url="html/1b0147ce-0f46-78f6-2a9a-557b735fa09d.htm" />
+  <HelpKINode Title="編集中 列挙体メンバー" Url="html/3808a8ea-57f1-1c48-af72-7255cbe4fc8a.htm" />
+  <HelpKINode Title="設定ToolStripMenuItem フィールド" Url="html/53cb10a1-55dd-9467-4f5a-d70efce1f4e7.htm" />
+  <HelpKINode Title="設定ToolStripMenuItem_Click メソッド" Url="html/c778ae5c-72a4-9c69-c454-121d4d13bfd5.htm" />
+  <HelpKINode Title="通行判定 列挙体メンバー" Url="html/3808a8ea-57f1-1c48-af72-7255cbe4fc8a.htm" />
+  <HelpKINode Title="開くToolStripMenuItem フィールド" Url="html/3c4302a3-8b15-3801-f68d-66533c4a9820.htm" />
+  <HelpKINode Title="開くToolStripMenuItem_Click メソッド" Url="html/82e92ab4-d520-be3c-27dc-006ee139316c.htm" />
+</HelpKI>

@@ -8,6 +8,7 @@ using DxLibDLL;
 namespace MapEdit
 {
     //マップに線を引く
+    //スタティックが混在してるのはいささか不愉快であるが直すほどでもないだろう
    public class MapGrid:DXEX.Node
     {
         private static List<MapGrid> mapGridList=new List<MapGrid>();

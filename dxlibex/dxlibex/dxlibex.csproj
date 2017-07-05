@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Automaton\Automaton.cs" />
     <Compile Include="Base\Automaton\SemanticAction.cs" />
     <Compile Include="Base\Automaton\Rule.cs" />
     <Compile Include="Base\Resource\ITexture.cs" />

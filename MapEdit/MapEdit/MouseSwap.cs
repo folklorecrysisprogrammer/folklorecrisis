@@ -9,6 +9,7 @@ namespace MapEdit
 {
     //マップパレットにて、マウス操作で
     //マップチップを入れ替えるクラス
+    //私はよくわからない処理をこのクラスに閉じ込めることに成功した
     class MouseSwap
     {
         private Point tempPoint;

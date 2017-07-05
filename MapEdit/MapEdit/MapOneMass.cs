@@ -9,6 +9,8 @@ using DxLibDLL;
 namespace MapEdit
 {
     //マップの1マスを管理するクラス
+    //mapChipsの参照を渡しているのが駄目だな・・・
+    //カプセル化できてない。やり直し
     public class MapOneMass:DXEX.Node
     {
         //画像を表示するスプライトを
