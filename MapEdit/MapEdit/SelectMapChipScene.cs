@@ -38,6 +38,8 @@ namespace MapEdit
         }
 
         //各種アクションを実行
+        //これは制御結合だ！最悪。しかし教訓のため残しておこう
+        //（直すのが面倒とかではない）
         public void DoAction(ActionKind actionKind)
         {
             switch (actionKind)
