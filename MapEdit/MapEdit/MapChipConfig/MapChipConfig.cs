@@ -4,27 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapEdit
+namespace MapEdit.MapChipConfig
 {
+    // 1マスあたりのコンフィグ情報(通行可能など)を設定
     public class MapChipConfig
     {
-        //エディットモードの種類
-        public enum PassEditModeKind
-        {
-            通行判定,
-            編集中
-        }
-        //エディットモードを保持する変数
-        public static PassEditModeKind passEditMode = PassEditModeKind.通行判定;
-
-        //エディットモード変更
-        public static void ChangePassEditMode()
-        {
-            if (passEditMode == PassEditModeKind.通行判定)
-                passEditMode = PassEditModeKind.編集中;
-            else 
-                passEditMode = PassEditModeKind.通行判定;
-        }
+        // ToDo: そもそも通行判定を設定中かとか持つべきじゃない
 
         public bool EnablePass { get; set; }
         // DXEX.Sprite chipStateSprite;

@@ -5,7 +5,8 @@ using System;
 
 namespace MapEdit
 {
-    //マップを表示するシーン
+    // マップを表示するシーン
+    // (実際にお絵かきする方)
     public class MapWriteScene : MapSceneBase
     {
         public event Action UpdateLocalPosEvent;

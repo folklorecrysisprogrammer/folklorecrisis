@@ -19,7 +19,7 @@ namespace MapEdit
 
         public Id Id { get; private set; }
 
-        private MapChipConfig mcc;
+        private MapChipConfig.MapChipConfig mcc;
 
         public void ClearImage()
         {
@@ -40,7 +40,7 @@ namespace MapEdit
         public MapChip(int mapChipSize)
         {
             MapChipSize = mapChipSize;
-            mcc = new MapChipConfig();
+            mcc = new MapChipConfig.MapChipConfig();
         }
 
         public void ReverseEnablePassFlag()

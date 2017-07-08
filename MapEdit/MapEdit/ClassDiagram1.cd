@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MapEdit.ConfigForm" Collapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAgAACAAQBAAAAGAAAADAAAGAAEAAAAAIAAAAAA=</HashCode>
+      <FileName>ConfigForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.FileManager" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FileManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.Id" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAACAgA=</HashCode>
+      <FileName>Id.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.WriteId" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Id.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MapEdit.IdManager" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAIACAAAAAAAIAIAA=</HashCode>
+      <FileName>IdManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapChip" Collapsed="true">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACBAAgAAAAIABAAAAAAAAAAAAAAIAEAsAAAAhAAAA=</HashCode>
+      <FileName>MapChip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapChipConfigSprite" Collapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>MapChipConfigSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapChipResourceManager" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEACAAAAAAgAABAAAQAIBFAACAAAAAAggAoAAAA=</HashCode>
+      <FileName>MapChipResourceManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapEditForm" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IwjICQAAALIIEAwABFCCgEIiAAAYgCAARCCiCAAwAAI=</HashCode>
+      <FileName>MapEditForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapGrid" Collapsed="true">
+    <Position X="14.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgIAAgAAAAAAAIAAAACAAAQAAAwAAAA=</HashCode>
+      <FileName>MapGrid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapInfoFromText" Collapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAAAAAAAAAAAAAAACAAAAAEAAAAAAAkAAAAAAAAA=</HashCode>
+      <FileName>MapInfoFromText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapOneMass" Collapsed="true">
+    <Position X="18.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAgAAgAAABgAAQAAAAAEAAAKAAAAIAAAAgAIAA=</HashCode>
+      <FileName>MapOneMass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapPalletData" Collapsed="true">
+    <Position X="20" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABCAACAEAAAACAAAQAAAAAAAAAAAAAAgEAAAIBAAA=</HashCode>
+      <FileName>MapPalletData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapPalletScene" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAGAEAAIAAEBAAAAAEBAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>MapPalletScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapSceneBase" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapSceneBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.HVScrollBar" Collapsed="true">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQACAAAEAAAAAAAAAAAAAAAAYAAAABAAAAAAA=</HashCode>
+      <FileName>MapWriteScene\HVScrollBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapData" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAgAAAAAAAAAAAAAAAAAAAAAAAAACAgAAAAQAAAI=</HashCode>
+      <FileName>MapWriteScene\MadData\MapData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapDataControl" Collapsed="true">
+    <Position X="20" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>yAAgAAAAAAAAAAAAAAACIAAAAAEgAABCAgAAAAQAAAA=</HashCode>
+      <FileName>MapWriteScene\MadData\MapDataControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapDataController" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapWriteScene\MadData\MapDataController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.ChangeMapSizeController" Collapsed="true">
+    <Position X="10" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapWriteScene\MadData\MapDataControllers\ChangeMapSizeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.ConvertDataController" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapWriteScene\MadData\MapDataControllers\ConvertDataController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.EditMapChipController" Collapsed="true">
+    <Position X="1" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>MapWriteScene\MadData\MapDataControllers\EditMapChipController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.LoadMapDataListController" Collapsed="true">
+    <Position X="3.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>MapWriteScene\MadData\MapDataControllers\LoadMapDataListController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapShowAreaController" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>MapWriteScene\MadData\MapDataControllers\MapshowAreaController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.TurnController" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAgAAABAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>MapWriteScene\MadData\MapDataControllers\TurnController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapEditControl" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQKAAACAAAAAABAAAACAAAAAEAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>MapWriteScene\MapEditControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapWriteScene" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAQAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>MapWriteScene\MapWriteScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapWriteScroll" Collapsed="true">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAACAAAAAAAAAAAAAAEAAAgAEAAAAAAAAA=</HashCode>
+      <FileName>MapWriteScene\MapWriteScroll.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MapEdit.MouseSwap" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAEA=</HashCode>
+      <FileName>MouseSwap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.Program" Collapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.ProjectInfo" Collapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.ProjectManager" Collapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAACAAAQAAAAAAAAAAAAgAAAAAAE=</HashCode>
+      <FileName>ProjectManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.SaveNewProjectForm" Collapsed="true">
+    <Position X="20" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACQAABEAAACAAAAGAABIAAAAAAAAQAIAAAA=</HashCode>
+      <FileName>SaveNewProjectForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.SelectImageForm" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgggCAAAACAEAAAAAACrBEACAEAAAAAAUCAiCAARAAA=</HashCode>
+      <FileName>SelectImageForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.SelectMapChipScene" Collapsed="true">
+    <Position X="23.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAIACAAAAAAAAAAABA=</HashCode>
+      <FileName>SelectMapChipScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.StartForm" Collapsed="true">
+    <Position X="16.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAAAAACCAABAAAACAAAACAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StartForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.Utility" Collapsed="true">
+    <Position X="18.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapChipConfig.MapChipConfig" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAQAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapChipConfig\MapChipConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.MapChipConfig.MapChipConfigManager" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAABCAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>MapChipConfig\MapChipConfigManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.Properties.Resources" Collapsed="true">
+    <Position X="18.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAgBAAAAAAAABEAAAAQAAAAAEAAAAAAAAAJQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapEdit.Properties.Settings" Collapsed="true">
+    <Position X="14.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Yu Gothic UI" Size="9" />
+</ClassDiagram>

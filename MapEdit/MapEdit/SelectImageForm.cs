@@ -13,7 +13,6 @@ namespace MapEdit
     //小っちゃい方のフォーム
     public partial class SelectImageForm : Form
     {
-
         private readonly MapPalletScene mps;
 
         private readonly SelectMapChipScene sms;
@@ -116,18 +115,9 @@ namespace MapEdit
         // 通行判定編集モード変更
         private void PassEditMode_Click(object sender, EventArgs e)
         {
-
-            MapChipConfig.ChangePassEditMode();
-            if (MapChipConfig.passEditMode == MapChipConfig.PassEditModeKind.通行判定)
-            {
-                PassEditMode.Text = "通行判定"; 
-                mps.SetDrawMapChipInfo(true); // 通行判定チップ表示する
-            }
-            else if (MapChipConfig.passEditMode == MapChipConfig.PassEditModeKind.編集中)
-            {
-                PassEditMode.Text = "編集中";
-                mps.SetDrawMapChipInfo(false); // 通行判定チップ表示しない
-            }
+            bool isPassEditMode = MapChipConfig.MapChipConfigManager.ChangePassEditMode();
+            if (isPassEditMode) { PassEditMode.Text = "編集中"; }
+            else { PassEditMode.Text = "通行判定"; }
         }
     }
 }

@@ -11,6 +11,7 @@ namespace MapEdit
    public class MapPalletScene:MapSceneBase
     {
         private readonly MapPalletData mapPalletData;
+        private MapChipConfig.MapChipConfigManager mcm; // SelectImageForm用
         private MapChipResourceManager mcrm;
         private SelectMapChipScene sms;
         private MouseSwap mouseSwap;
@@ -24,6 +25,8 @@ namespace MapEdit
             mapPalletData = new MapPalletData();
             localPos.SetVect(0, 0);
             AddChild(new MapGrid(this, 40), 1);
+
+            mcm = new MapChipConfig.MapChipConfigManager(6, 50);
         }
 
         //ファイルから新しいマップチップを生成し登録する
@@ -54,10 +57,10 @@ namespace MapEdit
             if ((Control.MouseButtons & MouseButtons.Left)
                 == MouseButtons.Left)
             {
-                if (MapChipConfig.passEditMode ==MapChipConfig.PassEditModeKind.編集中)
+                if (MapChipConfig.MapChipConfigManager.IsPassEditMode)
                 {
                     // マップチップの通行判定編集
-                    // ドラッグ系の処理どなってるんだ…
+                    // (各マス単位の何かを行う)
                     mapPalletData.ReverseEnablePassFlag(point.X, point.Y);
                 }
                 else
@@ -81,9 +84,9 @@ namespace MapEdit
         //クリックされた場所にあるマップチップを選択する
         private void MouseDrag(object o,MouseEventArgs e)
         {
-            if (MapChipConfig.passEditMode == MapChipConfig.PassEditModeKind.編集中) return;
+            if (MapChipConfig.MapChipConfigManager.IsPassEditMode) return;
 
-                if ((Control.MouseButtons & MouseButtons.Left)
+           if ((Control.MouseButtons & MouseButtons.Left)
                 != MouseButtons.Left) return;
                 Point point = LocationToMap(e.Location, 40);
             if (point.X < 0 || point.Y < 0 || point.X >= 6 || point.Y >= 50) return;

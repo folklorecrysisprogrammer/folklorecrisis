@@ -86,6 +86,7 @@
     </Compile>
     <Compile Include="Id.cs" />
     <Compile Include="IdManager.cs" />
+    <Compile Include="MapChipConfig\MapChipConfigManager.cs" />
     <Compile Include="MapWriteScene\MadData\MapDataControllers\ChangeMapSizeController.cs" />
     <Compile Include="MapWriteScene\MadData\MapDataControllers\ConvertDataController.cs" />
     <Compile Include="MapWriteScene\MadData\MapDataControllers\EditMapChipController.cs" />
@@ -94,9 +95,10 @@
     <Compile Include="MapWriteScene\MadData\MapDataControllers\LoadMapDataListController.cs" />
     <Compile Include="MapWriteScene\MadData\MapDataControllers\TurnController.cs" />
     <Compile Include="MapChip.cs" />
-    <Compile Include="MapChipConfig.cs" />
+    <Compile Include="MapChipConfig\MapChipConfig.cs" />
     <Compile Include="MapChipResourceManager.cs" />
     <Compile Include="MapInfoFromText.cs" />
+    <Compile Include="MapChipConfigSprite.cs" />
     <Compile Include="MapWriteScene\MapEditControl.cs" />
     <Compile Include="MapEditForm.cs">
       <SubType>Form</SubType>
@@ -165,6 +167,7 @@
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

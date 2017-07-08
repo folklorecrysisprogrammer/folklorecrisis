@@ -13,6 +13,7 @@ namespace MapEdit
     {
 
         private readonly MapWriteScene mws;
+        private readonly MapChipConfigSprite mccs;
 
         //シーンをスクロールするクラス
         public MapWriteScroll MapWriteScroll { get; }
@@ -23,15 +24,21 @@ namespace MapEdit
         //mapWriteSceneを生成するだけ
         public MapEditControl(Panel mwp,HScrollBar hScroll,VScrollBar vScroll,Size mapSize,int mapChipSize)
         {
-           MapDataControl = new MapDataControl(mapSize, mapChipSize);
+            MapDataControl = new MapDataControl(mapSize, mapChipSize);
+
             mws =
                 new MapWriteScene(mwp,mapChipSize );
-            mws.UpdateLocalPosEvent+=()=>MapDataControl.MapShowArea.UpdateShowMapImage(mws);
+            mws.UpdateLocalPosEvent+=
+                ()=>MapDataControl.MapShowArea.UpdateShowMapImage(mws);
+
             MapWriteScroll = new MapWriteScroll(hScroll, vScroll, mws, mapSize, mapChipSize);
             MapDataControl.
                 setChangeListEvent(
                     () => 
                         MapWriteScroll.SetScrollMaximum(mapSize, mapChipSize));
+
+            // マップチップの上に表示するスプライト
+            mccs = new MapChipConfigSprite();
         }
 
         //miftの情報からmwsのmapData.listを構築する
