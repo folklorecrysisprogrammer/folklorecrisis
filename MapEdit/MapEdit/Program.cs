@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace MapEdit
 {
+
     static class Program
     {
         /// <summary>

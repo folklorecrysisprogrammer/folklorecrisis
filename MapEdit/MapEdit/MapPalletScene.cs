@@ -8,6 +8,9 @@ using System.Drawing;
 namespace MapEdit
 {
     //マップパレットフォームのパネルのとこに表示される画像を制御するシーン
+    //これは最悪だ。メンバ変数がクソみたいにある。
+    //単一責任の法則が乱れる！！
+    //要修正！
    public class MapPalletScene:MapSceneBase
     {
         private readonly MapPalletData mapPalletData;

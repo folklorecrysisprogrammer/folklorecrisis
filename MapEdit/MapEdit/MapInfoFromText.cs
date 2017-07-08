@@ -9,6 +9,8 @@ using System.Drawing;
 namespace MapEdit
 {
     //マップ情報をtxtから取得するクラス
+    //こいつにカプセル化の概念は必要ない。
+    //ただのデータをまとめただけのものだ
     public class MapInfoFromText
     {
         public int MapChipSize { get; }

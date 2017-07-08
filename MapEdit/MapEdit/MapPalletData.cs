@@ -8,6 +8,7 @@ using DXEX;
 namespace MapEdit
 {
     //マップパレットに表示する画像を管理するクラス
+    //若干ゲッターの数が多いのが気になるが対して気にするほどでもない
     public class MapPalletData
     {
         private MapChip[,] mapChips;

@@ -10,6 +10,7 @@ using System.Drawing;
 namespace MapEdit
 {
     //プロジェクトデータを保存,上書き,開く機能をするクラス
+    //若干関数が肥大化してはいるが、それ以外は特に問題はない
     public class ProjectManager
     {
       //  private readonly MapEditForm meForm;
