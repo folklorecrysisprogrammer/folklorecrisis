@@ -105,7 +105,7 @@ namespace DXEX.Base
         }
 
         //入力を与える
-        public void Input(InputType inputData)
+        internal void Input(InputType inputData)
         {
             foreach(var rule in ruleList)
             {
