@@ -46,11 +46,6 @@ namespace DXEX.Base
         {
             return new Rules<InputType, StateType>(rule1)|rule2;
         }
-
-       /* public Rule<InputType,StateType> Clone()
-        {
-            
-        }*/
     }
 
 
