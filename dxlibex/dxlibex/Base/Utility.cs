@@ -20,17 +20,5 @@ namespace DXEX.Base
             return rad * 180 / Math.PI;
         }
 
-        /// <summary>
-        ///Rule生成関数 
-        /// </summary>
-        /// <typeparam name="InputType">入力データの型</typeparam>
-        /// <param name="inputData">ルールに対応させる入力データ</param>
-        /// <returns>生成されたRuleを返す</returns>
-        public static Rule<InputType>MakeRule<InputType>(InputType inputData)
-            where InputType : IComparable
-        {
-            return new Rule<InputType>(inputData);
-        }
-
     }
 }

@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Automaton\Automaton.cs" />
+    <Compile Include="Base\Automaton\RuleHandler.cs" />
+    <Compile Include="Base\Automaton\Rules.cs" />
     <Compile Include="Base\Automaton\SemanticAction.cs" />
     <Compile Include="Base\Automaton\Rule.cs" />
     <Compile Include="Base\Automaton\StateData.cs" />

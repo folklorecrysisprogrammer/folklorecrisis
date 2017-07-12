@@ -19,7 +19,7 @@ namespace DXEX.Base
         /// <summary>
         /// 状態ごとにRulesと結びつけて保存するリスト
         /// </summary>
-        Dictionary<StateType, Rules<InputType>> rulesMap=new Dictionary<StateType, Rules<InputType>>();
+        Dictionary<StateType, Rules<InputType, StateType>> rulesMap=new Dictionary<StateType, Rules<InputType, StateType>>();
 
         /// <summary>
         /// 現在の状態
@@ -43,7 +43,7 @@ namespace DXEX.Base
         /// </summary>
         /// <param name="state">状態を指定</param>
         /// <param name="rules">指定した状態の時に適応されるルール</param>
-        public void SetStateWithRules(StateType state, Rules<InputType> rules)
+        public void SetStateWithRules(StateType state, Rules<InputType, StateType> rules)
         {
             if (rulesMap.Keys.Contains(state))
                 throw new Exception("その状態のルールは既に存在しています");
